@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    【JDK1.8源码】JDK源码阅读目录 |  从入门到入土
+    【Linux】组管理与权限管理 |  从入门到入土
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-JDK源码阅读目录" class="article article-type-post" itemscope
+  <article id="post-【Linux】组管理与权限管理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  【JDK1.8源码】JDK源码阅读目录
+  【Linux】组管理与权限管理
 </h1>
  
 
@@ -55,12 +55,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/11/JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/" class="article-date">
-  <time datetime="2020-04-11T08:13:30.000Z" itemprop="datePublished">2020-04-11</time>
+      <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2020-04-13T08:21:35.000Z" itemprop="datePublished">2020-04-13</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a> / <a class="article-category-link" href="/categories/Java/%E8%BF%9B%E9%98%B6/">进阶</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </div>
 
       
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Wortzahl:</span>
-            <span class="post-count">349</span>
+            <span class="post-count">291</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Lesezeit≈</span>
-            <span class="post-count">2 Minuten</span>
+            <span class="post-count">1 Minuten</span>
         </span>
     </span>
 </div>
@@ -104,109 +104,42 @@
       
 
       
-      <blockquote>
-<p>数字表示优先级，1为最高</p>
-</blockquote>
-<h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><pre><code>1) Object 1
-2) String 1
-3) AbstractStringBuilder 1 
-4) StringBuffer 1 
-5) StringBuilder 1 
-6) Boolean 2
-7) Byte 2
-8) Double 2
-9) Float 2
-10) Integer 2
-11) Long 2
-12) Short 2
-13) Thread 2
-14) ThreadLocal 2
-15) Enum 3
-16) Throwable 3
-17) Error 3
-18) Exception 3
-19) Class 4
-20) ClassLoader 4
-21) Compiler 4
-22) System 4
-23) Package 4
-24) Void 4</code></pre><h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><pre><code>1) AbstractList 1 
-2) AbstractMap 1
-3) AbstractSet 1
-4) ArrayList 1 
-5) LinkedList 1 
-6) HashMap 1
-7) Hashtable 1
-8) HashSet 1
-9) LinkedHashMap 1
-10) LinkedHashSet 1
-11) TreeMap 1
-12) TreeSet 1
-13) Vector 2
-14) Queue 2
-15) Stack 2
-16) SortedMap 2
-17) SortedSet 2
-18) Collections 3
-19) Arrays 3
-20) Comparator 3
-21) Iterator 3
-22) Base64 4
-23) Date 4
-24) EventListener 4
-25) Random 4
-26) SubList 4
-27) Timer 4
-28) UUID 4
-29) WeakHashMap 4</code></pre><h2 id="java-util-concurrent"><a href="#java-util-concurrent" class="headerlink" title="java.util.concurrent"></a>java.util.concurrent</h2><pre><code>1) ConcurrentHashMap 1
-2) Executor 2
-3) AbstractExecutorService 2
-4) ExecutorService 2
-5) ThreadPoolExecutor 2
-6) BlockingQueue 2
-7) AbstractQueuedSynchronizer 2
-8) CountDownLatch 2
-9) FutureTask 2
-10) Semaphore 2
-11) CyclicBarrier 2
-13) CopyOnWriteArrayList 3
-14) SynchronousQueue 3
-15) BlockingDeque 3
-16) Callable 4</code></pre><h2 id="java-util-concurrent-atomic"><a href="#java-util-concurrent-atomic" class="headerlink" title="java.util.concurrent.atomic"></a>java.util.concurrent.atomic</h2><pre><code>1) AtomicBoolean 2
-2) AtomicInteger 2
-3) AtomicLong 2
-4) AtomicReference 3</code></pre><h2 id="java-lang-reflect"><a href="#java-lang-reflect" class="headerlink" title="java.lang.reflect"></a>java.lang.reflect</h2><pre><code>1) Field 2
-2) Method 2</code></pre><h2 id="java-lang-annotation"><a href="#java-lang-annotation" class="headerlink" title="java.lang.annotation"></a>java.lang.annotation</h2><pre><code>1) Annotation 3
-2) Target 3
-3) Inherited 3
-4) Retention 3
-5) Documented 4
-6) ElementType 4
-7) Native 4
-8) Repeatable 4</code></pre><h2 id="java-util-concurrent-locks"><a href="#java-util-concurrent-locks" class="headerlink" title="java.util.concurrent.locks"></a>java.util.concurrent.locks</h2><pre><code>1) Lock 2
-2) Condition 2
-3) ReentrantLock 2
-4) ReentrantReadWriteLock 2</code></pre><h2 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h2><pre><code>1) File 3
-2) InputStream   3
-3) OutputStream  3
-4) Reader  4
-5) Writer  4</code></pre><h2 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h2><pre><code>1) Buffer 3
-2) ByteBuffer 4
-3) CharBuffer 4
-4) DoubleBuffer 4
-5) FloatBuffer 4
-6) IntBuffer 4
-7) LongBuffer 4
-8) ShortBuffer 4</code></pre><h2 id="java-sql"><a href="#java-sql" class="headerlink" title="java.sql"></a>java.sql</h2><pre><code>1) Connection 3
-2) Driver 3
-3) DriverManager 3
-4) JDBCType 3
-5) ResultSet 4
-6) Statement 4</code></pre><h2 id="java-net"><a href="#java-net" class="headerlink" title="java.net"></a>java.net</h2><pre><code>1) Socket 3
-2) ServerSocket 3
-3) URI 4
-4) URL 4
-5) URLEncoder 4</code></pre>
+      <h2 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h2><h4 id="文件-目录所有者"><a href="#文件-目录所有者" class="headerlink" title="文件/目录所有者"></a>文件/目录所有者</h4><pre><code>查看文件的所有者
+    ls -ahl
+    ll
+
+修改文件所有者
+    chown 用户名 文件名
+        -R：递归修改整个文件夹</code></pre><h4 id="文件-目录所在组"><a href="#文件-目录所在组" class="headerlink" title="文件/目录所在组"></a>文件/目录所在组</h4><pre><code>修改文件所在组
+    chgrp 组名 文件名</code></pre><h4 id="改变用户所在组"><a href="#改变用户所在组" class="headerlink" title="改变用户所在组"></a>改变用户所在组</h4><pre><code>usermod -g 组名 用户名</code></pre><h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><pre><code>文件类型：
+    -：普通文件
+    d：目录
+    l：链接文件
+    c：字符设备（键盘、鼠标）
+    b: 块文件（硬盘）
+文件所有者权限
+    r：读   4
+    w：写   2
+    x：执行 1
+文件所在组的用户拥有的权限
+    r
+    w
+    x
+文件其他组的用户拥有的权限
+    r
+    w
+    x
+文件硬链接数目或文件子目录个数</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.assets/image-20200413162237397.png" alt="image-20200413162237397"></p>
+<pre><code>rwx权限作用于文件和作用于目录不同
+    作用于文件：w不一定能删，只是有前提
+    作用于目录：可以写入修改删除</code></pre><h4 id="修改、管理权限"><a href="#修改、管理权限" class="headerlink" title="修改、管理权限"></a>修改、管理权限</h4><pre><code>u：所有者 g：所有组 o：其他人 a：所有人
++：增加权限     -：减少权限
+
+1.chmod u=rwx，g=rx，o=x 文件目录名
+  chmod 751 文件目录名
+2.chmod o+w 文件目录名
+3.chmod a-x 文件目录名</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.assets/image-20200413162311127.png" alt="image-20200413162311127"></p>
+
       
       <!-- reward -->
       
@@ -274,14 +207,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/11/JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag">源码阅读</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
 
 
     </footer>
@@ -292,19 +225,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractList%E3%80%81ArrayList%E3%80%81LinkedList/" class="article-nav-link">
+      <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            【JDK1.8源码】AbstractList、ArrayList、LinkedList
+            【Linux】定时任务调度
           
         </div>
       </a>
     
     
-      <a href="/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/" class="article-nav-link">
+      <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">【JDK1.8源码】Object、String</div>
+        <div class="article-nav-title">【Linux】实用指令</div>
       </a>
     
   </nav>

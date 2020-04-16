@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【JDK1.8源码】Object、String</title>
+    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/</url>
+    <content><![CDATA[<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
+<li>object 作为超类，是一切类的父类</li>
+</ul>
+<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class&lt;?&gt; getClass()</span><br><span class="line"></span><br><span class="line"><span class="comment">// o1 == o2</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//用来另存一个当前存在的对象</span></span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">native</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//让当前线程失去操作权限，进入等待序列</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeout, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//随机通知一个持有对象的锁的线程获取操作权限</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notify</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notifyAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//垃圾回收时调用</span></span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br><span class="line"><span class="class">/*</span></span><br><span class="line"><span class="class">    <span class="title">CharSequence</span>是一个只读的字符序列接口，包括：</span></span><br><span class="line"><span class="class">       <span class="title">int</span> <span class="title">length</span>()</span>;</span><br><span class="line">        <span class="function"><span class="keyword">char</span> <span class="title">charAt</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">        <span class="function">CharSequence <span class="title">subSequence</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">        ...</span><br><span class="line">    StringBuffer和StringBuilder也实现了这个接口</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>String<strong>不是</strong>java的基本类型</p>
+</li>
+<li><p>String是const，不能改变：<br><code>private final char value[];</code></p>
+</li>
+</ul>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//常用</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(String original)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[])</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[], <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuffer buffer)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuilder builder)</span></span></span><br><span class="line"><span class="function"><span class="comment">//不常用</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">int</span>[] codePoints, <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> ascii[], <span class="keyword">int</span> hibyte, <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> ascii[], <span class="keyword">int</span> hibyte)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], <span class="keyword">int</span> offset, <span class="keyword">int</span> length, String charsetName)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], String charsetName)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], Charset charset)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], <span class="keyword">int</span> offset, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[])</span></span></span><br><span class="line"><span class="function"><span class="title">String</span><span class="params">(<span class="keyword">char</span>[] value, <span class="keyword">boolean</span> share)</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == anObject) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (anObject <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">        String anotherString = (String)anObject;</span><br><span class="line">        <span class="keyword">int</span> n = value.length;</span><br><span class="line">        <span class="keyword">if</span> (n == anotherString.value.length) &#123;</span><br><span class="line">            <span class="keyword">char</span> v1[] = value;</span><br><span class="line">            <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v1[i] != v2[i])</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = hash;</span><br><span class="line">    <span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> val[] = value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  与StringBuffer, StringBuilder作比较时使用</span></span><br><span class="line"><span class="comment">  传入参数是一个CharSequence，StringBuffer, StringBuilder均实现了CharSequence接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contentEquals</span><span class="params">(CharSequence cs)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Argument is a StringBuffer, StringBuilder</span></span><br><span class="line">    <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> AbstractStringBuilder) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> StringBuffer) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(cs) &#123;</span><br><span class="line">               <span class="keyword">return</span> nonSyncContentEquals((AbstractStringBuilder)cs);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> nonSyncContentEquals((AbstractStringBuilder)cs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Argument is a String</span></span><br><span class="line">    <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">        <span class="keyword">return</span> equals(cs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Argument is a generic CharSequence</span></span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">int</span> n = v1.length;</span><br><span class="line">    <span class="keyword">if</span> (n != cs.length()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v1[i] != cs.charAt(i)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">concat</span><span class="params">(String str)</span>  <span class="comment">//将str拼接到字符串后</span></span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【JDK1.8源码】AbstractStringBuilder、StringBuffer、StringBuilder</title>
     <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractStringBuilder%E3%80%81StringBuffer%E3%80%81StringBuilder/</url>
     <content><![CDATA[<h2 id="AbstractStringBuilder"><a href="#AbstractStringBuilder" class="headerlink" title="AbstractStringBuilder"></a>AbstractStringBuilder</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*抽象类</span></span><br><span class="line"><span class="comment">  实现两个接口：Appendable和CharSequence</span></span><br><span class="line"><span class="comment">  Appendable：表明类中序列是可拓展的</span></span><br><span class="line"><span class="comment">  CharSequence：只读的字符序列接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractStringBuilder</span> <span class="keyword">implements</span> <span class="title">Appendable</span>, <span class="title">CharSequence</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">interface</span> <span class="title">Appendable</span> </span>&#123;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -43,6 +73,159 @@
       </tags>
   </entry>
   <entry>
+    <title>【JDK1.8源码】JDK源码阅读目录</title>
+    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<blockquote>
+<p>数字表示优先级，1为最高</p>
+</blockquote>
+<h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><pre><code>1) Object 1
+2) String 1
+3) AbstractStringBuilder 1 
+4) StringBuffer 1 
+5) StringBuilder 1 
+6) Boolean 2
+7) Byte 2
+8) Double 2
+9) Float 2
+10) Integer 2
+11) Long 2
+12) Short 2
+13) Thread 2
+14) ThreadLocal 2
+15) Enum 3
+16) Throwable 3
+17) Error 3
+18) Exception 3
+19) Class 4
+20) ClassLoader 4
+21) Compiler 4
+22) System 4
+23) Package 4
+24) Void 4</code></pre><h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><pre><code>1) AbstractList 1 
+2) AbstractMap 1
+3) AbstractSet 1
+4) ArrayList 1 
+5) LinkedList 1 
+6) HashMap 1
+7) Hashtable 1
+8) HashSet 1
+9) LinkedHashMap 1
+10) LinkedHashSet 1
+11) TreeMap 1
+12) TreeSet 1
+13) Vector 2
+14) Queue 2
+15) Stack 2
+16) SortedMap 2
+17) SortedSet 2
+18) Collections 3
+19) Arrays 3
+20) Comparator 3
+21) Iterator 3
+22) Base64 4
+23) Date 4
+24) EventListener 4
+25) Random 4
+26) SubList 4
+27) Timer 4
+28) UUID 4
+29) WeakHashMap 4</code></pre><h2 id="java-util-concurrent"><a href="#java-util-concurrent" class="headerlink" title="java.util.concurrent"></a>java.util.concurrent</h2><pre><code>1) ConcurrentHashMap 1
+2) Executor 2
+3) AbstractExecutorService 2
+4) ExecutorService 2
+5) ThreadPoolExecutor 2
+6) BlockingQueue 2
+7) AbstractQueuedSynchronizer 2
+8) CountDownLatch 2
+9) FutureTask 2
+10) Semaphore 2
+11) CyclicBarrier 2
+13) CopyOnWriteArrayList 3
+14) SynchronousQueue 3
+15) BlockingDeque 3
+16) Callable 4</code></pre><h2 id="java-util-concurrent-atomic"><a href="#java-util-concurrent-atomic" class="headerlink" title="java.util.concurrent.atomic"></a>java.util.concurrent.atomic</h2><pre><code>1) AtomicBoolean 2
+2) AtomicInteger 2
+3) AtomicLong 2
+4) AtomicReference 3</code></pre><h2 id="java-lang-reflect"><a href="#java-lang-reflect" class="headerlink" title="java.lang.reflect"></a>java.lang.reflect</h2><pre><code>1) Field 2
+2) Method 2</code></pre><h2 id="java-lang-annotation"><a href="#java-lang-annotation" class="headerlink" title="java.lang.annotation"></a>java.lang.annotation</h2><pre><code>1) Annotation 3
+2) Target 3
+3) Inherited 3
+4) Retention 3
+5) Documented 4
+6) ElementType 4
+7) Native 4
+8) Repeatable 4</code></pre><h2 id="java-util-concurrent-locks"><a href="#java-util-concurrent-locks" class="headerlink" title="java.util.concurrent.locks"></a>java.util.concurrent.locks</h2><pre><code>1) Lock 2
+2) Condition 2
+3) ReentrantLock 2
+4) ReentrantReadWriteLock 2</code></pre><h2 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h2><pre><code>1) File 3
+2) InputStream   3
+3) OutputStream  3
+4) Reader  4
+5) Writer  4</code></pre><h2 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h2><pre><code>1) Buffer 3
+2) ByteBuffer 4
+3) CharBuffer 4
+4) DoubleBuffer 4
+5) FloatBuffer 4
+6) IntBuffer 4
+7) LongBuffer 4
+8) ShortBuffer 4</code></pre><h2 id="java-sql"><a href="#java-sql" class="headerlink" title="java.sql"></a>java.sql</h2><pre><code>1) Connection 3
+2) Driver 3
+3) DriverManager 3
+4) JDBCType 3
+5) ResultSet 4
+6) Statement 4</code></pre><h2 id="java-net"><a href="#java-net" class="headerlink" title="java.net"></a>java.net</h2><pre><code>1) Socket 3
+2) ServerSocket 3
+3) URI 4
+4) URL 4
+5) URLEncoder 4</code></pre>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【JDK1.8源码】AbstractList、ArrayList、LinkedList</title>
+    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractList%E3%80%81ArrayList%E3%80%81LinkedList/</url>
+    <content><![CDATA[<h2 id="AbstractList"><a href="#AbstractList" class="headerlink" title="AbstractList"></a>AbstractList</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 继承自父类AbstractCollection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        两个抽象方法，子类必须实现</span></span><br><span class="line"><span class="comment">        public abstract Iterator&lt;E&gt; iterator();</span></span><br><span class="line"><span class="comment">        public abstract int size();</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 实现了List&lt;E&gt;接口</span></span><br><span class="line"><span class="comment">    public interface List&lt;E&gt; extends Collection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        int size();</span></span><br><span class="line"><span class="comment">        boolean isEmpty();</span></span><br><span class="line"><span class="comment">        boolean contains(Object o);</span></span><br><span class="line"><span class="comment">        Object[] toArray();</span></span><br><span class="line"><span class="comment">        void add(int index, E element);</span></span><br><span class="line"><span class="comment">        E remove(int index);</span></span><br><span class="line"><span class="comment">        int indexOf(Object o);</span></span><br><span class="line"><span class="comment">        ...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">AbstractCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>提供了抽象方法 <code>abstract public E get(int index);</code> <strong>子类必须实现</strong></li>
+<li>默认不支持的 <code>add()</code>, <code>set()</code>,<code>remove()</code>,子类要想实现元素的修改必须<strong>重写这些方法</strong><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;</span><br></pre></td></tr></table></figure></li>
+<li>全部/局部删除<br><code>public void clear() {removeRange(0, size());}</code><br><code>protected void removeRange(int fromIndex, int toIndex)</code></li>
+</ul>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">private</span> <span class="title">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">RandomAccessSubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><h4 id="类的关系图"><a href="#类的关系图" class="headerlink" title="类的关系图"></a>类的关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    List&lt;E&gt;接口：提供了一些基本的增、删、改、查方法</span></span><br><span class="line"><span class="comment">    RandomAccess接口：说明改方法支持随机访问，get、set等方法时间复杂度为 O(1)</span></span><br><span class="line"><span class="comment">    Serializable接口：可序列化接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><p>==底层是一个Object数组==</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始默认容量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//容量为0的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"><span class="comment">//容量为默认容量的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData;</span><br><span class="line"><span class="comment">//所含元素的数量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>修剪容量<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//结构性修改数组的次数加一</span></span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">if</span> (size &lt; elementData.length) &#123;</span><br><span class="line">        elementData = (size == <span class="number">0</span>)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCapacity</span><span class="params">(Object[] elementData, <span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="comment">//新的容量是旧容量的1.5倍</span></span><br><span class="line">    <span class="comment">//向右位移运算，提升处理速度</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//仍要小于最少需要的容量，则 新容量=最少需要的容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>判断是否包含元素o  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若不包含该元素，indexOf会返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;<span class="keyword">return</span> indexOf(o) &gt;= <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h4 id="类关系图-1"><a href="#类关系图-1" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSequentialList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br></pre></td></tr></table></figure>
+<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>连接的相关方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//将元素e连接到链表头</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;    <span class="comment">//设置变量存储原来的链表头</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f); <span class="comment">//根据元素e新建节点</span></span><br><span class="line">    first = newNode;    <span class="comment">//将新建的节点设为链表的头</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)  <span class="comment">//如果原来的链表头是空的，则将新的节点也设成链表的尾部</span></span><br><span class="line">        last = newNode;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//否则，连接旧头和新头</span></span><br><span class="line">        f.prev = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将元素e连接到链表尾，与linkFirst同理</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;</span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*将节点e连接到某个非空节点前</span></span><br><span class="line"><span class="comment">  思路：设置新的节点存储目标节点的前一个节点，然后将目标节点的前一个节点的next指向元素e的节点，</span></span><br><span class="line"><span class="comment">        succ.prev = newNode</span></span><br><span class="line"><span class="comment">        如果目标节点的前一个节点为空，则将头节点设置为 e节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert succ != null;</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pred.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除第一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert f == first &amp;&amp; f != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = f.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next;</span><br><span class="line">    f.item = <span class="keyword">null</span>;</span><br><span class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    first = next;</span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">        last = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        next.prev = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除最后一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkLast</span><span class="params">(Node&lt;E&gt; l)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert l == last &amp;&amp; l != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = l.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = l.prev;</span><br><span class="line">    l.item = <span class="keyword">null</span>;</span><br><span class="line">    l.prev = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    last = prev;</span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>)</span><br><span class="line">        first = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        prev.next = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除不为空的节点x</span></span><br><span class="line"><span class="comment">//前面的值指向后面的值，后面的值指向前面的值</span></span><br><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert x != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = x.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Linux】JavaEE</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
     <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
@@ -71,25 +254,45 @@
       </tags>
   </entry>
   <entry>
-    <title>【Linux】RPM和RYUM</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/</url>
-    <content><![CDATA[<h2 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h2><pre><code>rpm包的简单查询：
-    查询已安装的rpm列表： rpm -qa|grep xx
-    查询rpm包安装到哪：   rpm -ql xxx
-    根据文件查询软件包：  rpm -qf 软件路径
+    <title>【Linux】vi和vim</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
+    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
+    vim xxx
+插入：
+    i：开始编辑
+    a：从下一行开始编辑
+退出插入模式：
+    Esc
+命令行模式：
+    ： 输入命令
+    qw 保存并推出
+    q  在没有修改的情况下退出
+    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
+   拷贝当前行   yy
+   拷贝向下五行 5yy
+   粘贴         p
 
-rpm包卸载
-    rpm -e rpm包名
-    rpm -e --nodeps 包名 （强制删除）
+2. 删除当前行   dd
+   删除向下五行 5dd
 
-rpm包安装
-    rpm -ivh RPM包全路径名称
-        i：安装
-        v：提示
-        h：进度条</code></pre><h2 id="YUM包的管理（需要联网）"><a href="#YUM包的管理（需要联网）" class="headerlink" title="YUM包的管理（需要联网）"></a>YUM包的管理（需要联网）</h2><pre><code>查询：
-    yum list | grep xxx
-安装：
-    yum install xxx</code></pre>]]></content>
+3. 在文件中查找某个词(命令行下) 
+        /xxx 
+        输入 n 查找下一个
+
+4. 设置显示/取消文件行号(命令行下)
+        set nu
+        set nonu 
+
+5. 跳转到文档的首行或尾行(正常模式)
+    首行：  gg
+    尾行：  G
+
+6. 撤销动作 u (正常模式)
+
+7. 移动光标至指定行(正常模式 2、3)
+    1. 显示行号
+    2. 输入行号
+    3. shift + g</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -144,53 +347,6 @@ rpm包安装
 2.将.sh文件设为可执行文件
 3.crontab -e
 4.* * * * * xx.sh</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】vi和vim</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
-    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
-    vim xxx
-插入：
-    i：开始编辑
-    a：从下一行开始编辑
-退出插入模式：
-    Esc
-命令行模式：
-    ： 输入命令
-    qw 保存并推出
-    q  在没有修改的情况下退出
-    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
-   拷贝当前行   yy
-   拷贝向下五行 5yy
-   粘贴         p
-
-2. 删除当前行   dd
-   删除向下五行 5dd
-
-3. 在文件中查找某个词(命令行下) 
-        /xxx 
-        输入 n 查找下一个
-
-4. 设置显示/取消文件行号(命令行下)
-        set nu
-        set nonu 
-
-5. 跳转到文档的首行或尾行(正常模式)
-    首行：  gg
-    尾行：  G
-
-6. 撤销动作 u (正常模式)
-
-7. 移动光标至指定行(正常模式 2、3)
-    1. 显示行号
-    2. 输入行号
-    3. shift + g</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -381,6 +537,106 @@ tar：打包指令
       </tags>
   </entry>
   <entry>
+    <title>【Linux】RPM和RYUM</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/</url>
+    <content><![CDATA[<h2 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h2><pre><code>rpm包的简单查询：
+    查询已安装的rpm列表： rpm -qa|grep xx
+    查询rpm包安装到哪：   rpm -ql xxx
+    根据文件查询软件包：  rpm -qf 软件路径
+
+rpm包卸载
+    rpm -e rpm包名
+    rpm -e --nodeps 包名 （强制删除）
+
+rpm包安装
+    rpm -ivh RPM包全路径名称
+        i：安装
+        v：提示
+        h：进度条</code></pre><h2 id="YUM包的管理（需要联网）"><a href="#YUM包的管理（需要联网）" class="headerlink" title="YUM包的管理（需要联网）"></a>YUM包的管理（需要联网）</h2><pre><code>查询：
+    yum list | grep xxx
+安装：
+    yum install xxx</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】文件目录</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p><img src="%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.assets/image-20200413162623021.png" alt="image-20200413162623021"></p>
+<pre><code>/bin(Binary):
+    存放经常使用的命令
+
+/boot：
+    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
+
+/dev(Device)：
+    存放Linux的外部设备
+
+/etc：
+    存放所有系统管理所需要的配置文件和子目录
+
+/home：
+    用户的主目录
+    每个用户都有一个自己的目录
+
+/lib：
+    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
+    几乎所有的文件都要用到这些共享库
+
+/lost+found
+    非法关机后存放一些文件
+
+/media：
+    自动识别一些设备，如U盘、DVD
+    识别后将识别设备挂载在该目录下
+
+/mnt：
+    让用户临时挂载别的文件系统
+
+/opt：
+    给主机额外安装软件所摆放的目录
+
+/proc：
+    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
+
+/root：
+    该目录为系统管理员，也称作超级权限者的用户主目录。
+
+/sbin：
+    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
+
+/selinux：
+    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
+
+/srv：
+    该目录存放一些服务启动之后需要提取的数据。
+
+/sys：
+    系统文件
+
+/tmp：
+    临时文件夹
+
+/user：
+    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
+
+/var：
+    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
+
+/run：
+    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Linux】用户管理</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
@@ -539,79 +795,6 @@ exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修
       </tags>
   </entry>
   <entry>
-    <title>【Linux】文件目录</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img src="%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.assets/image-20200413162623021.png" alt="image-20200413162623021"></p>
-<pre><code>/bin(Binary):
-    存放经常使用的命令
-
-/boot：
-    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
-
-/dev(Device)：
-    存放Linux的外部设备
-
-/etc：
-    存放所有系统管理所需要的配置文件和子目录
-
-/home：
-    用户的主目录
-    每个用户都有一个自己的目录
-
-/lib：
-    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
-    几乎所有的文件都要用到这些共享库
-
-/lost+found
-    非法关机后存放一些文件
-
-/media：
-    自动识别一些设备，如U盘、DVD
-    识别后将识别设备挂载在该目录下
-
-/mnt：
-    让用户临时挂载别的文件系统
-
-/opt：
-    给主机额外安装软件所摆放的目录
-
-/proc：
-    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
-
-/root：
-    该目录为系统管理员，也称作超级权限者的用户主目录。
-
-/sbin：
-    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
-
-/selinux：
-    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
-
-/srv：
-    该目录存放一些服务启动之后需要提取的数据。
-
-/sys：
-    系统文件
-
-/tmp：
-    临时文件夹
-
-/user：
-    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
-
-/var：
-    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
-
-/run：
-    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【Linux】进程管理</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><pre><code>指令：ps
@@ -654,94 +837,6 @@ CentOS7.0后，不再使用 service，改用 systemctl
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第一章：概述</title>
-    <url>/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</url>
-    <content><![CDATA[<h2 id="Bean的初始化和生命周期"><a href="#Bean的初始化和生命周期" class="headerlink" title="Bean的初始化和生命周期"></a>Bean的初始化和生命周期</h2><h4 id="bean-的生命周期"><a href="#bean-的生命周期" class="headerlink" title="bean 的生命周期"></a>bean 的生命周期</h4><ul>
-<li><p>bean 创建—&gt;初始化—&gt;销毁的过程  </p>
-</li>
-<li><p>Spring 容器管理 bean 的生命周期</p>
-</li>
-</ul>
-<h4 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h4><ul>
-<li><p>单实例：<strong>容器启动</strong>时创建对象</p>
-</li>
-<li><p>多实例：<strong>获取对象</strong>时创建对象</p>
-</li>
-<li><p>初始化：</p>
-<ul>
-<li>对象创建完成 ，并赋值，调用初始化方法  </li>
-</ul>
-</li>
-<li><p>销毁：</p>
-<ul>
-<li>单实例：容器关闭时销毁</li>
-<li>多实例：容器不会管理该bean，不会调用销毁方法</li>
-</ul>
-</li>
-</ul>
-<h4 id="自定义初始化和销毁方法"><a href="#自定义初始化和销毁方法" class="headerlink" title="自定义初始化和销毁方法"></a>自定义初始化和销毁方法</h4><h5 id="1-指定初始化和销毁方法"><a href="#1-指定初始化和销毁方法" class="headerlink" title="1.指定初始化和销毁方法"></a>1.指定初始化和销毁方法</h5><ul>
-<li><p>之前的初始化方法：<code>&lt;bean init-method=&quot;&quot; destory-method=&quot;&quot;&gt;&lt;/bean&gt;</code>  </p>
-</li>
-<li><p>基于注解的初始化方法：</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"容器创建完成！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被创建了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被销毁了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置初始化和销毁方法</span></span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>,destroyMethod = <span class="string">"destroy"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
-<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170120664.png" alt="image-20200413170120664"></p>
-<p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
-<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170249851.png" alt="image-20200413170249851"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>BeanPostProcessor 原理：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 遍历容器中的所有 BeanPostProcessor</span></span><br><span class="line"><span class="comment"> 挨个执行 beforeInitialization</span></span><br><span class="line"><span class="comment"> 一旦返回 null</span></span><br><span class="line"><span class="comment"> return，跳出 for 循环</span></span><br><span class="line"><span class="comment"> 不会执行后面的 BeanPostProcessor</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给 bean 进行赋值</span></span><br><span class="line">populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line"><span class="comment">//initializeBean</span></span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//beforeInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsBeforeInitialization(bean, beanName);</span><br><span class="line">    <span class="comment">//执行自定义初始化方法</span></span><br><span class="line">    <span class="keyword">this</span>.invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">    <span class="comment">//afterInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>Spring底层对 BeanPostProcessor 的使用：</strong></p>
-<p>​        bean赋值、注入其他组件、<code>@Autowired</code>、生命周期注解功能、<code>@Async</code>、···</p>
-<h2 id="属性赋值：-Value"><a href="#属性赋值：-Value" class="headerlink" title="属性赋值：@Value"></a>属性赋值：@Value</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	1.基本数值</span></span><br><span class="line"><span class="comment">    	2.SpEL：#&#123;&#125;</span></span><br><span class="line"><span class="comment">    	3.$&#123;&#125;：取出配置文件中的值（在运行环境变量中的值）</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"wxs"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"#&#123;20-2&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value=&#123;<span class="string">"classpath:/person.properties"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给容器注册一个bean，id默认为方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#classpath:/person.properties</span></span><br><span class="line"><span class="meta">person.hobby</span> = <span class="string">singJumpRapAndBasketball</span></span><br></pre></td></tr></table></figure>
-<h2 id="环境切换：-Profile"><a href="#环境切换：-Profile" class="headerlink" title="环境切换：@Profile"></a>环境切换：@Profile</h2><ul>
-<li><code>@Profile</code> 注解：<strong>逻辑组名称</strong>，只有当这些Profile被激活的时候，才会将Profile中所对应的Bean注册到Spring容器中。<ul>
-<li>加了环境标识的bean，只有环境被激活才会被注册到容器中</li>
-<li>写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效</li>
-<li>没有标注环境标识的bean，在任何环境下都加载</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="meta">@Profile</span>(<span class="string">"dev"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceDev</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Profile</span>(<span class="string">"test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Profile</span>(<span class="string">"prod"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceProd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>激活方法：</p>
-<ol>
-<li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
-</li>
-<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-        <tag>尚硅谷</tag>
       </tags>
   </entry>
   <entry>
@@ -995,33 +1090,91 @@ CentOS7.0后，不再使用 service，改用 systemctl
       </tags>
   </entry>
   <entry>
-    <title>【JDK1.8源码】Object、String</title>
-    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/</url>
-    <content><![CDATA[<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
-<li>object 作为超类，是一切类的父类</li>
+    <title>【Spring注解驱动开发】前篇</title>
+    <url>/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</url>
+    <content><![CDATA[<h2 id="Bean的初始化和生命周期"><a href="#Bean的初始化和生命周期" class="headerlink" title="Bean的初始化和生命周期"></a>Bean的初始化和生命周期</h2><h4 id="bean-的生命周期"><a href="#bean-的生命周期" class="headerlink" title="bean 的生命周期"></a>bean 的生命周期</h4><ul>
+<li><p>bean 创建—&gt;初始化—&gt;销毁的过程  </p>
+</li>
+<li><p>Spring 容器管理 bean 的生命周期</p>
+</li>
 </ul>
-<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class&lt;?&gt; getClass()</span><br><span class="line"></span><br><span class="line"><span class="comment">// o1 == o2</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//用来另存一个当前存在的对象</span></span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">native</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//让当前线程失去操作权限，进入等待序列</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeout, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//随机通知一个持有对象的锁的线程获取操作权限</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notify</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notifyAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//垃圾回收时调用</span></span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span></span><br></pre></td></tr></table></figure>
+<h4 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h4><ul>
+<li><p>单实例：<strong>容器启动</strong>时创建对象</p>
+</li>
+<li><p>多实例：<strong>获取对象</strong>时创建对象</p>
+</li>
+<li><p>初始化：</p>
+<ul>
+<li>对象创建完成 ，并赋值，调用初始化方法  </li>
+</ul>
+</li>
+<li><p>销毁：</p>
+<ul>
+<li>单实例：容器关闭时销毁</li>
+<li>多实例：容器不会管理该bean，不会调用销毁方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="自定义初始化和销毁方法"><a href="#自定义初始化和销毁方法" class="headerlink" title="自定义初始化和销毁方法"></a>自定义初始化和销毁方法</h4><h5 id="1-指定初始化和销毁方法"><a href="#1-指定初始化和销毁方法" class="headerlink" title="1.指定初始化和销毁方法"></a>1.指定初始化和销毁方法</h5><ul>
+<li><p>之前的初始化方法：<code>&lt;bean init-method=&quot;&quot; destory-method=&quot;&quot;&gt;&lt;/bean&gt;</code>  </p>
+</li>
+<li><p>基于注解的初始化方法：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"容器创建完成！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被创建了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被销毁了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span></span></span><br><span class="line"><span class="class">/*</span></span><br><span class="line"><span class="class">    <span class="title">CharSequence</span>是一个只读的字符序列接口，包括：</span></span><br><span class="line"><span class="class">       <span class="title">int</span> <span class="title">length</span>()</span>;</span><br><span class="line">        <span class="function"><span class="keyword">char</span> <span class="title">charAt</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">        <span class="function">CharSequence <span class="title">subSequence</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">        ...</span><br><span class="line">    StringBuffer和StringBuilder也实现了这个接口</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置初始化和销毁方法</span></span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>,destroyMethod = <span class="string">"destroy"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
+<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170120664.png" alt="image-20200413170120664"></p>
+<p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
+<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170249851.png" alt="image-20200413170249851"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>BeanPostProcessor 原理：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 遍历容器中的所有 BeanPostProcessor</span></span><br><span class="line"><span class="comment"> 挨个执行 beforeInitialization</span></span><br><span class="line"><span class="comment"> 一旦返回 null</span></span><br><span class="line"><span class="comment"> return，跳出 for 循环</span></span><br><span class="line"><span class="comment"> 不会执行后面的 BeanPostProcessor</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给 bean 进行赋值</span></span><br><span class="line">populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line"><span class="comment">//initializeBean</span></span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//beforeInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsBeforeInitialization(bean, beanName);</span><br><span class="line">    <span class="comment">//执行自定义初始化方法</span></span><br><span class="line">    <span class="keyword">this</span>.invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">    <span class="comment">//afterInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>Spring底层对 BeanPostProcessor 的使用：</strong></p>
+<p>​        bean赋值、注入其他组件、<code>@Autowired</code>、生命周期注解功能、<code>@Async</code>、···</p>
+<h2 id="属性赋值：-Value"><a href="#属性赋值：-Value" class="headerlink" title="属性赋值：@Value"></a>属性赋值：@Value</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	1.基本数值</span></span><br><span class="line"><span class="comment">    	2.SpEL：#&#123;&#125;</span></span><br><span class="line"><span class="comment">    	3.$&#123;&#125;：取出配置文件中的值（在运行环境变量中的值）</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"wxs"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"#&#123;20-2&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value=&#123;<span class="string">"classpath:/person.properties"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给容器注册一个bean，id默认为方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#classpath:/person.properties</span></span><br><span class="line"><span class="meta">person.hobby</span> = <span class="string">singJumpRapAndBasketball</span></span><br></pre></td></tr></table></figure>
+<h2 id="环境切换：-Profile"><a href="#环境切换：-Profile" class="headerlink" title="环境切换：@Profile"></a>环境切换：@Profile</h2><ul>
+<li><code>@Profile</code> 注解：<strong>逻辑组名称</strong>，只有当这些Profile被激活的时候，才会将Profile中所对应的Bean注册到Spring容器中。<ul>
+<li>加了环境标识的bean，只有环境被激活才会被注册到容器中</li>
+<li>写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效</li>
+<li>没有标注环境标识的bean，在任何环境下都加载</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="meta">@Profile</span>(<span class="string">"dev"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceDev</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Profile</span>(<span class="string">"test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Profile</span>(<span class="string">"prod"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceProd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>String<strong>不是</strong>java的基本类型</p>
+<li><p>激活方法：</p>
+<ol>
+<li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
 </li>
-<li><p>String是const，不能改变：<br><code>private final char value[];</code></p>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 </li>
 </ul>
-<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//常用</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(String original)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[])</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[], <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuffer buffer)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(StringBuilder builder)</span></span></span><br><span class="line"><span class="function"><span class="comment">//不常用</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">int</span>[] codePoints, <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> ascii[], <span class="keyword">int</span> hibyte, <span class="keyword">int</span> offset, <span class="keyword">int</span> count)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> ascii[], <span class="keyword">int</span> hibyte)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], <span class="keyword">int</span> offset, <span class="keyword">int</span> length, String charsetName)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], String charsetName)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], Charset charset)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[], <span class="keyword">int</span> offset, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span> bytes[])</span></span></span><br><span class="line"><span class="function"><span class="title">String</span><span class="params">(<span class="keyword">char</span>[] value, <span class="keyword">boolean</span> share)</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == anObject) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (anObject <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">        String anotherString = (String)anObject;</span><br><span class="line">        <span class="keyword">int</span> n = value.length;</span><br><span class="line">        <span class="keyword">if</span> (n == anotherString.value.length) &#123;</span><br><span class="line">            <span class="keyword">char</span> v1[] = value;</span><br><span class="line">            <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v1[i] != v2[i])</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = hash;</span><br><span class="line">    <span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> val[] = value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  与StringBuffer, StringBuilder作比较时使用</span></span><br><span class="line"><span class="comment">  传入参数是一个CharSequence，StringBuffer, StringBuilder均实现了CharSequence接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contentEquals</span><span class="params">(CharSequence cs)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Argument is a StringBuffer, StringBuilder</span></span><br><span class="line">    <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> AbstractStringBuilder) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> StringBuffer) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(cs) &#123;</span><br><span class="line">               <span class="keyword">return</span> nonSyncContentEquals((AbstractStringBuilder)cs);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> nonSyncContentEquals((AbstractStringBuilder)cs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Argument is a String</span></span><br><span class="line">    <span class="keyword">if</span> (cs <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">        <span class="keyword">return</span> equals(cs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Argument is a generic CharSequence</span></span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">int</span> n = v1.length;</span><br><span class="line">    <span class="keyword">if</span> (n != cs.length()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v1[i] != cs.charAt(i)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">concat</span><span class="params">(String str)</span>  <span class="comment">//将str拼接到字符串后</span></span></span><br></pre></td></tr></table></figure>]]></content>
+]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>源码阅读</tag>
+        <tag>Spring</tag>
+        <tag>尚硅谷</tag>
       </tags>
   </entry>
   <entry>
@@ -1051,159 +1204,6 @@ CentOS7.0后，不再使用 service，改用 systemctl
 <h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
 <li>哈希算法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算键的插入位置 </span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过位运算返回大于cap且与cap最近的2的整数倍</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【JDK1.8源码】JDK源码阅读目录</title>
-    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<blockquote>
-<p>数字表示优先级，1为最高</p>
-</blockquote>
-<h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><pre><code>1) Object 1
-2) String 1
-3) AbstractStringBuilder 1 
-4) StringBuffer 1 
-5) StringBuilder 1 
-6) Boolean 2
-7) Byte 2
-8) Double 2
-9) Float 2
-10) Integer 2
-11) Long 2
-12) Short 2
-13) Thread 2
-14) ThreadLocal 2
-15) Enum 3
-16) Throwable 3
-17) Error 3
-18) Exception 3
-19) Class 4
-20) ClassLoader 4
-21) Compiler 4
-22) System 4
-23) Package 4
-24) Void 4</code></pre><h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><pre><code>1) AbstractList 1 
-2) AbstractMap 1
-3) AbstractSet 1
-4) ArrayList 1 
-5) LinkedList 1 
-6) HashMap 1
-7) Hashtable 1
-8) HashSet 1
-9) LinkedHashMap 1
-10) LinkedHashSet 1
-11) TreeMap 1
-12) TreeSet 1
-13) Vector 2
-14) Queue 2
-15) Stack 2
-16) SortedMap 2
-17) SortedSet 2
-18) Collections 3
-19) Arrays 3
-20) Comparator 3
-21) Iterator 3
-22) Base64 4
-23) Date 4
-24) EventListener 4
-25) Random 4
-26) SubList 4
-27) Timer 4
-28) UUID 4
-29) WeakHashMap 4</code></pre><h2 id="java-util-concurrent"><a href="#java-util-concurrent" class="headerlink" title="java.util.concurrent"></a>java.util.concurrent</h2><pre><code>1) ConcurrentHashMap 1
-2) Executor 2
-3) AbstractExecutorService 2
-4) ExecutorService 2
-5) ThreadPoolExecutor 2
-6) BlockingQueue 2
-7) AbstractQueuedSynchronizer 2
-8) CountDownLatch 2
-9) FutureTask 2
-10) Semaphore 2
-11) CyclicBarrier 2
-13) CopyOnWriteArrayList 3
-14) SynchronousQueue 3
-15) BlockingDeque 3
-16) Callable 4</code></pre><h2 id="java-util-concurrent-atomic"><a href="#java-util-concurrent-atomic" class="headerlink" title="java.util.concurrent.atomic"></a>java.util.concurrent.atomic</h2><pre><code>1) AtomicBoolean 2
-2) AtomicInteger 2
-3) AtomicLong 2
-4) AtomicReference 3</code></pre><h2 id="java-lang-reflect"><a href="#java-lang-reflect" class="headerlink" title="java.lang.reflect"></a>java.lang.reflect</h2><pre><code>1) Field 2
-2) Method 2</code></pre><h2 id="java-lang-annotation"><a href="#java-lang-annotation" class="headerlink" title="java.lang.annotation"></a>java.lang.annotation</h2><pre><code>1) Annotation 3
-2) Target 3
-3) Inherited 3
-4) Retention 3
-5) Documented 4
-6) ElementType 4
-7) Native 4
-8) Repeatable 4</code></pre><h2 id="java-util-concurrent-locks"><a href="#java-util-concurrent-locks" class="headerlink" title="java.util.concurrent.locks"></a>java.util.concurrent.locks</h2><pre><code>1) Lock 2
-2) Condition 2
-3) ReentrantLock 2
-4) ReentrantReadWriteLock 2</code></pre><h2 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h2><pre><code>1) File 3
-2) InputStream   3
-3) OutputStream  3
-4) Reader  4
-5) Writer  4</code></pre><h2 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h2><pre><code>1) Buffer 3
-2) ByteBuffer 4
-3) CharBuffer 4
-4) DoubleBuffer 4
-5) FloatBuffer 4
-6) IntBuffer 4
-7) LongBuffer 4
-8) ShortBuffer 4</code></pre><h2 id="java-sql"><a href="#java-sql" class="headerlink" title="java.sql"></a>java.sql</h2><pre><code>1) Connection 3
-2) Driver 3
-3) DriverManager 3
-4) JDBCType 3
-5) ResultSet 4
-6) Statement 4</code></pre><h2 id="java-net"><a href="#java-net" class="headerlink" title="java.net"></a>java.net</h2><pre><code>1) Socket 3
-2) ServerSocket 3
-3) URI 4
-4) URL 4
-5) URLEncoder 4</code></pre>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【JDK1.8源码】AbstractList、ArrayList、LinkedList</title>
-    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractList%E3%80%81ArrayList%E3%80%81LinkedList/</url>
-    <content><![CDATA[<h2 id="AbstractList"><a href="#AbstractList" class="headerlink" title="AbstractList"></a>AbstractList</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 继承自父类AbstractCollection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        两个抽象方法，子类必须实现</span></span><br><span class="line"><span class="comment">        public abstract Iterator&lt;E&gt; iterator();</span></span><br><span class="line"><span class="comment">        public abstract int size();</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 实现了List&lt;E&gt;接口</span></span><br><span class="line"><span class="comment">    public interface List&lt;E&gt; extends Collection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        int size();</span></span><br><span class="line"><span class="comment">        boolean isEmpty();</span></span><br><span class="line"><span class="comment">        boolean contains(Object o);</span></span><br><span class="line"><span class="comment">        Object[] toArray();</span></span><br><span class="line"><span class="comment">        void add(int index, E element);</span></span><br><span class="line"><span class="comment">        E remove(int index);</span></span><br><span class="line"><span class="comment">        int indexOf(Object o);</span></span><br><span class="line"><span class="comment">        ...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">AbstractCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>提供了抽象方法 <code>abstract public E get(int index);</code> <strong>子类必须实现</strong></li>
-<li>默认不支持的 <code>add()</code>, <code>set()</code>,<code>remove()</code>,子类要想实现元素的修改必须<strong>重写这些方法</strong><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;</span><br></pre></td></tr></table></figure></li>
-<li>全部/局部删除<br><code>public void clear() {removeRange(0, size());}</code><br><code>protected void removeRange(int fromIndex, int toIndex)</code></li>
-</ul>
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">private</span> <span class="title">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">RandomAccessSubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><h4 id="类的关系图"><a href="#类的关系图" class="headerlink" title="类的关系图"></a>类的关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    List&lt;E&gt;接口：提供了一些基本的增、删、改、查方法</span></span><br><span class="line"><span class="comment">    RandomAccess接口：说明改方法支持随机访问，get、set等方法时间复杂度为 O(1)</span></span><br><span class="line"><span class="comment">    Serializable接口：可序列化接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><p>==底层是一个Object数组==</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始默认容量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//容量为0的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"><span class="comment">//容量为默认容量的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData;</span><br><span class="line"><span class="comment">//所含元素的数量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>修剪容量<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//结构性修改数组的次数加一</span></span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">if</span> (size &lt; elementData.length) &#123;</span><br><span class="line">        elementData = (size == <span class="number">0</span>)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCapacity</span><span class="params">(Object[] elementData, <span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="comment">//新的容量是旧容量的1.5倍</span></span><br><span class="line">    <span class="comment">//向右位移运算，提升处理速度</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//仍要小于最少需要的容量，则 新容量=最少需要的容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>判断是否包含元素o  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若不包含该元素，indexOf会返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;<span class="keyword">return</span> indexOf(o) &gt;= <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h4 id="类关系图-1"><a href="#类关系图-1" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSequentialList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br></pre></td></tr></table></figure>
-<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>连接的相关方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//将元素e连接到链表头</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;    <span class="comment">//设置变量存储原来的链表头</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f); <span class="comment">//根据元素e新建节点</span></span><br><span class="line">    first = newNode;    <span class="comment">//将新建的节点设为链表的头</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)  <span class="comment">//如果原来的链表头是空的，则将新的节点也设成链表的尾部</span></span><br><span class="line">        last = newNode;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//否则，连接旧头和新头</span></span><br><span class="line">        f.prev = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将元素e连接到链表尾，与linkFirst同理</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;</span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*将节点e连接到某个非空节点前</span></span><br><span class="line"><span class="comment">  思路：设置新的节点存储目标节点的前一个节点，然后将目标节点的前一个节点的next指向元素e的节点，</span></span><br><span class="line"><span class="comment">        succ.prev = newNode</span></span><br><span class="line"><span class="comment">        如果目标节点的前一个节点为空，则将头节点设置为 e节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert succ != null;</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pred.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除第一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert f == first &amp;&amp; f != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = f.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next;</span><br><span class="line">    f.item = <span class="keyword">null</span>;</span><br><span class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    first = next;</span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">        last = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        next.prev = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除最后一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkLast</span><span class="params">(Node&lt;E&gt; l)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert l == last &amp;&amp; l != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = l.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = l.prev;</span><br><span class="line">    l.item = <span class="keyword">null</span>;</span><br><span class="line">    l.prev = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    last = prev;</span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>)</span><br><span class="line">        first = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        prev.next = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除不为空的节点x</span></span><br><span class="line"><span class="comment">//前面的值指向后面的值，后面的值指向前面的值</span></span><br><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert x != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = x.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>

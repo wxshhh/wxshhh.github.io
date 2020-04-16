@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    【Linux】JavaEE |  从入门到入土
+    【操作系统】第一章：概述 |  从入门到入土
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-【Linux】JavaEE" class="article article-type-post" itemscope
+  <article id="post-【操作系统】第一章：概述" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  【Linux】JavaEE
+  【操作系统】第一章：概述
 </h1>
  
 
@@ -55,12 +55,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/" class="article-date">
-  <time datetime="2020-04-13T08:36:54.000Z" itemprop="datePublished">2020-04-13</time>
+      <a href="/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time datetime="2020-04-16T02:50:56.000Z" itemprop="datePublished">2020-04-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
   </div>
 
       
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Wortzahl:</span>
-            <span class="post-count">75</span>
+            <span class="post-count">795</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Lesezeit≈</span>
-            <span class="post-count">1 Minuten</span>
+            <span class="post-count">2 Minuten</span>
         </span>
     </span>
 </div>
@@ -104,23 +104,152 @@
       
 
       
-      <h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
-<li><p>进入配置文件</p>
-<p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163743711.png" alt="image-20200413163743711"></p>
+      <blockquote>
+<p>从今天开始一个新的篇章的学习——《计算机操作系统》</p>
+<p>为了提前准备将要到来的考研</p>
+<p>也为了夯实计算机基础，建立完整的计算机科学体系</p>
+<p>内容记录自：b站——操作系统_清华大学（向勇、陈瑜） BV1js411b7vg</p>
+<p>​                        学堂在线——操作系统（清华大学）</p>
+</blockquote>
+<h2 id="1-1-课程概述"><a href="#1-1-课程概述" class="headerlink" title="1.1 课程概述"></a>1.1 课程概述</h2><ul>
+<li><p>涉及：</p>
+<ul>
+<li>基本概念及原理</li>
+<li>操作系统介绍</li>
+<li>中断及系统调用</li>
+<li>内存管理</li>
+<li>进程和线程</li>
+<li>调度</li>
+<li>同步</li>
+<li>文件系统</li>
+<li>I/O 子系统</li>
+</ul>
 </li>
-<li><p>配置环境变量</p>
-<p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163802504.png" alt="image-20200413163802504"></p>
-</li>
-<li><p>注销用户，环境变量才能生效</p>
+<li><p>操作系统实验：</p>
+<ul>
+<li><a href="https://www.shiyanlou.com/courses/221" target="_blank" rel="noopener">在uCore操作系统上做实验</a></li>
+</ul>
 </li>
 </ul>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><pre><code>运行tomcat需要在其文件夹bin目录下，执行：  
-    ./startup.sh
-
-使用windows系统访问在Linux部署的8080端口：
-    1.vim /etc/sysconfig/iptables
-    2.如图
-    3.重启防火墙</code></pre><p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163825021.png" alt="image-20200413163825021"></p>
+<h2 id="1-2-什么是操作系统"><a href="#1-2-什么是操作系统" class="headerlink" title="1.2 什么是操作系统"></a>1.2 什么是操作系统</h2><ul>
+<li><p>结构层次：硬件之上，应用程序之下</p>
+<ul>
+<li><p>用户角度，操作系统是一个<strong>控制软件</strong></p>
+</li>
+<li><p>资源分配角度，是一个<strong>资源分配器</strong></p>
+</li>
+</ul>
+</li>
+<li><p>操作系统的虚拟化：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">底层</th>
+<th align="center">上层</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">磁盘</td>
+<td align="center">文件</td>
+</tr>
+<tr>
+<td align="center">内存</td>
+<td align="center">地址空间</td>
+</tr>
+<tr>
+<td align="center">CPU</td>
+<td align="center">进程</td>
+</tr>
+</tbody></table>
+<p>主流操作系统的界面属于 Shell，而不是 Kernel，Kernel 是我们的研究重点。</p>
+<ul>
+<li><p>Kernel —— 操作系统内部组件：</p>
+<ul>
+<li><strong>CPU调度器</strong></li>
+<li><strong>物理内存管理</strong></li>
+<li><strong>虚拟内存管理</strong></li>
+<li><strong>文件系统管理</strong></li>
+<li>中断处理与设备驱动</li>
+</ul>
+</li>
+<li><p>OS Kernel 的特征</p>
+<ul>
+<li><p>并发</p>
+</li>
+<li><p>共享（同时存在多个运行的程序，需要 OS 管理和调度）</p>
+<ul>
+<li>“同时共享”</li>
+<li>互斥共享</li>
+</ul>
+</li>
+<li><p>虚拟</p>
+<ul>
+<li>利用多道程序设计技术，让用户觉得有一个计算机专门为他服务</li>
+</ul>
+</li>
+<li><p>异步</p>
+<ul>
+<li>程序执行不是一贯到底，而是<strong>走走停停</strong>，推进速度不可预知</li>
+<li>运行环境相同，运行结果也相同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-为什么学习操作系统"><a href="#1-3-为什么学习操作系统" class="headerlink" title="1.3 为什么学习操作系统"></a>1.3 为什么学习操作系统</h2><ul>
+<li><p>操作系统是计算机科学研究的基石之一</p>
+</li>
+<li><p>操作系统是安全的基础</p>
+</li>
+<li><p>操作系统的学习具有挑战性</p>
+</li>
+<li><p>操作系统需要权衡：</p>
+<ul>
+<li>空间与时间</li>
+<li>性能和可预测性</li>
+<li>公平和性能</li>
+</ul>
+</li>
+<li><p>操作系统在硬件方面需要：</p>
+<ul>
+<li>良好的硬件管理</li>
+<li>合理的资源分配</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-4-为什么学习操作系统"><a href="#1-4-为什么学习操作系统" class="headerlink" title="1.4 为什么学习操作系统"></a>1.4 为什么学习操作系统</h2><h2 id="1-5-操作系统实例"><a href="#1-5-操作系统实例" class="headerlink" title="1.5 操作系统实例"></a>1.5 操作系统实例</h2><ol>
+<li><p>UNIX BSD 操作系统</p>
+</li>
+<li><p>Linux 家族</p>
+</li>
+<li><p>Windows 家族（ 90年代 ）</p>
+<p> 对计算机推广起巨大的作用</p>
+</li>
+</ol>
+<h2 id="1-6-操作系统的历史"><a href="#1-6-操作系统的历史" class="headerlink" title="1.6 操作系统的历史"></a>1.6 操作系统的历史</h2><ol>
+<li>早期计算机使用纸带传输和加载数据，早期操作系统只起到了加载作用。</li>
+<li>批处理阶段（多道程序设计）：体现操作系统并发的特征，充分利用CPU。</li>
+<li>分时计算机系统（时钟定期产生<strong>中断</strong>，将控制权交给操作系统）：为了更好的与用户交互。</li>
+<li>个人电脑操作系统：单用户、重点是用户界面和API、利用率不再是关注点、很多服务都不存在了</li>
+<li>分布式操作系统：低耦合</li>
+</ol>
+<p><strong>从一群人围着一个计算机服务 —&gt;  一群计算机围着一个人服务</strong></p>
+<h2 id="1-7-操作系统结构"><a href="#1-7-操作系统结构" class="headerlink" title="1.7 操作系统结构"></a>1.7 操作系统结构</h2><ul>
+<li><p>面向个人计算计算机、面向服务器的计算机</p>
+</li>
+<li><p>微内核架构的操作系统设计</p>
+<ul>
+<li>拓展性较好，模块化</li>
+<li>性能存在问题</li>
+</ul>
+</li>
+<li><p>外核设计</p>
+</li>
+<li><p>虚拟机监控器（VMM）：操作系统之下是虚拟机</p>
+</li>
+</ul>
 
       
       <!-- reward -->
@@ -189,14 +318,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%BF%B0/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%80%83%E7%A0%94/" rel="tag">操作系统,考研</a></li></ul>
 
 
     </footer>
@@ -207,19 +336,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            【操作系统】第二章：操作系统基础操作
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/" class="article-nav-link">
+      <a href="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">【Linux】RPM和RYUM</div>
+        <div class="article-nav-title">【操作系统】第一章：概述</div>
       </a>
     
   </nav>

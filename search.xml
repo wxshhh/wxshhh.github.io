@@ -876,4 +876,92 @@ CentOS7.0后，不再使用 service，改用 systemctl
         <tag>源码阅读</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【操作系统】第一章：概述</title>
+    <url>/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</url>
+    <content><![CDATA[<h2 id="Bean的初始化和生命周期"><a href="#Bean的初始化和生命周期" class="headerlink" title="Bean的初始化和生命周期"></a>Bean的初始化和生命周期</h2><h4 id="bean-的生命周期"><a href="#bean-的生命周期" class="headerlink" title="bean 的生命周期"></a>bean 的生命周期</h4><ul>
+<li><p>bean 创建—&gt;初始化—&gt;销毁的过程  </p>
+</li>
+<li><p>Spring 容器管理 bean 的生命周期</p>
+</li>
+</ul>
+<h4 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h4><ul>
+<li><p>单实例：<strong>容器启动</strong>时创建对象</p>
+</li>
+<li><p>多实例：<strong>获取对象</strong>时创建对象</p>
+</li>
+<li><p>初始化：</p>
+<ul>
+<li>对象创建完成 ，并赋值，调用初始化方法  </li>
+</ul>
+</li>
+<li><p>销毁：</p>
+<ul>
+<li>单实例：容器关闭时销毁</li>
+<li>多实例：容器不会管理该bean，不会调用销毁方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="自定义初始化和销毁方法"><a href="#自定义初始化和销毁方法" class="headerlink" title="自定义初始化和销毁方法"></a>自定义初始化和销毁方法</h4><h5 id="1-指定初始化和销毁方法"><a href="#1-指定初始化和销毁方法" class="headerlink" title="1.指定初始化和销毁方法"></a>1.指定初始化和销毁方法</h5><ul>
+<li><p>之前的初始化方法：<code>&lt;bean init-method=&quot;&quot; destory-method=&quot;&quot;&gt;&lt;/bean&gt;</code>  </p>
+</li>
+<li><p>基于注解的初始化方法：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"容器创建完成！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被创建了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被销毁了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置初始化和销毁方法</span></span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>,destroyMethod = <span class="string">"destroy"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
+<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170120664.png" alt="image-20200413170120664"></p>
+<p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
+<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170249851.png" alt="image-20200413170249851"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>BeanPostProcessor 原理：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 遍历容器中的所有 BeanPostProcessor</span></span><br><span class="line"><span class="comment"> 挨个执行 beforeInitialization</span></span><br><span class="line"><span class="comment"> 一旦返回 null</span></span><br><span class="line"><span class="comment"> return，跳出 for 循环</span></span><br><span class="line"><span class="comment"> 不会执行后面的 BeanPostProcessor</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给 bean 进行赋值</span></span><br><span class="line">populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line"><span class="comment">//initializeBean</span></span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//beforeInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsBeforeInitialization(bean, beanName);</span><br><span class="line">    <span class="comment">//执行自定义初始化方法</span></span><br><span class="line">    <span class="keyword">this</span>.invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">    <span class="comment">//afterInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>Spring底层对 BeanPostProcessor 的使用：</strong></p>
+<p>​        bean赋值、注入其他组件、<code>@Autowired</code>、生命周期注解功能、<code>@Async</code>、···</p>
+<h2 id="属性赋值：-Value"><a href="#属性赋值：-Value" class="headerlink" title="属性赋值：@Value"></a>属性赋值：@Value</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	1.基本数值</span></span><br><span class="line"><span class="comment">    	2.SpEL：#&#123;&#125;</span></span><br><span class="line"><span class="comment">    	3.$&#123;&#125;：取出配置文件中的值（在运行环境变量中的值）</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"wxs"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"#&#123;20-2&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value=&#123;<span class="string">"classpath:/person.properties"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给容器注册一个bean，id默认为方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#classpath:/person.properties</span></span><br><span class="line"><span class="meta">person.hobby</span> = <span class="string">singJumpRapAndBasketball</span></span><br></pre></td></tr></table></figure>
+<h2 id="环境切换：-Profile"><a href="#环境切换：-Profile" class="headerlink" title="环境切换：@Profile"></a>环境切换：@Profile</h2><ul>
+<li><code>@Profile</code> 注解：<strong>逻辑组名称</strong>，只有当这些Profile被激活的时候，才会将Profile中所对应的Bean注册到Spring容器中。<ul>
+<li>加了环境标识的bean，只有环境被激活才会被注册到容器中</li>
+<li>写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效</li>
+<li>没有标注环境标识的bean，在任何环境下都加载</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="meta">@Profile</span>(<span class="string">"dev"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceDev</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Profile</span>(<span class="string">"test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Profile</span>(<span class="string">"prod"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceProd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>激活方法：</p>
+<ol>
+<li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
+</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+        <tag>尚硅谷</tag>
+      </tags>
+  </entry>
 </search>

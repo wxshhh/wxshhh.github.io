@@ -82,120 +82,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【JDK1.8源码】JDK源码阅读目录</title>
-    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<blockquote>
-<p>数字表示优先级，1为最高</p>
-</blockquote>
-<h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><pre><code>1) Object 1
-2) String 1
-3) AbstractStringBuilder 1 
-4) StringBuffer 1 
-5) StringBuilder 1 
-6) Boolean 2
-7) Byte 2
-8) Double 2
-9) Float 2
-10) Integer 2
-11) Long 2
-12) Short 2
-13) Thread 2
-14) ThreadLocal 2
-15) Enum 3
-16) Throwable 3
-17) Error 3
-18) Exception 3
-19) Class 4
-20) ClassLoader 4
-21) Compiler 4
-22) System 4
-23) Package 4
-24) Void 4</code></pre><h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><pre><code>1) AbstractList 1 
-2) AbstractMap 1
-3) AbstractSet 1
-4) ArrayList 1 
-5) LinkedList 1 
-6) HashMap 1
-7) Hashtable 1
-8) HashSet 1
-9) LinkedHashMap 1
-10) LinkedHashSet 1
-11) TreeMap 1
-12) TreeSet 1
-13) Vector 2
-14) Queue 2
-15) Stack 2
-16) SortedMap 2
-17) SortedSet 2
-18) Collections 3
-19) Arrays 3
-20) Comparator 3
-21) Iterator 3
-22) Base64 4
-23) Date 4
-24) EventListener 4
-25) Random 4
-26) SubList 4
-27) Timer 4
-28) UUID 4
-29) WeakHashMap 4</code></pre><h2 id="java-util-concurrent"><a href="#java-util-concurrent" class="headerlink" title="java.util.concurrent"></a>java.util.concurrent</h2><pre><code>1) ConcurrentHashMap 1
-2) Executor 2
-3) AbstractExecutorService 2
-4) ExecutorService 2
-5) ThreadPoolExecutor 2
-6) BlockingQueue 2
-7) AbstractQueuedSynchronizer 2
-8) CountDownLatch 2
-9) FutureTask 2
-10) Semaphore 2
-11) CyclicBarrier 2
-13) CopyOnWriteArrayList 3
-14) SynchronousQueue 3
-15) BlockingDeque 3
-16) Callable 4</code></pre><h2 id="java-util-concurrent-atomic"><a href="#java-util-concurrent-atomic" class="headerlink" title="java.util.concurrent.atomic"></a>java.util.concurrent.atomic</h2><pre><code>1) AtomicBoolean 2
-2) AtomicInteger 2
-3) AtomicLong 2
-4) AtomicReference 3</code></pre><h2 id="java-lang-reflect"><a href="#java-lang-reflect" class="headerlink" title="java.lang.reflect"></a>java.lang.reflect</h2><pre><code>1) Field 2
-2) Method 2</code></pre><h2 id="java-lang-annotation"><a href="#java-lang-annotation" class="headerlink" title="java.lang.annotation"></a>java.lang.annotation</h2><pre><code>1) Annotation 3
-2) Target 3
-3) Inherited 3
-4) Retention 3
-5) Documented 4
-6) ElementType 4
-7) Native 4
-8) Repeatable 4</code></pre><h2 id="java-util-concurrent-locks"><a href="#java-util-concurrent-locks" class="headerlink" title="java.util.concurrent.locks"></a>java.util.concurrent.locks</h2><pre><code>1) Lock 2
-2) Condition 2
-3) ReentrantLock 2
-4) ReentrantReadWriteLock 2</code></pre><h2 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h2><pre><code>1) File 3
-2) InputStream   3
-3) OutputStream  3
-4) Reader  4
-5) Writer  4</code></pre><h2 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h2><pre><code>1) Buffer 3
-2) ByteBuffer 4
-3) CharBuffer 4
-4) DoubleBuffer 4
-5) FloatBuffer 4
-6) IntBuffer 4
-7) LongBuffer 4
-8) ShortBuffer 4</code></pre><h2 id="java-sql"><a href="#java-sql" class="headerlink" title="java.sql"></a>java.sql</h2><pre><code>1) Connection 3
-2) Driver 3
-3) DriverManager 3
-4) JDBCType 3
-5) ResultSet 4
-6) Statement 4</code></pre><h2 id="java-net"><a href="#java-net" class="headerlink" title="java.net"></a>java.net</h2><pre><code>1) Socket 3
-2) ServerSocket 3
-3) URI 4
-4) URL 4
-5) URLEncoder 4</code></pre>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【JDK1.8源码】Object、String</title>
     <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/</url>
     <content><![CDATA[<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
@@ -245,53 +131,6 @@ rpm包安装
     yum list | grep xxx
 安装：
     yum install xxx</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】vi和vim</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
-    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
-    vim xxx
-插入：
-    i：开始编辑
-    a：从下一行开始编辑
-退出插入模式：
-    Esc
-命令行模式：
-    ： 输入命令
-    qw 保存并推出
-    q  在没有修改的情况下退出
-    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
-   拷贝当前行   yy
-   拷贝向下五行 5yy
-   粘贴         p
-
-2. 删除当前行   dd
-   删除向下五行 5dd
-
-3. 在文件中查找某个词(命令行下) 
-        /xxx 
-        输入 n 查找下一个
-
-4. 设置显示/取消文件行号(命令行下)
-        set nu
-        set nonu 
-
-5. 跳转到文档的首行或尾行(正常模式)
-    首行：  gg
-    尾行：  G
-
-6. 撤销动作 u (正常模式)
-
-7. 移动光标至指定行(正常模式 2、3)
-    1. 显示行号
-    2. 输入行号
-    3. shift + g</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -358,10 +197,10 @@ rpm包安装
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
     <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
 <li><p>进入配置文件</p>
-<p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163743711.png" alt="image-20200413163743711"></p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163743711.png" alt="image-20200413163743711"></p>
 </li>
 <li><p>配置环境变量</p>
-<p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163802504.png" alt="image-20200413163802504"></p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163802504.png" alt="image-20200413163802504"></p>
 </li>
 <li><p>注销用户，环境变量才能生效</p>
 </li>
@@ -372,8 +211,55 @@ rpm包安装
 使用windows系统访问在Linux部署的8080端口：
     1.vim /etc/sysconfig/iptables
     2.如图
-    3.重启防火墙</code></pre><p><img src="%E3%80%90Linux%E3%80%91JavaEE.assets/image-20200413163825021.png" alt="image-20200413163825021"></p>
+    3.重启防火墙</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163825021.png" alt="image-20200413163825021"></p>
 ]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】vi和vim</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
+    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
+    vim xxx
+插入：
+    i：开始编辑
+    a：从下一行开始编辑
+退出插入模式：
+    Esc
+命令行模式：
+    ： 输入命令
+    qw 保存并推出
+    q  在没有修改的情况下退出
+    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
+   拷贝当前行   yy
+   拷贝向下五行 5yy
+   粘贴         p
+
+2. 删除当前行   dd
+   删除向下五行 5dd
+
+3. 在文件中查找某个词(命令行下) 
+        /xxx 
+        输入 n 查找下一个
+
+4. 设置显示/取消文件行号(命令行下)
+        set nu
+        set nonu 
+
+5. 跳转到文档的首行或尾行(正常模式)
+    首行：  gg
+    尾行：  G
+
+6. 撤销动作 u (正常模式)
+
+7. 移动光标至指定行(正常模式 2、3)
+    1. 显示行号
+    2. 输入行号
+    3. shift + g</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -554,7 +440,7 @@ tar：打包指令
         -v：显示详细信息
         -f：指定压缩后的文件名
         -z：打包同时压缩
-        -x：解包 .tar 文件</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4.assets/image-20200413162042684.png" alt="image-20200413162042684"></p>
+        -x：解包 .tar 文件</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/image-20200413162042684.png" alt="image-20200413162042684"></p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -566,7 +452,7 @@ tar：打包指令
   <entry>
     <title>【Linux】文件目录</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img src="%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.assets/image-20200413162623021.png" alt="image-20200413162623021"></p>
+    <content><![CDATA[<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/image-20200413162623021.png" alt="image-20200413162623021"></p>
 <pre><code>/bin(Binary):
     存放经常使用的命令
 
@@ -637,6 +523,51 @@ tar：打包指令
       </tags>
   </entry>
   <entry>
+    <title>【Linux】用户管理</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
+    shutdown -h now：立即关机
+    shutdown -h 1：  一分钟后关机
+    shutdown -r now： 立即重启
+halt
+    直接使用，效果等价于关机
+reboot
+    重启系统
+sync
+    将内存的东西保存到磁盘上
+    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
+su -用户名
+    切换用户
+注销用户：
+    logout
+    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
+可选项：
+    -d 指定目录
+
+groupadd 组名
+    增加用户组
+
+useradd -g 用户组 用户名
+    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
+    删除用户，但保留家目录
+userdel -r 用户名
+    删除用户，不保留家目录
+删除用户时，一般不删家目录
+
+groupdel 组名
+    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
+高权限到低权限不需要密码
+exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
+/etc/group  组配置文件（加密过了）
+/etc/shadow 口令配置文件</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Linux】组管理与权限管理</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h2><h4 id="文件-目录所有者"><a href="#文件-目录所有者" class="headerlink" title="文件/目录所有者"></a>文件/目录所有者</h4><pre><code>查看文件的所有者
@@ -664,7 +595,7 @@ tar：打包指令
     r
     w
     x
-文件硬链接数目或文件子目录个数</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.assets/image-20200413162237397.png" alt="image-20200413162237397"></p>
+文件硬链接数目或文件子目录个数</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/image-20200413162237397.png" alt="image-20200413162237397"></p>
 <pre><code>rwx权限作用于文件和作用于目录不同
     作用于文件：w不一定能删，只是有前提
     作用于目录：可以写入修改删除</code></pre><h4 id="修改、管理权限"><a href="#修改、管理权限" class="headerlink" title="修改、管理权限"></a>修改、管理权限</h4><pre><code>u：所有者 g：所有组 o：其他人 a：所有人
@@ -673,7 +604,7 @@ tar：打包指令
 1.chmod u=rwx，g=rx，o=x 文件目录名
   chmod 751 文件目录名
 2.chmod o+w 文件目录名
-3.chmod a-x 文件目录名</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.assets/image-20200413162311127.png" alt="image-20200413162311127"></p>
+3.chmod a-x 文件目录名</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/image-20200413162311127.png" alt="image-20200413162311127"></p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -687,7 +618,7 @@ tar：打包指令
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/</url>
     <content><![CDATA[<h2 id="分区基础知识"><a href="#分区基础知识" class="headerlink" title="分区基础知识"></a>分区基础知识</h2><pre><code>分区方式：
     1.mbr分区
-    2.gtp分区</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD.assets/image-20200413162818574.png" alt="image-20200413162818574"></p>
+    2.gtp分区</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/image-20200413162818574.png" alt="image-20200413162818574"></p>
 <h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><pre><code>给Linux增加一块硬盘，并挂载在/home/bin</code></pre><h4 id="如何添加一块硬盘"><a href="#如何添加一块硬盘" class="headerlink" title="如何添加一块硬盘"></a>如何添加一块硬盘</h4><pre><code>1.虚拟机添加硬盘
 2.分区
     fdisk /dev/sdb
@@ -724,24 +655,6 @@ tar：打包指令
 5. 以树状图形式显示目录
     yum install tree
     tree</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】网络配置</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.assets/image-20200413163022103.png" alt="image-20200413163022103"></p>
-<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
-    系统——首选项——网络连接……
-第二种方式（指定固定IP)
-    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.assets/image-20200413163103057.png" alt="image-20200413163103057"></p>
-<p><img src="%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.assets/image-20200413163118404.png" alt="image-20200413163118404"></p>
-<pre><code>修改后一定要重启服务：
-    service network restart</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -833,9 +746,9 @@ CentOS7.0后，不再使用 service，改用 systemctl
 <h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
-<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170120664.png" alt="image-20200413170120664"></p>
+<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170120664.png" alt="image-20200413170120664"></p>
 <p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
-<p>​    <img src="%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87.assets/image-20200413170249851.png" alt="image-20200413170249851"></p>
+<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170249851.png" alt="image-20200413170249851"></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -867,8 +780,7 @@ CentOS7.0后，不再使用 service，改用 systemctl
 <ol>
 <li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
 </li>
-<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure>
-</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ul>
@@ -1045,7 +957,7 @@ CentOS7.0后，不再使用 service，改用 systemctl
     <content><![CDATA[<h2 id="2-1-启动、中断、异常和系统调用"><a href="#2-1-启动、中断、异常和系统调用" class="headerlink" title="2.1 启动、中断、异常和系统调用"></a>2.1 启动、中断、异常和系统调用</h2><h4 id="一-启动"><a href="#一-启动" class="headerlink" title="一. 启动"></a>一. 启动</h4><p>DISK：存放 OS</p>
 <p>BIOS：基本I/O处理系统</p>
 <p>Bootloader：加载 OS</p>
-<p><img src="%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C.assets/image-20200416092711782.png" alt="image-20200416092711782"></p>
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/image-20200416092711782.png" alt="image-20200416092711782"></p>
 <h4 id="二-中断、异常和系统调用"><a href="#二-中断、异常和系统调用" class="headerlink" title="二. 中断、异常和系统调用"></a>二. 中断、异常和系统调用</h4><ul>
 <li><p>定义：</p>
 <ul>
@@ -1133,43 +1045,130 @@ CentOS7.0后，不再使用 service，改用 systemctl
       </tags>
   </entry>
   <entry>
-    <title>【Linux】用户管理</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
-    shutdown -h now：立即关机
-    shutdown -h 1：  一分钟后关机
-    shutdown -r now： 立即重启
-halt
-    直接使用，效果等价于关机
-reboot
-    重启系统
-sync
-    将内存的东西保存到磁盘上
-    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
-su -用户名
-    切换用户
-注销用户：
-    logout
-    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
-可选项：
-    -d 指定目录
-
-groupadd 组名
-    增加用户组
-
-useradd -g 用户组 用户名
-    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
-    删除用户，但保留家目录
-userdel -r 用户名
-    删除用户，不保留家目录
-删除用户时，一般不删家目录
-
-groupdel 组名
-    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
-高权限到低权限不需要密码
-exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
-/etc/group  组配置文件（加密过了）
-/etc/shadow 口令配置文件</code></pre>]]></content>
+    <title>【JDK1.8源码】JDK源码阅读目录</title>
+    <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<blockquote>
+<p>数字表示优先级，1为最高</p>
+</blockquote>
+<h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><pre><code>1) Object 1
+2) String 1
+3) AbstractStringBuilder 1 
+4) StringBuffer 1 
+5) StringBuilder 1 
+6) Boolean 2
+7) Byte 2
+8) Double 2
+9) Float 2
+10) Integer 2
+11) Long 2
+12) Short 2
+13) Thread 2
+14) ThreadLocal 2
+15) Enum 3
+16) Throwable 3
+17) Error 3
+18) Exception 3
+19) Class 4
+20) ClassLoader 4
+21) Compiler 4
+22) System 4
+23) Package 4
+24) Void 4</code></pre><h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><pre><code>1) AbstractList 1 
+2) AbstractMap 1
+3) AbstractSet 1
+4) ArrayList 1 
+5) LinkedList 1 
+6) HashMap 1
+7) Hashtable 1
+8) HashSet 1
+9) LinkedHashMap 1
+10) LinkedHashSet 1
+11) TreeMap 1
+12) TreeSet 1
+13) Vector 2
+14) Queue 2
+15) Stack 2
+16) SortedMap 2
+17) SortedSet 2
+18) Collections 3
+19) Arrays 3
+20) Comparator 3
+21) Iterator 3
+22) Base64 4
+23) Date 4
+24) EventListener 4
+25) Random 4
+26) SubList 4
+27) Timer 4
+28) UUID 4
+29) WeakHashMap 4</code></pre><h2 id="java-util-concurrent"><a href="#java-util-concurrent" class="headerlink" title="java.util.concurrent"></a>java.util.concurrent</h2><pre><code>1) ConcurrentHashMap 1
+2) Executor 2
+3) AbstractExecutorService 2
+4) ExecutorService 2
+5) ThreadPoolExecutor 2
+6) BlockingQueue 2
+7) AbstractQueuedSynchronizer 2
+8) CountDownLatch 2
+9) FutureTask 2
+10) Semaphore 2
+11) CyclicBarrier 2
+13) CopyOnWriteArrayList 3
+14) SynchronousQueue 3
+15) BlockingDeque 3
+16) Callable 4</code></pre><h2 id="java-util-concurrent-atomic"><a href="#java-util-concurrent-atomic" class="headerlink" title="java.util.concurrent.atomic"></a>java.util.concurrent.atomic</h2><pre><code>1) AtomicBoolean 2
+2) AtomicInteger 2
+3) AtomicLong 2
+4) AtomicReference 3</code></pre><h2 id="java-lang-reflect"><a href="#java-lang-reflect" class="headerlink" title="java.lang.reflect"></a>java.lang.reflect</h2><pre><code>1) Field 2
+2) Method 2</code></pre><h2 id="java-lang-annotation"><a href="#java-lang-annotation" class="headerlink" title="java.lang.annotation"></a>java.lang.annotation</h2><pre><code>1) Annotation 3
+2) Target 3
+3) Inherited 3
+4) Retention 3
+5) Documented 4
+6) ElementType 4
+7) Native 4
+8) Repeatable 4</code></pre><h2 id="java-util-concurrent-locks"><a href="#java-util-concurrent-locks" class="headerlink" title="java.util.concurrent.locks"></a>java.util.concurrent.locks</h2><pre><code>1) Lock 2
+2) Condition 2
+3) ReentrantLock 2
+4) ReentrantReadWriteLock 2</code></pre><h2 id="java-io"><a href="#java-io" class="headerlink" title="java.io"></a>java.io</h2><pre><code>1) File 3
+2) InputStream   3
+3) OutputStream  3
+4) Reader  4
+5) Writer  4</code></pre><h2 id="java-nio"><a href="#java-nio" class="headerlink" title="java.nio"></a>java.nio</h2><pre><code>1) Buffer 3
+2) ByteBuffer 4
+3) CharBuffer 4
+4) DoubleBuffer 4
+5) FloatBuffer 4
+6) IntBuffer 4
+7) LongBuffer 4
+8) ShortBuffer 4</code></pre><h2 id="java-sql"><a href="#java-sql" class="headerlink" title="java.sql"></a>java.sql</h2><pre><code>1) Connection 3
+2) Driver 3
+3) DriverManager 3
+4) JDBCType 3
+5) ResultSet 4
+6) Statement 4</code></pre><h2 id="java-net"><a href="#java-net" class="headerlink" title="java.net"></a>java.net</h2><pre><code>1) Socket 3
+2) ServerSocket 3
+3) URI 4
+4) URL 4
+5) URLEncoder 4</code></pre>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】网络配置</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163022103.png" alt="image-20200413163022103"></p>
+<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
+    系统——首选项——网络连接……
+第二种方式（指定固定IP)
+    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163103057.png" alt="image-20200413163103057"></p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163118404.png" alt="image-20200413163118404"></p>
+<pre><code>修改后一定要重启服务：
+    service network restart</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>

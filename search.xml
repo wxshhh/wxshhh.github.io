@@ -154,34 +154,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【Linux】JavaEE</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
-    <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
-<li><p>进入配置文件</p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163743711.png" alt="image-20200413163743711"></p>
-</li>
-<li><p>配置环境变量</p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163802504.png" alt="image-20200413163802504"></p>
-</li>
-<li><p>注销用户，环境变量才能生效</p>
-</li>
-</ul>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><pre><code>运行tomcat需要在其文件夹bin目录下，执行：  
-    ./startup.sh
-
-使用windows系统访问在Linux部署的8080端口：
-    1.vim /etc/sysconfig/iptables
-    2.如图
-    3.重启防火墙</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163825021.png" alt="image-20200413163825021"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【JDK1.8源码】Object、String</title>
     <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/</url>
     <content><![CDATA[<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
@@ -212,25 +184,26 @@
       </tags>
   </entry>
   <entry>
-    <title>【Linux】RPM和RYUM</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/</url>
-    <content><![CDATA[<h2 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h2><pre><code>rpm包的简单查询：
-    查询已安装的rpm列表： rpm -qa|grep xx
-    查询rpm包安装到哪：   rpm -ql xxx
-    根据文件查询软件包：  rpm -qf 软件路径
+    <title>【Linux】JavaEE</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
+    <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
+<li><p>进入配置文件</p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163743711.png" alt="image-20200413163743711"></p>
+</li>
+<li><p>配置环境变量</p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163802504.png" alt="image-20200413163802504"></p>
+</li>
+<li><p>注销用户，环境变量才能生效</p>
+</li>
+</ul>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><pre><code>运行tomcat需要在其文件夹bin目录下，执行：  
+    ./startup.sh
 
-rpm包卸载
-    rpm -e rpm包名
-    rpm -e --nodeps 包名 （强制删除）
-
-rpm包安装
-    rpm -ivh RPM包全路径名称
-        i：安装
-        v：提示
-        h：进度条</code></pre><h2 id="YUM包的管理（需要联网）"><a href="#YUM包的管理（需要联网）" class="headerlink" title="YUM包的管理（需要联网）"></a>YUM包的管理（需要联网）</h2><pre><code>查询：
-    yum list | grep xxx
-安装：
-    yum install xxx</code></pre>]]></content>
+使用windows系统访问在Linux部署的8080端口：
+    1.vim /etc/sysconfig/iptables
+    2.如图
+    3.重启防火墙</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163825021.png" alt="image-20200413163825021"></p>
+]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -278,6 +251,301 @@ rpm包安装
       <tags>
         <tag>Java</tag>
         <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】RPM和RYUM</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/</url>
+    <content><![CDATA[<h2 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h2><pre><code>rpm包的简单查询：
+    查询已安装的rpm列表： rpm -qa|grep xx
+    查询rpm包安装到哪：   rpm -ql xxx
+    根据文件查询软件包：  rpm -qf 软件路径
+
+rpm包卸载
+    rpm -e rpm包名
+    rpm -e --nodeps 包名 （强制删除）
+
+rpm包安装
+    rpm -ivh RPM包全路径名称
+        i：安装
+        v：提示
+        h：进度条</code></pre><h2 id="YUM包的管理（需要联网）"><a href="#YUM包的管理（需要联网）" class="headerlink" title="YUM包的管理（需要联网）"></a>YUM包的管理（需要联网）</h2><pre><code>查询：
+    yum list | grep xxx
+安装：
+    yum install xxx</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】vi和vim</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
+    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
+    vim xxx
+插入：
+    i：开始编辑
+    a：从下一行开始编辑
+退出插入模式：
+    Esc
+命令行模式：
+    ： 输入命令
+    qw 保存并推出
+    q  在没有修改的情况下退出
+    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
+   拷贝当前行   yy
+   拷贝向下五行 5yy
+   粘贴         p
+
+2. 删除当前行   dd
+   删除向下五行 5dd
+
+3. 在文件中查找某个词(命令行下) 
+        /xxx 
+        输入 n 查找下一个
+
+4. 设置显示/取消文件行号(命令行下)
+        set nu
+        set nonu 
+
+5. 跳转到文档的首行或尾行(正常模式)
+    首行：  gg
+    尾行：  G
+
+6. 撤销动作 u (正常模式)
+
+7. 移动光标至指定行(正常模式 2、3)
+    1. 显示行号
+    2. 输入行号
+    3. shift + g</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】定时任务调度</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</url>
+    <content><![CDATA[<h2 id="crond-任务调度"><a href="#crond-任务调度" class="headerlink" title="crond 任务调度"></a>crond 任务调度</h2><pre><code>基本语法：
+    crontab [选项]
+    选项：
+        -e：编辑
+        -l：查询
+        -r：删除当前用户所有的crontab任务
+参数说明：</code></pre><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>含义</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一个 *</td>
+<td>一小时当中的第几分钟</td>
+<td>0-59</td>
+</tr>
+<tr>
+<td>第二个 *</td>
+<td>一天当中的第几小时</td>
+<td>0-23</td>
+</tr>
+<tr>
+<td>第三个 *</td>
+<td>一个月当中的第几天</td>
+<td>1-31</td>
+</tr>
+<tr>
+<td>第四个 *</td>
+<td>一年当中的第几月</td>
+<td>1-12</td>
+</tr>
+<tr>
+<td>第五个 *</td>
+<td>一周当中的星期几</td>
+<td>0- 7</td>
+</tr>
+</tbody></table>
+<h4 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h4><pre><code>1.写shell脚本
+2.将.sh文件设为可执行文件
+3.crontab -e
+4.* * * * * xx.sh</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】文件目录</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/image-20200413162623021.png" alt="image-20200413162623021"></p>
+<pre><code>/bin(Binary):
+    存放经常使用的命令
+
+/boot：
+    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
+
+/dev(Device)：
+    存放Linux的外部设备
+
+/etc：
+    存放所有系统管理所需要的配置文件和子目录
+
+/home：
+    用户的主目录
+    每个用户都有一个自己的目录
+
+/lib：
+    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
+    几乎所有的文件都要用到这些共享库
+
+/lost+found
+    非法关机后存放一些文件
+
+/media：
+    自动识别一些设备，如U盘、DVD
+    识别后将识别设备挂载在该目录下
+
+/mnt：
+    让用户临时挂载别的文件系统
+
+/opt：
+    给主机额外安装软件所摆放的目录
+
+/proc：
+    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
+
+/root：
+    该目录为系统管理员，也称作超级权限者的用户主目录。
+
+/sbin：
+    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
+
+/selinux：
+    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
+
+/srv：
+    该目录存放一些服务启动之后需要提取的数据。
+
+/sys：
+    系统文件
+
+/tmp：
+    临时文件夹
+
+/user：
+    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
+
+/var：
+    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
+
+/run：
+    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】用户管理</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
+    shutdown -h now：立即关机
+    shutdown -h 1：  一分钟后关机
+    shutdown -r now： 立即重启
+halt
+    直接使用，效果等价于关机
+reboot
+    重启系统
+sync
+    将内存的东西保存到磁盘上
+    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
+su -用户名
+    切换用户
+注销用户：
+    logout
+    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
+可选项：
+    -d 指定目录
+
+groupadd 组名
+    增加用户组
+
+useradd -g 用户组 用户名
+    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
+    删除用户，但保留家目录
+userdel -r 用户名
+    删除用户，不保留家目录
+删除用户时，一般不删家目录
+
+groupdel 组名
+    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
+高权限到低权限不需要密码
+exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
+/etc/group  组配置文件（加密过了）
+/etc/shadow 口令配置文件</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】磁盘分区和挂载</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/</url>
+    <content><![CDATA[<h2 id="分区基础知识"><a href="#分区基础知识" class="headerlink" title="分区基础知识"></a>分区基础知识</h2><pre><code>分区方式：
+    1.mbr分区
+    2.gtp分区</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/image-20200413162818574.png" alt="image-20200413162818574"></p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><pre><code>给Linux增加一块硬盘，并挂载在/home/bin</code></pre><h4 id="如何添加一块硬盘"><a href="#如何添加一块硬盘" class="headerlink" title="如何添加一块硬盘"></a>如何添加一块硬盘</h4><pre><code>1.虚拟机添加硬盘
+2.分区
+    fdisk /dev/sdb
+    m
+    n
+    ……
+    w
+3.格式化
+    mkfs -t ext4 /dev/sdb1
+4.挂载
+    先创建一个目录
+    挂载：mount /dev/sdb1 /home/newdisk
+5.设置可以自动挂载  
+    vim /etc/fstab
+    /dev/sdb1            /home/newdisk           ext4    defaults        0 0
+
+删除挂载：
+    umount /dev/sdb1</code></pre><h4 id="磁盘情况查询"><a href="#磁盘情况查询" class="headerlink" title="磁盘情况查询"></a>磁盘情况查询</h4><pre><code>查询系统整体磁盘使用情况：
+    df -l
+查询指定目录的磁盘占用情况
+    du -h /目录
+        -s：指定目录占用大小汇总
+        -h：带计量单位
+        -a：含文件
+        -c：列出明细同时，增加汇总值
+        --max-depth=1：查询子目录深度</code></pre><h4 id="工作实用指令："><a href="#工作实用指令：" class="headerlink" title="工作实用指令："></a>工作实用指令：</h4><pre><code>1. 统计/home目录下文件个数
+    ls -l /home | grep &quot;^-&quot; | wc -l
+2. 统计/home目录下目录个数
+    ls -l /home | grep &quot;^d&quot; | wc -l
+3. 统计/home文件夹下文件的个数，包括子文件夹
+    ls -lR /home | grep &quot;^-&quot; | wc -l
+4. 统计文件夹下目录个数，包括子文件夹里的
+    ls -lR /home | grep &quot;^d&quot; | wc -l
+5. 以树状图形式显示目录
+    yum install tree
+    tree</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -463,177 +731,138 @@ tar：打包指令
       </tags>
   </entry>
   <entry>
-    <title>【Linux】vi和vim</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91vi%E5%92%8Cvim/</url>
-    <content><![CDATA[<h2 id="vi-vim的进入与退出"><a href="#vi-vim的进入与退出" class="headerlink" title="vi/vim的进入与退出"></a>vi/vim的进入与退出</h2><pre><code>进入：
-    vim xxx
-插入：
-    i：开始编辑
-    a：从下一行开始编辑
-退出插入模式：
-    Esc
-命令行模式：
-    ： 输入命令
-    qw 保存并推出
-    q  在没有修改的情况下退出
-    q! 强制退出，不保存</code></pre><h2 id="vi-vim的快捷键"><a href="#vi-vim的快捷键" class="headerlink" title="vi/vim的快捷键"></a>vi/vim的快捷键</h2><pre><code>1.(正常模式)
-   拷贝当前行   yy
-   拷贝向下五行 5yy
-   粘贴         p
-
-2. 删除当前行   dd
-   删除向下五行 5dd
-
-3. 在文件中查找某个词(命令行下) 
-        /xxx 
-        输入 n 查找下一个
-
-4. 设置显示/取消文件行号(命令行下)
-        set nu
-        set nonu 
-
-5. 跳转到文档的首行或尾行(正常模式)
-    首行：  gg
-    尾行：  G
-
-6. 撤销动作 u (正常模式)
-
-7. 移动光标至指定行(正常模式 2、3)
-    1. 显示行号
-    2. 输入行号
-    3. shift + g</code></pre>]]></content>
+    <title>【操作系统】第三章：连续内存分布</title>
+    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
+    <content><![CDATA[<h1 id="3-1-计算机体系结构及内存分层体系"><a href="#3-1-计算机体系结构及内存分层体系" class="headerlink" title="3.1 计算机体系结构及内存分层体系"></a>3.1 计算机体系结构及内存分层体系</h1><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417165432213.png" alt="image-20200417165432213"></p>
+<h3 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
+<li><p>CPU：完成基本的对程序或软件的控制</p>
+</li>
+<li><p>内存：放置程序代码和他处理的数据</p>
+<p>  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170005686.png" alt="image-20200417170005686"></p>
+</li>
+<li><p>外设</p>
+</li>
+</ul>
+<h3 id="操作系统功能"><a href="#操作系统功能" class="headerlink" title="操作系统功能"></a>操作系统功能</h3><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170232005.png" alt="image-20200417170232005"></p>
+<h3 id="操作系统管理内存的方法"><a href="#操作系统管理内存的方法" class="headerlink" title="操作系统管理内存的方法"></a>操作系统管理内存的方法</h3><ul>
+<li>程序重定位</li>
+<li>分段</li>
+<li>分页</li>
+<li>虚拟内存</li>
+<li>按需分页虚拟内存</li>
+</ul>
+<h1 id="3-2-地址空间和地址生成"><a href="#3-2-地址空间和地址生成" class="headerlink" title="3.2 地址空间和地址生成"></a>3.2 地址空间和地址生成</h1><h3 id="地址空间定义"><a href="#地址空间定义" class="headerlink" title="地址空间定义"></a>地址空间定义</h3><ul>
+<li>物理地址空间 — 硬件支持的地址空间（<strong>主存和磁盘</strong>）</li>
+<li>逻辑地址空间— 一个运行程序所拥有的内存范围（一维的线性空间）</li>
+</ul>
+<h3 id="地址生成"><a href="#地址生成" class="headerlink" title="地址生成"></a>地址生成</h3><ul>
+<li>逻辑地址的生成</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417171957066.png" alt="image-20200417171957066"></p>
+<ul>
+<li><p>物理地址的生成</p>
+<p>  <strong>CPU方面</strong></p>
+<ol>
+<li>计算器<strong>需要</strong>在逻辑地址的<strong>内存内容</strong></li>
+<li>内存管理单元<strong>寻找</strong>在逻辑地址和物理地址之间的<strong>映射</strong></li>
+<li>控制器从总线<strong>发送</strong>在物理地址的内存内容的<strong>请求</strong></li>
+</ol>
+<p>  <strong>内存方面</strong></p>
+<ol start="4">
+<li>内存<strong>发送</strong>物理地址内存的<strong>内容</strong>给CPU</li>
+</ol>
+<p>  <strong>操作系统方面</strong></p>
+<ol start="5">
+<li><strong>建立</strong>逻辑地址和物理地址之间的<strong>映射</strong></li>
+</ol>
+</li>
+</ul>
+<h3 id="地址安全检查"><a href="#地址安全检查" class="headerlink" title="地址安全检查"></a>地址安全检查</h3><h1 id="3-3-连续内存分配"><a href="#3-3-连续内存分配" class="headerlink" title="3.3 连续内存分配"></a>3.3 连续内存分配</h1><h3 id="内存碎片问题"><a href="#内存碎片问题" class="headerlink" title="内存碎片问题"></a>内存碎片问题</h3><p>当我们给正在运行的程序分配空间之后，会出现一些空闲的空间（碎片）不能被利用</p>
+<ul>
+<li><p>外部碎片</p>
+<p>  在分配单元<strong>间</strong>未使用的内存（程序空间之间的碎片）</p>
+</li>
+<li><p>内部碎片</p>
+<p>  在分配单元<strong>中</strong>的未使用内存（在分配给程序的空间内部出现的碎片）</p>
+</li>
+</ul>
+<h3 id="分区的动态分配"><a href="#分区的动态分配" class="headerlink" title="分区的动态分配"></a>分区的动态分配</h3><ul>
+<li>简单的内存管理方法：<ul>
+<li>当一个程序准许运行在内存中时，分配一个连续的区间</li>
+<li>分配一个连续的内存区间给运行的程序以访问数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="第一适配"><a href="#第一适配" class="headerlink" title="第一适配"></a>第一适配</h5><ul>
+<li>找到第一个满足需求的空闲块立马返回</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183628752.png" alt="image-20200417183628752"></p>
+<ul>
+<li>优点：<ul>
+<li>简单</li>
+<li>易于产生更大的空闲块，向着地址空间的结尾</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>容易产生外部碎片</li>
+<li>不确定性</li>
+</ul>
+</li>
+</ul>
+<h5 id="最佳适配"><a href="#最佳适配" class="headerlink" title="最佳适配"></a>最佳适配</h5><ul>
+<li>寻找空间中最满足需求的空闲块</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183554657.png" alt="image-20200417183554657"></p>
+<ul>
+<li>优点：<ul>
+<li>大部分分配是小尺寸时非常有效</li>
+<li>比较简单</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>分配时需要先将空闲块按大小排序进行查找，降低效率</li>
+<li>易产生很多没怎么用的微小碎片</li>
+</ul>
+</li>
+</ul>
+<h5 id="最差适配"><a href="#最差适配" class="headerlink" title="最差适配"></a>最差适配</h5><ul>
+<li>寻找空间中大小最不匹配的空闲块</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183701187.png" alt="image-20200417183701187"></p>
+<ul>
+<li>优点：<ul>
+<li>分配是中等尺寸时效果最好</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>效率降低</li>
+<li>容易破碎大的空闲块导致大分区无法被分配</li>
+</ul>
+</li>
+</ul>
+<h3 id="压缩式碎片整理"><a href="#压缩式碎片整理" class="headerlink" title="压缩式碎片整理"></a>压缩式碎片整理</h3><ul>
+<li>重置程序以合并孔洞，要求所有程序是 <strong>动态可重置的</strong></li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184612553.png" alt="image-20200417184612553"></p>
+<ul>
+<li>何时重置？</li>
+<li>开销如何？</li>
+</ul>
+<h3 id="交换式碎片整理"><a href="#交换式碎片整理" class="headerlink" title="交换式碎片整理"></a>交换式碎片整理</h3><ul>
+<li>运行程序需要更多的内存，抢占等待的程序并回收他们的内存</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184629751.png" alt="image-20200417184629751"></p>
+<ul>
+<li>选择哪些程序进行交换？</li>
+<li>何时进行？</li>
+</ul>
+]]></content>
       <categories>
-        <category>Linux</category>
+        <category>操作系统</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】文件目录</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/image-20200413162623021.png" alt="image-20200413162623021"></p>
-<pre><code>/bin(Binary):
-    存放经常使用的命令
-
-/boot：
-    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
-
-/dev(Device)：
-    存放Linux的外部设备
-
-/etc：
-    存放所有系统管理所需要的配置文件和子目录
-
-/home：
-    用户的主目录
-    每个用户都有一个自己的目录
-
-/lib：
-    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
-    几乎所有的文件都要用到这些共享库
-
-/lost+found
-    非法关机后存放一些文件
-
-/media：
-    自动识别一些设备，如U盘、DVD
-    识别后将识别设备挂载在该目录下
-
-/mnt：
-    让用户临时挂载别的文件系统
-
-/opt：
-    给主机额外安装软件所摆放的目录
-
-/proc：
-    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
-
-/root：
-    该目录为系统管理员，也称作超级权限者的用户主目录。
-
-/sbin：
-    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
-
-/selinux：
-    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
-
-/srv：
-    该目录存放一些服务启动之后需要提取的数据。
-
-/sys：
-    系统文件
-
-/tmp：
-    临时文件夹
-
-/user：
-    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
-
-/var：
-    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
-
-/run：
-    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】定时任务调度</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</url>
-    <content><![CDATA[<h2 id="crond-任务调度"><a href="#crond-任务调度" class="headerlink" title="crond 任务调度"></a>crond 任务调度</h2><pre><code>基本语法：
-    crontab [选项]
-    选项：
-        -e：编辑
-        -l：查询
-        -r：删除当前用户所有的crontab任务
-参数说明：</code></pre><table>
-<thead>
-<tr>
-<th>项目</th>
-<th>含义</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一个 *</td>
-<td>一小时当中的第几分钟</td>
-<td>0-59</td>
-</tr>
-<tr>
-<td>第二个 *</td>
-<td>一天当中的第几小时</td>
-<td>0-23</td>
-</tr>
-<tr>
-<td>第三个 *</td>
-<td>一个月当中的第几天</td>
-<td>1-31</td>
-</tr>
-<tr>
-<td>第四个 *</td>
-<td>一年当中的第几月</td>
-<td>1-12</td>
-</tr>
-<tr>
-<td>第五个 *</td>
-<td>一周当中的星期几</td>
-<td>0- 7</td>
-</tr>
-</tbody></table>
-<h4 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h4><pre><code>1.写shell脚本
-2.将.sh文件设为可执行文件
-3.crontab -e
-4.* * * * * xx.sh</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
       </tags>
   </entry>
   <entry>
@@ -680,6 +909,415 @@ tar：打包指令
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第四章：非连续式内存分布</title>
+    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
+    <content><![CDATA[<p> <strong>非连续内存分配优点</strong></p>
+<ul>
+<li>一个程序的物理地址是非连续的</li>
+<li>更好的内存利用和管理</li>
+<li>允许共享代码与数据</li>
+<li>支持动态加载和动态链接</li>
+</ul>
+<p><strong>潜在问题</strong></p>
+<ul>
+<li>如何建立虚拟地址与物理地址之间的转换<ul>
+<li>软件方案</li>
+<li>硬件方案<ul>
+<li>分段</li>
+<li>分页</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h1><h3 id="程序的分段地址空间"><a href="#程序的分段地址空间" class="headerlink" title="程序的分段地址空间"></a>程序的分段地址空间</h3><ul>
+<li>将逻辑地址空间分成各个块</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418141948265.png" alt="image-20200418141948265" style="zoom:50%;">
+
+<ul>
+<li>如下图，需要一种运行机制，来使<strong>逻辑地址空间</strong>与<strong>物理地址空间</strong>之间有对应的<strong>关联</strong></li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142034374.png" alt="image-20200418142034374" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142254435.png" alt="image-20200418142254435"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142312648.png" alt="image-20200418142312648" style="zoom:50%;">
+
+
+
+<h3 id="分段寻址方案"><a href="#分段寻址方案" class="headerlink" title="分段寻址方案"></a>分段寻址方案</h3><ul>
+<li><p>两种实现方案：</p>
+<ul>
+<li><p>段寄存器 + 地址寄存器：将段号和段内偏移分开放置</p>
+</li>
+<li><p>单地址实现方案：将段号和段内偏移放在一起</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142553901.png" alt="image-20200418142553901" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143008669.png" alt="image-20200418143008669"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143028307.png" alt="image-20200418143028307" style="zoom:50%;">
+
+
+
+<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><ul>
+<li>现在CPU主要使用分页方式</li>
+</ul>
+<h3 id="分页地址空间"><a href="#分页地址空间" class="headerlink" title="分页地址空间"></a>分页地址空间</h3><ul>
+<li><p>与分段方式相似，同样拥有页号和偏移</p>
+</li>
+<li><p>不同之处在于分段中<strong>段的大小可变</strong>，而分页中<strong>页的大小固定的</strong></p>
+</li>
+<li><p>帧（frame）和页（page）：</p>
+<ul>
+<li><p>划分<strong>物理内存</strong>至固定大小的<strong>帧</strong>：大小是2的幂次方</p>
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144103065.png" alt="image-20200418144103065" style="zoom:50%;">
+
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144606645.png" alt="image-20200418144606645" style="zoom:50%;">
+</li>
+<li><p>划分<strong>逻辑地址空间</strong>至相同大小的<strong>页</strong>：大小也是2的幂次方</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145629651.png&quot; alt=&quot;image-20200418145629651&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145930471.png&quot; alt=&quot;image-20200418145930471&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+
+
+依据逻辑地址的页号到页表中查询出物理地址的帧号</code></pre><ul>
+<li>建立方案转化逻辑地址为物理地址（pages to frames）</li>
+</ul>
+<h3 id="页的寻址方案"><a href="#页的寻址方案" class="headerlink" title="页的寻址方案"></a>页的寻址方案</h3><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150212728.png" alt="image-20200418150212728" style="zoom:50%;">
+
+<h1 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li><p>页表其实就是一个<strong>大数组</strong>，索引代表的是 page_number，索引对应的值存的是 frame_number</p>
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150738864.png" alt="image-20200418150738864" style="zoom:50%;">
+
+</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418151533051.png" alt="image-20200418151533051" style="zoom: 80%;">
+
+<ul>
+<li>存在问题：访问一个内存单元需要两次访问内存，存在性能问题<ul>
+<li>一次获取页表项</li>
+<li>一次用于访问数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="TLB（Translation-Look-aside-Buffer）"><a href="#TLB（Translation-Look-aside-Buffer）" class="headerlink" title="TLB（Translation Look-aside Buffer）"></a>TLB（Translation Look-aside Buffer）</h3><ul>
+<li>缓存近期访问的页帧转换表项<ul>
+<li>TLB使用关联内存（速度快容量小）实现，具备快速访问性能</li>
+<li>如果查到，则物理帧号可以被快速获取</li>
+<li>如果查不到，就在页表中进行查找然后将内容更新到TLB</li>
+</ul>
+</li>
+</ul>
+<h3 id="二级、多级页表（时间换空间）"><a href="#二级、多级页表（时间换空间）" class="headerlink" title="二级、多级页表（时间换空间）"></a>二级、多级页表（时间换空间）</h3><ul>
+<li>会增加时间开销</li>
+<li>省下空间（一级页表中的保留位为0，二级页表就不需要留位置了）</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153639436.png" alt="image-20200418153639436" style="zoom: 67%;">
+
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153843016.png" alt="image-20200418153843016" style="zoom:67%;">
+
+<h3 id="反向页表"><a href="#反向页表" class="headerlink" title="反向页表"></a>反向页表</h3><ul>
+<li>大地址空间问题：<ul>
+<li>有大地址空间，向前映射页表变得繁琐（5级页表）</li>
+<li>不是让页表与逻辑地址空间的大小相对应，而是让页表与物理地址空间的大小相对于（虚拟地址空间增长速度快于物理地址空间）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155010474.png" alt="image-20200418155010474" style="zoom: 67%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155148496.png" alt="image-20200418155148496"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155557962.png" alt="image-20200418155557962" style="zoom:67%;">]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】网络配置</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163022103.png" alt="image-20200413163022103"></p>
+<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
+    系统——首选项——网络连接……
+第二种方式（指定固定IP)
+    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163103057.png" alt="image-20200413163103057"></p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163118404.png" alt="image-20200413163118404"></p>
+<pre><code>修改后一定要重启服务：
+    service network restart</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】进程管理</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><pre><code>指令：ps
+参数：
+    -a： 显示所有进程
+    -u： 以用户格式显示
+    -x： 显示后台运行的参数
+    -ef：查看父进程
+
+pstree(以树状形式查看进程)
+    -u 以用户格式显示</code></pre><h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><pre><code>kill [选项] 进程号
+killall 进程名
+
+选项：
+    -9：强制终止</code></pre><h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><pre><code>service 服务名 [start|stop|restart|reload|status]
+CentOS7.0后，不再使用 service，改用 systemctl
+
+查看服务名：
+    1.setup
+    2.ls -l /etc/init.d/
+
+开机流程：
+    1.开机
+    2.BIOS
+    3./boot
+    4.init进程1
+    5.运行级别
+    6.运行级别对应服务
+
+给每个运行级别设置自启动/关闭——chkconfig 
+    1.查看服务
+        chkconfig --list | grep xx
+    2.chkconfig 服务名 --list
+    3.设置是否自启动
+        chkconfig --level 5 服务名 on/off
+
+        checkconfig --add 服务名：加入服务</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Spring注解驱动开发】前篇</title>
+    <url>/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</url>
+    <content><![CDATA[<h2 id="Bean的初始化和生命周期"><a href="#Bean的初始化和生命周期" class="headerlink" title="Bean的初始化和生命周期"></a>Bean的初始化和生命周期</h2><h4 id="bean-的生命周期"><a href="#bean-的生命周期" class="headerlink" title="bean 的生命周期"></a>bean 的生命周期</h4><ul>
+<li><p>bean 创建—&gt;初始化—&gt;销毁的过程  </p>
+</li>
+<li><p>Spring 容器管理 bean 的生命周期</p>
+</li>
+</ul>
+<h4 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h4><ul>
+<li><p>单实例：<strong>容器启动</strong>时创建对象</p>
+</li>
+<li><p>多实例：<strong>获取对象</strong>时创建对象</p>
+</li>
+<li><p>初始化：</p>
+<ul>
+<li>对象创建完成 ，并赋值，调用初始化方法  </li>
+</ul>
+</li>
+<li><p>销毁：</p>
+<ul>
+<li>单实例：容器关闭时销毁</li>
+<li>多实例：容器不会管理该bean，不会调用销毁方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="自定义初始化和销毁方法"><a href="#自定义初始化和销毁方法" class="headerlink" title="自定义初始化和销毁方法"></a>自定义初始化和销毁方法</h4><h5 id="1-指定初始化和销毁方法"><a href="#1-指定初始化和销毁方法" class="headerlink" title="1.指定初始化和销毁方法"></a>1.指定初始化和销毁方法</h5><ul>
+<li><p>之前的初始化方法：<code>&lt;bean init-method=&quot;&quot; destory-method=&quot;&quot;&gt;&lt;/bean&gt;</code>  </p>
+</li>
+<li><p>基于注解的初始化方法：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"容器创建完成！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被创建了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被销毁了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置初始化和销毁方法</span></span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>,destroyMethod = <span class="string">"destroy"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
+<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170120664.png" alt="image-20200413170120664"></p>
+<p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
+<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170249851.png" alt="image-20200413170249851"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>BeanPostProcessor 原理：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 遍历容器中的所有 BeanPostProcessor</span></span><br><span class="line"><span class="comment"> 挨个执行 beforeInitialization</span></span><br><span class="line"><span class="comment"> 一旦返回 null</span></span><br><span class="line"><span class="comment"> return，跳出 for 循环</span></span><br><span class="line"><span class="comment"> 不会执行后面的 BeanPostProcessor</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给 bean 进行赋值</span></span><br><span class="line">populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line"><span class="comment">//initializeBean</span></span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//beforeInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsBeforeInitialization(bean, beanName);</span><br><span class="line">    <span class="comment">//执行自定义初始化方法</span></span><br><span class="line">    <span class="keyword">this</span>.invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">    <span class="comment">//afterInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>Spring底层对 BeanPostProcessor 的使用：</strong></p>
+<p>​        bean赋值、注入其他组件、<code>@Autowired</code>、生命周期注解功能、<code>@Async</code>、···</p>
+<h2 id="属性赋值：-Value"><a href="#属性赋值：-Value" class="headerlink" title="属性赋值：@Value"></a>属性赋值：@Value</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	1.基本数值</span></span><br><span class="line"><span class="comment">    	2.SpEL：#&#123;&#125;</span></span><br><span class="line"><span class="comment">    	3.$&#123;&#125;：取出配置文件中的值（在运行环境变量中的值）</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"wxs"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"#&#123;20-2&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value=&#123;<span class="string">"classpath:/person.properties"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给容器注册一个bean，id默认为方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#classpath:/person.properties</span></span><br><span class="line"><span class="meta">person.hobby</span> = <span class="string">singJumpRapAndBasketball</span></span><br></pre></td></tr></table></figure>
+<h2 id="环境切换：-Profile"><a href="#环境切换：-Profile" class="headerlink" title="环境切换：@Profile"></a>环境切换：@Profile</h2><ul>
+<li><code>@Profile</code> 注解：<strong>逻辑组名称</strong>，只有当这些Profile被激活的时候，才会将Profile中所对应的Bean注册到Spring容器中。<ul>
+<li>加了环境标识的bean，只有环境被激活才会被注册到容器中</li>
+<li>写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效</li>
+<li>没有标注环境标识的bean，在任何环境下都加载</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="meta">@Profile</span>(<span class="string">"dev"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceDev</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Profile</span>(<span class="string">"test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Profile</span>(<span class="string">"prod"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceProd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>激活方法：</p>
+<ol>
+<li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
+</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+        <tag>尚硅谷</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第二章：操作系统基础操作</title>
+    <url>/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="2-1-启动、中断、异常和系统调用"><a href="#2-1-启动、中断、异常和系统调用" class="headerlink" title="2.1 启动、中断、异常和系统调用"></a>2.1 启动、中断、异常和系统调用</h2><h4 id="一-启动"><a href="#一-启动" class="headerlink" title="一. 启动"></a>一. 启动</h4><p>DISK：存放 OS</p>
+<p>BIOS：基本I/O处理系统</p>
+<p>Bootloader：加载 OS</p>
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/image-20200416092711782.png" alt="image-20200416092711782"></p>
+<h4 id="二-中断、异常和系统调用"><a href="#二-中断、异常和系统调用" class="headerlink" title="二. 中断、异常和系统调用"></a>二. 中断、异常和系统调用</h4><ul>
+<li><p>定义：</p>
+<ul>
+<li>系统调用（来源于应用程序）：应用程序主动向操作系统发出服务请求</li>
+<li>异常（来源于不良的应用程序）：非法指令或者其他坏的处理状态（如内存出错）</li>
+<li>中断（来源于外设）：来自不同的硬件设备的计时器和网络的中断</li>
+</ul>
+</li>
+<li><p>源头：</p>
+<ul>
+<li>中断：外设</li>
+<li>异常：应用程序意想不到的行为</li>
+<li>系统调用：应用程序请求操作系统提供服务</li>
+</ul>
+</li>
+<li><p>处理时间：</p>
+<ul>
+<li>中断：异步</li>
+<li>异常：同步</li>
+<li>系统调用：异步或同步</li>
+</ul>
+</li>
+<li><p>响应：</p>
+<ul>
+<li>中断：持续，对用户应用程序是透明的</li>
+<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
+<li>系统调用：等待和持续</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-中断、异常和系统调用"><a href="#2-2-中断、异常和系统调用" class="headerlink" title="2.2 中断、异常和系统调用"></a>2.2 中断、异常和系统调用</h2><h4 id="一-中断处理机制"><a href="#一-中断处理机制" class="headerlink" title="一. 中断处理机制"></a>一. 中断处理机制</h4><ul>
+<li><p>硬件：设置中断标记（CPU初始化）</p>
+<ol>
+<li>将内部、外部事件设置中断标记</li>
+<li>中断事件的ID</li>
+</ol>
+</li>
+<li><p>软件：</p>
+<ul>
+<li>保存当前处理状态</li>
+<li>中断服务程序处理</li>
+<li>清除中断标记</li>
+<li>恢复之前保存的处理状态</li>
+</ul>
+</li>
+</ul>
+<h4 id="二-异常处理机制"><a href="#二-异常处理机制" class="headerlink" title="二 . 异常处理机制"></a>二 . 异常处理机制</h4><ul>
+<li><p>异常：异常编号</p>
+<ul>
+<li><p>保存现场</p>
+</li>
+<li><p>异常处理</p>
+<ul>
+<li>杀死产生异常的程序</li>
+<li>重新执行异常指令</li>
+</ul>
+</li>
+<li><p>恢复现场</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="三-系统调用"><a href="#三-系统调用" class="headerlink" title="三. 系统调用"></a>三. 系统调用</h4><ul>
+<li><p>应用程序调用<code>printf()</code>时，会触发系统调用<code>write()</code></p>
+</li>
+<li><p>操作系统提供很多 API 来进行系统调用</p>
+</li>
+<li><p>跨越操作系统边界需要支付额外的开销：</p>
+<ul>
+<li>建立中断/异常/系统调用号与对应服务例程映射关系的初始化开销</li>
+<li>建立内核堆栈</li>
+<li>验证参数</li>
+<li>内核态映射到用户态的地址空间</li>
+<li>内核态独立地址空间</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【JDK1.8源码】AbstractMap、HashMap</title>
+    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractMap%E3%80%81HashMap/</url>
+    <content><![CDATA[<h2 id="AbstractMap"><a href="#AbstractMap" class="headerlink" title="AbstractMap"></a>AbstractMap</h2><h4 id="类关系"><a href="#类关系" class="headerlink" title="类关系"></a>类关系</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现了Map接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Map接口  </li>
+</ul>
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><p>判断是否包含键或值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用迭代器判断是否含有值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsValue</span><span class="params">(Object value)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (value==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getValue()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (value.equals(e.getValue()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用迭代器判断是否含有键</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Map.Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>增删改查</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//由键获取值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                <span class="keyword">return</span> e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不支持添加元素，会抛出异常，想要增加元素需要子类重写该方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据所给键删除元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">remove</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    Entry&lt;K,V&gt; correctEntry = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (correctEntry==<span class="keyword">null</span> &amp;&amp; i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                correctEntry = e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (correctEntry==<span class="keyword">null</span> &amp;&amp; i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                correctEntry = e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    V oldValue = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (correctEntry !=<span class="keyword">null</span>) &#123;</span><br><span class="line">        oldValue = correctEntry.getValue();</span><br><span class="line">        i.remove();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回键或值的集合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//临时变量</span></span><br><span class="line"><span class="keyword">transient</span> Set&lt;K&gt;        keySet;     <span class="comment">//将Map中的键放在Set中</span></span><br><span class="line"><span class="keyword">transient</span> Collection&lt;V&gt; values;     <span class="comment">//将Map中的值放在Collection中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//得到键的集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Set&lt;K&gt; ks = keySet;</span><br><span class="line">    <span class="keyword">if</span> (ks == <span class="keyword">null</span>) &#123;</span><br><span class="line">        ks = <span class="keyword">new</span> AbstractSet&lt;K&gt;() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> Iterator&lt;K&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Iterator&lt;K&gt;() &#123;</span><br><span class="line">                    <span class="keyword">private</span> Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.hasNext();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> K <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.next().getKey();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        i.remove();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.size();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.isEmpty();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                AbstractMap.<span class="keyword">this</span>.clear();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object k)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.containsKey(k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        keySet = ks;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ks;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//得到值的集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Collection&lt;V&gt; <span class="title">values</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Collection&lt;V&gt; vals = values;</span><br><span class="line">    <span class="keyword">if</span> (vals == <span class="keyword">null</span>) &#123;</span><br><span class="line">        vals = <span class="keyword">new</span> AbstractCollection&lt;V&gt;() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> Iterator&lt;V&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Iterator&lt;V&gt;() &#123;</span><br><span class="line">                    <span class="keyword">private</span> Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.hasNext();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> V <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.next().getValue();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        i.remove();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.size();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.isEmpty();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                AbstractMap.<span class="keyword">this</span>.clear();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object v)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.containsValue(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        values = vals;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vals;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>重写equals方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> Map))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    Map&lt;?,?&gt; m = (Map&lt;?,?&gt;) o;</span><br><span class="line">    <span class="keyword">if</span> (m.size() != size())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            K key = e.getKey();</span><br><span class="line">            V value = e.getValue();</span><br><span class="line">            <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!(m.get(key)==<span class="keyword">null</span> &amp;&amp; m.containsKey(key)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (!value.equals(m.get(key)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassCastException unused) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NullPointerException unused) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//HashMap的默认初始容量</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//HashMap的最大容量</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; <span class="comment">//aka 2**30</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//负载因子，代表了table的填充度有多少，默认是0.75</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将链表转化为红黑树的阈值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br><span class="line"><span class="comment">//将红黑树转化为链表的阈值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//树的最小容量？</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//底层是Node数组加链表或红黑树</span></span><br><span class="line"><span class="keyword">transient</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;</span><br><span class="line"></span><br><span class="line"><span class="comment">//包含键值对的个数</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结构性修改HashMap的次数</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩容阈值，大于该值且位置不为空，则进行resize()。</span></span><br><span class="line"><span class="keyword">int</span> threshold;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br></pre></td></tr></table></figure>
+
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Node&lt;K,V&gt; next;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//内部类构造方法</span></span><br><span class="line">        Node(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">            <span class="keyword">this</span>.hash = hash;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.value = value;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> K <span class="title">getKey</span><span class="params">()</span>        </span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">getValue</span><span class="params">()</span>      </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> key + <span class="string">"="</span> + value; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Objects.hashCode(key) ^ Objects.hashCode(value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">setValue</span><span class="params">(V newValue)</span> </span>&#123;</span><br><span class="line">            V oldValue = value;</span><br><span class="line">            value = newValue;</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o == <span class="keyword">this</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (o <span class="keyword">instanceof</span> Map.Entry) &#123;</span><br><span class="line">                Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">                <span class="keyword">if</span> (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">                    Objects.equals(value, e.getValue()))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>哈希算法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算键的插入位置 </span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过位运算返回大于cap且与cap最近的2的整数倍</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -838,644 +1476,6 @@ tar：打包指令
       <tags>
         <tag>操作系统</tag>
         <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】用户管理</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
-    shutdown -h now：立即关机
-    shutdown -h 1：  一分钟后关机
-    shutdown -r now： 立即重启
-halt
-    直接使用，效果等价于关机
-reboot
-    重启系统
-sync
-    将内存的东西保存到磁盘上
-    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
-su -用户名
-    切换用户
-注销用户：
-    logout
-    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
-可选项：
-    -d 指定目录
-
-groupadd 组名
-    增加用户组
-
-useradd -g 用户组 用户名
-    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
-    删除用户，但保留家目录
-userdel -r 用户名
-    删除用户，不保留家目录
-删除用户时，一般不删家目录
-
-groupdel 组名
-    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
-高权限到低权限不需要密码
-exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
-/etc/group  组配置文件（加密过了）
-/etc/shadow 口令配置文件</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】磁盘分区和挂载</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/</url>
-    <content><![CDATA[<h2 id="分区基础知识"><a href="#分区基础知识" class="headerlink" title="分区基础知识"></a>分区基础知识</h2><pre><code>分区方式：
-    1.mbr分区
-    2.gtp分区</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/image-20200413162818574.png" alt="image-20200413162818574"></p>
-<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><pre><code>给Linux增加一块硬盘，并挂载在/home/bin</code></pre><h4 id="如何添加一块硬盘"><a href="#如何添加一块硬盘" class="headerlink" title="如何添加一块硬盘"></a>如何添加一块硬盘</h4><pre><code>1.虚拟机添加硬盘
-2.分区
-    fdisk /dev/sdb
-    m
-    n
-    ……
-    w
-3.格式化
-    mkfs -t ext4 /dev/sdb1
-4.挂载
-    先创建一个目录
-    挂载：mount /dev/sdb1 /home/newdisk
-5.设置可以自动挂载  
-    vim /etc/fstab
-    /dev/sdb1            /home/newdisk           ext4    defaults        0 0
-
-删除挂载：
-    umount /dev/sdb1</code></pre><h4 id="磁盘情况查询"><a href="#磁盘情况查询" class="headerlink" title="磁盘情况查询"></a>磁盘情况查询</h4><pre><code>查询系统整体磁盘使用情况：
-    df -l
-查询指定目录的磁盘占用情况
-    du -h /目录
-        -s：指定目录占用大小汇总
-        -h：带计量单位
-        -a：含文件
-        -c：列出明细同时，增加汇总值
-        --max-depth=1：查询子目录深度</code></pre><h4 id="工作实用指令："><a href="#工作实用指令：" class="headerlink" title="工作实用指令："></a>工作实用指令：</h4><pre><code>1. 统计/home目录下文件个数
-    ls -l /home | grep &quot;^-&quot; | wc -l
-2. 统计/home目录下目录个数
-    ls -l /home | grep &quot;^d&quot; | wc -l
-3. 统计/home文件夹下文件的个数，包括子文件夹
-    ls -lR /home | grep &quot;^-&quot; | wc -l
-4. 统计文件夹下目录个数，包括子文件夹里的
-    ls -lR /home | grep &quot;^d&quot; | wc -l
-5. 以树状图形式显示目录
-    yum install tree
-    tree</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】网络配置</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163022103.png" alt="image-20200413163022103"></p>
-<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
-    系统——首选项——网络连接……
-第二种方式（指定固定IP)
-    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163103057.png" alt="image-20200413163103057"></p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163118404.png" alt="image-20200413163118404"></p>
-<pre><code>修改后一定要重启服务：
-    service network restart</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第三章：连续内存分布</title>
-    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
-    <content><![CDATA[<h1 id="3-1-计算机体系结构及内存分层体系"><a href="#3-1-计算机体系结构及内存分层体系" class="headerlink" title="3.1 计算机体系结构及内存分层体系"></a>3.1 计算机体系结构及内存分层体系</h1><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417165432213.png" alt="image-20200417165432213"></p>
-<h3 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
-<li><p>CPU：完成基本的对程序或软件的控制</p>
-</li>
-<li><p>内存：放置程序代码和他处理的数据</p>
-<p>  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170005686.png" alt="image-20200417170005686"></p>
-</li>
-<li><p>外设</p>
-</li>
-</ul>
-<h3 id="操作系统功能"><a href="#操作系统功能" class="headerlink" title="操作系统功能"></a>操作系统功能</h3><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170232005.png" alt="image-20200417170232005"></p>
-<h3 id="操作系统管理内存的方法"><a href="#操作系统管理内存的方法" class="headerlink" title="操作系统管理内存的方法"></a>操作系统管理内存的方法</h3><ul>
-<li>程序重定位</li>
-<li>分段</li>
-<li>分页</li>
-<li>虚拟内存</li>
-<li>按需分页虚拟内存</li>
-</ul>
-<h1 id="3-2-地址空间和地址生成"><a href="#3-2-地址空间和地址生成" class="headerlink" title="3.2 地址空间和地址生成"></a>3.2 地址空间和地址生成</h1><h3 id="地址空间定义"><a href="#地址空间定义" class="headerlink" title="地址空间定义"></a>地址空间定义</h3><ul>
-<li>物理地址空间 — 硬件支持的地址空间（<strong>主存和磁盘</strong>）</li>
-<li>逻辑地址空间— 一个运行程序所拥有的内存范围（一维的线性空间）</li>
-</ul>
-<h3 id="地址生成"><a href="#地址生成" class="headerlink" title="地址生成"></a>地址生成</h3><ul>
-<li>逻辑地址的生成</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417171957066.png" alt="image-20200417171957066"></p>
-<ul>
-<li><p>物理地址的生成</p>
-<p>  <strong>CPU方面</strong></p>
-<ol>
-<li>计算器<strong>需要</strong>在逻辑地址的<strong>内存内容</strong></li>
-<li>内存管理单元<strong>寻找</strong>在逻辑地址和物理地址之间的<strong>映射</strong></li>
-<li>控制器从总线<strong>发送</strong>在物理地址的内存内容的<strong>请求</strong></li>
-</ol>
-<p>  <strong>内存方面</strong></p>
-<ol start="4">
-<li>内存<strong>发送</strong>物理地址内存的<strong>内容</strong>给CPU</li>
-</ol>
-<p>  <strong>操作系统方面</strong></p>
-<ol start="5">
-<li><strong>建立</strong>逻辑地址和物理地址之间的<strong>映射</strong></li>
-</ol>
-</li>
-</ul>
-<h3 id="地址安全检查"><a href="#地址安全检查" class="headerlink" title="地址安全检查"></a>地址安全检查</h3><h1 id="3-3-连续内存分配"><a href="#3-3-连续内存分配" class="headerlink" title="3.3 连续内存分配"></a>3.3 连续内存分配</h1><h3 id="内存碎片问题"><a href="#内存碎片问题" class="headerlink" title="内存碎片问题"></a>内存碎片问题</h3><p>当我们给正在运行的程序分配空间之后，会出现一些空闲的空间（碎片）不能被利用</p>
-<ul>
-<li><p>外部碎片</p>
-<p>  在分配单元<strong>间</strong>未使用的内存（程序空间之间的碎片）</p>
-</li>
-<li><p>内部碎片</p>
-<p>  在分配单元<strong>中</strong>的未使用内存（在分配给程序的空间内部出现的碎片）</p>
-</li>
-</ul>
-<h3 id="分区的动态分配"><a href="#分区的动态分配" class="headerlink" title="分区的动态分配"></a>分区的动态分配</h3><ul>
-<li>简单的内存管理方法：<ul>
-<li>当一个程序准许运行在内存中时，分配一个连续的区间</li>
-<li>分配一个连续的内存区间给运行的程序以访问数据</li>
-</ul>
-</li>
-</ul>
-<h5 id="第一适配"><a href="#第一适配" class="headerlink" title="第一适配"></a>第一适配</h5><ul>
-<li>找到第一个满足需求的空闲块立马返回</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183628752.png" alt="image-20200417183628752"></p>
-<ul>
-<li>优点：<ul>
-<li>简单</li>
-<li>易于产生更大的空闲块，向着地址空间的结尾</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>容易产生外部碎片</li>
-<li>不确定性</li>
-</ul>
-</li>
-</ul>
-<h5 id="最佳适配"><a href="#最佳适配" class="headerlink" title="最佳适配"></a>最佳适配</h5><ul>
-<li>寻找空间中最满足需求的空闲块</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183554657.png" alt="image-20200417183554657"></p>
-<ul>
-<li>优点：<ul>
-<li>大部分分配是小尺寸时非常有效</li>
-<li>比较简单</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>分配时需要先将空闲块按大小排序进行查找，降低效率</li>
-<li>易产生很多没怎么用的微小碎片</li>
-</ul>
-</li>
-</ul>
-<h5 id="最差适配"><a href="#最差适配" class="headerlink" title="最差适配"></a>最差适配</h5><ul>
-<li>寻找空间中大小最不匹配的空闲块</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183701187.png" alt="image-20200417183701187"></p>
-<ul>
-<li>优点：<ul>
-<li>分配是中等尺寸时效果最好</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>效率降低</li>
-<li>容易破碎大的空闲块导致大分区无法被分配</li>
-</ul>
-</li>
-</ul>
-<h3 id="压缩式碎片整理"><a href="#压缩式碎片整理" class="headerlink" title="压缩式碎片整理"></a>压缩式碎片整理</h3><ul>
-<li>重置程序以合并孔洞，要求所有程序是 <strong>动态可重置的</strong></li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184612553.png" alt="image-20200417184612553"></p>
-<ul>
-<li>何时重置？</li>
-<li>开销如何？</li>
-</ul>
-<h3 id="交换式碎片整理"><a href="#交换式碎片整理" class="headerlink" title="交换式碎片整理"></a>交换式碎片整理</h3><ul>
-<li>运行程序需要更多的内存，抢占等待的程序并回收他们的内存</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184629751.png" alt="image-20200417184629751"></p>
-<ul>
-<li>选择哪些程序进行交换？</li>
-<li>何时进行？</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第三章：非连续式内存分布</title>
-    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
-    <content><![CDATA[<p> <strong>非连续内存分配优点</strong></p>
-<ul>
-<li>一个程序的物理地址是非连续的</li>
-<li>更好的内存利用和管理</li>
-<li>允许共享代码与数据</li>
-<li>支持动态加载和动态链接</li>
-</ul>
-<p><strong>潜在问题</strong></p>
-<ul>
-<li>如何建立虚拟地址与物理地址之间的转换<ul>
-<li>软件方案</li>
-<li>硬件方案<ul>
-<li>分段</li>
-<li>分页</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h1><h3 id="程序的分段地址空间"><a href="#程序的分段地址空间" class="headerlink" title="程序的分段地址空间"></a>程序的分段地址空间</h3><ul>
-<li>将逻辑地址空间分成各个块</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418141948265.png" alt="image-20200418141948265" style="zoom:50%;">
-
-<ul>
-<li>如下图，需要一种运行机制，来使<strong>逻辑地址空间</strong>与<strong>物理地址空间</strong>之间有对应的<strong>关联</strong></li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142034374.png" alt="image-20200418142034374" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142254435.png" alt="image-20200418142254435"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142312648.png" alt="image-20200418142312648" style="zoom:50%;">
-
-
-
-<h3 id="分段寻址方案"><a href="#分段寻址方案" class="headerlink" title="分段寻址方案"></a>分段寻址方案</h3><ul>
-<li><p>两种实现方案：</p>
-<ul>
-<li><p>段寄存器 + 地址寄存器：将段号和段内偏移分开放置</p>
-</li>
-<li><p>单地址实现方案：将段号和段内偏移放在一起</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142553901.png" alt="image-20200418142553901" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143008669.png" alt="image-20200418143008669"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143028307.png" alt="image-20200418143028307" style="zoom:50%;">
-
-
-
-<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><ul>
-<li>现在CPU主要使用分页方式</li>
-</ul>
-<h3 id="分页地址空间"><a href="#分页地址空间" class="headerlink" title="分页地址空间"></a>分页地址空间</h3><ul>
-<li><p>与分段方式相似，同样拥有页号和偏移</p>
-</li>
-<li><p>不同之处在于分段中<strong>段的大小可变</strong>，而分页中<strong>页的大小固定的</strong></p>
-</li>
-<li><p>帧（frame）和页（page）：</p>
-<ul>
-<li><p>划分<strong>物理内存</strong>至固定大小的<strong>帧</strong>：大小是2的幂次方</p>
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144103065.png" alt="image-20200418144103065" style="zoom:50%;">
-
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144606645.png" alt="image-20200418144606645" style="zoom:50%;">
-</li>
-<li><p>划分<strong>逻辑地址空间</strong>至相同大小的<strong>页</strong>：大小也是2的幂次方</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145629651.png&quot; alt=&quot;image-20200418145629651&quot; style=&quot;zoom:50%;&quot; /&gt;
-
-&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145930471.png&quot; alt=&quot;image-20200418145930471&quot; style=&quot;zoom:50%;&quot; /&gt;
-
-
-
-依据逻辑地址的页号到页表中查询出物理地址的帧号</code></pre><ul>
-<li>建立方案转化逻辑地址为物理地址（pages to frames）</li>
-</ul>
-<h3 id="页的寻址方案"><a href="#页的寻址方案" class="headerlink" title="页的寻址方案"></a>页的寻址方案</h3><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150212728.png" alt="image-20200418150212728" style="zoom:50%;">
-
-<h1 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li><p>页表其实就是一个<strong>大数组</strong>，索引代表的是 page_number，索引对应的值存的是 frame_number</p>
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150738864.png" alt="image-20200418150738864" style="zoom:50%;">
-
-</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418151533051.png" alt="image-20200418151533051" style="zoom: 80%;">
-
-<ul>
-<li>存在问题：访问一个内存单元需要两次访问内存，存在性能问题<ul>
-<li>一次获取页表项</li>
-<li>一次用于访问数据</li>
-</ul>
-</li>
-</ul>
-<h3 id="TLB（Translation-Look-aside-Buffer）"><a href="#TLB（Translation-Look-aside-Buffer）" class="headerlink" title="TLB（Translation Look-aside Buffer）"></a>TLB（Translation Look-aside Buffer）</h3><ul>
-<li>缓存近期访问的页帧转换表项<ul>
-<li>TLB使用关联内存（速度快容量小）实现，具备快速访问性能</li>
-<li>如果查到，则物理帧号可以被快速获取</li>
-<li>如果查不到，就在页表中进行查找然后将内容更新到TLB</li>
-</ul>
-</li>
-</ul>
-<h3 id="二级、多级页表（时间换空间）"><a href="#二级、多级页表（时间换空间）" class="headerlink" title="二级、多级页表（时间换空间）"></a>二级、多级页表（时间换空间）</h3><ul>
-<li>会增加时间开销</li>
-<li>省下空间（一级页表中的保留位为0，二级页表就不需要留位置了）</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153639436.png" alt="image-20200418153639436" style="zoom: 67%;">
-
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153843016.png" alt="image-20200418153843016" style="zoom:67%;">
-
-<h3 id="反向页表"><a href="#反向页表" class="headerlink" title="反向页表"></a>反向页表</h3><ul>
-<li>大地址空间问题：<ul>
-<li>有大地址空间，向前映射页表变得繁琐（5级页表）</li>
-<li>不是让页表与逻辑地址空间的大小相对应，而是让页表与物理地址空间的大小相对于（虚拟地址空间增长速度快于物理地址空间）</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155010474.png" alt="image-20200418155010474" style="zoom: 67%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155148496.png" alt="image-20200418155148496"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155557962.png" alt="image-20200418155557962" style="zoom:67%;">]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Spring注解驱动开发】前篇</title>
-    <url>/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</url>
-    <content><![CDATA[<h2 id="Bean的初始化和生命周期"><a href="#Bean的初始化和生命周期" class="headerlink" title="Bean的初始化和生命周期"></a>Bean的初始化和生命周期</h2><h4 id="bean-的生命周期"><a href="#bean-的生命周期" class="headerlink" title="bean 的生命周期"></a>bean 的生命周期</h4><ul>
-<li><p>bean 创建—&gt;初始化—&gt;销毁的过程  </p>
-</li>
-<li><p>Spring 容器管理 bean 的生命周期</p>
-</li>
-</ul>
-<h4 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h4><ul>
-<li><p>单实例：<strong>容器启动</strong>时创建对象</p>
-</li>
-<li><p>多实例：<strong>获取对象</strong>时创建对象</p>
-</li>
-<li><p>初始化：</p>
-<ul>
-<li>对象创建完成 ，并赋值，调用初始化方法  </li>
-</ul>
-</li>
-<li><p>销毁：</p>
-<ul>
-<li>单实例：容器关闭时销毁</li>
-<li>多实例：容器不会管理该bean，不会调用销毁方法</li>
-</ul>
-</li>
-</ul>
-<h4 id="自定义初始化和销毁方法"><a href="#自定义初始化和销毁方法" class="headerlink" title="自定义初始化和销毁方法"></a>自定义初始化和销毁方法</h4><h5 id="1-指定初始化和销毁方法"><a href="#1-指定初始化和销毁方法" class="headerlink" title="1.指定初始化和销毁方法"></a>1.指定初始化和销毁方法</h5><ul>
-<li><p>之前的初始化方法：<code>&lt;bean init-method=&quot;&quot; destory-method=&quot;&quot;&gt;&lt;/bean&gt;</code>  </p>
-</li>
-<li><p>基于注解的初始化方法：</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"容器创建完成！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被创建了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"方法被销毁了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置初始化和销毁方法</span></span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>,destroyMethod = <span class="string">"destroy"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-让Bean实现-InitializingBean接口-和-DisposableBean接口"><a href="#2-让Bean实现-InitializingBean接口-和-DisposableBean接口" class="headerlink" title="2.让Bean实现 InitializingBean接口 和 DisposableBean接口"></a>2.让Bean实现 <strong>InitializingBean接口</strong> 和 <strong>DisposableBean接口</strong></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"销毁方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"初始化方法~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-可以用-JSR250："><a href="#3-可以用-JSR250：" class="headerlink" title="3.可以用 JSR250："></a>3.可以用 JSR250：</h5><p>​    <code>@PostConstruct</code>：在bean创建完成并属性复制完成，执行初始化方法</p>
-<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170120664.png" alt="image-20200413170120664"></p>
-<p>​    <code>PreDestroy</code>：在容器销毁bean之前通知我们进行销毁工作</p>
-<p>​    <img src="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/image-20200413170249851.png" alt="image-20200413170249851"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"@PreDestroy"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-BeanPostProcessor"><a href="#4-BeanPostProcessor" class="headerlink" title="4.BeanPostProcessor"></a>4.BeanPostProcessor</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之前进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="comment">//在初始化之后进行工作</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>BeanPostProcessor 原理：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 遍历容器中的所有 BeanPostProcessor</span></span><br><span class="line"><span class="comment"> 挨个执行 beforeInitialization</span></span><br><span class="line"><span class="comment"> 一旦返回 null</span></span><br><span class="line"><span class="comment"> return，跳出 for 循环</span></span><br><span class="line"><span class="comment"> 不会执行后面的 BeanPostProcessor</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//给 bean 进行赋值</span></span><br><span class="line">populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line"><span class="comment">//initializeBean</span></span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//beforeInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsBeforeInitialization(bean, beanName);</span><br><span class="line">    <span class="comment">//执行自定义初始化方法</span></span><br><span class="line">    <span class="keyword">this</span>.invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">    <span class="comment">//afterInitialization</span></span><br><span class="line">    wrappedBean = <span class="keyword">this</span>.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>Spring底层对 BeanPostProcessor 的使用：</strong></p>
-<p>​        bean赋值、注入其他组件、<code>@Autowired</code>、生命周期注解功能、<code>@Async</code>、···</p>
-<h2 id="属性赋值：-Value"><a href="#属性赋值：-Value" class="headerlink" title="属性赋值：@Value"></a>属性赋值：@Value</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    	1.基本数值</span></span><br><span class="line"><span class="comment">    	2.SpEL：#&#123;&#125;</span></span><br><span class="line"><span class="comment">    	3.$&#123;&#125;：取出配置文件中的值（在运行环境变量中的值）</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"wxs"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@value</span>(<span class="string">"#&#123;20-2&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//告诉spring这是一个配置类</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value=&#123;<span class="string">"classpath:/person.properties"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给容器注册一个bean，id默认为方法名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#classpath:/person.properties</span></span><br><span class="line"><span class="meta">person.hobby</span> = <span class="string">singJumpRapAndBasketball</span></span><br></pre></td></tr></table></figure>
-<h2 id="环境切换：-Profile"><a href="#环境切换：-Profile" class="headerlink" title="环境切换：@Profile"></a>环境切换：@Profile</h2><ul>
-<li><code>@Profile</code> 注解：<strong>逻辑组名称</strong>，只有当这些Profile被激活的时候，才会将Profile中所对应的Bean注册到Spring容器中。<ul>
-<li>加了环境标识的bean，只有环境被激活才会被注册到容器中</li>
-<li>写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效</li>
-<li>没有标注环境标识的bean，在任何环境下都加载</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="meta">@Profile</span>(<span class="string">"dev"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceDev</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Profile</span>(<span class="string">"test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Profile</span>(<span class="string">"prod"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSourceProd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	...   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>激活方法：</p>
-<ol>
-<li><p>使用命令行动态参数： 设置虚拟机参数 -Dspring.profiles.active=test/dev/prod</p>
-</li>
-<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建ApplicationContext</span></span><br><span class="line">AnnotationConfigApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置需要激活的环境</span></span><br><span class="line">context.getEnvironment().setDefaultProfiles(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//注册主配置类</span></span><br><span class="line">context.register(MainConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//启动刷新容器</span></span><br><span class="line">context.refresh();</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-        <tag>尚硅谷</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】进程管理</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><pre><code>指令：ps
-参数：
-    -a： 显示所有进程
-    -u： 以用户格式显示
-    -x： 显示后台运行的参数
-    -ef：查看父进程
-
-pstree(以树状形式查看进程)
-    -u 以用户格式显示</code></pre><h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><pre><code>kill [选项] 进程号
-killall 进程名
-
-选项：
-    -9：强制终止</code></pre><h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><pre><code>service 服务名 [start|stop|restart|reload|status]
-CentOS7.0后，不再使用 service，改用 systemctl
-
-查看服务名：
-    1.setup
-    2.ls -l /etc/init.d/
-
-开机流程：
-    1.开机
-    2.BIOS
-    3./boot
-    4.init进程1
-    5.运行级别
-    6.运行级别对应服务
-
-给每个运行级别设置自启动/关闭——chkconfig 
-    1.查看服务
-        chkconfig --list | grep xx
-    2.chkconfig 服务名 --list
-    3.设置是否自启动
-        chkconfig --level 5 服务名 on/off
-
-        checkconfig --add 服务名：加入服务</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第二章：操作系统基础操作</title>
-    <url>/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="2-1-启动、中断、异常和系统调用"><a href="#2-1-启动、中断、异常和系统调用" class="headerlink" title="2.1 启动、中断、异常和系统调用"></a>2.1 启动、中断、异常和系统调用</h2><h4 id="一-启动"><a href="#一-启动" class="headerlink" title="一. 启动"></a>一. 启动</h4><p>DISK：存放 OS</p>
-<p>BIOS：基本I/O处理系统</p>
-<p>Bootloader：加载 OS</p>
-<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/image-20200416092711782.png" alt="image-20200416092711782"></p>
-<h4 id="二-中断、异常和系统调用"><a href="#二-中断、异常和系统调用" class="headerlink" title="二. 中断、异常和系统调用"></a>二. 中断、异常和系统调用</h4><ul>
-<li><p>定义：</p>
-<ul>
-<li>系统调用（来源于应用程序）：应用程序主动向操作系统发出服务请求</li>
-<li>异常（来源于不良的应用程序）：非法指令或者其他坏的处理状态（如内存出错）</li>
-<li>中断（来源于外设）：来自不同的硬件设备的计时器和网络的中断</li>
-</ul>
-</li>
-<li><p>源头：</p>
-<ul>
-<li>中断：外设</li>
-<li>异常：应用程序意想不到的行为</li>
-<li>系统调用：应用程序请求操作系统提供服务</li>
-</ul>
-</li>
-<li><p>处理时间：</p>
-<ul>
-<li>中断：异步</li>
-<li>异常：同步</li>
-<li>系统调用：异步或同步</li>
-</ul>
-</li>
-<li><p>响应：</p>
-<ul>
-<li>中断：持续，对用户应用程序是透明的</li>
-<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
-<li>系统调用：等待和持续</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-2-中断、异常和系统调用"><a href="#2-2-中断、异常和系统调用" class="headerlink" title="2.2 中断、异常和系统调用"></a>2.2 中断、异常和系统调用</h2><h4 id="一-中断处理机制"><a href="#一-中断处理机制" class="headerlink" title="一. 中断处理机制"></a>一. 中断处理机制</h4><ul>
-<li><p>硬件：设置中断标记（CPU初始化）</p>
-<ol>
-<li>将内部、外部事件设置中断标记</li>
-<li>中断事件的ID</li>
-</ol>
-</li>
-<li><p>软件：</p>
-<ul>
-<li>保存当前处理状态</li>
-<li>中断服务程序处理</li>
-<li>清除中断标记</li>
-<li>恢复之前保存的处理状态</li>
-</ul>
-</li>
-</ul>
-<h4 id="二-异常处理机制"><a href="#二-异常处理机制" class="headerlink" title="二 . 异常处理机制"></a>二 . 异常处理机制</h4><ul>
-<li><p>异常：异常编号</p>
-<ul>
-<li><p>保存现场</p>
-</li>
-<li><p>异常处理</p>
-<ul>
-<li>杀死产生异常的程序</li>
-<li>重新执行异常指令</li>
-</ul>
-</li>
-<li><p>恢复现场</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="三-系统调用"><a href="#三-系统调用" class="headerlink" title="三. 系统调用"></a>三. 系统调用</h4><ul>
-<li><p>应用程序调用<code>printf()</code>时，会触发系统调用<code>write()</code></p>
-</li>
-<li><p>操作系统提供很多 API 来进行系统调用</p>
-</li>
-<li><p>跨越操作系统边界需要支付额外的开销：</p>
-<ul>
-<li>建立中断/异常/系统调用号与对应服务例程映射关系的初始化开销</li>
-<li>建立内核堆栈</li>
-<li>验证参数</li>
-<li>内核态映射到用户态的地址空间</li>
-<li>内核态独立地址空间</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【JDK1.8源码】AbstractMap、HashMap</title>
-    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractMap%E3%80%81HashMap/</url>
-    <content><![CDATA[<h2 id="AbstractMap"><a href="#AbstractMap" class="headerlink" title="AbstractMap"></a>AbstractMap</h2><h4 id="类关系"><a href="#类关系" class="headerlink" title="类关系"></a>类关系</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现了Map接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Map接口  </li>
-</ul>
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li><p>判断是否包含键或值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用迭代器判断是否含有值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsValue</span><span class="params">(Object value)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (value==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getValue()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (value.equals(e.getValue()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用迭代器判断是否含有键</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Map.Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>增删改查</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//由键获取值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                <span class="keyword">return</span> e.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不支持添加元素，会抛出异常，想要增加元素需要子类重写该方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据所给键删除元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">remove</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">    Entry&lt;K,V&gt; correctEntry = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (key==<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (correctEntry==<span class="keyword">null</span> &amp;&amp; i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (e.getKey()==<span class="keyword">null</span>)</span><br><span class="line">                correctEntry = e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (correctEntry==<span class="keyword">null</span> &amp;&amp; i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            <span class="keyword">if</span> (key.equals(e.getKey()))</span><br><span class="line">                correctEntry = e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    V oldValue = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (correctEntry !=<span class="keyword">null</span>) &#123;</span><br><span class="line">        oldValue = correctEntry.getValue();</span><br><span class="line">        i.remove();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>返回键或值的集合</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//临时变量</span></span><br><span class="line"><span class="keyword">transient</span> Set&lt;K&gt;        keySet;     <span class="comment">//将Map中的键放在Set中</span></span><br><span class="line"><span class="keyword">transient</span> Collection&lt;V&gt; values;     <span class="comment">//将Map中的值放在Collection中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//得到键的集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Set&lt;K&gt; ks = keySet;</span><br><span class="line">    <span class="keyword">if</span> (ks == <span class="keyword">null</span>) &#123;</span><br><span class="line">        ks = <span class="keyword">new</span> AbstractSet&lt;K&gt;() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> Iterator&lt;K&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Iterator&lt;K&gt;() &#123;</span><br><span class="line">                    <span class="keyword">private</span> Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.hasNext();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> K <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.next().getKey();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        i.remove();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.size();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.isEmpty();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                AbstractMap.<span class="keyword">this</span>.clear();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object k)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.containsKey(k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        keySet = ks;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ks;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//得到值的集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Collection&lt;V&gt; <span class="title">values</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Collection&lt;V&gt; vals = values;</span><br><span class="line">    <span class="keyword">if</span> (vals == <span class="keyword">null</span>) &#123;</span><br><span class="line">        vals = <span class="keyword">new</span> AbstractCollection&lt;V&gt;() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> Iterator&lt;V&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Iterator&lt;V&gt;() &#123;</span><br><span class="line">                    <span class="keyword">private</span> Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.hasNext();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> V <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> i.next().getValue();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        i.remove();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.size();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.isEmpty();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                AbstractMap.<span class="keyword">this</span>.clear();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object v)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> AbstractMap.<span class="keyword">this</span>.containsValue(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        values = vals;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vals;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>重写equals方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> Map))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    Map&lt;?,?&gt; m = (Map&lt;?,?&gt;) o;</span><br><span class="line">    <span class="keyword">if</span> (m.size() != size())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Iterator&lt;Entry&lt;K,V&gt;&gt; i = entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; e = i.next();</span><br><span class="line">            K key = e.getKey();</span><br><span class="line">            V value = e.getValue();</span><br><span class="line">            <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!(m.get(key)==<span class="keyword">null</span> &amp;&amp; m.containsKey(key)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (!value.equals(m.get(key)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassCastException unused) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NullPointerException unused) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//HashMap的默认初始容量</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//HashMap的最大容量</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; <span class="comment">//aka 2**30</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//负载因子，代表了table的填充度有多少，默认是0.75</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将链表转化为红黑树的阈值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br><span class="line"><span class="comment">//将红黑树转化为链表的阈值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//树的最小容量？</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//底层是Node数组加链表或红黑树</span></span><br><span class="line"><span class="keyword">transient</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;</span><br><span class="line"></span><br><span class="line"><span class="comment">//包含键值对的个数</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结构性修改HashMap的次数</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩容阈值，大于该值且位置不为空，则进行resize()。</span></span><br><span class="line"><span class="keyword">int</span> threshold;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br></pre></td></tr></table></figure>
-
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Node&lt;K,V&gt; next;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//内部类构造方法</span></span><br><span class="line">        Node(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">            <span class="keyword">this</span>.hash = hash;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.value = value;</span><br><span class="line">            <span class="keyword">this</span>.next = next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> K <span class="title">getKey</span><span class="params">()</span>        </span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">getValue</span><span class="params">()</span>      </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> key + <span class="string">"="</span> + value; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Objects.hashCode(key) ^ Objects.hashCode(value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">setValue</span><span class="params">(V newValue)</span> </span>&#123;</span><br><span class="line">            V oldValue = value;</span><br><span class="line">            value = newValue;</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o == <span class="keyword">this</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (o <span class="keyword">instanceof</span> Map.Entry) &#123;</span><br><span class="line">                Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">                <span class="keyword">if</span> (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">                    Objects.equals(value, e.getValue()))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>哈希算法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算键的插入位置 </span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过位运算返回大于cap且与cap最近的2的整数倍</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
       </tags>
   </entry>
 </search>

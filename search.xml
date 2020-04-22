@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【JDK1.8源码】AbstractList、ArrayList、LinkedList</title>
+    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractList%E3%80%81ArrayList%E3%80%81LinkedList/</url>
+    <content><![CDATA[<h2 id="AbstractList"><a href="#AbstractList" class="headerlink" title="AbstractList"></a>AbstractList</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 继承自父类AbstractCollection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        两个抽象方法，子类必须实现</span></span><br><span class="line"><span class="comment">        public abstract Iterator&lt;E&gt; iterator();</span></span><br><span class="line"><span class="comment">        public abstract int size();</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 实现了List&lt;E&gt;接口</span></span><br><span class="line"><span class="comment">    public interface List&lt;E&gt; extends Collection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        int size();</span></span><br><span class="line"><span class="comment">        boolean isEmpty();</span></span><br><span class="line"><span class="comment">        boolean contains(Object o);</span></span><br><span class="line"><span class="comment">        Object[] toArray();</span></span><br><span class="line"><span class="comment">        void add(int index, E element);</span></span><br><span class="line"><span class="comment">        E remove(int index);</span></span><br><span class="line"><span class="comment">        int indexOf(Object o);</span></span><br><span class="line"><span class="comment">        ...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">AbstractCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>提供了抽象方法 <code>abstract public E get(int index);</code> <strong>子类必须实现</strong></li>
+<li>默认不支持的 <code>add()</code>, <code>set()</code>,<code>remove()</code>,子类要想实现元素的修改必须<strong>重写这些方法</strong><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;</span><br></pre></td></tr></table></figure></li>
+<li>全部/局部删除<br><code>public void clear() {removeRange(0, size());}</code><br><code>protected void removeRange(int fromIndex, int toIndex)</code></li>
+</ul>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">private</span> <span class="title">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">RandomAccessSubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><h4 id="类的关系图"><a href="#类的关系图" class="headerlink" title="类的关系图"></a>类的关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    List&lt;E&gt;接口：提供了一些基本的增、删、改、查方法</span></span><br><span class="line"><span class="comment">    RandomAccess接口：说明改方法支持随机访问，get、set等方法时间复杂度为 O(1)</span></span><br><span class="line"><span class="comment">    Serializable接口：可序列化接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><p>==底层是一个Object数组==</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始默认容量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//容量为0的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"><span class="comment">//容量为默认容量的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData;</span><br><span class="line"><span class="comment">//所含元素的数量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>修剪容量<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//结构性修改数组的次数加一</span></span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">if</span> (size &lt; elementData.length) &#123;</span><br><span class="line">        elementData = (size == <span class="number">0</span>)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCapacity</span><span class="params">(Object[] elementData, <span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="comment">//新的容量是旧容量的1.5倍</span></span><br><span class="line">    <span class="comment">//向右位移运算，提升处理速度</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//仍要小于最少需要的容量，则 新容量=最少需要的容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>判断是否包含元素o  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若不包含该元素，indexOf会返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;<span class="keyword">return</span> indexOf(o) &gt;= <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h4 id="类关系图-1"><a href="#类关系图-1" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSequentialList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br></pre></td></tr></table></figure>
+<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>连接的相关方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//将元素e连接到链表头</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;    <span class="comment">//设置变量存储原来的链表头</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f); <span class="comment">//根据元素e新建节点</span></span><br><span class="line">    first = newNode;    <span class="comment">//将新建的节点设为链表的头</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)  <span class="comment">//如果原来的链表头是空的，则将新的节点也设成链表的尾部</span></span><br><span class="line">        last = newNode;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//否则，连接旧头和新头</span></span><br><span class="line">        f.prev = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将元素e连接到链表尾，与linkFirst同理</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;</span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*将节点e连接到某个非空节点前</span></span><br><span class="line"><span class="comment">  思路：设置新的节点存储目标节点的前一个节点，然后将目标节点的前一个节点的next指向元素e的节点，</span></span><br><span class="line"><span class="comment">        succ.prev = newNode</span></span><br><span class="line"><span class="comment">        如果目标节点的前一个节点为空，则将头节点设置为 e节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert succ != null;</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pred.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除第一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert f == first &amp;&amp; f != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = f.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next;</span><br><span class="line">    f.item = <span class="keyword">null</span>;</span><br><span class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    first = next;</span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">        last = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        next.prev = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除最后一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkLast</span><span class="params">(Node&lt;E&gt; l)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert l == last &amp;&amp; l != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = l.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = l.prev;</span><br><span class="line">    l.item = <span class="keyword">null</span>;</span><br><span class="line">    l.prev = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    last = prev;</span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>)</span><br><span class="line">        first = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        prev.next = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除不为空的节点x</span></span><br><span class="line"><span class="comment">//前面的值指向后面的值，后面的值指向前面的值</span></span><br><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert x != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = x.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【JDK1.8源码】AbstractStringBuilder、StringBuffer、StringBuilder</title>
+    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractStringBuilder%E3%80%81StringBuffer%E3%80%81StringBuilder/</url>
+    <content><![CDATA[<h2 id="AbstractStringBuilder"><a href="#AbstractStringBuilder" class="headerlink" title="AbstractStringBuilder"></a>AbstractStringBuilder</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*抽象类</span></span><br><span class="line"><span class="comment">  实现两个接口：Appendable和CharSequence</span></span><br><span class="line"><span class="comment">  Appendable：表明类中序列是可拓展的</span></span><br><span class="line"><span class="comment">  CharSequence：只读的字符序列接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractStringBuilder</span> <span class="keyword">implements</span> <span class="title">Appendable</span>, <span class="title">CharSequence</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">interface</span> <span class="title">Appendable</span> </span>&#123;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span>[] value;   <span class="comment">//底层是一个可变的字符数组</span></span><br><span class="line"><span class="keyword">int</span> count;      <span class="comment">//字符数组中含有的元素</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">//无参构造器</span></span><br><span class="line">AbstractStringBuilder() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//给定容量的构造器</span></span><br><span class="line">AbstractStringBuilder(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">    value = <span class="keyword">new</span> <span class="keyword">char</span>[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="扩容机制"><a href="#扩容机制" class="headerlink" title="扩容机制"></a>扩容机制</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 确保数组的大小够用，不够用就调用方法进行拓展</span></span><br><span class="line"><span class="comment"> * 调用方法 newCapacity来确定扩容后数组的大小</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> minimumCapacity 添加元素后字符数组所需要的最小容量</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minimumCapacity &gt; <span class="number">0</span>)</span><br><span class="line">        ensureCapacityInternal(minimumCapacity);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minimumCapacity - value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        value = Arrays.copyOf(value,</span><br><span class="line">                newCapacity(minimumCapacity));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">//如果 新容量（原来容量*2+2） 还是小于所需要的容量，直接将 新容量=所需要的容量</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = (value.length &lt;&lt; <span class="number">1</span>) + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当新容量过大时，调用hugeCapacity方法，否则直接返回新容量</span></span><br><span class="line">    <span class="keyword">return</span> (newCapacity &lt;= <span class="number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        ? hugeCapacity(minCapacity)</span><br><span class="line">        : newCapacity;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//过大直接抛异常</span></span><br><span class="line">    <span class="keyword">if</span> (Integer.MAX_VALUE - minCapacity &lt; <span class="number">0</span>) &#123; <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//比数组最大容量大则返回本身，否则返回数组的最大容量</span></span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE)</span><br><span class="line">        ? minCapacity : MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><ul>
+<li><code>trimToSize()</code>:如果value数组的容量有多余的，那么就把多余的全部都释放掉</li>
+<li><code>append()</code> <code>delete()</code> <code>insert()</code> <code>relpace()</code>方法都是调用 <code>System.arrayCopy()</code>或者<code>Arrays.copyOf()</code>方法</li>
+<li><code>reverse</code>方法是设置两个指针分别指向中间元素和中间边上的元素，交换后向两侧移动，直至整个数组颠倒完成</li>
+</ul>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ul>
+<li>线程安全的可变字符序列</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//继承自AbstractStringBuilder，实现了Serializable、CharSequence两个接口</span></span><br><span class="line"><span class="comment">//CharSequence：可序列化接口，是一个空接口，只是一个可序列化的标志</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBuffer</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractStringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//？？？</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">char</span>[] toStringCache;</span><br><span class="line"><span class="comment">//序列化id</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">3388685877147921107L</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用synchronized关键字修饰，确保线程安全</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(...)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">delete</span><span class="params">(...)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">replace</span><span class="params">(...)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">delete</span><span class="params">(...)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对数组进行修改的方法中会先将数组toStringCache置空<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    toStringCache = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.append(c);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><ul>
+<li>非线程安全、可变的字符序列</li>
+<li>运行速度快，一般情况（单线程）推荐使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractStringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】JavaEE</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
+    <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
+<li><p>进入配置文件</p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163743711.png" alt="image-20200413163743711"></p>
+</li>
+<li><p>配置环境变量</p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163802504.png" alt="image-20200413163802504"></p>
+</li>
+<li><p>注销用户，环境变量才能生效</p>
+</li>
+</ul>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><pre><code>运行tomcat需要在其文件夹bin目录下，执行：  
+    ./startup.sh
+
+使用windows系统访问在Linux部署的8080端口：
+    1.vim /etc/sysconfig/iptables
+    2.如图
+    3.重启防火墙</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163825021.png" alt="image-20200413163825021"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【JDK1.8源码】JDK源码阅读目录</title>
     <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91JDK%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<blockquote>
@@ -115,48 +224,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【JDK1.8源码】AbstractStringBuilder、StringBuffer、StringBuilder</title>
-    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractStringBuilder%E3%80%81StringBuffer%E3%80%81StringBuilder/</url>
-    <content><![CDATA[<h2 id="AbstractStringBuilder"><a href="#AbstractStringBuilder" class="headerlink" title="AbstractStringBuilder"></a>AbstractStringBuilder</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*抽象类</span></span><br><span class="line"><span class="comment">  实现两个接口：Appendable和CharSequence</span></span><br><span class="line"><span class="comment">  Appendable：表明类中序列是可拓展的</span></span><br><span class="line"><span class="comment">  CharSequence：只读的字符序列接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractStringBuilder</span> <span class="keyword">implements</span> <span class="title">Appendable</span>, <span class="title">CharSequence</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">interface</span> <span class="title">Appendable</span> </span>&#123;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(CharSequence csq, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function">Appendable <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span>[] value;   <span class="comment">//底层是一个可变的字符数组</span></span><br><span class="line"><span class="keyword">int</span> count;      <span class="comment">//字符数组中含有的元素</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">//无参构造器</span></span><br><span class="line">AbstractStringBuilder() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//给定容量的构造器</span></span><br><span class="line">AbstractStringBuilder(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">    value = <span class="keyword">new</span> <span class="keyword">char</span>[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="扩容机制"><a href="#扩容机制" class="headerlink" title="扩容机制"></a>扩容机制</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 确保数组的大小够用，不够用就调用方法进行拓展</span></span><br><span class="line"><span class="comment"> * 调用方法 newCapacity来确定扩容后数组的大小</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> minimumCapacity 添加元素后字符数组所需要的最小容量</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minimumCapacity &gt; <span class="number">0</span>)</span><br><span class="line">        ensureCapacityInternal(minimumCapacity);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minimumCapacity - value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        value = Arrays.copyOf(value,</span><br><span class="line">                newCapacity(minimumCapacity));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">//如果 新容量（原来容量*2+2） 还是小于所需要的容量，直接将 新容量=所需要的容量</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = (value.length &lt;&lt; <span class="number">1</span>) + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当新容量过大时，调用hugeCapacity方法，否则直接返回新容量</span></span><br><span class="line">    <span class="keyword">return</span> (newCapacity &lt;= <span class="number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        ? hugeCapacity(minCapacity)</span><br><span class="line">        : newCapacity;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//过大直接抛异常</span></span><br><span class="line">    <span class="keyword">if</span> (Integer.MAX_VALUE - minCapacity &lt; <span class="number">0</span>) &#123; <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//比数组最大容量大则返回本身，否则返回数组的最大容量</span></span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE)</span><br><span class="line">        ? minCapacity : MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><ul>
-<li><code>trimToSize()</code>:如果value数组的容量有多余的，那么就把多余的全部都释放掉</li>
-<li><code>append()</code> <code>delete()</code> <code>insert()</code> <code>relpace()</code>方法都是调用 <code>System.arrayCopy()</code>或者<code>Arrays.copyOf()</code>方法</li>
-<li><code>reverse</code>方法是设置两个指针分别指向中间元素和中间边上的元素，交换后向两侧移动，直至整个数组颠倒完成</li>
-</ul>
-<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ul>
-<li>线程安全的可变字符序列</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//继承自AbstractStringBuilder，实现了Serializable、CharSequence两个接口</span></span><br><span class="line"><span class="comment">//CharSequence：可序列化接口，是一个空接口，只是一个可序列化的标志</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBuffer</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractStringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//？？？</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">char</span>[] toStringCache;</span><br><span class="line"><span class="comment">//序列化id</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">3388685877147921107L</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用synchronized关键字修饰，确保线程安全</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(...)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">delete</span><span class="params">(...)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">replace</span><span class="params">(...)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">delete</span><span class="params">(...)</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>对数组进行修改的方法中会先将数组toStringCache置空<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    toStringCache = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.append(c);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><ul>
-<li>非线程安全、可变的字符序列</li>
-<li>运行速度快，一般情况（单线程）推荐使用</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">StringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractStringBuilder</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">CharSequence</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【JDK1.8源码】Object、String</title>
     <url>/2020/04/11/%E3%80%90JDK1.8%E3%80%91Object%E3%80%81String/</url>
     <content><![CDATA[<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
@@ -184,73 +251,6 @@
       <tags>
         <tag>Java</tag>
         <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【JDK1.8源码】AbstractList、ArrayList、LinkedList</title>
-    <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractList%E3%80%81ArrayList%E3%80%81LinkedList/</url>
-    <content><![CDATA[<h2 id="AbstractList"><a href="#AbstractList" class="headerlink" title="AbstractList"></a>AbstractList</h2><h4 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 继承自父类AbstractCollection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        两个抽象方法，子类必须实现</span></span><br><span class="line"><span class="comment">        public abstract Iterator&lt;E&gt; iterator();</span></span><br><span class="line"><span class="comment">        public abstract int size();</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 实现了List&lt;E&gt;接口</span></span><br><span class="line"><span class="comment">    public interface List&lt;E&gt; extends Collection&lt;E&gt;</span></span><br><span class="line"><span class="comment">        int size();</span></span><br><span class="line"><span class="comment">        boolean isEmpty();</span></span><br><span class="line"><span class="comment">        boolean contains(Object o);</span></span><br><span class="line"><span class="comment">        Object[] toArray();</span></span><br><span class="line"><span class="comment">        void add(int index, E element);</span></span><br><span class="line"><span class="comment">        E remove(int index);</span></span><br><span class="line"><span class="comment">        int indexOf(Object o);</span></span><br><span class="line"><span class="comment">        ...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">AbstractCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>提供了抽象方法 <code>abstract public E get(int index);</code> <strong>子类必须实现</strong></li>
-<li>默认不支持的 <code>add()</code>, <code>set()</code>,<code>remove()</code>,子类要想实现元素的修改必须<strong>重写这些方法</strong><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;<span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();&#125;</span><br></pre></td></tr></table></figure></li>
-<li>全部/局部删除<br><code>public void clear() {removeRange(0, size());}</code><br><code>protected void removeRange(int fromIndex, int toIndex)</code></li>
-</ul>
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">private</span> <span class="title">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">RandomAccessSubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">SubList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><h4 id="类的关系图"><a href="#类的关系图" class="headerlink" title="类的关系图"></a>类的关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    List&lt;E&gt;接口：提供了一些基本的增、删、改、查方法</span></span><br><span class="line"><span class="comment">    RandomAccess接口：说明改方法支持随机访问，get、set等方法时间复杂度为 O(1)</span></span><br><span class="line"><span class="comment">    Serializable接口：可序列化接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><p>==底层是一个Object数组==</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始默认容量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//容量为0的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"><span class="comment">//容量为默认容量的空数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData;</span><br><span class="line"><span class="comment">//所含元素的数量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</span><br></pre></td></tr></table></figure>
-
-<h4 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>修剪容量<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//结构性修改数组的次数加一</span></span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">if</span> (size &lt; elementData.length) &#123;</span><br><span class="line">        elementData = (size == <span class="number">0</span>)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>扩容<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCapacity</span><span class="params">(Object[] elementData, <span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="comment">//新的容量是旧容量的1.5倍</span></span><br><span class="line">    <span class="comment">//向右位移运算，提升处理速度</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="comment">//仍要小于最少需要的容量，则 新容量=最少需要的容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>判断是否包含元素o  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若不包含该元素，indexOf会返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;<span class="keyword">return</span> indexOf(o) &gt;= <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h4 id="类关系图-1"><a href="#类关系图-1" class="headerlink" title="类关系图"></a>类关系图</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSequentialList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="成员变量-1"><a href="#成员变量-1" class="headerlink" title="成员变量"></a>成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br></pre></td></tr></table></figure>
-<h4 id="构造器-2"><a href="#构造器-2" class="headerlink" title="构造器"></a>构造器</h4><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>连接的相关方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//将元素e连接到链表头</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;    <span class="comment">//设置变量存储原来的链表头</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f); <span class="comment">//根据元素e新建节点</span></span><br><span class="line">    first = newNode;    <span class="comment">//将新建的节点设为链表的头</span></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)  <span class="comment">//如果原来的链表头是空的，则将新的节点也设成链表的尾部</span></span><br><span class="line">        last = newNode;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//否则，连接旧头和新头</span></span><br><span class="line">        f.prev = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将元素e连接到链表尾，与linkFirst同理</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;</span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*将节点e连接到某个非空节点前</span></span><br><span class="line"><span class="comment">  思路：设置新的节点存储目标节点的前一个节点，然后将目标节点的前一个节点的next指向元素e的节点，</span></span><br><span class="line"><span class="comment">        succ.prev = newNode</span></span><br><span class="line"><span class="comment">        如果目标节点的前一个节点为空，则将头节点设置为 e节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert succ != null;</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pred.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除第一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert f == first &amp;&amp; f != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = f.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next;</span><br><span class="line">    f.item = <span class="keyword">null</span>;</span><br><span class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    first = next;</span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">        last = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        next.prev = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于删除最后一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkLast</span><span class="params">(Node&lt;E&gt; l)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert l == last &amp;&amp; l != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = l.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = l.prev;</span><br><span class="line">    l.item = <span class="keyword">null</span>;</span><br><span class="line">    l.prev = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">    last = prev;</span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>)</span><br><span class="line">        first = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        prev.next = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除不为空的节点x</span></span><br><span class="line"><span class="comment">//前面的值指向后面的值，后面的值指向前面的值</span></span><br><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert x != null;</span></span><br><span class="line">    <span class="keyword">final</span> E element = x.item;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】JavaEE</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</url>
-    <content><![CDATA[<h2 id="java环境变量配置"><a href="#java环境变量配置" class="headerlink" title="java环境变量配置"></a>java环境变量配置</h2><ul>
-<li><p>进入配置文件</p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163743711.png" alt="image-20200413163743711"></p>
-</li>
-<li><p>配置环境变量</p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163802504.png" alt="image-20200413163802504"></p>
-</li>
-<li><p>注销用户，环境变量才能生效</p>
-</li>
-</ul>
-<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><pre><code>运行tomcat需要在其文件夹bin目录下，执行：  
-    ./startup.sh
-
-使用windows系统访问在Linux部署的8080端口：
-    1.vim /etc/sysconfig/iptables
-    2.如图
-    3.重启防火墙</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/image-20200413163825021.png" alt="image-20200413163825021"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -320,51 +320,6 @@ rpm包安装
     1. 显示行号
     2. 输入行号
     3. shift + g</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】用户管理</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
-    shutdown -h now：立即关机
-    shutdown -h 1：  一分钟后关机
-    shutdown -r now： 立即重启
-halt
-    直接使用，效果等价于关机
-reboot
-    重启系统
-sync
-    将内存的东西保存到磁盘上
-    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
-su -用户名
-    切换用户
-注销用户：
-    logout
-    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
-可选项：
-    -d 指定目录
-
-groupadd 组名
-    增加用户组
-
-useradd -g 用户组 用户名
-    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
-    删除用户，但保留家目录
-userdel -r 用户名
-    删除用户，不保留家目录
-删除用户时，一般不删家目录
-
-groupdel 组名
-    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
-高权限到低权限不需要密码
-exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
-/etc/group  组配置文件（加密过了）
-/etc/shadow 口令配置文件</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -609,16 +564,43 @@ tar：打包指令
       </tags>
   </entry>
   <entry>
-    <title>【Linux】网络配置</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163022103.png" alt="image-20200413163022103"></p>
-<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
-    系统——首选项——网络连接……
-第二种方式（指定固定IP)
-    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163103057.png" alt="image-20200413163103057"></p>
-<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163118404.png" alt="image-20200413163118404"></p>
-<pre><code>修改后一定要重启服务：
-    service network restart</code></pre>]]></content>
+    <title>【Linux】用户管理</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h2><pre><code>shutdown
+    shutdown -h now：立即关机
+    shutdown -h 1：  一分钟后关机
+    shutdown -r now： 立即重启
+halt
+    直接使用，效果等价于关机
+reboot
+    重启系统
+sync
+    将内存的东西保存到磁盘上
+    （关机前使用）</code></pre><h2 id="登陆和注销"><a href="#登陆和注销" class="headerlink" title="登陆和注销"></a>登陆和注销</h2><pre><code>尽量少用root账号登陆
+su -用户名
+    切换用户
+注销用户：
+    logout
+    在图形用户界面是无效的</code></pre><h2 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h2><h4 id="添加用户-用户组"><a href="#添加用户-用户组" class="headerlink" title="添加用户/用户组"></a>添加用户/用户组</h4><pre><code>useradd [可选项] 用户名
+可选项：
+    -d 指定目录
+
+groupadd 组名
+    增加用户组
+
+useradd -g 用户组 用户名
+    增加用户时指定组</code></pre><h4 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h4><pre><code>passwd 用户名</code></pre><h4 id="删除用户-用户组"><a href="#删除用户-用户组" class="headerlink" title="删除用户/用户组"></a>删除用户/用户组</h4><pre><code>userdel 用户名
+    删除用户，但保留家目录
+userdel -r 用户名
+    删除用户，不保留家目录
+删除用户时，一般不删家目录
+
+groupdel 组名
+    删除用户组</code></pre><h4 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h4><pre><code>id 用户名</code></pre><h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><pre><code>su - 用户名
+高权限到低权限不需要密码
+exit 返回到原来的用户</code></pre><h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><pre><code>usermod -g 新用户组 用户名</code></pre><h4 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h4><pre><code>/etc/passwd 用户配置文件
+/etc/group  组配置文件（加密过了）
+/etc/shadow 口令配置文件</code></pre>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -676,124 +658,6 @@ tar：打包指令
       </tags>
   </entry>
   <entry>
-    <title>【Linux】文件目录</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/image-20200413162623021.png" alt="image-20200413162623021"></p>
-<pre><code>/bin(Binary):
-    存放经常使用的命令
-
-/boot：
-    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
-
-/dev(Device)：
-    存放Linux的外部设备
-
-/etc：
-    存放所有系统管理所需要的配置文件和子目录
-
-/home：
-    用户的主目录
-    每个用户都有一个自己的目录
-
-/lib：
-    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
-    几乎所有的文件都要用到这些共享库
-
-/lost+found
-    非法关机后存放一些文件
-
-/media：
-    自动识别一些设备，如U盘、DVD
-    识别后将识别设备挂载在该目录下
-
-/mnt：
-    让用户临时挂载别的文件系统
-
-/opt：
-    给主机额外安装软件所摆放的目录
-
-/proc：
-    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
-
-/root：
-    该目录为系统管理员，也称作超级权限者的用户主目录。
-
-/sbin：
-    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
-
-/selinux：
-    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
-
-/srv：
-    该目录存放一些服务启动之后需要提取的数据。
-
-/sys：
-    系统文件
-
-/tmp：
-    临时文件夹
-
-/user：
-    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
-
-/var：
-    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
-
-/run：
-    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Linux】进程管理</title>
-    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><pre><code>指令：ps
-参数：
-    -a： 显示所有进程
-    -u： 以用户格式显示
-    -x： 显示后台运行的参数
-    -ef：查看父进程
-
-pstree(以树状形式查看进程)
-    -u 以用户格式显示</code></pre><h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><pre><code>kill [选项] 进程号
-killall 进程名
-
-选项：
-    -9：强制终止</code></pre><h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><pre><code>service 服务名 [start|stop|restart|reload|status]
-CentOS7.0后，不再使用 service，改用 systemctl
-
-查看服务名：
-    1.setup
-    2.ls -l /etc/init.d/
-
-开机流程：
-    1.开机
-    2.BIOS
-    3./boot
-    4.init进程1
-    5.运行级别
-    6.运行级别对应服务
-
-给每个运行级别设置自启动/关闭——chkconfig 
-    1.查看服务
-        chkconfig --list | grep xx
-    2.chkconfig 服务名 --list
-    3.设置是否自启动
-        chkconfig --level 5 服务名 on/off
-
-        checkconfig --add 服务名：加入服务</code></pre>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【Linux】组管理与权限管理</title>
     <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h2><h4 id="文件-目录所有者"><a href="#文件-目录所有者" class="headerlink" title="文件/目录所有者"></a>文件/目录所有者</h4><pre><code>查看文件的所有者
@@ -837,363 +701,6 @@ CentOS7.0后，不再使用 service，改用 systemctl
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第三章：连续内存分布</title>
-    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
-    <content><![CDATA[<h1 id="3-1-计算机体系结构及内存分层体系"><a href="#3-1-计算机体系结构及内存分层体系" class="headerlink" title="3.1 计算机体系结构及内存分层体系"></a>3.1 计算机体系结构及内存分层体系</h1><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417165432213.png" alt="image-20200417165432213"></p>
-<h3 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
-<li><p>CPU：完成基本的对程序或软件的控制</p>
-</li>
-<li><p>内存：放置程序代码和他处理的数据</p>
-<p>  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170005686.png" alt="image-20200417170005686"></p>
-</li>
-<li><p>外设</p>
-</li>
-</ul>
-<h3 id="操作系统功能"><a href="#操作系统功能" class="headerlink" title="操作系统功能"></a>操作系统功能</h3><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170232005.png" alt="image-20200417170232005"></p>
-<h3 id="操作系统管理内存的方法"><a href="#操作系统管理内存的方法" class="headerlink" title="操作系统管理内存的方法"></a>操作系统管理内存的方法</h3><ul>
-<li>程序重定位</li>
-<li>分段</li>
-<li>分页</li>
-<li>虚拟内存</li>
-<li>按需分页虚拟内存</li>
-</ul>
-<h1 id="3-2-地址空间和地址生成"><a href="#3-2-地址空间和地址生成" class="headerlink" title="3.2 地址空间和地址生成"></a>3.2 地址空间和地址生成</h1><h3 id="地址空间定义"><a href="#地址空间定义" class="headerlink" title="地址空间定义"></a>地址空间定义</h3><ul>
-<li>物理地址空间 — 硬件支持的地址空间（<strong>主存和磁盘</strong>）</li>
-<li>逻辑地址空间— 一个运行程序所拥有的内存范围（一维的线性空间）</li>
-</ul>
-<h3 id="地址生成"><a href="#地址生成" class="headerlink" title="地址生成"></a>地址生成</h3><ul>
-<li>逻辑地址的生成</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417171957066.png" alt="image-20200417171957066"></p>
-<ul>
-<li><p>物理地址的生成</p>
-<p>  <strong>CPU方面</strong></p>
-<ol>
-<li>计算器<strong>需要</strong>在逻辑地址的<strong>内存内容</strong></li>
-<li>内存管理单元<strong>寻找</strong>在逻辑地址和物理地址之间的<strong>映射</strong></li>
-<li>控制器从总线<strong>发送</strong>在物理地址的内存内容的<strong>请求</strong></li>
-</ol>
-<p>  <strong>内存方面</strong></p>
-<ol start="4">
-<li>内存<strong>发送</strong>物理地址内存的<strong>内容</strong>给CPU</li>
-</ol>
-<p>  <strong>操作系统方面</strong></p>
-<ol start="5">
-<li><strong>建立</strong>逻辑地址和物理地址之间的<strong>映射</strong></li>
-</ol>
-</li>
-</ul>
-<h3 id="地址安全检查"><a href="#地址安全检查" class="headerlink" title="地址安全检查"></a>地址安全检查</h3><h1 id="3-3-连续内存分配"><a href="#3-3-连续内存分配" class="headerlink" title="3.3 连续内存分配"></a>3.3 连续内存分配</h1><h3 id="内存碎片问题"><a href="#内存碎片问题" class="headerlink" title="内存碎片问题"></a>内存碎片问题</h3><p>当我们给正在运行的程序分配空间之后，会出现一些空闲的空间（碎片）不能被利用</p>
-<ul>
-<li><p>外部碎片</p>
-<p>  在分配单元<strong>间</strong>未使用的内存（程序空间之间的碎片）</p>
-</li>
-<li><p>内部碎片</p>
-<p>  在分配单元<strong>中</strong>的未使用内存（在分配给程序的空间内部出现的碎片）</p>
-</li>
-</ul>
-<h3 id="分区的动态分配"><a href="#分区的动态分配" class="headerlink" title="分区的动态分配"></a>分区的动态分配</h3><ul>
-<li>简单的内存管理方法：<ul>
-<li>当一个程序准许运行在内存中时，分配一个连续的区间</li>
-<li>分配一个连续的内存区间给运行的程序以访问数据</li>
-</ul>
-</li>
-</ul>
-<h5 id="第一适配"><a href="#第一适配" class="headerlink" title="第一适配"></a>第一适配</h5><ul>
-<li>找到第一个满足需求的空闲块立马返回</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183628752.png" alt="image-20200417183628752"></p>
-<ul>
-<li>优点：<ul>
-<li>简单</li>
-<li>易于产生更大的空闲块，向着地址空间的结尾</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>容易产生外部碎片</li>
-<li>不确定性</li>
-</ul>
-</li>
-</ul>
-<h5 id="最佳适配"><a href="#最佳适配" class="headerlink" title="最佳适配"></a>最佳适配</h5><ul>
-<li>寻找空间中最满足需求的空闲块</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183554657.png" alt="image-20200417183554657"></p>
-<ul>
-<li>优点：<ul>
-<li>大部分分配是小尺寸时非常有效</li>
-<li>比较简单</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>分配时需要先将空闲块按大小排序进行查找，降低效率</li>
-<li>易产生很多没怎么用的微小碎片</li>
-</ul>
-</li>
-</ul>
-<h5 id="最差适配"><a href="#最差适配" class="headerlink" title="最差适配"></a>最差适配</h5><ul>
-<li>寻找空间中大小最不匹配的空闲块</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183701187.png" alt="image-20200417183701187"></p>
-<ul>
-<li>优点：<ul>
-<li>分配是中等尺寸时效果最好</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>效率降低</li>
-<li>容易破碎大的空闲块导致大分区无法被分配</li>
-</ul>
-</li>
-</ul>
-<h3 id="压缩式碎片整理"><a href="#压缩式碎片整理" class="headerlink" title="压缩式碎片整理"></a>压缩式碎片整理</h3><ul>
-<li>重置程序以合并孔洞，要求所有程序是 <strong>动态可重置的</strong></li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184612553.png" alt="image-20200417184612553"></p>
-<ul>
-<li>何时重置？</li>
-<li>开销如何？</li>
-</ul>
-<h3 id="交换式碎片整理"><a href="#交换式碎片整理" class="headerlink" title="交换式碎片整理"></a>交换式碎片整理</h3><ul>
-<li>运行程序需要更多的内存，抢占等待的程序并回收他们的内存</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184629751.png" alt="image-20200417184629751"></p>
-<ul>
-<li>选择哪些程序进行交换？</li>
-<li>何时进行？</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第四章：非连续式内存分布</title>
-    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
-    <content><![CDATA[<p> <strong>非连续内存分配优点</strong></p>
-<ul>
-<li>一个程序的物理地址是非连续的</li>
-<li>更好的内存利用和管理</li>
-<li>允许共享代码与数据</li>
-<li>支持动态加载和动态链接</li>
-</ul>
-<p><strong>潜在问题</strong></p>
-<ul>
-<li>如何建立虚拟地址与物理地址之间的转换<ul>
-<li>软件方案</li>
-<li>硬件方案<ul>
-<li>分段</li>
-<li>分页</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h1><h3 id="程序的分段地址空间"><a href="#程序的分段地址空间" class="headerlink" title="程序的分段地址空间"></a>程序的分段地址空间</h3><ul>
-<li>将逻辑地址空间分成各个块</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418141948265.png" alt="image-20200418141948265" style="zoom:50%;">
-
-<ul>
-<li>如下图，需要一种运行机制，来使<strong>逻辑地址空间</strong>与<strong>物理地址空间</strong>之间有对应的<strong>关联</strong></li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142034374.png" alt="image-20200418142034374" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142254435.png" alt="image-20200418142254435"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142312648.png" alt="image-20200418142312648" style="zoom:50%;">
-
-
-
-<h3 id="分段寻址方案"><a href="#分段寻址方案" class="headerlink" title="分段寻址方案"></a>分段寻址方案</h3><ul>
-<li><p>两种实现方案：</p>
-<ul>
-<li><p>段寄存器 + 地址寄存器：将段号和段内偏移分开放置</p>
-</li>
-<li><p>单地址实现方案：将段号和段内偏移放在一起</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142553901.png" alt="image-20200418142553901" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143008669.png" alt="image-20200418143008669"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143028307.png" alt="image-20200418143028307" style="zoom:50%;">
-
-
-
-<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><ul>
-<li>现在CPU主要使用分页方式</li>
-</ul>
-<h3 id="分页地址空间"><a href="#分页地址空间" class="headerlink" title="分页地址空间"></a>分页地址空间</h3><ul>
-<li><p>与分段方式相似，同样拥有页号和偏移</p>
-</li>
-<li><p>不同之处在于分段中<strong>段的大小可变</strong>，而分页中<strong>页的大小固定的</strong></p>
-</li>
-<li><p>帧（frame）和页（page）：</p>
-<ul>
-<li><p>划分<strong>物理内存</strong>至固定大小的<strong>帧</strong>：大小是2的幂次方</p>
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144103065.png" alt="image-20200418144103065" style="zoom:50%;">
-
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144606645.png" alt="image-20200418144606645" style="zoom:50%;">
-</li>
-<li><p>划分<strong>逻辑地址空间</strong>至相同大小的<strong>页</strong>：大小也是2的幂次方</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145629651.png&quot; alt=&quot;image-20200418145629651&quot; style=&quot;zoom:50%;&quot; /&gt;
-
-&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145930471.png&quot; alt=&quot;image-20200418145930471&quot; style=&quot;zoom:50%;&quot; /&gt;
-
-
-
-依据逻辑地址的页号到页表中查询出物理地址的帧号</code></pre><ul>
-<li>建立方案转化逻辑地址为物理地址（pages to frames）</li>
-</ul>
-<h3 id="页的寻址方案"><a href="#页的寻址方案" class="headerlink" title="页的寻址方案"></a>页的寻址方案</h3><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150212728.png" alt="image-20200418150212728" style="zoom:50%;">
-
-<h1 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li><p>页表其实就是一个<strong>大数组</strong>，索引代表的是 page_number，索引对应的值存的是 frame_number</p>
-  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150738864.png" alt="image-20200418150738864" style="zoom:50%;">
-
-</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418151533051.png" alt="image-20200418151533051" style="zoom: 80%;">
-
-<ul>
-<li>存在问题：访问一个内存单元需要两次访问内存，存在性能问题<ul>
-<li>一次获取页表项</li>
-<li>一次用于访问数据</li>
-</ul>
-</li>
-</ul>
-<h3 id="TLB（Translation-Look-aside-Buffer）"><a href="#TLB（Translation-Look-aside-Buffer）" class="headerlink" title="TLB（Translation Look-aside Buffer）"></a>TLB（Translation Look-aside Buffer）</h3><ul>
-<li>缓存近期访问的页帧转换表项<ul>
-<li>TLB使用关联内存（速度快容量小）实现，具备快速访问性能</li>
-<li>如果查到，则物理帧号可以被快速获取</li>
-<li>如果查不到，就在页表中进行查找然后将内容更新到TLB</li>
-</ul>
-</li>
-</ul>
-<h3 id="二级、多级页表（时间换空间）"><a href="#二级、多级页表（时间换空间）" class="headerlink" title="二级、多级页表（时间换空间）"></a>二级、多级页表（时间换空间）</h3><ul>
-<li>会增加时间开销</li>
-<li>省下空间（一级页表中的保留位为0，二级页表就不需要留位置了）</li>
-</ul>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153639436.png" alt="image-20200418153639436" style="zoom: 67%;">
-
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153843016.png" alt="image-20200418153843016" style="zoom:67%;">
-
-<h3 id="反向页表"><a href="#反向页表" class="headerlink" title="反向页表"></a>反向页表</h3><ul>
-<li>大地址空间问题：<ul>
-<li>有大地址空间，向前映射页表变得繁琐（5级页表）</li>
-<li>不是让页表与逻辑地址空间的大小相对应，而是让页表与物理地址空间的大小相对于（虚拟地址空间增长速度快于物理地址空间）</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155010474.png" alt="image-20200418155010474" style="zoom: 67%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155148496.png" alt="image-20200418155148496"></p>
-<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155557962.png" alt="image-20200418155557962" style="zoom:67%;">]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【操作系统】第二章：操作系统基础操作</title>
-    <url>/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="2-1-启动、中断、异常和系统调用"><a href="#2-1-启动、中断、异常和系统调用" class="headerlink" title="2.1 启动、中断、异常和系统调用"></a>2.1 启动、中断、异常和系统调用</h2><h4 id="一-启动"><a href="#一-启动" class="headerlink" title="一. 启动"></a>一. 启动</h4><p>DISK：存放 OS</p>
-<p>BIOS：基本I/O处理系统</p>
-<p>Bootloader：加载 OS</p>
-<p><img src="/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/image-20200416092711782.png" alt="image-20200416092711782"></p>
-<h4 id="二-中断、异常和系统调用"><a href="#二-中断、异常和系统调用" class="headerlink" title="二. 中断、异常和系统调用"></a>二. 中断、异常和系统调用</h4><ul>
-<li><p>定义：</p>
-<ul>
-<li>系统调用（来源于应用程序）：应用程序主动向操作系统发出服务请求</li>
-<li>异常（来源于不良的应用程序）：非法指令或者其他坏的处理状态（如内存出错）</li>
-<li>中断（来源于外设）：来自不同的硬件设备的计时器和网络的中断</li>
-</ul>
-</li>
-<li><p>源头：</p>
-<ul>
-<li>中断：外设</li>
-<li>异常：应用程序意想不到的行为</li>
-<li>系统调用：应用程序请求操作系统提供服务</li>
-</ul>
-</li>
-<li><p>处理时间：</p>
-<ul>
-<li>中断：异步</li>
-<li>异常：同步</li>
-<li>系统调用：异步或同步</li>
-</ul>
-</li>
-<li><p>响应：</p>
-<ul>
-<li>中断：持续，对用户应用程序是透明的</li>
-<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
-<li>系统调用：等待和持续</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-2-中断、异常和系统调用"><a href="#2-2-中断、异常和系统调用" class="headerlink" title="2.2 中断、异常和系统调用"></a>2.2 中断、异常和系统调用</h2><h4 id="一-中断处理机制"><a href="#一-中断处理机制" class="headerlink" title="一. 中断处理机制"></a>一. 中断处理机制</h4><ul>
-<li><p>硬件：设置中断标记（CPU初始化）</p>
-<ol>
-<li>将内部、外部事件设置中断标记</li>
-<li>中断事件的ID</li>
-</ol>
-</li>
-<li><p>软件：</p>
-<ul>
-<li>保存当前处理状态</li>
-<li>中断服务程序处理</li>
-<li>清除中断标记</li>
-<li>恢复之前保存的处理状态</li>
-</ul>
-</li>
-</ul>
-<h4 id="二-异常处理机制"><a href="#二-异常处理机制" class="headerlink" title="二 . 异常处理机制"></a>二 . 异常处理机制</h4><ul>
-<li><p>异常：异常编号</p>
-<ul>
-<li><p>保存现场</p>
-</li>
-<li><p>异常处理</p>
-<ul>
-<li>杀死产生异常的程序</li>
-<li>重新执行异常指令</li>
-</ul>
-</li>
-<li><p>恢复现场</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="三-系统调用"><a href="#三-系统调用" class="headerlink" title="三. 系统调用"></a>三. 系统调用</h4><ul>
-<li><p>应用程序调用<code>printf()</code>时，会触发系统调用<code>write()</code></p>
-</li>
-<li><p>操作系统提供很多 API 来进行系统调用</p>
-</li>
-<li><p>跨越操作系统边界需要支付额外的开销：</p>
-<ul>
-<li>建立中断/异常/系统调用号与对应服务例程映射关系的初始化开销</li>
-<li>建立内核堆栈</li>
-<li>验证参数</li>
-<li>内核态映射到用户态的地址空间</li>
-<li>内核态独立地址空间</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>考研</tag>
       </tags>
   </entry>
   <entry>
@@ -1355,6 +862,505 @@ CentOS7.0后，不再使用 service，改用 systemctl
       </tags>
   </entry>
   <entry>
+    <title>【Linux】网络配置</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="查看网络IP和网关"><a href="#查看网络IP和网关" class="headerlink" title="查看网络IP和网关"></a>查看网络IP和网关</h2><h4 id="查看虚拟网络编辑器"><a href="#查看虚拟网络编辑器" class="headerlink" title="查看虚拟网络编辑器"></a>查看虚拟网络编辑器</h4><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163022103.png" alt="image-20200413163022103"></p>
+<h2 id="Linux网路环境配置"><a href="#Linux网路环境配置" class="headerlink" title="Linux网路环境配置"></a>Linux网路环境配置</h2><pre><code>第一种方式（自动获取）：
+    系统——首选项——网络连接……
+第二种方式（指定固定IP)
+    直接修改配置文件来指定IP，并可以连接到外网</code></pre><p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163103057.png" alt="image-20200413163103057"></p>
+<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/image-20200413163118404.png" alt="image-20200413163118404"></p>
+<pre><code>修改后一定要重启服务：
+    service network restart</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】文件目录</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p><img src="/2020/04/13/%E3%80%90Linux%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/image-20200413162623021.png" alt="image-20200413162623021"></p>
+<pre><code>/bin(Binary):
+    存放经常使用的命令
+
+/boot：
+    存放启动Linux时使用的一些核心文件，包括一些连接文件和镜像文件
+
+/dev(Device)：
+    存放Linux的外部设备
+
+/etc：
+    存放所有系统管理所需要的配置文件和子目录
+
+/home：
+    用户的主目录
+    每个用户都有一个自己的目录
+
+/lib：
+    存放系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。
+    几乎所有的文件都要用到这些共享库
+
+/lost+found
+    非法关机后存放一些文件
+
+/media：
+    自动识别一些设备，如U盘、DVD
+    识别后将识别设备挂载在该目录下
+
+/mnt：
+    让用户临时挂载别的文件系统
+
+/opt：
+    给主机额外安装软件所摆放的目录
+
+/proc：
+    虚拟目录，是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息
+
+/root：
+    该目录为系统管理员，也称作超级权限者的用户主目录。
+
+/sbin：
+    s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
+
+/selinux：
+    Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。
+
+/srv：
+    该目录存放一些服务启动之后需要提取的数据。
+
+/sys：
+    系统文件
+
+/tmp：
+    临时文件夹
+
+/user：
+    这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。
+
+/var：
+    这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
+
+/run：
+    是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第三章：连续内存分布</title>
+    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
+    <content><![CDATA[<h1 id="3-1-计算机体系结构及内存分层体系"><a href="#3-1-计算机体系结构及内存分层体系" class="headerlink" title="3.1 计算机体系结构及内存分层体系"></a>3.1 计算机体系结构及内存分层体系</h1><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417165432213.png" alt="image-20200417165432213"></p>
+<h3 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
+<li><p>CPU：完成基本的对程序或软件的控制</p>
+</li>
+<li><p>内存：放置程序代码和他处理的数据</p>
+<p>  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170005686.png" alt="image-20200417170005686"></p>
+</li>
+<li><p>外设</p>
+</li>
+</ul>
+<h3 id="操作系统功能"><a href="#操作系统功能" class="headerlink" title="操作系统功能"></a>操作系统功能</h3><p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417170232005.png" alt="image-20200417170232005"></p>
+<h3 id="操作系统管理内存的方法"><a href="#操作系统管理内存的方法" class="headerlink" title="操作系统管理内存的方法"></a>操作系统管理内存的方法</h3><ul>
+<li>程序重定位</li>
+<li>分段</li>
+<li>分页</li>
+<li>虚拟内存</li>
+<li>按需分页虚拟内存</li>
+</ul>
+<h1 id="3-2-地址空间和地址生成"><a href="#3-2-地址空间和地址生成" class="headerlink" title="3.2 地址空间和地址生成"></a>3.2 地址空间和地址生成</h1><h3 id="地址空间定义"><a href="#地址空间定义" class="headerlink" title="地址空间定义"></a>地址空间定义</h3><ul>
+<li>物理地址空间 — 硬件支持的地址空间（<strong>主存和磁盘</strong>）</li>
+<li>逻辑地址空间— 一个运行程序所拥有的内存范围（一维的线性空间）</li>
+</ul>
+<h3 id="地址生成"><a href="#地址生成" class="headerlink" title="地址生成"></a>地址生成</h3><ul>
+<li>逻辑地址的生成</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417171957066.png" alt="image-20200417171957066"></p>
+<ul>
+<li><p>物理地址的生成</p>
+<p>  <strong>CPU方面</strong></p>
+<ol>
+<li>计算器<strong>需要</strong>在逻辑地址的<strong>内存内容</strong></li>
+<li>内存管理单元<strong>寻找</strong>在逻辑地址和物理地址之间的<strong>映射</strong></li>
+<li>控制器从总线<strong>发送</strong>在物理地址的内存内容的<strong>请求</strong></li>
+</ol>
+<p>  <strong>内存方面</strong></p>
+<ol start="4">
+<li>内存<strong>发送</strong>物理地址内存的<strong>内容</strong>给CPU</li>
+</ol>
+<p>  <strong>操作系统方面</strong></p>
+<ol start="5">
+<li><strong>建立</strong>逻辑地址和物理地址之间的<strong>映射</strong></li>
+</ol>
+</li>
+</ul>
+<h3 id="地址安全检查"><a href="#地址安全检查" class="headerlink" title="地址安全检查"></a>地址安全检查</h3><h1 id="3-3-连续内存分配"><a href="#3-3-连续内存分配" class="headerlink" title="3.3 连续内存分配"></a>3.3 连续内存分配</h1><h3 id="内存碎片问题"><a href="#内存碎片问题" class="headerlink" title="内存碎片问题"></a>内存碎片问题</h3><p>当我们给正在运行的程序分配空间之后，会出现一些空闲的空间（碎片）不能被利用</p>
+<ul>
+<li><p>外部碎片</p>
+<p>  在分配单元<strong>间</strong>未使用的内存（程序空间之间的碎片）</p>
+</li>
+<li><p>内部碎片</p>
+<p>  在分配单元<strong>中</strong>的未使用内存（在分配给程序的空间内部出现的碎片）</p>
+</li>
+</ul>
+<h3 id="分区的动态分配"><a href="#分区的动态分配" class="headerlink" title="分区的动态分配"></a>分区的动态分配</h3><ul>
+<li>简单的内存管理方法：<ul>
+<li>当一个程序准许运行在内存中时，分配一个连续的区间</li>
+<li>分配一个连续的内存区间给运行的程序以访问数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="第一适配"><a href="#第一适配" class="headerlink" title="第一适配"></a>第一适配</h5><ul>
+<li>找到第一个满足需求的空闲块立马返回</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183628752.png" alt="image-20200417183628752"></p>
+<ul>
+<li>优点：<ul>
+<li>简单</li>
+<li>易于产生更大的空闲块，向着地址空间的结尾</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>容易产生外部碎片</li>
+<li>不确定性</li>
+</ul>
+</li>
+</ul>
+<h5 id="最佳适配"><a href="#最佳适配" class="headerlink" title="最佳适配"></a>最佳适配</h5><ul>
+<li>寻找空间中最满足需求的空闲块</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183554657.png" alt="image-20200417183554657"></p>
+<ul>
+<li>优点：<ul>
+<li>大部分分配是小尺寸时非常有效</li>
+<li>比较简单</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>分配时需要先将空闲块按大小排序进行查找，降低效率</li>
+<li>易产生很多没怎么用的微小碎片</li>
+</ul>
+</li>
+</ul>
+<h5 id="最差适配"><a href="#最差适配" class="headerlink" title="最差适配"></a>最差适配</h5><ul>
+<li>寻找空间中大小最不匹配的空闲块</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417183701187.png" alt="image-20200417183701187"></p>
+<ul>
+<li>优点：<ul>
+<li>分配是中等尺寸时效果最好</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>效率降低</li>
+<li>容易破碎大的空闲块导致大分区无法被分配</li>
+</ul>
+</li>
+</ul>
+<h3 id="压缩式碎片整理"><a href="#压缩式碎片整理" class="headerlink" title="压缩式碎片整理"></a>压缩式碎片整理</h3><ul>
+<li>重置程序以合并孔洞，要求所有程序是 <strong>动态可重置的</strong></li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184612553.png" alt="image-20200417184612553"></p>
+<ul>
+<li>何时重置？</li>
+<li>开销如何？</li>
+</ul>
+<h3 id="交换式碎片整理"><a href="#交换式碎片整理" class="headerlink" title="交换式碎片整理"></a>交换式碎片整理</h3><ul>
+<li>运行程序需要更多的内存，抢占等待的程序并回收他们的内存</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200417184629751.png" alt="image-20200417184629751"></p>
+<ul>
+<li>选择哪些程序进行交换？</li>
+<li>何时进行？</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Linux】进程管理</title>
+    <url>/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><pre><code>指令：ps
+参数：
+    -a： 显示所有进程
+    -u： 以用户格式显示
+    -x： 显示后台运行的参数
+    -ef：查看父进程
+
+pstree(以树状形式查看进程)
+    -u 以用户格式显示</code></pre><h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><pre><code>kill [选项] 进程号
+killall 进程名
+
+选项：
+    -9：强制终止</code></pre><h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><pre><code>service 服务名 [start|stop|restart|reload|status]
+CentOS7.0后，不再使用 service，改用 systemctl
+
+查看服务名：
+    1.setup
+    2.ls -l /etc/init.d/
+
+开机流程：
+    1.开机
+    2.BIOS
+    3./boot
+    4.init进程1
+    5.运行级别
+    6.运行级别对应服务
+
+给每个运行级别设置自启动/关闭——chkconfig 
+    1.查看服务
+        chkconfig --list | grep xx
+    2.chkconfig 服务名 --list
+    3.设置是否自启动
+        chkconfig --level 5 服务名 on/off
+
+        checkconfig --add 服务名：加入服务</code></pre>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第五章：虚拟内存</title>
+    <url>/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</url>
+    <content><![CDATA[<h1 id="虚拟内存的起因"><a href="#虚拟内存的起因" class="headerlink" title="虚拟内存的起因"></a>虚拟内存的起因</h1><p>随着技术发展，程序对内存的需求越来越大</p>
+<p>我们需要更大的内存更强的机器才能让软件跑起来</p>
+<p><strong>程序规模的增长远大于存储器容量的增长速度</strong></p>
+<p>需要让更多的程序跑在有限的内存里</p>
+<p>理想中的存储器：</p>
+<ul>
+<li>更大</li>
+<li>更快</li>
+<li>更便宜</li>
+<li>非易失性存储器</li>
+</ul>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419172905391.png" alt="image-20200419172905391" style="zoom: 80%;">
+
+
+
+<h1 id="覆盖技术"><a href="#覆盖技术" class="headerlink" title="覆盖技术"></a>覆盖技术</h1><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li>在较小可用内存中运行较大的程序。常用于多道程序系统，与分区存储管理配合使用。</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>把程序按照其自身逻辑结构，划分为若干功能上相对独立的程序模块，那些不会同时执行的模块共享同一块内存区域，按时间先后来运行<ul>
+<li>必要部分的代码和数据<strong>常驻内存</strong></li>
+<li>可选部分在其他程序模块中实现，平时放在外存，<strong>需要时装入内存</strong></li>
+<li>不存在调用关系的模块不必同时装入到内存，从而可以相互覆盖，<strong>即他们可以公用一个分区</strong></li>
+</ul>
+</li>
+<li>例子：</li>
+</ul>
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419174839065.png" alt="image-20200419174839065"></p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+<li>coder 把一个大程序分为若干小功能模块并确定覆盖关系，费时费力，增加编程复杂度</li>
+<li>覆盖模块实际上是<strong>时间换空间</strong></li>
+</ul>
+<h1 id="交换技术"><a href="#交换技术" class="headerlink" title="交换技术"></a>交换技术</h1><h3 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h3><p>多道程序在内存中时，让正在运行的程序或需要运行的程序获得更多的内存资源</p>
+<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>将暂时不能运行的程序送到外存</li>
+<li>OS 将一个进程的地址空间保存到外存（<strong>换出</strong>），再将外存中某个进程的地址空间读入到内存（<strong>换入</strong>）。（换入换出大小是整个程序的地址空间）</li>
+</ul>
+<h3 id="需要考虑的问题"><a href="#需要考虑的问题" class="headerlink" title="需要考虑的问题"></a>需要考虑的问题</h3><ul>
+<li><p>何时交换？</p>
+<p>  内存不够或有不够的危险时</p>
+</li>
+<li><p>交换区的大小？</p>
+<p>  必须足够大来存放所有用户进程的所有内存映像拷贝</p>
+</li>
+<li><p>换出再换入后地址需要一样嘛？</p>
+<p>  最好采用动态地址映射的方法（建立页表）</p>
+</li>
+</ul>
+<h3 id="交换与覆盖区别"><a href="#交换与覆盖区别" class="headerlink" title="交换与覆盖区别"></a>交换与覆盖区别</h3><p>交换发生在<strong>程序之间</strong>，不需要程序员操作</p>
+<p>覆盖发生在<strong>程序之内</strong>，需要程序员！</p>
+<h1 id="虚存技术"><a href="#虚存技术" class="headerlink" title="虚存技术"></a>虚存技术</h1><h3 id="目标-2"><a href="#目标-2" class="headerlink" title="目标"></a>目标</h3><ul>
+<li>覆盖技术：程序员负担大</li>
+<li>交换技术：处理器开销大</li>
+<li>充分解决覆盖技术与交换技术存在的问题</li>
+</ul>
+<h3 id="程序局部性原理"><a href="#程序局部性原理" class="headerlink" title="程序局部性原理"></a>程序局部性原理</h3><ul>
+<li><p>程序的局部性原理：程序在执行过程中的一个较短时期，所执行的指令地址和指令操作数地址分别局限于一定区域</p>
+<ul>
+<li><p>时间局部性</p>
+</li>
+<li><p>空间局部性</p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419183544017.png" alt="image-20200419183544017" style="zoom:80%;">
+
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419183746684.png" alt="image-20200419183746684" style="zoom:80%;">
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419184200800.png" alt="image-20200419184200800"></p>
+<h3 id="基本特征"><a href="#基本特征" class="headerlink" title="基本特征"></a>基本特征</h3><p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419184449532.png" alt="image-20200419184449532"></p>
+<h3 id="虚拟页式内存管理"><a href="#虚拟页式内存管理" class="headerlink" title="虚拟页式内存管理"></a>虚拟页式内存管理</h3><p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419184621909.png" alt="image-20200419184621909"></p>
+<p>hhh，偷懒直接截屏了<del>~</del></p>
+<ul>
+<li>需要用到的功能：<ul>
+<li>请求调页</li>
+<li>页面置换</li>
+</ul>
+</li>
+</ul>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419185124939.png" alt="image-20200419185124939" style="zoom:80%;">
+
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419185256585.png" alt="image-20200419185256585" style="zoom:80%;">
+
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200419185600279.png" alt="image-20200419185600279" style="zoom:80%;"><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200420122547152.png" alt="image-20200420122547152"></p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/image-20200420122547152.png" alt="image-20200420122547152" style="zoom:80%;">]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第四章：非连续式内存分布</title>
+    <url>/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</url>
+    <content><![CDATA[<p> <strong>非连续内存分配优点</strong></p>
+<ul>
+<li>一个程序的物理地址是非连续的</li>
+<li>更好的内存利用和管理</li>
+<li>允许共享代码与数据</li>
+<li>支持动态加载和动态链接</li>
+</ul>
+<p><strong>潜在问题</strong></p>
+<ul>
+<li>如何建立虚拟地址与物理地址之间的转换<ul>
+<li>软件方案</li>
+<li>硬件方案<ul>
+<li>分段</li>
+<li>分页</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h1><h3 id="程序的分段地址空间"><a href="#程序的分段地址空间" class="headerlink" title="程序的分段地址空间"></a>程序的分段地址空间</h3><ul>
+<li>将逻辑地址空间分成各个块</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418141948265.png" alt="image-20200418141948265" style="zoom:50%;">
+
+<ul>
+<li>如下图，需要一种运行机制，来使<strong>逻辑地址空间</strong>与<strong>物理地址空间</strong>之间有对应的<strong>关联</strong></li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142034374.png" alt="image-20200418142034374" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142254435.png" alt="image-20200418142254435"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142312648.png" alt="image-20200418142312648" style="zoom:50%;">
+
+
+
+<h3 id="分段寻址方案"><a href="#分段寻址方案" class="headerlink" title="分段寻址方案"></a>分段寻址方案</h3><ul>
+<li><p>两种实现方案：</p>
+<ul>
+<li><p>段寄存器 + 地址寄存器：将段号和段内偏移分开放置</p>
+</li>
+<li><p>单地址实现方案：将段号和段内偏移放在一起</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418142553901.png" alt="image-20200418142553901" style="zoom:50%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143008669.png" alt="image-20200418143008669"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418143028307.png" alt="image-20200418143028307" style="zoom:50%;">
+
+
+
+<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><ul>
+<li>现在CPU主要使用分页方式</li>
+</ul>
+<h3 id="分页地址空间"><a href="#分页地址空间" class="headerlink" title="分页地址空间"></a>分页地址空间</h3><ul>
+<li><p>与分段方式相似，同样拥有页号和偏移</p>
+</li>
+<li><p>不同之处在于分段中<strong>段的大小可变</strong>，而分页中<strong>页的大小固定的</strong></p>
+</li>
+<li><p>帧（frame）和页（page）：</p>
+<ul>
+<li><p>划分<strong>物理内存</strong>至固定大小的<strong>帧</strong>：大小是2的幂次方</p>
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144103065.png" alt="image-20200418144103065" style="zoom:50%;">
+
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418144606645.png" alt="image-20200418144606645" style="zoom:50%;">
+</li>
+<li><p>划分<strong>逻辑地址空间</strong>至相同大小的<strong>页</strong>：大小也是2的幂次方</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145629651.png&quot; alt=&quot;image-20200418145629651&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+&lt;img src=&quot;【操作系统】第四章：非连续式内存分布/image-20200418145930471.png&quot; alt=&quot;image-20200418145930471&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+
+
+依据逻辑地址的页号到页表中查询出物理地址的帧号</code></pre><ul>
+<li>建立方案转化逻辑地址为物理地址（pages to frames）</li>
+</ul>
+<h3 id="页的寻址方案"><a href="#页的寻址方案" class="headerlink" title="页的寻址方案"></a>页的寻址方案</h3><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150212728.png" alt="image-20200418150212728" style="zoom:50%;">
+
+<h1 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li><p>页表其实就是一个<strong>大数组</strong>，索引代表的是 page_number，索引对应的值存的是 frame_number</p>
+  <img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418150738864.png" alt="image-20200418150738864" style="zoom:50%;">
+
+</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418151533051.png" alt="image-20200418151533051" style="zoom: 80%;">
+
+<ul>
+<li>存在问题：访问一个内存单元需要两次访问内存，存在性能问题<ul>
+<li>一次获取页表项</li>
+<li>一次用于访问数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="TLB（Translation-Look-aside-Buffer）"><a href="#TLB（Translation-Look-aside-Buffer）" class="headerlink" title="TLB（Translation Look-aside Buffer）"></a>TLB（Translation Look-aside Buffer）</h3><ul>
+<li>缓存近期访问的页帧转换表项<ul>
+<li>TLB使用关联内存（速度快容量小）实现，具备快速访问性能</li>
+<li>如果查到，则物理帧号可以被快速获取</li>
+<li>如果查不到，就在页表中进行查找然后将内容更新到TLB</li>
+</ul>
+</li>
+</ul>
+<h3 id="二级、多级页表（时间换空间）"><a href="#二级、多级页表（时间换空间）" class="headerlink" title="二级、多级页表（时间换空间）"></a>二级、多级页表（时间换空间）</h3><ul>
+<li>会增加时间开销</li>
+<li>省下空间（一级页表中的保留位为0，二级页表就不需要留位置了）</li>
+</ul>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153639436.png" alt="image-20200418153639436" style="zoom: 67%;">
+
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418153843016.png" alt="image-20200418153843016" style="zoom:67%;">
+
+<h3 id="反向页表"><a href="#反向页表" class="headerlink" title="反向页表"></a>反向页表</h3><ul>
+<li>大地址空间问题：<ul>
+<li>有大地址空间，向前映射页表变得繁琐（5级页表）</li>
+<li>不是让页表与逻辑地址空间的大小相对应，而是让页表与物理地址空间的大小相对于（虚拟地址空间增长速度快于物理地址空间）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155010474.png" alt="image-20200418155010474" style="zoom: 67%;"><img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155148496.png" alt="image-20200418155148496"></p>
+<img src="/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/image-20200418155557962.png" alt="image-20200418155557962" style="zoom:67%;">]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【JDK1.8源码】AbstractMap、HashMap</title>
     <url>/2020/04/11/%E3%80%90JDK1-8%E3%80%91AbstractMap%E3%80%81HashMap/</url>
     <content><![CDATA[<h2 id="AbstractMap"><a href="#AbstractMap" class="headerlink" title="AbstractMap"></a>AbstractMap</h2><h4 id="类关系"><a href="#类关系" class="headerlink" title="类关系"></a>类关系</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现了Map接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1389,6 +1395,340 @@ CentOS7.0后，不再使用 service，改用 systemctl
       <tags>
         <tag>Java</tag>
         <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【MySQL回顾】基础操作篇</title>
+    <url>/2020/04/22/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="快速回顾"><a href="#快速回顾" class="headerlink" title="快速回顾"></a>快速回顾</h1><table>
+<thead>
+<tr>
+<th align="left">语句</th>
+<th align="left">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AND / OR</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE condition AND|OR condition</td>
+</tr>
+<tr>
+<td align="left">ALTER TABLE (add column)</td>
+<td align="left">ALTER TABLE table_name ADD column_name datatype</td>
+</tr>
+<tr>
+<td align="left">ALTER TABLE (drop column)</td>
+<td align="left">ALTER TABLE table_name DROP COLUMN column_name</td>
+</tr>
+<tr>
+<td align="left">AS (alias for column)</td>
+<td align="left">SELECT column_name AS column_alias FROM table_name</td>
+</tr>
+<tr>
+<td align="left">AS (alias for table)</td>
+<td align="left">SELECT column_name FROM table_name AS table_alias</td>
+</tr>
+<tr>
+<td align="left">BETWEEN</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2</td>
+</tr>
+<tr>
+<td align="left">CREATE DATABASE</td>
+<td align="left">CREATE DATABASE database_name</td>
+</tr>
+<tr>
+<td align="left">CREATE INDEX</td>
+<td align="left">CREATE INDEX index_name ON table_name (column_name)</td>
+</tr>
+<tr>
+<td align="left">CREATE TABLE</td>
+<td align="left">CREATE TABLE table_name ( column_name1 data_type, column_name2 data_type, ……. )</td>
+</tr>
+<tr>
+<td align="left">CREATE UNIQUE INDEX</td>
+<td align="left">CREATE UNIQUE INDEX index_name ON table_name (column_name)</td>
+</tr>
+<tr>
+<td align="left">CREATE VIEW</td>
+<td align="left">CREATE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition</td>
+</tr>
+<tr>
+<td align="left">DELETE FROM</td>
+<td align="left">DELETE FROM table_name (<strong>Note:</strong> Deletes the entire table!!)<em>or</em>DELETE FROM table_name WHERE condition</td>
+</tr>
+<tr>
+<td align="left">DROP DATABASE</td>
+<td align="left">DROP DATABASE database_name</td>
+</tr>
+<tr>
+<td align="left">DROP INDEX</td>
+<td align="left">DROP INDEX table_name.index_name</td>
+</tr>
+<tr>
+<td align="left">DROP TABLE</td>
+<td align="left">DROP TABLE table_name</td>
+</tr>
+<tr>
+<td align="left">GROUP BY</td>
+<td align="left">SELECT column_name1,SUM(column_name2) FROM table_name GROUP BY column_name1</td>
+</tr>
+<tr>
+<td align="left">HAVING</td>
+<td align="left">SELECT column_name1,SUM(column_name2) FROM table_name GROUP BY column_name1 HAVING SUM(column_name2) condition value</td>
+</tr>
+<tr>
+<td align="left">IN</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name IN (value1,value2,..)</td>
+</tr>
+<tr>
+<td align="left">INSERT INTO</td>
+<td align="left">INSERT INTO table_name VALUES (value1, value2,….)<em>or</em>INSERT INTO table_name (column_name1, column_name2,…) VALUES (value1, value2,….)</td>
+</tr>
+<tr>
+<td align="left">LIKE</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name LIKE pattern</td>
+</tr>
+<tr>
+<td align="left">ORDER BY</td>
+<td align="left">SELECT column_name(s) FROM table_name ORDER BY column_name [ASC|DESC]</td>
+</tr>
+<tr>
+<td align="left">SELECT</td>
+<td align="left">SELECT column_name(s) FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT *</td>
+<td align="left">SELECT * FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT DISTINCT</td>
+<td align="left">SELECT DISTINCT column_name(s) FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT INTO (used to create backup copies of tables)</td>
+<td align="left">SELECT * INTO new_table_name FROM original_table_name <em>or</em> SELECT column_name(s) INTO new_table_name FROM original_table_name</td>
+</tr>
+<tr>
+<td align="left">TRUNCATE TABLE (deletes only the data inside the table)</td>
+<td align="left">TRUNCATE TABLE table_name</td>
+</tr>
+<tr>
+<td align="left">UPDATE</td>
+<td align="left">UPDATE table_name SET column_name=new_value [, column_name=new_value] WHERE column_name=some_value</td>
+</tr>
+<tr>
+<td align="left">WHERE</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE condition</td>
+</tr>
+</tbody></table>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">net start mysql		-- 启动服务（windows命令行操作）</span><br><span class="line">mysql -h 地址 -P 端口 -u 用户名 -p 密码		-- 连接服务器</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><h3 id="创建库"><a href="#创建库" class="headerlink" title="创建库"></a>创建库</h3><p><code>CREATE DATABASE[IF NOT EXISTS] 数据库名 数据库选项</code></p>
+<h3 id="查看库"><a href="#查看库" class="headerlink" title="查看库"></a>查看库</h3><p><code>SHOW DATABASES[ LIKE &#39;PATTERN&#39;]</code></p>
+<h3 id="修改库"><a href="#修改库" class="headerlink" title="修改库"></a>修改库</h3><p><code>ALTER DATABASE 库名 选项信息</code></p>
+<h3 id="删除库"><a href="#删除库" class="headerlink" title="删除库"></a>删除库</h3><p><code>DROP DATABASE[ IF EXISTS] 数据库名</code></p>
+<h1 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h1><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE [TEMPORARY] TABLE[IF NOT EXISTS] [库名]表名 ( 表的结构定义 )[表选项]</span><br><span class="line">-- 表选项：</span><br><span class="line">	CHARSET &#x3D; charset_name		-- 字符集</span><br><span class="line">	ENGINE &#x3D; engine_name		-- 存储引擎</span><br><span class="line">	AUTO_INCREMENT &#x3D; 行数		   -- 自增起始数 		   </span><br><span class="line">	DATA DIRECTORY &#x3D; &#39;目录&#39;	   -- 数据文件目录</span><br><span class="line">	INDEX DIRECTORY &#x3D; &#39;目录&#39;	   -- 索引文件目录</span><br><span class="line">	COMMENT &#x3D; &#39;string&#39;			-- 表注释</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHOW CREATE TABLE 表名 -- 信息更详细</span><br><span class="line">DESC 表名 			 -- 查看表结构</span><br><span class="line">SHOW TABLE STATUS [FROM db_name] [LIKE &#39;pattern&#39;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE 表名 操作名</span><br><span class="line">-- 操作名</span><br><span class="line">	ADD[ COLUMN] AFTER|First       	  -- 增加字段</span><br><span class="line">	ADD PRIMARY KEY(字段名)   		 	-- 创建主键</span><br><span class="line">	ADD UNIQUE|INDEX [索引名] (字段名)  -- 创建唯一索引或者普通索引</span><br><span class="line">	DROP[ COLUMN] 字段名      			-- 删除字段</span><br><span class="line">	MODIFY[ COLUMN] 字段名 字段属性     -- 支持对字段属性进行修改，不能修改字段名(所有原有属性也需写上)</span><br><span class="line">	CHANGE[ COLUMN] 原字段名 新字段名 字段属性      -- 支持对字段名修改</span><br><span class="line">	DROP PRIMARY KEY    			  -- 删除主键(删除主键前需删除其AUTO_INCREMENT属性)</span><br><span class="line">	DROP INDEX 索引名 					-- 删除索引</span><br><span class="line">	DROP FOREIGN KEY 外键    			 -- 删除外键</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DROP TABLE[ IF EXISTS] 表名</span><br><span class="line">TRUNCATE [TABLE] 表名</span><br></pre></td></tr></table></figure>
+
+<p>区别：</p>
+<table>
+<thead>
+<tr>
+<th align="center">truncate</th>
+<th align="center">delete</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">删除表再创建</td>
+<td align="center">逐条删除</td>
+</tr>
+<tr>
+<td align="center">重置auto_increment的值</td>
+<td align="center">不重置auto_increment的值</td>
+</tr>
+<tr>
+<td align="center">不知道删除了几条</td>
+<td align="center">知道删除了几条</td>
+</tr>
+<tr>
+<td align="center">保留分区</td>
+<td align="center">不保留分区</td>
+</tr>
+</tbody></table>
+<h3 id="其他表操作"><a href="#其他表操作" class="headerlink" title="其他表操作"></a>其他表操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE 表名 LIKE 要复制的表名						-- 复制表结构</span><br><span class="line">CREATE TABLE 表名 [AS] SELECT * FROM 要复制的表名		-- 复制表的结构与数据</span><br><span class="line">CHECK TABLE tbl_name [, tbl_name] ... [option] ...	 -- 检查表是否有错误</span><br><span class="line">OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...	-- 优化表</span><br><span class="line">REPAIR [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ... [QUICK] [EXTENDED] [USE_FRM]											-- 修复表</span><br><span class="line">ANALYZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...	-- 分析表</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h1><h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT [INTO] 表名 [(字段列表)] VALUES (值列表)[, (值列表), ...]</span><br><span class="line"></span><br><span class="line">INSERT [INTO] 表名 SET 字段名&#x3D;值[, 字段名&#x3D;值, ...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DELETE FROM 表名[ 删除条件子句]		-- 没有删除条件子句，则会删除全部</span><br></pre></td></tr></table></figure>
+
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UPDATE 表名 SET 字段名&#x3D;新值[, 字段名&#x3D;新值] [更新条件]</span><br></pre></td></tr></table></figure>
+
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT [ALL|DISTINCT] select_expr FROM -&gt; WHERE -&gt; GROUP BY [合计函数] -&gt; HAVING -&gt; ORDER BY -&gt; LIMIT</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">	ALL|DISTINCT：</span><br><span class="line">		ALL：显示全部，默认为ALL</span><br><span class="line">		DISTINCT：去除重复数据</span><br><span class="line">	select_expr：</span><br><span class="line">		1.可以用 * 表示所有字段。</span><br><span class="line">        2.可以使用表达式（计算公式、函数调用、字段也是个表达式）</span><br><span class="line">        3.可以为每个列使用别名</span><br><span class="line">    GROUP BY：</span><br><span class="line">		分组子句</span><br><span class="line">    合计函数：</span><br><span class="line">    	需要配合GROUP BY使用</span><br><span class="line">    	count、sum、max、min、avg……</span><br><span class="line">    HAVING：</span><br><span class="line">    	相当于命令行中的管道符 “|”，懂我意思吧</span><br><span class="line">  	ORDER BY：</span><br><span class="line">  		升序：ASC</span><br><span class="line">  		降序：DESC</span><br><span class="line">  	LIMIT：</span><br><span class="line">  		限制结果条数</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#1.length 获取参数值的字节个数</span><br><span class="line">SELECT LENGTH(&#39;join&#39;);</span><br><span class="line">SELECT LENGTH(&#39;张三丰&#39;)  #一个汉字占三个字节;</span><br><span class="line"></span><br><span class="line">#2.concat 拼接字符串</span><br><span class="line">SELECT　CONCAT(last_name,&#39;_&#39;,first_name) 姓名 FROM employees；</span><br><span class="line"></span><br><span class="line">#3.upper、lower</span><br><span class="line">SELECT UPPER(&#39;john&#39;);</span><br><span class="line">SELECT LOWER(&#39;JOHN&#39;);</span><br><span class="line"></span><br><span class="line">#4.substr、substring</span><br><span class="line">#索引从1开始</span><br><span class="line">SELECT SUBSTR(&#39;李莫愁爱上陆展元&#39;，7) out_put;   #截取从指定索引处后面的所有字符</span><br><span class="line">SELECT SUBSTR(&#39;李莫愁爱上陆展元&#39;，1，3) out_put;    #截取从索引处开始指定字符长度的字符</span><br><span class="line"></span><br><span class="line">#5.instr 返回子串在大字符串中的起始索引，找不到则返回0</span><br><span class="line">SELECT INSTR(&#39;杨不悔爱上了殷六侠&#39;，&#39;殷六侠&#39;) AS out_put FROM employees;</span><br><span class="line"></span><br><span class="line">#6.trim 去除两边字符</span><br><span class="line">SELECT TRIM(&#39;   张翠山   &#39;);</span><br><span class="line">SELECT TRIM(&#39;a&#39; FROM &#39;aaa张翠山aaa&#39;);</span><br><span class="line"></span><br><span class="line">#7.lpad、rpad 用指定的字符左&#x2F;右填充指定的长度</span><br><span class="line">SELECT LPAD(&#39;殷素素&#39;，10，&#39;*&#39;);</span><br><span class="line"></span><br><span class="line">#8.replac 替换</span><br><span class="line">SELECT REPLACE(&#39;（周芷若）张无忌爱上了周芷若&#39;，&#39;周芷若&#39;，&#39;赵敏&#39;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">round()		#取整</span><br><span class="line">ceil()		#向上取整</span><br><span class="line">floor()		#向下取整</span><br><span class="line">truncate()  #截断</span><br><span class="line">mod()       #取余</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">now()</span><br><span class="line">curdate()</span><br><span class="line">curtime()</span><br><span class="line">year()</span><br><span class="line">mouth()</span><br><span class="line">mouthname()       #英文月份名</span><br><span class="line">day()</span><br><span class="line">hour()</span><br><span class="line">minute()</span><br><span class="line">second()</span><br><span class="line"></span><br><span class="line">str_to_date(&#39;9-13-1999&#39;,&#39;%m-%d-%Y&#39;)    #将日期格式的字符转化成指定格式的日期</span><br><span class="line">date_fromat(&#39;2018&#x2F;6&#x2F;6&#39;,&#39;%Y年%m月%d日&#39;)  #将日期转换成字符</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">格式符</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%Y</td>
+<td align="center">四位年份</td>
+</tr>
+<tr>
+<td align="center">%y</td>
+<td align="center">两位年份</td>
+</tr>
+<tr>
+<td align="center">%m</td>
+<td align="center">月份（01，02…)</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">月份（1，2…)</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">日（01，02，…）</td>
+</tr>
+<tr>
+<td align="center">%H</td>
+<td align="center">小时（24小时）</td>
+</tr>
+<tr>
+<td align="center">%h</td>
+<td align="center">小时（12小时）</td>
+</tr>
+<tr>
+<td align="center">%i</td>
+<td align="center">分钟</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">秒</td>
+</tr>
+</tbody></table>
+<h3 id="控制函数"><a href="#控制函数" class="headerlink" title="控制函数"></a>控制函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.if()    #相当于java三目运算</span><br><span class="line">    if(10&gt;5,&#39;大&#39;，&#39;小&#39;)</span><br><span class="line"></span><br><span class="line">2.case</span><br><span class="line">    case 要判断的字段或表达式</span><br><span class="line">    when 常量1 then 要显示的值1或语句1</span><br><span class="line">    when 常量2 then 要显示的值2或语句2</span><br><span class="line">    ...</span><br><span class="line">    else 要显示的值n或语句n</span><br><span class="line">    end;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：用作统计使用，又称聚合函数或统计函数</span><br><span class="line"></span><br><span class="line">分类：sum、avg、max、min、count</span><br><span class="line"></span><br><span class="line">特点： 1.sum、avg一般用于处理数值型</span><br><span class="line">        count、min、max可以处理任何类型</span><br><span class="line">      2.分组函数都忽略null值</span><br><span class="line">      3.可以和distinct搭配实现去重</span><br><span class="line">        select sum(distinct salary),sum(salary) from employees;</span><br><span class="line">      4.count函数详细介绍</span><br><span class="line">        select (*) from employees;</span><br><span class="line">        &#x2F;&#x2F;统计行数</span><br><span class="line">      5.和分组函数一同查询的字段要求是group by后的字段</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><blockquote>
+<p>w3school：<a href="https://www.w3school.com.cn/sql/sql_quickref.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_quickref.asp</a></p>
+<p>格物：<a href="https://shockerli.net/post/1000-line-mysql-note/" target="_blank" rel="noopener">https://shockerli.net/post/1000-line-mysql-note/</a></p>
+<p>javaGuide：<a href="https://snailclimb.gitee.io/javaguide/#/docs/database" target="_blank" rel="noopener">https://snailclimb.gitee.io/javaguide/#/docs/database</a></p>
+<p>尚硅谷：<a href="https://www.bilibili.com/video/BV12b411K7Zu?from=search&amp;seid=12749719158094983926" target="_blank" rel="noopener">https://www.bilibili.com/video/BV12b411K7Zu?from=search&amp;seid=12749719158094983926</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【操作系统】第二章：操作系统基础操作</title>
+    <url>/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="2-1-启动、中断、异常和系统调用"><a href="#2-1-启动、中断、异常和系统调用" class="headerlink" title="2.1 启动、中断、异常和系统调用"></a>2.1 启动、中断、异常和系统调用</h2><h4 id="一-启动"><a href="#一-启动" class="headerlink" title="一. 启动"></a>一. 启动</h4><p>DISK：存放 OS</p>
+<p>BIOS：基本I/O处理系统</p>
+<p>Bootloader：加载 OS</p>
+<p><img src="/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/image-20200416092711782.png" alt="image-20200416092711782"></p>
+<h4 id="二-中断、异常和系统调用"><a href="#二-中断、异常和系统调用" class="headerlink" title="二. 中断、异常和系统调用"></a>二. 中断、异常和系统调用</h4><ul>
+<li><p>定义：</p>
+<ul>
+<li>系统调用（来源于应用程序）：应用程序主动向操作系统发出服务请求</li>
+<li>异常（来源于不良的应用程序）：非法指令或者其他坏的处理状态（如内存出错）</li>
+<li>中断（来源于外设）：来自不同的硬件设备的计时器和网络的中断</li>
+</ul>
+</li>
+<li><p>源头：</p>
+<ul>
+<li>中断：外设</li>
+<li>异常：应用程序意想不到的行为</li>
+<li>系统调用：应用程序请求操作系统提供服务</li>
+</ul>
+</li>
+<li><p>处理时间：</p>
+<ul>
+<li>中断：异步</li>
+<li>异常：同步</li>
+<li>系统调用：异步或同步</li>
+</ul>
+</li>
+<li><p>响应：</p>
+<ul>
+<li>中断：持续，对用户应用程序是透明的</li>
+<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
+<li>系统调用：等待和持续</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-中断、异常和系统调用"><a href="#2-2-中断、异常和系统调用" class="headerlink" title="2.2 中断、异常和系统调用"></a>2.2 中断、异常和系统调用</h2><h4 id="一-中断处理机制"><a href="#一-中断处理机制" class="headerlink" title="一. 中断处理机制"></a>一. 中断处理机制</h4><ul>
+<li><p>硬件：设置中断标记（CPU初始化）</p>
+<ol>
+<li>将内部、外部事件设置中断标记</li>
+<li>中断事件的ID</li>
+</ol>
+</li>
+<li><p>软件：</p>
+<ul>
+<li>保存当前处理状态</li>
+<li>中断服务程序处理</li>
+<li>清除中断标记</li>
+<li>恢复之前保存的处理状态</li>
+</ul>
+</li>
+</ul>
+<h4 id="二-异常处理机制"><a href="#二-异常处理机制" class="headerlink" title="二 . 异常处理机制"></a>二 . 异常处理机制</h4><ul>
+<li><p>异常：异常编号</p>
+<ul>
+<li><p>保存现场</p>
+</li>
+<li><p>异常处理</p>
+<ul>
+<li>杀死产生异常的程序</li>
+<li>重新执行异常指令</li>
+</ul>
+</li>
+<li><p>恢复现场</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="三-系统调用"><a href="#三-系统调用" class="headerlink" title="三. 系统调用"></a>三. 系统调用</h4><ul>
+<li><p>应用程序调用<code>printf()</code>时，会触发系统调用<code>write()</code></p>
+</li>
+<li><p>操作系统提供很多 API 来进行系统调用</p>
+</li>
+<li><p>跨越操作系统边界需要支付额外的开销：</p>
+<ul>
+<li>建立中断/异常/系统调用号与对应服务例程映射关系的初始化开销</li>
+<li>建立内核堆栈</li>
+<li>验证参数</li>
+<li>内核态映射到用户态的地址空间</li>
+<li>内核态独立地址空间</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>考研</tag>
       </tags>
   </entry>
   <entry>
@@ -1551,7 +1891,7 @@ CentOS7.0后，不再使用 service，改用 systemctl
         <tag>Java</tag>
         <tag>Spring</tag>
         <tag>尚硅谷</tag>
-        <tag>源码</tag>
+        <tag>源码阅读</tag>
       </tags>
   </entry>
 </search>

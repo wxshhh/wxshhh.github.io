@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+<html lang="ch" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="南京理工大学大二在读~~~" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    【操作系统】第七章：进程和线程 |  从入门到入土
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-【操作系统】第七章：进程和线程" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【操作系统】第七章：进程和线程
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2020-04-14T10:12:27.482Z" itemprop="datePublished">2020-04-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">1.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">4 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="7-1-进程的定义"><a href="#7-1-进程的定义" class="headerlink" title="7.1 进程的定义"></a>7.1 进程的定义</h1><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424205148926.png" alt="image-20200424205148926" style="zoom:67%;">
+
+<ul>
+<li><p><strong>定义：</strong>一个具有一定独立功能的<strong>程序</strong>在一个数据集合上一次<strong>动态的执行过程</strong>。</p>
+<p>  进程代表运行的程序的执行过程，需要消耗各种计算机的资源</p>
+<p>  通过进程可以更好的表示程序的执行过程</p>
+<p>  <strong>进程是程序动态执行的过程</strong></p>
+</li>
+</ul>
+<h1 id="7-2-进程的组成"><a href="#7-2-进程的组成" class="headerlink" title="7.2 进程的组成"></a>7.2 进程的组成</h1><h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><ul>
+<li><strong>程序的代码</strong></li>
+<li><strong>程序处理的数据</strong></li>
+<li>程序计数器中的值，指示下一条将运行的指令</li>
+<li>一组通用的寄存器的当前值，堆、栈</li>
+<li>一组系统资源（如打开的程序）</li>
+</ul>
+<h3 id="进程与程序的联系（多对多）"><a href="#进程与程序的联系（多对多）" class="headerlink" title="进程与程序的联系（多对多）"></a>进程与程序的联系（多对多）</h3><ul>
+<li>程序是产生进程的基础</li>
+<li>程序的每次运行构成不同的进程</li>
+<li>进程是程序功能的</li>
+<li>通过多次执行，<strong>一个程序可对应多个进程</strong>；通过调用关系，<strong>一个进程可以包含多个程序</strong>。</li>
+</ul>
+<h3 id="进程与程序的区别"><a href="#进程与程序的区别" class="headerlink" title="进程与程序的区别"></a>进程与程序的区别</h3><table>
+<thead>
+<tr>
+<th align="center">进程</th>
+<th align="center">程序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">动态的</td>
+<td align="center">静态的</td>
+</tr>
+<tr>
+<td align="center">暂时的</td>
+<td align="center">永久的</td>
+</tr>
+<tr>
+<td align="center">进程组成包含程序、数据、进程控制块</td>
+<td align="center">……</td>
+</tr>
+</tbody></table>
+<h1 id="7-3-进程的特点"><a href="#7-3-进程的特点" class="headerlink" title="7.3 进程的特点"></a>7.3 进程的特点</h1><ul>
+<li>动态性：可动态的创建、结束进程</li>
+<li>并发性：进程可以被独立调度并占用处理及运行</li>
+<li>独立性：不同进程的工作不相互影响</li>
+<li>制约性：因访问共享数据/资源或进程间同步而产生制约</li>
+</ul>
+<p>==程序 = 算法 + 数据结构==</p>
+<p>描述进程的数据结构：<strong>进程控制块（Process Control Block，PCB）</strong></p>
+<p>操作系统为每个进程维护了一个PCB，用来保存与该进程有关的各种信息状态</p>
+<h1 id="7-4-进程的控制结构"><a href="#7-4-进程的控制结构" class="headerlink" title="7.4 进程的控制结构"></a>7.4 进程的控制结构</h1><p>进程控制块：操作系统管理控制进程运行所用的信息集合</p>
+<p>操作系统用PCB来描述进程的基本情况以及运行变化的过程，<strong>PCB是进程存在的唯一标志</strong></p>
+<p>进程控制块的使用：</p>
+<ul>
+<li>进程的创建：生成PCB</li>
+<li>进程的终止：回收PCB</li>
+<li>进程的组织管理</li>
+</ul>
+<p>PCB含有下列三大类信息：</p>
+<ol>
+<li><p>进程标识信息（pid）</p>
+</li>
+<li><p>处理机状态信息保存区（状态信息）</p>
+<ul>
+<li>用户可见寄存器、用户程序可以使用的数据、地址等寄存器</li>
+<li>控制和状态控制器，如程序计数器（PC）、程序状态字（PSW）</li>
+<li>栈指针，过程调用/系统调用/中断处理和返回时用到</li>
+</ul>
+</li>
+<li><p>进程控制信息（控制信息）</p>
+ <img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424212652589.png" alt="image-20200424212652589" style="zoom:67%;">
+
+</li>
+</ol>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213026940.png" alt="image-20200424213026940" style="zoom:67%;">
+
+<h1 id="7-5-进程的生命周期原理"><a href="#7-5-进程的生命周期原理" class="headerlink" title="7.5 进程的生命周期原理"></a>7.5 进程的生命周期原理</h1><p>进程的生命周期管理：</p>
+<ul>
+<li>进程创建</li>
+<li>进程运行</li>
+<li>进程等待</li>
+<li>进程唤醒</li>
+<li>进程结束</li>
+</ul>
+<h3 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h3><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213324923.png" alt="image-20200424213324923" style="zoom:67%;">
+
+<h3 id="进程运行"><a href="#进程运行" class="headerlink" title="进程运行"></a>进程运行</h3><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213348158.png" alt="image-20200424213348158" style="zoom: 67%;">
+
+<h3 id="进程等待"><a href="#进程等待" class="headerlink" title="进程等待"></a>进程等待</h3><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213450286.png" alt="image-20200424213450286" style="zoom:67%;">
+
+<h3 id="进程唤醒"><a href="#进程唤醒" class="headerlink" title="进程唤醒"></a>进程唤醒</h3><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213605087.png" alt="image-20200424213605087" style="zoom:67%;">
+
+<h3 id="进程结束"><a href="#进程结束" class="headerlink" title="进程结束"></a>进程结束</h3><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213718947.png" alt="image-20200424213718947" style="zoom:67%;">
+
+<h1 id="7-6-进程状态变化模型"><a href="#7-6-进程状态变化模型" class="headerlink" title="7.6 进程状态变化模型"></a>7.6 进程状态变化模型</h1><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213908227.png" alt="image-20200424213908227" style="zoom:67%;">
+
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424213934958.png" alt="image-20200424213934958" style="zoom:67%;">
+
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424214214017.png" alt="image-20200424214214017" style="zoom:67%;">
+
+<h1 id="7-7-进程挂起"><a href="#7-7-进程挂起" class="headerlink" title="7.7 进程挂起"></a>7.7 进程挂起</h1><p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200424214727314.png" alt="image-20200424214727314"></p>
+<h1 id="7-8-为什么使用线程"><a href="#7-8-为什么使用线程" class="headerlink" title="7.8 为什么使用线程"></a>7.8 为什么使用线程</h1><p>80年代中期，人们提出了比进程更小的<strong>能独立运行的基本单位</strong>——线程。</p>
+<p>为什么要使用线程？</p>
+<ul>
+<li><p>案例：编写一个MP3播放软件</p>
+<p>  核心模块功能：</p>
+<ul>
+<li><p>从MP3音频文件当中读取数据</p>
+</li>
+<li><p>对数据进行解压</p>
+</li>
+<li><p>把解压后的音频数据播放出来</p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426101500455.png" alt="image-20200426101500455" style="zoom:67%;">
+
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426101537425.png" alt="image-20200426101537425" style="zoom:67%;">
+
+<p>如何来解决上述问题呢？</p>
+<p>我们需要一个新的实体来满足以下特性：</p>
+</li>
+<li><p>实体之间可以<strong>并发的执行</strong></p>
+</li>
+<li><p>实体之间<strong>共享相同的地址</strong></p>
+<p>这种实体就是，<strong>线程（Thread）</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="7-9-什么是线程"><a href="#7-9-什么是线程" class="headerlink" title="7.9 什么是线程"></a>7.9 什么是线程</h1><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>线程是进程当中的一条执行流程。</strong></p>
+<p>进程的主要功能是管理资源，线程用来管理进程的执行资源。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p><strong>线程 = 进程 - 共享资源</strong></p>
+</li>
+<li><p>线程的优点：</p>
+<ul>
+<li>一个进程中可以同时存在多个线程</li>
+<li>各线程之间可以并发地执行</li>
+<li>线程之间可以共享地址空间和文件等资源</li>
+</ul>
+</li>
+<li><p>线程的缺点：</p>
+<ul>
+<li>安全可靠性没有保障，一个线程崩溃，会导致其所属的进程的所有线程崩溃</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程与进程比较"><a href="#线程与进程比较" class="headerlink" title="线程与进程比较"></a>线程与进程比较</h3><table>
+<thead>
+<tr>
+<th>进程</th>
+<th>线程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>资源分配单位</td>
+<td>CPU调度单位</td>
+</tr>
+<tr>
+<td>拥有完整的资源平台</td>
+<td>独享必不可少的资源，如寄存器、栈</td>
+</tr>
+<tr>
+<td>具有<strong>就绪、阻塞、执行</strong>三种基本状态</td>
+<td>具有<strong>就绪、阻塞、执行</strong>三种基本状态</td>
+</tr>
+</tbody></table>
+<p>线程能减少并发执行的时间和空间开销：</p>
+<ul>
+<li>线程的创建时间比进程短</li>
+<li>线程的终止时间比进程短</li>
+<li>同一进程内的线程切换时间比进程短</li>
+<li>由于同一进程的各线程间共享内存和文件资源，可直接进行不通过内核的通信</li>
+</ul>
+<h1 id="7-10-线程的实现"><a href="#7-10-线程的实现" class="headerlink" title="7.10 线程的实现"></a>7.10 线程的实现</h1><h3 id="用户线程：在用户空间实现"><a href="#用户线程：在用户空间实现" class="headerlink" title="用户线程：在用户空间实现"></a>用户线程：在用户空间实现</h3><p>操作系统看不到的线程</p>
+<p>由专门的用户线程库来进行管理，包括线程的创建、终止、同步、调度等。</p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426103953516.png" alt="image-20200426103953516" style="zoom:67%;">
+
+<ul>
+<li>用户线程缺点：<ul>
+<li>阻塞性的系统调用（读文件，可能发生阻塞），如果一个线程发起系统调用而阻塞，则整个进程在等待；</li>
+<li>当一个线程开始运行后，除非他主动交出CPU的使用权，否则他所在的线程当中的其他线程将无法运行；</li>
+<li>由于时间片分配给进程，故与其他进程相比，在多线程执行时，每个线程得到的时间片较少，执行较慢。</li>
+</ul>
+</li>
+</ul>
+<h3 id="内核线程：在内核中实现"><a href="#内核线程：在内核中实现" class="headerlink" title="内核线程：在内核中实现"></a>内核线程：在内核中实现</h3><p>操作系统能够看到并进行管理的线程</p>
+<p>由操作系统本身进行管理</p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426104620533.png" alt="image-20200426104620533" style="zoom:67%;">
+
+<h3 id="轻量级进程：在内核中实现，支持用户线程"><a href="#轻量级进程：在内核中实现，支持用户线程" class="headerlink" title="轻量级进程：在内核中实现，支持用户线程"></a>轻量级进程：在内核中实现，支持用户线程</h3><p>内核支持用户线程。一个进程可有一个或多个轻量级进程，每个轻量级进程由一个单独的内核线程来支持。</p>
+<img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426104921999.png" alt="image-20200426104921999" style="zoom:67%;">
+
+<h1 id="7-11-上下文切换"><a href="#7-11-上下文切换" class="headerlink" title="7.11 上下文切换"></a>7.11 上下文切换</h1><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426105252010.png" alt="image-20200426105252010" style="zoom:67%;">
+
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426105318686.png" alt="image-20200426105318686" style="zoom:67%;"><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426105516465.png" alt="image-20200426105516465"></p>
+<p><img src="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/image-20200426105516465.png" alt="image-20200426105516465"></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【Spring注解驱动开发】前篇
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【操作系统】第六章：页面置换算法</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        为什么是苟或啊
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/icon1.jpg" alt="从入门到入土"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['起风了,唯有努力生存', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

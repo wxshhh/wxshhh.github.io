@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>从入门到入土</title>
+  
+  <subtitle>Java后端开发之路</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-26T07:19:09.720Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>为什么是苟或啊</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【数据结构与算法】树：平衡二叉树</title>
+    <link href="http://yoursite.com/2020/04/25/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>http://yoursite.com/2020/04/25/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <published>2020-04-25T00:41:35.705Z</published>
+    <updated>2020-04-26T07:19:09.720Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;为什么需要平衡二叉树？&quot;&gt;&lt;a href=&quot;#为什么需要平衡二叉树？&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MySQL回顾】事务篇</title>
+    <link href="http://yoursite.com/2020/04/24/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E4%BA%8B%E5%8A%A1%E7%AF%87/"/>
+    <id>http://yoursite.com/2020/04/24/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E4%BA%8B%E5%8A%A1%E7%AF%87/</id>
+    <published>2020-04-24T01:08:02.698Z</published>
+    <updated>2020-04-26T07:19:09.719Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;什么是事务&quot;&gt;&lt;a href=&quot;#什么是事务&quot; class=&quot;headerlink&quot; title=&quot;什么是事务&quot;&gt;&lt;/a&gt;什么是事务&lt;/h1&gt;&lt;p&gt;事务是访问并可能更新数据库中各种&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MySQL回顾】索引篇</title>
+    <link href="http://yoursite.com/2020/04/23/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E7%B4%A2%E5%BC%95%E7%AF%87/"/>
+    <id>http://yoursite.com/2020/04/23/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E7%B4%A2%E5%BC%95%E7%AF%87/</id>
+    <published>2020-04-23T06:52:20.547Z</published>
+    <updated>2020-04-23T08:26:45.195Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;索引简介&quot;&gt;&lt;a href=&quot;#索引简介&quot; class=&quot;headerlink&quot; title=&quot;索引简介&quot;&gt;&lt;/a&gt;索引简介&lt;/h1&gt;&lt;h3 id=&quot;什么是索引&quot;&gt;&lt;a href=&quot;#什么是索引&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【MySQL回顾】基础操作篇</title>
+    <link href="http://yoursite.com/2020/04/22/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/"/>
+    <id>http://yoursite.com/2020/04/22/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/</id>
+    <published>2020-04-22T00:47:34.225Z</published>
+    <updated>2020-04-22T02:52:46.612Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;快速回顾&quot;&gt;&lt;a href=&quot;#快速回顾&quot; class=&quot;headerlink&quot; title=&quot;快速回顾&quot;&gt;&lt;/a&gt;快速回顾&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;语句&lt;/th&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【数据结构与算法】树：二叉排序树</title>
+    <link href="http://yoursite.com/2020/04/21/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/"/>
+    <id>http://yoursite.com/2020/04/21/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</id>
+    <published>2020-04-21T09:52:20.764Z</published>
+    <updated>2020-04-23T05:30:46.682Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;二叉排序树介绍&quot;&gt;&lt;a href=&quot;#二叉排序树介绍&quot; class=&quot;headerlink&quot; title=&quot;二叉排序树介绍&quot;&gt;&lt;/a&gt;二叉排序树介绍&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;二叉排序树（Binary Sort/Search
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第四章：非连续式内存分布</title>
+    <link href="http://yoursite.com/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/"/>
+    <id>http://yoursite.com/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</id>
+    <published>2020-04-18T08:12:30.831Z</published>
+    <updated>2020-04-18T09:59:14.353Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第三章：连续内存分布</title>
+    <link href="http://yoursite.com/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/"/>
+    <id>http://yoursite.com/2020/04/18/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%9E%E7%BB%AD%E5%BC%8F%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83/</id>
+    <published>2020-04-18T08:12:30.815Z</published>
+    <updated>2020-04-18T09:33:15.605Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;3-1-计算机体系结构及内存分层体系&quot;&gt;&lt;a href=&quot;#3-1-计算机体系结构及内存分层体系&quot; class=&quot;headerlink&quot; title=&quot;3.1 计算机体系结构及内存分层体系&quot;&gt;&lt;/a&gt;3.1 计算机体系结构及内存分层体系&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第二章：操作系统基础操作</title>
+    <link href="http://yoursite.com/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</id>
+    <published>2020-04-16T02:51:56.000Z</published>
+    <updated>2020-04-18T10:04:42.652Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;2-1-启动、中断、异常和系统调用&quot;&gt;&lt;a href=&quot;#2-1-启动、中断、异常和系统调用&quot; class=&quot;headerlink&quot; title=&quot;2.1 启动、中断、异常和系统调用&quot;&gt;&lt;/a&gt;2.1 启动、中断、异常和系统调用&lt;/h2&gt;&lt;h4
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第一章：概述</title>
+    <link href="http://yoursite.com/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%BF%B0/"/>
+    <id>http://yoursite.com/2020/04/16/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%BF%B0/</id>
+    <published>2020-04-16T02:50:56.000Z</published>
+    <updated>2020-04-18T08:12:07.039Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;从今天开始一个新的篇章的学习——《计算机操作系统》&lt;/p&gt;
+&lt;p&gt;为了提前准备将要到来的考研&lt;/p&gt;
+&lt;p&gt;也为了夯实计算机基础，建立完整的计算机科学体系&lt;/p&gt;
+&lt;p&gt;内容记录自：b站——操作系统_清华大学（向勇、陈瑜）
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Spring注解驱动开发】前篇</title>
+    <link href="http://yoursite.com/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/"/>
+    <id>http://yoursite.com/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/</id>
+    <published>2020-04-15T02:15:30.000Z</published>
+    <updated>2020-04-22T02:52:20.231Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Bean的初始化和生命周期&quot;&gt;&lt;a href=&quot;#Bean的初始化和生命周期&quot; class=&quot;headerlink&quot; title=&quot;Bean的初始化和生命周期&quot;&gt;&lt;/a&gt;Bean的初始化和生命周期&lt;/h2&gt;&lt;h4 id=&quot;bean-的生命周期&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="源码阅读" scheme="http://yoursite.com/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+      <category term="尚硅谷" scheme="http://yoursite.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第七章：进程和线程</title>
+    <link href="http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</id>
+    <published>2020-04-14T10:12:27.482Z</published>
+    <updated>2020-04-26T02:58:22.822Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;7-1-进程的定义&quot;&gt;&lt;a href=&quot;#7-1-进程的定义&quot; class=&quot;headerlink&quot; title=&quot;7.1 进程的定义&quot;&gt;&lt;/a&gt;7.1 进程的定义&lt;/h1&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第六章：页面置换算法</title>
+    <link href="http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95/</id>
+    <published>2020-04-14T10:12:07.142Z</published>
+    <updated>2020-04-23T11:48:01.699Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;功能目标&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;功能：当缺页中断发生，需要调入新的页面而内存已满时，选择当中哪个物理页面被置换。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目标：&lt;strong&gt;尽可能减少页面的换进换出次数。&lt;/strong&gt;&lt;/p&gt;
+&lt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【操作系统】第五章：虚拟内存</title>
+    <link href="http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
+    <id>http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
+    <published>2020-04-14T10:10:53.745Z</published>
+    <updated>2020-04-20T04:26:03.449Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;虚拟内存的起因&quot;&gt;&lt;a href=&quot;#虚拟内存的起因&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】JavaEE</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</id>
+    <published>2020-04-13T08:36:54.000Z</published>
+    <updated>2020-04-16T03:51:28.984Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;java环境变量配置&quot;&gt;&lt;a href=&quot;#java环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;java环境变量配置&quot;&gt;&lt;/a&gt;java环境变量配置&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;进入配置文件&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】RPM和RYUM</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91RPM%E5%92%8CRYUM/</id>
+    <published>2020-04-13T08:35:30.000Z</published>
+    <updated>2020-04-13T08:39:06.019Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;RPM包的管理&quot;&gt;&lt;a href=&quot;#RPM包的管理&quot; class=&quot;headerlink&quot; title=&quot;RPM包的管理&quot;&gt;&lt;/a&gt;RPM包的管理&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;rpm包的简单查询：
+    查询已安装的rpm列表： rpm -qa|grep
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】进程管理</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</id>
+    <published>2020-04-13T08:33:42.000Z</published>
+    <updated>2020-04-13T08:39:06.145Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;显示系统执行的进程&quot;&gt;&lt;a href=&quot;#显示系统执行的进程&quot; class=&quot;headerlink&quot; title=&quot;显示系统执行的进程&quot;&gt;&lt;/a&gt;显示系统执行的进程&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;指令：ps
+参数：
+    -a： 显示所有进程
+    -u：
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】网络配置</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-04-13T08:29:22.000Z</published>
+    <updated>2020-04-16T03:50:29.096Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;查看网络IP和网关&quot;&gt;&lt;a href=&quot;#查看网络IP和网关&quot; class=&quot;headerlink&quot; title=&quot;查看网络IP和网关&quot;&gt;&lt;/a&gt;查看网络IP和网关&lt;/h2&gt;&lt;h4 id=&quot;查看虚拟网络编辑器&quot;&gt;&lt;a href=&quot;#查看虚拟网络编辑器&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】磁盘分区和挂载</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD/</id>
+    <published>2020-04-13T08:27:27.000Z</published>
+    <updated>2020-04-16T03:48:52.183Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;分区基础知识&quot;&gt;&lt;a href=&quot;#分区基础知识&quot; class=&quot;headerlink&quot; title=&quot;分区基础知识&quot;&gt;&lt;/a&gt;分区基础知识&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;分区方式：
+    1.mbr分区
+   
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】定时任务调度</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</id>
+    <published>2020-04-13T08:24:12.000Z</published>
+    <updated>2020-04-13T08:39:06.127Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;crond-任务调度&quot;&gt;&lt;a href=&quot;#crond-任务调度&quot; class=&quot;headerlink&quot; title=&quot;crond 任务调度&quot;&gt;&lt;/a&gt;crond 任务调度&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;基本语法：
+    crontab [选项]
+   
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Linux】组管理与权限管理</title>
+    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</id>
+    <published>2020-04-13T08:21:35.000Z</published>
+    <updated>2020-04-16T03:51:09.607Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;组管理&quot;&gt;&lt;a href=&quot;#组管理&quot; class=&quot;headerlink&quot; title=&quot;组管理&quot;&gt;&lt;/a&gt;组管理&lt;/h2&gt;&lt;h4 id=&quot;文件-目录所有者&quot;&gt;&lt;a href=&quot;#文件-目录所有者&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+</feed>

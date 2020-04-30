@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-29T13:02:54.825Z</updated>
+  <updated>2020-04-30T03:40:53.861Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【服务器购买及部署】初识服务器</title>
+    <link href="http://yoursite.com/2020/04/30/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/"/>
+    <id>http://yoursite.com/2020/04/30/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/</id>
+    <published>2020-04-30T00:13:10.268Z</published>
+    <updated>2020-04-30T03:40:53.861Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;第一次相遇&lt;/p&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;p&gt;很高兴认识你！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;服务器必知&quot;&gt;&lt;a href=&quot;#服务器必知&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【数据结构与算法】图</title>
     <link href="http://yoursite.com/2020/04/29/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%9B%BE/"/>
     <id>http://yoursite.com/2020/04/29/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%9B%BE/</id>
     <published>2020-04-29T08:17:27.536Z</published>
-    <updated>2020-04-29T13:02:54.825Z</updated>
+    <updated>2020-04-29T13:07:10.771Z</updated>
     
     <summary type="html">
     
@@ -589,35 +623,6 @@
       <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Linux】JavaEE</title>
-    <link href="http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/"/>
-    <id>http://yoursite.com/2020/04/13/%E3%80%90Linux%E3%80%91JavaEE/</id>
-    <published>2020-04-13T08:36:54.000Z</published>
-    <updated>2020-04-16T03:51:28.984Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;java环境变量配置&quot;&gt;&lt;a href=&quot;#java环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;java环境变量配置&quot;&gt;&lt;/a&gt;java环境变量配置&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;进入配置文件&lt;/p&gt;
-&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   

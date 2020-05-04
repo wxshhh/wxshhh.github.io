@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-03T13:27:09.697Z</updated>
+  <updated>2020-05-04T00:50:19.042Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【MyBatisPlus】</title>
+    <title>【初探JVM】</title>
     <link href="http://yoursite.com/2020/05/01/%E3%80%90%E6%8E%A2%E7%A7%98JVM%E3%80%91/"/>
     <id>http://yoursite.com/2020/05/01/%E3%80%90%E6%8E%A2%E7%A7%98JVM%E3%80%91/</id>
     <published>2020-05-01T08:23:08.975Z</published>
-    <updated>2020-05-03T13:27:09.697Z</updated>
+    <updated>2020-05-04T00:50:19.042Z</updated>
     
     <summary type="html">
     
@@ -46,7 +46,7 @@
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
-      <category term="MyBatisPlus" scheme="http://yoursite.com/tags/MyBatisPlus/"/>
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
       <category term="狂神说Java" scheme="http://yoursite.com/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/"/>
     
@@ -77,9 +77,9 @@
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
-      <category term="MyBatisPlus" scheme="http://yoursite.com/tags/MyBatisPlus/"/>
-    
       <category term="狂神说Java" scheme="http://yoursite.com/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/"/>
+    
+      <category term="MyBatisPlus" scheme="http://yoursite.com/tags/MyBatisPlus/"/>
     
   </entry>
   

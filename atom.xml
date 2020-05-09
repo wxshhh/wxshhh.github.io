@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-04T00:50:19.042Z</updated>
+  <updated>2020-05-08T03:08:24.823Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JavaScript快速入门】</title>
+    <link href="http://yoursite.com/2020/05/04/%E3%80%90JavaScript%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/"/>
+    <id>http://yoursite.com/2020/05/04/%E3%80%90JavaScript%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/</id>
+    <published>2020-05-04T05:36:06.182Z</published>
+    <updated>2020-05-08T03:08:24.823Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;1-什么是JavaScript&quot;&gt;&lt;a href=&quot;#1-什么是JavaScript&quot; class=&quot;headerlink&quot; title=&quot;1.什么是JavaScript&quot;&gt;&lt;/a&gt;1.什么是JavaScript&lt;/h1&gt;&lt;h1 id=&quot;2-快速入门&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="狂神说Java" scheme="http://yoursite.com/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【JUC并发编程】</title>
+    <link href="http://yoursite.com/2020/05/04/%E3%80%90JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E4%B8%80/"/>
+    <id>http://yoursite.com/2020/05/04/%E3%80%90JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E4%B8%80/</id>
+    <published>2020-05-04T01:04:31.494Z</published>
+    <updated>2020-05-09T04:25:27.132Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;什么是JUC&quot;&gt;&lt;a href=&quot;#什么是JUC&quot; class=&quot;headerlink&quot; title=&quot;什么是JUC&quot;&gt;&lt;/a&gt;什么是JUC&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;线程&lt;/strong&gt;是 Java 中浓墨重彩的一笔。&lt;/p&gt;
+&lt;p&gt;JUC 就是
+        
+      
+    
+    </summary>
+    
+    
+      <category term="-Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="狂神说Java" scheme="http://yoursite.com/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/"/>
+    
+      <category term="并发编程" scheme="http://yoursite.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>【初探JVM】</title>
@@ -46,9 +109,9 @@
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
       <category term="狂神说Java" scheme="http://yoursite.com/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/"/>
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
   </entry>
   
@@ -567,66 +630,6 @@
       <category term="尚硅谷" scheme="http://yoursite.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/"/>
     
       <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【操作系统】第八章：CPU调度</title>
-    <link href="http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%85%AB%E7%AB%A0%EF%BC%9ACPU%E8%B0%83%E5%BA%A6/"/>
-    <id>http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E5%85%AB%E7%AB%A0%EF%BC%9ACPU%E8%B0%83%E5%BA%A6/</id>
-    <published>2020-04-14T10:12:49.655Z</published>
-    <updated>2020-04-29T02:29:55.379Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;在进程/线程的生命周期中什么时候进行调度？&lt;/p&gt;
-&lt;p&gt; 
-        
-      
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【操作系统】第七章：进程和线程</title>
-    <link href="http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2020/04/14/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</id>
-    <published>2020-04-14T10:12:27.482Z</published>
-    <updated>2020-04-26T02:58:22.822Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;7-1-进程的定义&quot;&gt;&lt;a href=&quot;#7-1-进程的定义&quot; class=&quot;headerlink&quot; title=&quot;7.1 进程的定义&quot;&gt;&lt;/a&gt;7.1 进程的定义&lt;/h1&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="考研" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94/"/>
     
   </entry>
   

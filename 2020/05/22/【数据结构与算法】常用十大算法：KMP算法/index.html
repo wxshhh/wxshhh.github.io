@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+<html lang="ch" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="南京理工大学大二在读~~~" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    【数据结构与算法】常用十大算法：KMP算法 |  从入门到入土
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-【数据结构与算法】常用十大算法：KMP算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【数据结构与算法】常用十大算法：KMP算法
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-05-22T07:23:20.848Z" itemprop="datePublished">2020-05-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">1.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">5 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>字符串匹配问题：</p>
+<p>有一个字符串 <code>BBC ABCDAB ABABCDABD</code>，另一个字符串为 <code>ABCDABD</code></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523160517802.png" alt="image-20200523160517802"></p>
+<p>现在要判断 str1 中是否含有 str2，如果有就返回 str1 中首个匹配字母的索引，如果没有，则返回 1</p>
+<h1 id="暴力匹配算法"><a href="#暴力匹配算法" class="headerlink" title="暴力匹配算法"></a>暴力匹配算法</h1><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>遍历两个字符串：</p>
+<ol>
+<li>若 <code>str1[i] == str2[j]</code>，则 <code>i++</code>、<code>j++</code>，继续匹配下一个字符</li>
+<li>若 <code>str1[i] != str2[j]</code>，则 <code>i = i - j + 1</code>、<code>j = 0</code>，继续进行匹配</li>
+<li>如此循环直至 <code>i &gt; str1.length &amp;&amp; j &gt; str2.length</code></li>
+</ol>
+<h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><ul>
+<li>红色代表匹配失败</li>
+<li>绿色代表匹配成功</li>
+<li>。。。表示以此类推</li>
+</ul>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523160906606.png" alt="image-20200523160906606"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523160743609.png" alt="image-20200523160743609"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161010707.png" alt="image-20200523161010707"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161110178.png" alt="image-20200523161110178"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161226656.png" alt="image-20200523161226656"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161010707.png" alt="image-20200523161010707"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161353704.png" alt="image-20200523161353704"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161443152.png" alt="image-20200523161443152"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161010707.png" alt="image-20200523161010707"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161725460.png" alt="image-20200523161725460"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">violenceMatch</span><span class="params">(String str1, String str2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span>[] s1 = str1.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] s2 = str2.toCharArray();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;      <span class="comment">//索引指向s1</span></span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;      <span class="comment">//索引指向s2</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt; s1.length &amp;&amp; j &lt; s2.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s1[i] == s2[j]) &#123;   <span class="comment">//若匹配上了则继续后移看是否匹配</span></span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;                <span class="comment">//若没有匹配上就回溯，再继续后移</span></span><br><span class="line">                i = i - j + <span class="number">1</span>;</span><br><span class="line">                j = <span class="number">0</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (j == s2.length) &#123; </span><br><span class="line">            <span class="keyword">return</span> i - j;           <span class="comment">//返回匹配上的第一个字符的索引</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>使用暴力匹配法匹配字符串，每次匹配失败都需要回溯到开始位置的后一位，其间花费了大量的时间，仔细思考，其实这些开销是不必要的。</p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523162040054.png" alt="image-20200523162040054"></p>
+<p>看图，字符串一直从 A 匹配到 D ，D 处不匹配，但是前面的 ABCDAB 都已经一一匹配了，故此时将 str2 后移一位结果可想而知也不会匹配</p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523162402920.png" alt="image-20200523162402920"></p>
+<p>如图，中间后移的五步结果不算都可以知道是不匹配的，那我们干嘛还要去浪费时间一次一次移动呢？</p>
+<p>直接从移动到 str1 中的下一个 A 不香嘛！</p>
+<p>那我们可以可以设计某种算法来进行优化呢？</p>
+<p>我觉得不行</p>
+<p>但是有三位聪明的大师做到了！</p>
+<p>这种算法被命名为 <strong>KMP算法</strong> ，也就是今天的主角了！</p>
+<h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li><p>KMP是三位大牛：<strong>D.E.Knuth</strong>、<strong>J.H.Morris</strong> 和 <strong>V.R.Pratt</strong> 同时发现的。其中第一位就是《计算机程序设计艺术》的作者！</p>
+</li>
+<li><p>KMP算法要解决的问题就是在字符串（也叫主串）中的模式（pattern）定位问题。说简单点就是我们平时常说的关键字搜索。模式串就是关键字，如果它在一个主串中出现，就返回它的具体位置，否则返回-1（常用手段）。</p>
+</li>
+</ul>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>KMP算法如何实现呢，这里我们需要先引入一些概念</li>
+</ul>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523163401092.png" alt="image-20200523163401092"></p>
+<ul>
+<li><p>举例：“ABCDABD”</p>
+<ul>
+<li>”A”的前缀和后缀都为空集，共有元素的长度为 <strong>0</strong></li>
+<li>”AB”的前缀为[A]，后缀为[B]， 共有元素的长度为 <strong>0</strong></li>
+<li>“ABC”的前缀为[A, AB],后缀为[BC, C]，共有元素的长度 <strong>0</strong></li>
+<li>”ABCD” 的前缀为[A, AB, ABC],后缀为[BCD, CD, D]，共有元素的长度为 <strong>0</strong></li>
+<li>”ABCDA”的前缀为[A, AB, ABC, ABCD]，后缀为[BCDA, CDA, DA,A]，共有元素为”A”，长度为 <strong>1</strong></li>
+<li>”ABCDAB”的前缀为[A, AB, ABC, ABCD, ABCDA],后缀为[BCDAB, CDAB, DAB, AB, B],共有元素为”AB”,<br>  长度为 <strong>2</strong></li>
+<li>”ABCDABD”的前缀为[A, AB, ABC,ABCD, ABCDA, ABCDAB]，后缀为[BCDABD, CDABD, DABD, ABD, BD,<br>  D]，共有元素的长度为 <strong>0</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code>通过上述分析，我们可以得到一张**部分匹配表**
+
+|  A   |  B   |  C   |  D   |  A   |  B   |  D   |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+|  0   |  0   |  0   |  0   |  1   |  2   |  0   |
+
+这张部分匹配表就是 KMP算法的核心，接下来我们就要用它了！</code></pre><p>接着暴力匹配算法走：</p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523162040054.png" alt="image-20200523162040054"></p>
+<p>当 D 与 “ ” 不匹配时，前面六个字符 “ABCDAB” 是匹配的，查 <strong>部分匹配表</strong> 可知最后一个匹配的字母 B 对应的部分匹配值为 2 </p>
+<p>由公式：<br>$$<br>移动位数 = 已知匹配字符数 - 对应匹配值<br>$$<br>可得 <strong>移动位数 = 6 - 2 = 4</strong></p>
+<p>故将搜索词向后移动 4 位</p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523165755165.png" alt="image-20200523165755165"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523170017335.png" alt="image-20200523170017335"></p>
+<p>C 的部分匹配值为 0，</p>
+<p>由公式得 <strong>位移位数 = 2 - 0 = 2</strong></p>
+<p>故将搜索词后移两位</p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523170148706.png" alt="image-20200523170148706"></p>
+<p><img src="/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/image-20200523161010707.png" alt="image-20200523161010707"></p>
+<p>以此类推，可<strong>高效</strong>得到答案！</p>
+<p>至此，KMP算法 思路分析全部结束。</p>
+<p>至于原理，emmm，比较玄学的东西还没有学习，可以参考 <a href="https://zhuanlan.zhihu.com/p/83334559" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/83334559</a></p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kmpSearch</span><span class="params">(String str1, String str2)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//部分匹配表</span></span><br><span class="line">    <span class="keyword">int</span>[] next = kmpNext(str2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; str1.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; str1.charAt(i) != str2.charAt(j)) &#123;</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str1.charAt(i) == str2.charAt(j)) &#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (j == str2.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> i - j + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] kmpNext(String dest) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建一个 next 数组来保存部分匹配值</span></span><br><span class="line">    <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[dest.length()];</span><br><span class="line">    <span class="comment">//字符串长度为 1 时，部分匹配值为 0</span></span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; dest.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; dest.charAt(i) != dest.charAt(j)) &#123;</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (dest.charAt(i) == dest.charAt(j)) &#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        next[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>mvn install:install-file -DgroupId=com.google.code.kaptcha -DartifactId=kaptcha -Dversion=2.3 -Dfile=E:\CS\Java\Project\ruoyi\kaptcha-2.3.2.jar -Dpackaging=jar -DgeneratePom=true</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>尚硅谷：<a href="https://www.bilibili.com/video/BV1E4411H73v?p=161" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1E4411H73v?p=161</a></p>
+<p>labuladong：<a href="https://zhuanlan.zhihu.com/p/83334559" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/83334559</a></p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/22/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9AKMP%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/26/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/18/%E3%80%90%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6%E7%B3%BB%E5%88%97%E3%80%91/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【安全框架系列】</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'GAoxPQbSWIkeFM6G1CHJ1686-gzGzoHsz',
+        app_key: '0NQmIQe2tbV2BNRPaxTlkV42',
+        path: window.location.pathname,
+        notify: 'true',
+        verify: 'true',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        为什么是苟或啊
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://web.umeng.com/main.php?c=site&amp;a=getcode&amp;siteid=1278851799'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/icon1.jpg" alt="从入门到入土"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['起风了,唯有努力生存', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

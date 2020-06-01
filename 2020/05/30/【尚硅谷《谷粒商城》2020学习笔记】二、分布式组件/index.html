@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+<html lang="ch" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="南京理工大学大二在读~~~" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件 |  从入门到入土
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/" class="article-date">
+  <time datetime="2020-05-30T03:17:13.084Z" itemprop="datePublished">2020-05-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">2.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">11 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="SpringCloud-Alibaba"><a href="#SpringCloud-Alibaba" class="headerlink" title="SpringCloud Alibaba"></a>SpringCloud Alibaba</h1><h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>Spring Cloud Alibaba 致力于提供分布式应用<strong>服务开发的一站式解决方案</strong>。此项目包含开发分布式应用服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。</p>
+<p>依托 Spring Cloud Alibaba，您只需要添加<strong>一些注解和少量配置</strong>，就可以将 Spring Cloud 应用接入阿里分布式应用解决方案，通过阿里中间件来迅速搭建分布式应用系统。</p>
+<p>GitHub地址：<a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank" rel="noopener">https://github.com/alibaba/spring-cloud-alibaba</a></p>
+<h3 id="二、主要功能"><a href="#二、主要功能" class="headerlink" title="二、主要功能"></a>二、主要功能</h3><ul>
+<li><strong>服务限流降级</strong>：默认支持 WebServlet、WebFlux, OpenFeign、RestTemplate、Spring Cloud Gateway, Zuul, Dubbo 和 RocketMQ 限流降级功能的接入，可以在运行时通过控制台实时修改限流降级规则，还支持查看限流降级 Metrics 监控。</li>
+<li><strong>服务注册与发现</strong>：适配 Spring Cloud 服务注册与发现标准，默认集成了 Ribbon 的支持。</li>
+<li><strong>分布式配置管理</strong>：支持分布式系统中的外部化配置，配置更改时自动刷新。</li>
+<li><strong>消息驱动能力</strong>：基于 Spring Cloud Stream 为微服务应用构建消息驱动能力。</li>
+<li><strong>分布式事务</strong>：使用 <code>@GlobalTransactional</code> 注解， 高效并且对业务零侵入地解决分布式事务问题。。</li>
+<li><strong>阿里云对象存储</strong>：阿里云提供的海量、安全、低成本、高可靠的云存储服务。支持在任何应用、任何时间、任何地点存储和访问任意类型的数据。</li>
+<li><strong>分布式任务调度</strong>：提供秒级、精准、高可靠、高可用的定时（基于 Cron 表达式）任务调度服务。同时提供分布式的任务执行模型，如网格任务。网格任务支持海量子任务均匀分配到所有 Worker（schedulerx-client）上执行。</li>
+<li><strong>阿里云短信服务</strong>：覆盖全球的短信服务，友好、高效、智能的互联化通讯能力，帮助企业迅速搭建客户触达通道。</li>
+</ul>
+<h3 id="三、组件"><a href="#三、组件" class="headerlink" title="三、组件"></a>三、组件</h3><p><strong><a href="https://github.com/alibaba/Sentinel" target="_blank" rel="noopener">Sentinel</a></strong>：把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。</p>
+<p><strong><a href="https://github.com/alibaba/Nacos" target="_blank" rel="noopener">Nacos</a></strong>：一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</p>
+<p><strong><a href="https://rocketmq.apache.org/" target="_blank" rel="noopener">RocketMQ</a></strong>：一款开源的分布式消息系统，基于高可用分布式集群技术，提供低延时的、高可靠的消息发布与订阅服务。</p>
+<p><strong><a href="https://github.com/apache/dubbo" target="_blank" rel="noopener">Dubbo</a></strong>：Apache Dubbo™ 是一款高性能 Java RPC 框架。</p>
+<p><strong><a href="https://github.com/seata/seata" target="_blank" rel="noopener">Seata</a></strong>：阿里巴巴开源产品，一个易于使用的高性能微服务分布式事务解决方案。</p>
+<p><strong><a href="https://www.aliyun.com/product/acm" target="_blank" rel="noopener">Alibaba Cloud ACM</a></strong>：一款在分布式架构环境中对应用配置进行集中管理和推送的应用配置中心产品。</p>
+<p><strong><a href="https://www.aliyun.com/product/oss" target="_blank" rel="noopener">Alibaba Cloud OSS</a></strong>: 阿里云对象存储服务（Object Storage Service，简称 OSS），是阿里云提供的海量、安全、低成本、高可靠的云存储服务。您可以在任何应用、任何时间、任何地点存储和访问任意类型的数据。</p>
+<p><strong><a href="https://help.aliyun.com/document_detail/43136.html" target="_blank" rel="noopener">Alibaba Cloud SchedulerX</a></strong>: 阿里中间件团队开发的一款分布式任务调度产品，提供秒级、精准、高可靠、高可用的定时（基于 Cron 表达式）任务调度服务。</p>
+<p><strong><a href="https://www.aliyun.com/product/sms" target="_blank" rel="noopener">Alibaba Cloud SMS</a></strong>: 覆盖全球的短信服务，友好、高效、智能的互联化通讯能力，帮助企业迅速搭建客户触达通道。</p>
+<h3 id="四、Spring-Cloud-Alibaba和Spring-Cloud-的区别和联系"><a href="#四、Spring-Cloud-Alibaba和Spring-Cloud-的区别和联系" class="headerlink" title="四、Spring Cloud Alibaba和Spring Cloud 的区别和联系"></a>四、Spring Cloud Alibaba和Spring Cloud 的区别和联系</h3><p><img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531101103114.png" alt="image-20200531101103114"></p>
+<p><img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531101045571.png" alt="image-20200531101045571"></p>
+<p><strong>SpringCloud Alibaba 的优势：</strong></p>
+<p>阿里使用过的组件经历了考验，<strong>性能强悍，设计合理，搭建简单，学习曲线低</strong></p>
+<h3 id="五、最终整合方案"><a href="#五、最终整合方案" class="headerlink" title="五、最终整合方案"></a>五、最终整合方案</h3><ul>
+<li><p>SpringCloud Alibaba - Nacos：注册中心（服务发现、注册）</p>
+</li>
+<li><p>SpringCloud Alibaba - Nacos：配置中心（动态配置管理）</p>
+</li>
+<li><p>SpringCloud - Ribbon：负载均衡</p>
+</li>
+<li><p>SpringCloud - Feign：声明式 HTTP 客户端（调用远程服务）</p>
+</li>
+<li><p>SpringCloud Alibaba - Sentinel：服务容错（限流、降级、熔断）</p>
+</li>
+<li><p>SpringCloud - Gateway：API 网关（webflux 编程模式）</p>
+</li>
+<li><p>SpringCloud - Sleuth：调用链监控</p>
+</li>
+<li><p>SpringCloud Alibaba - Seata：分布式事务解决方案</p>
+</li>
+</ul>
+<h3 id="六、版本规范管理"><a href="#六、版本规范管理" class="headerlink" title="六、版本规范管理"></a>六、版本规范管理</h3><p>项目的版本号格式为 x.x.x 的形式，其中 x 的数值类型为数字，从 0 开始取值，且不限于 0~9 这个范围。项目处于孵化器阶段时，第一位版本号固定使用 0，即版本号为 0.x.x 的格式。</p>
+<p>由于 Spring Boot 1 和 Spring Boot 2 在 Actuator 模块的接口和注解有很大的变更，且 spring-cloud-commons 从 1.x.x 版本升级到 2.0.0 版本也有较大的变更，因此我们采取跟 SpringBoot 版本号一致的版本:</p>
+<ul>
+<li>1.5.x 版本适用于 Spring Boot 1.5.x</li>
+<li>2.0.x 版本适用于 Spring Boot 2.0.x</li>
+<li>2.1.x 版本适用于 Spring Boot 2.1.x</li>
+<li>2.2.x 版本适用于 Spring Boot 2.2.x</li>
+</ul>
+<p>我们的项目使用的是 Spring Boot 2.2.7，故我们选择 Spring Cloud Alibaba 2.2.x版本</p>
+<p>引入依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="SpringCloud-Alibaba-Nacos"><a href="#SpringCloud-Alibaba-Nacos" class="headerlink" title="SpringCloud Alibaba - Nacos"></a>SpringCloud Alibaba - Nacos</h1><h3 id="一、作为注册中心"><a href="#一、作为注册中心" class="headerlink" title="一、作为注册中心"></a>一、作为注册中心</h3><p>参考官方文档地址：<a href="https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example/readme-zh.md" target="_blank" rel="noopener">https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-discovery-example/readme-zh.md</a></p>
+<p>这里我们以模块 <strong>GulimallCouponApplication</strong> 为例</p>
+<ol>
+<li><p>首先，修改 pom.xml 文件，引入 Nacos Discovery Starter。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在应用的 /src/main/resources/application.yml配置文件中配置 Nacos Server 地址及 name</p>
+ <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring</span>:  <span class="string"></span></span><br><span class="line">  <span class="attr">cloud</span>:<span class="string"></span></span><br><span class="line">    <span class="attr">nacos</span>:<span class="string"></span></span><br><span class="line">      <span class="meta">server-addr</span>: <span class="string">127.0.0.1:8848</span></span><br><span class="line">  <span class="attr">application</span>:<span class="string"></span></span><br><span class="line">    <span class="attr">name</span>: <span class="string">gulimall-coupon</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>@EnableDiscoveryClient</code> 注解开启服务注册与发现功能</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GulimallCouponApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(GulimallCouponApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Nacos Server</p>
+<ol>
+<li>直接下载：<a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">Nacos Server 下载页</a></li>
+<li>相对文件夹 nacos/bin，双击打开文件 <code>startup.cmd</code></li>
+</ol>
+</li>
+<li><p>运行 <strong>GulimallCouponApplication</strong> 测试</p>
+<p> 进入 <code>127.0.0.1:8848/nacos</code> ，输入账号密码 nacos（账号密码一样）进入 <strong>nacos</strong> 的管理系统</p>
+<p> <img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531112201805.png" alt="image-20200531112201805"></p>
+<p> gulimall-coupon 已经被注册进注册中心，测试成功！</p>
+</li>
+</ol>
+<h3 id="二、作为配置中心"><a href="#二、作为配置中心" class="headerlink" title="二、作为配置中心"></a>二、作为配置中心</h3><p>参考官方文档地址：<a href="https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md" target="_blank" rel="noopener">https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md</a></p>
+<ol>
+<li><p>首先，修改 pom.xml 文件，引入 Nacos Config Starter。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果出现 maven 爆红，请尝试添加版本号或者修改版本号</p>
+</blockquote>
+</li>
+<li><p>在应用的 /src/main/resources 下创建 <strong>bootstrap.properties</strong>，在配置文件中配置 Nacos Config 元数据</p>
+ <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-coupon</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 nacos 配置中心添加<strong>数据集</strong></p>
+<p> <img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531121805049.png" alt="image-20200531121805049"></p>
+</li>
+</ol>
+<pre><code>![image-20200531121819040](【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件/image-20200531121819040.png)
+
+
+
+![image-20200531121735368](【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件/image-20200531121735368.png)
+
+**注意 Data Id 命名要规范（应用名.properties）**</code></pre><ol start="4">
+<li>编写测试类</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@RefreshScope</span>：动态刷新并获取配置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Value</span>("$&#123;配置项的名称&#125;")：获取配置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RefreshScope</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="meta">@Value</span>(<span class="string">"$&#123;user.name&#125;"</span>)</span><br><span class="line"> 	String userName;</span><br><span class="line"></span><br><span class="line"> 	<span class="meta">@Value</span>(<span class="string">"$&#123;user.age&#125;"</span>)</span><br><span class="line"> 	<span class="keyword">int</span> age;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>测试完成！</li>
+</ol>
+<p><strong>一些细节</strong>：</p>
+<ol>
+<li><p>命名空间：配置隔离</p>
+<p> 默认：public（保留空间），默认新增的所有配置都在 public 空间</p>
+ <img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531150701476.png" alt="image-20200531150701476" style="zoom:67%;">
+
+<p> 修改名称空间：</p>
+<p> 在  <code>bootstrap.properties</code> 中添加属性 <code>spring.cloud.config.namespace=命名空间ID</code></p>
+<p> <strong>可以给不同环境设置不同命名空间，也可以给不同微服务设置不同命名空间</strong></p>
+</li>
+<li><p>配置集：所有配置的集合</p>
+</li>
+<li><p>配置集ID：类似于配置文件名</p>
+</li>
+<li><p>配置分组</p>
+<p> 默认所有的配置属于：DEFAULT_GROUP</p>
+<p> 修改配置分组：</p>
+<p> 在  <code>bootstrap.properties</code> 中添加属性 <code>spring.cloud.config.group=组名</code></p>
+</li>
+</ol>
+<p>我们的微服务配置：<strong>命名空间区分不同微服务，配置分组区分不同开发环境</strong></p>
+<h1 id="SpringCloud-OpenFeign"><a href="#SpringCloud-OpenFeign" class="headerlink" title="SpringCloud - OpenFeign"></a>SpringCloud - OpenFeign</h1><p>使用 <strong>feign</strong> 可以实现微服务之间的调用！</p>
+<p>我们以 gulimall-member 调用 gulimall-coupon 为例来实现获取会员的优惠价信息功能</p>
+<ol>
+<li><p>导入依赖</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写测试方法 </p>
+<p> <code>com.wxshhh.gulimall.coupon.controller.CouponController</code>：中：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"coupon/coupon"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CouponController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CouponService couponService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/member/list"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">memberCoupons</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        CouponEntity couponEntity = <span class="keyword">new</span> CouponEntity();</span><br><span class="line">        couponEntity.setCouponName(<span class="string">"满100减10"</span>);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">"coupons"</span>, Arrays.asList(couponEntity));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ……</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写一个接口，告诉 SpringCloud 这个接口需要调用远程服务</p>
+<p> <code>com.wxshhh.gulimall.member.feign.CouponFeignService</code> 中：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  这是一个声明式的远程调用</span></span><br><span class="line"><span class="comment"> *  括号内的参数是要远程调用的微服务名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"gulimall-coupon"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CouponFeignService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//直接将需要远程调用的方法的头拷贝过来即可</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/coupon/coupon/member/list"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">memberCoupons</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写测试方法</p>
+<p> <code>com.wxshhh.gulimall.member.controller.MemberController</code> 中：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"member/member"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MemberService memberService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    CouponFeignService couponFeignService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/coupons"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MemberEntity memberEntity = <span class="keyword">new</span> MemberEntity();</span><br><span class="line">        memberEntity.setNickname(<span class="string">"wxh"</span>);</span><br><span class="line">        R memberCoupons = couponFeignService.memberCoupons();</span><br><span class="line">        Object coupons = memberCoupons.get(<span class="string">"coupons"</span>);</span><br><span class="line">        <span class="keyword">return</span> R.ok()</span><br><span class="line">                .put(<span class="string">"member"</span>, memberEntity)</span><br><span class="line">                .put(<span class="string">"coupons"</span>, coupons);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ……</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启远程调用功能，运行微服务 <strong>gulimall-member</strong></p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定远程调用接口的位置</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span>(basePackages = <span class="string">"com.wxshhh.gulimall.member.feign"</span>)</span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GulimallMemberApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(GulimallMemberApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ <img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200531113732878.png" alt="image-20200531113732878" style="zoom:67%;">
+
+<p> 测试成功！</p>
+</li>
+</ol>
+<h1 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud-Gateway"></a>SpringCloud-Gateway</h1><p>官方文档地址：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.3.RELEASE/reference/html/" target="_blank" rel="noopener">https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.3.RELEASE/reference/html/</a></p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>Route</strong>：网关的基本构建基块。它由 ID、目标 URI、Predicate 集合和 Filter 集合定义。如果聚合 Predicate 为 true，则匹配路由。</li>
+<li><strong>Predicate</strong>： 这是<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html" target="_blank" rel="noopener">Java 8 函数断言</a>。输入类型是<a href="https://docs.spring.io/spring/docs/5.0.x/javadoc-api/org/springframework/web/server/ServerWebExchange.html" target="_blank" rel="noopener">弹簧框架<code>服务器WebExchange。</code></a>这允许您匹配 HTTP 请求的任何内容，如标头或参数。</li>
+<li><strong>Filter</strong>：这些是使用特定工厂构造的<a href="https://docs.spring.io/spring/docs/5.0.x/javadoc-api/org/springframework/web/server/GatewayFilter.html" target="_blank" rel="noopener">弹簧框架<code>网关Filter</code></a>的实例。在这里，您可以在发送下游请求之前或之后修改请求和响应。</li>
+</ul>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><img src="/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/image-20200601101342702.png" alt="image-20200601101342702" style="zoom:67%;">
+
+<blockquote>
+<p>Clients make requests to Spring Cloud Gateway. If the Gateway Handler Mapping determines that a request matches a route, it is sent to the Gateway Web Handler. This handler runs the request through a filter chain that is specific to the request. The reason the filters are divided by the dotted line is that filters can run logic both before and after the proxy request is sent. All “pre” filter logic is executed. Then the proxy request is made. After the proxy request is made, the “post” filter logic is run.</p>
+</blockquote>
+<h3 id="配置样例"><a href="#配置样例" class="headerlink" title="配置样例"></a>配置样例</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">spring:</span></span><br><span class="line"><span class="symbol">  cloud:</span></span><br><span class="line"><span class="symbol">    gateway:</span></span><br><span class="line"><span class="symbol">      routes:</span></span><br><span class="line">        - id: baidu_route</span><br><span class="line"><span class="symbol">          uri:</span> https:<span class="comment">//www.baidu.com</span></span><br><span class="line"><span class="symbol">          predicates:</span></span><br><span class="line">            - Query=url,baidu</span><br><span class="line"></span><br><span class="line">        - id: qq_route</span><br><span class="line"><span class="symbol">          uri:</span> https:<span class="comment">//www.qq.com</span></span><br><span class="line"><span class="symbol">          predicates:</span></span><br><span class="line">            - Query=url,qq</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/30/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/" rel="tag">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/05/26/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'GAoxPQbSWIkeFM6G1CHJ1686-gzGzoHsz',
+        app_key: '0NQmIQe2tbV2BNRPaxTlkV42',
+        path: window.location.pathname,
+        notify: 'true',
+        verify: 'true',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        为什么是苟或啊
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://web.umeng.com/main.php?c=site&amp;a=getcode&amp;siteid=1278851799'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/icon1.jpg" alt="从入门到入土"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['起风了,唯有努力生存', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

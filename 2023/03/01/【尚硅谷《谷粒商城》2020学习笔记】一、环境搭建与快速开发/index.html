@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发 | 从入门到入土</title><meta name="author" content="wxshhh"><meta name="copyright" content="wxshhh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言参考视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf 相关资料源码：https:&#x2F;&#x2F;shimo.im&#x2F;docs&#x2F;8xgTjWvDh6P6tkdx&#x2F; 环境搭建一、安装 Linux 虚拟机这里我使用了自己购买的阿里云服务器上安装的CentOS 7，所以跳过这一步 没有云服务器的使用 VMWare 或者 VirtualBox 都可 相关知识点可以参考下面的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发">
+<meta property="og:url" content="http://wxshhh.github.io/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="前言参考视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf 相关资料源码：https:&#x2F;&#x2F;shimo.im&#x2F;docs&#x2F;8xgTjWvDh6P6tkdx&#x2F; 环境搭建一、安装 Linux 虚拟机这里我使用了自己购买的阿里云服务器上安装的CentOS 7，所以跳过这一步 没有云服务器的使用 VMWare 或者 VirtualBox 都可 相关知识点可以参考下面的">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-03-01T12:16:22.324Z">
+<meta property="article:modified_time" content="2021-05-01T13:17:23.110Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="尚硅谷">
+<meta property="article:tag" content="Project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wxshhh.github.io/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-01 21:17:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="从入门到入土"><span class="site-name">从入门到入土</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-01T12:16:22.324Z" title="Created 2023-03-01 20:16:22">2023-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-01T13:17:23.110Z" title="Updated 2021-05-01 21:17:23">2021-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1np4y1C7Yf">https://www.bilibili.com/video/BV1np4y1C7Yf</a></p>
+<p>相关资料源码：<a target="_blank" rel="noopener" href="https://shimo.im/docs/8xgTjWvDh6P6tkdx/">https://shimo.im/docs/8xgTjWvDh6P6tkdx/</a></p>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h3 id="一、安装-Linux-虚拟机"><a href="#一、安装-Linux-虚拟机" class="headerlink" title="一、安装 Linux 虚拟机"></a>一、安装 Linux 虚拟机</h3><p>这里我使用了自己购买的阿里云服务器上安装的CentOS 7，所以跳过这一步</p>
+<p>没有云服务器的使用 VMWare 或者 VirtualBox 都可</p>
+<p>相关知识点可以参考下面的连接，就不再赘述</p>
+<ul>
+<li><p>狂神说Java：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV187411y7hF?p=3">https://www.bilibili.com/video/BV187411y7hF?p=3</a></p>
+</li>
+<li><p>尚硅谷：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dW411M7xL?from=search&seid=4221493829881452502">https://www.bilibili.com/video/BV1dW411M7xL?from=search&amp;seid=4221493829881452502</a></p>
+</li>
+</ul>
+<h3 id="二、安装-docker"><a href="#二、安装-docker" class="headerlink" title="二、安装 docker"></a>二、安装 docker</h3><p>参考<strong>docker官网</strong>：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">https://docs.docker.com/engine/install/centos/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1.卸载旧版本</span></span><br><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-engine</span><br><span class="line">                  </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2.需要的安装包</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3.设置镜像仓库</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">国外的仓库，下载缓慢，不推荐</span></span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo  </span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">阿里云的仓库，推荐！</span> </span><br><span class="line">yum-config-manager \</span><br><span class="line">	--add-repo \</span><br><span class="line">	http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3.5.更新yum软件包索引</span>  </span><br><span class="line">yum makecache fast</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4.安装 docker 相关的内容  docker-ce：社区版   docker-ee：企业版</span></span><br><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5.启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6.查看docker是否安装成功</span></span><br><span class="line">docker version</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7.设置开机自启</span></span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、安装mysql、redis"><a href="#三、安装mysql、redis" class="headerlink" title="三、安装mysql、redis"></a>三、安装mysql、redis</h3><h4 id="1-安装配置-mysql"><a href="#1-安装配置-mysql" class="headerlink" title="1. 安装配置 mysql"></a>1. 安装配置 mysql</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1.下载镜像文件</span></span><br><span class="line">docker pull mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2.创建实例并启动</span></span><br><span class="line">docker run -p 3306:3306 --name mysql \</span><br><span class="line">-v /mydata/mysql/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql/conf:/etc/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">参数说明</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">	-p 3306:3306 --name mysql：将容器的3306端口映射到主机的3306端口</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">	-v /mydata/mysql/conf:/etc/mysql：将配置文件挂载到主机</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">	-v /mydata/mysql/log:/var/log/mysql：将日志文件挂载到主机</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">	-v /mydata/mysql/data:/var/lib/mysql：将数据文件挂载到主机</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">	-e MYSQL_ROOT_PASSWORD=root：初始化root用户密码</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以进入 mysql 容器内查看</span></span><br><span class="line">docker exec -it mysql /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3.mysql配置（主要是修改字符编码）</span></span><br><span class="line">vim /mydata/mysql/conf/mysql.conf</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">添加以下配置</span></span><br><span class="line">    【client】</span><br><span class="line">    default-character-set=utf8</span><br><span class="line">    【mysql】</span><br><span class="line">    default-character-set=utf8</span><br><span class="line">    【mysqld】</span><br><span class="line">    init_connect=&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span><br><span class="line">    init_connect=&#x27;SET NAMES utf8&#x27;</span><br><span class="line">    character-set-server=utf8</span><br><span class="line">    collection-server=utf8_unicode_ci</span><br><span class="line">    skip-character-set-client-handshake</span><br><span class="line">    skip-name-resolve</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4.设置自启</span></span><br><span class="line">docker update mysql --restart=always</span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5.重启mysql</span></span><br><span class="line">docker restart mysql</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装配置redis"><a href="#2-安装配置redis" class="headerlink" title="2. 安装配置redis"></a>2. 安装配置redis</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1.安装 redis</span></span><br><span class="line">docker pull redis</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2.配置 redis</span></span><br><span class="line">mkdir -p /mydata/redis/conf</span><br><span class="line">touch /mydata/redis/conf/redis.conf</span><br><span class="line"></span><br><span class="line">docker run -p 6379:6379 --name redis  --privileged=true \</span><br><span class="line">-v /mydata/redis/data:/data \</span><br><span class="line">-v/mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">连向 redis-cli</span></span><br><span class="line">docker exec -it redis redis-cli</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3.redis 启用 aof 的持久化方式</span></span><br><span class="line"></span><br><span class="line">vim /mydata/redis/conf/redis.conf </span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">添加以下配置</span></span><br><span class="line">	appendonly yes</span><br><span class="line"><span class="meta prompt_">	</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4.设置自启</span></span><br><span class="line">docker update redis --restart=always</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="四、开发环境统一"><a href="#四、开发环境统一" class="headerlink" title="四、开发环境统一"></a>四、开发环境统一</h3><h4 id="前端：VSCode"><a href="#前端：VSCode" class="headerlink" title="前端：VSCode"></a>前端：VSCode</h4><p>需要插件：</p>
+<ul>
+<li>Auto Close Tag</li>
+<li>Auto Rename Tag</li>
+<li>Chinese (Simplified) Language Pack for Visual Studio</li>
+<li>ESLint</li>
+<li>HTML CSS Support</li>
+<li>HTML Snippets</li>
+<li>JavaScript (ES6) code snippets</li>
+<li>open in browser</li>
+<li>Vetur</li>
+</ul>
+<h4 id="后端：IDEA"><a href="#后端：IDEA" class="headerlink" title="后端：IDEA"></a>后端：IDEA</h4><p>需要插件：</p>
+<ul>
+<li><p>LomBok</p>
+</li>
+<li><p>MyBatisX</p>
+</li>
+<li><p>gitee</p>
+</li>
+</ul>
+<h4 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h4><ol>
+<li><p>下载git</p>
+</li>
+<li><p>配置信息</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置作者信息</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="string">&quot;wxshhh&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git config --global user,email <span class="string">&quot;993012459@qq.com&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置 ssh 免密登录</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -C <span class="string">&quot;993012459@qq.com&quot;</span>		<span class="comment">#三次回车</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub							<span class="comment">#获得密钥</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">打开码云——》设置——》安全设置——》SSH公钥</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">填入获取到的密钥</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进行测试：填 <span class="built_in">yes</span> 确认</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh -T git@gitee.com</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200526140401407.png" alt="image-20200526140401407"></p>
+<ol start="3">
+<li>码云中创建仓库</li>
+</ol>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200526140532746.png" alt="image-20200526140532746"></p>
+<ol start="4">
+<li>IDEA中创建项目：</li>
+</ol>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200526141034206.png" alt="image-20200526141034206"></p>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200526141208082.png" alt="image-20200526141208082"></p>
+<h3 id="五、创建项目微服务"><a href="#五、创建项目微服务" class="headerlink" title="五、创建项目微服务"></a>五、创建项目微服务</h3><ul>
+<li>商品服务</li>
+<li>仓库服务</li>
+<li>订单服务</li>
+<li>优惠券服务</li>
+<li>用户服务</li>
+</ul>
+<p>共同点：</p>
+<ol>
+<li>导入 web、openfeign</li>
+<li>每一个服务，com.wxshh.gulimall.xxx</li>
+<li>模块名：gulimall-xxx</li>
+<li></li>
+</ol>
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200526141435743.png" alt="image-20200526141435743" style="zoom:67%;" />
+
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200526141435743.png" alt="image-20200526141435743" style="zoom:67%;" />
+
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200526141448810.png" alt="image-20200526141448810" style="zoom:67%;" />
+
+
+
+<ol start="5">
+<li><p>项目结构</p>
+<p> <img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200527114221039.png" alt="image-20200527114221039"></p>
+</li>
+</ol>
+<h3 id="六、数据库初始化"><a href="#六、数据库初始化" class="headerlink" title="六、数据库初始化"></a>六、数据库初始化</h3><p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200527120620510.png" alt="image-20200527120620510"></p>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200527120640829.png" alt="image-20200527120640829"></p>
+<h1 id="快速开发"><a href="#快速开发" class="headerlink" title="快速开发"></a>快速开发</h1><h3 id="一、搭建后台管理系统"><a href="#一、搭建后台管理系统" class="headerlink" title="一、搭建后台管理系统"></a>一、搭建后台管理系统</h3><p>由于自己手写整个项目的前后端费时费力，所以我们使用写好的现成的开源项目来搭建后台管理系统</p>
+<p>这里我们选择使用<strong>码云</strong>上的<strong>人人开源</strong>项目</p>
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200527121259658.png" alt="image-20200527121259658" style="zoom:67%;" />
+
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><ol>
+<li>将项目 <strong>renren-fast</strong> 和 <strong>renren-fast-vue</strong> 克隆到本地，删除项目中的 <strong>.git</strong> 文件夹，然后将 <strong>renren-fast</strong> 整个文件夹复制到 <strong>guilimall</strong>项目中</li>
+</ol>
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200529134847559.png" alt="image-20200529134847559" style="zoom:67%;" />
+
+<ol start="2">
+<li>将 <strong>renren-fast</strong> 添加到项目 <strong>pom</strong> 的 <modules> 标签中</li>
+</ol>
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200529140210916.png" alt="image-20200529140210916" style="zoom:67%;" />
+
+<ol start="3">
+<li><p>新建数据库，导入 sql</p>
+<p> <img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200529140558226.png" alt="image-20200529140558226"></p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200529140343348.png" alt="image-20200529140343348" style="zoom:67%;" />
+
+ 
+
+<ol start="4">
+<li><p>修改配置文件</p>
+<p> 进入类目录下的 <strong>application-dev.yml</strong> ，修改数据源的相关配置</p>
+</li>
+<li><p>启动项目 <strong>renren-fast</strong></p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530083735885.png" alt="image-20200530083735885" style="zoom:67%;" /></li>
+</ol>
+</li>
+</ol>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><ol>
+<li><p>使用 <strong>VSCode</strong> 打开项目 <strong>renren-fast-vue</strong></p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530084148217.png" alt="image-20200530084148217" style="zoom: 50%;" />
+</li>
+<li><p>安装 Node.js，安装好的可以跳过这一步 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a> <strong>（不要下载最新版本！！！）</strong></p>
+</li>
+<li><p>控制台执行语句 <code>cnpm install</code> 下载相关依赖包</p>
+</li>
+<li><p>控制台执行 <code>cnpm run dev</code> 运行项目</p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530084556220.png" alt="image-20200530084556220" style="zoom:67%;" />
+</li>
+<li><p>后台搭建完成！！</p>
+</li>
+</ol>
+<blockquote>
+<p>一些需要注意的坑：</p>
+<ol>
+<li>如果导入 renren-fast 后 springboot 各种爆红，无法运行，建议将项目中的 pom.xml 替换为 《项目资料源码》（见文章前言部分）中 renren-fast 模块的 pox.xml</li>
+<li>Node.js 不要下载最新版本！最好使用视频中的版本 10.16.3</li>
+<li>使用 Node.js 时，建议使用语句 <code>cnpm</code> 而不是 npm （国内镜像下载起来快）</li>
+</ol>
+</blockquote>
+<h3 id="二、逆向工程搭建与使用"><a href="#二、逆向工程搭建与使用" class="headerlink" title="二、逆向工程搭建与使用"></a>二、逆向工程搭建与使用</h3><h4 id="逆向工程搭建"><a href="#逆向工程搭建" class="headerlink" title="逆向工程搭建"></a>逆向工程搭建</h4><p>使用人人开源提供的代码生成器来为项目每一个微服务提供代码生成！</p>
+<p><img src="/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/image-20200530085652596.png" alt="image-20200530085652596"></p>
+<ol>
+<li><p>下载项目并<strong>复制粘贴到总项目中</strong></p>
+</li>
+<li><p>总项目 pom.xml 中添加 <module></p>
+<blockquote>
+<p>如果爆红，建议直接将项目中的 pom.xml 换成 《项目资料源码》（见文章前言部分） 中的 pom.xml，还是不行就直接将整个 renren-generator 项目替换</p>
+</blockquote>
+</li>
+<li><p>修改 <strong>renren-generarot</strong> 中的数据源配置</p>
+</li>
+<li><p>修改文件 <strong>generator.properties</strong> 中的包名、模块名、作者名等</p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530093158746.png" alt="image-20200530093158746" style="zoom:67%;" />
+</li>
+<li><p>运行 renren-generator 项目，进入 localhost 的 80 端口</p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530093305005.png" alt="image-20200530093305005" style="zoom:67%;" />
+</li>
+<li><p>进入 <strong>renren-fast</strong> </p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530093513064.png" alt="image-20200530093513064" style="zoom:67%;" />
+
+<p> 点击生成代码以后，会跳出下载页面，下载压缩包，将压缩包中的 <strong>main</strong> 文件夹复制粘贴入相应的微服务即可！</p>
+<p> <strong>依次生成其他微服务的代码</strong></p>
+</li>
+</ol>
+<h4 id="逆行工程完善"><a href="#逆行工程完善" class="headerlink" title="逆行工程完善"></a>逆行工程完善</h4><ol>
+<li><p>创建 <strong>gulimall-common</strong>（普通的maven项目）</p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530094006415.png" alt="image-20200530094006415" style="zoom:67%;" />
+</li>
+<li><p>添加 pom 依赖</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gulimall<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.wxshhh.gulimall<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gulimall-common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>每一个微服务公共的依赖、工具类等都放在这<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        mybatis-plus--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpcore<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.4.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-lang<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--    导入mysql驱动    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加相关工具类</p>
+<p> 一般都是直接将 renren-fast 中的类拷贝过来 （具体请参考《资料文档》）</p>
+ <img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530101059509.png" alt="image-20200530101059509" style="zoom:67%;" /></li>
+</ol>
+<h3 id="三、配置与测试微服务基本CRUD"><a href="#三、配置与测试微服务基本CRUD" class="headerlink" title="三、配置与测试微服务基本CRUD"></a>三、配置与测试微服务基本CRUD</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="comment">#MySQL配置</span></span><br><span class="line">    <span class="attr">driverClassName:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://47.103.199.131/gulimall_pms?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:/mapper/**/*.xml</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">id-type:</span> <span class="string">auto</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GulimallProductApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    BrandService brandService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">BrandEntity</span> <span class="variable">brandEntity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BrandEntity</span>();</span><br><span class="line">        brandEntity.setName(<span class="string">&quot;华为&quot;</span>);</span><br><span class="line">        brandService.save(brandEntity);</span><br><span class="line">        System.out.println(<span class="string">&quot;保存成功！！！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="【尚硅谷《谷粒商城》2020学习笔记】一、环境搭建与快速开发/image-20200530103918344.png" alt="image-20200530103918344" style="zoom: 67%;" />
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io">wxshhh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/">http://wxshhh.github.io/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/">尚硅谷</a><a class="post-meta__tags" href="/tags/Project/">Project</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%89%E3%80%81%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" title="【尚硅谷《谷粒商城》2020学习笔记】三、前端基础"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">【尚硅谷《谷粒商城》2020学习笔记】三、前端基础</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/01/%E3%80%90%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6%E7%B3%BB%E5%88%97%E3%80%91/" title="【安全框架系列】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">【安全框架系列】</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%89%E3%80%81%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" title="【尚硅谷《谷粒商城》2020学习笔记】三、前端基础"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【尚硅谷《谷粒商城》2020学习笔记】三、前端基础</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E5%B0%9A%E7%A1%85%E8%B0%B7%E3%80%8A%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E3%80%8B2020%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%8C%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6/" title="【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【尚硅谷《谷粒商城》2020学习笔记】二、分布式组件</div></div></a></div><div><a href="/2023/03/01/%E3%80%90SpringBoot%E6%95%B4%E5%90%88%E3%80%91%E7%BC%93%E5%AD%98%E7%AF%87/" title="【SpringBoot整合】缓存篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【SpringBoot整合】缓存篇</div></div></a></div><div><a href="/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/" title="【Spring注解驱动开发】中篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【Spring注解驱动开发】中篇</div></div></a></div><div><a href="/2020/04/15/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%89%8D%E7%AF%87/" title="【Spring注解驱动开发】前篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-15</div><div class="title">【Spring注解驱动开发】前篇</div></div></a></div><div><a href="/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%90%8E%E7%AF%87/" title="【Spring注解驱动开发】后篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【Spring注解驱动开发】后篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wxshhh</div><div class="author-info__description">中国科学技术大学软件工程在读</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-Linux-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">2.0.1.</span> <span class="toc-text">一、安装 Linux 虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-docker"><span class="toc-number">2.0.2.</span> <span class="toc-text">二、安装 docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85mysql%E3%80%81redis"><span class="toc-number">2.0.3.</span> <span class="toc-text">三、安装mysql、redis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-mysql"><span class="toc-number">2.0.3.1.</span> <span class="toc-text">1. 安装配置 mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEredis"><span class="toc-number">2.0.3.2.</span> <span class="toc-text">2. 安装配置redis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%BB%9F%E4%B8%80"><span class="toc-number">2.0.4.</span> <span class="toc-text">四、开发环境统一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%EF%BC%9AVSCode"><span class="toc-number">2.0.4.1.</span> <span class="toc-text">前端：VSCode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%EF%BC%9AIDEA"><span class="toc-number">2.0.4.2.</span> <span class="toc-text">后端：IDEA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Git"><span class="toc-number">2.0.4.3.</span> <span class="toc-text">Git</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.0.5.</span> <span class="toc-text">五、创建项目微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.0.6.</span> <span class="toc-text">六、数据库初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">快速开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%90%AD%E5%BB%BA%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.0.1.</span> <span class="toc-text">一、搭建后台管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-number">3.0.1.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-number">3.0.1.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">3.0.2.</span> <span class="toc-text">二、逆向工程搭建与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA"><span class="toc-number">3.0.2.1.</span> <span class="toc-text">逆向工程搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%86%E8%A1%8C%E5%B7%A5%E7%A8%8B%E5%AE%8C%E5%96%84"><span class="toc-number">3.0.2.2.</span> <span class="toc-text">逆行工程完善</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E6%9C%ACCRUD"><span class="toc-number">3.0.3.</span> <span class="toc-text">三、配置与测试微服务基本CRUD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.0.3.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">3.0.3.2.</span> <span class="toc-text">测试</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】计算机组成原理知识点梳理"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理">【考研】计算机组成原理知识点梳理</a><time datetime="2023-03-01T12:16:23.766Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/" title="【考研】考研冲冲冲！"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】考研冲冲冲！"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/" title="【考研】考研冲冲冲！">【考研】考研冲冲冲！</a><time datetime="2023-03-01T12:16:23.751Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="【考研】数据结构知识点总结"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】数据结构知识点总结"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="【考研】数据结构知识点总结">【考研】数据结构知识点总结</a><time datetime="2023-03-01T12:16:23.722Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/" title="【机器学习光速入门】">【机器学习光速入门】</a><time datetime="2023-03-01T12:16:23.718Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/" title="【机器学习】异常检测：PyOD库中的算法">【机器学习】异常检测：PyOD库中的算法</a><time datetime="2023-03-01T12:16:23.694Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wxshhh</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

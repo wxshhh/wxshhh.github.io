@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>【Linux】实用指令 | 从入门到入土</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="运行级别0：关机 1：单用户（找回密码） 2：多用户无网络服务 3：多用户有网络服务 （常用） 4：保留 5：图形界面（常用） 6：重启  运行级别配置文件：&#x2F;etc&#x2F;inittab  命令：init [012356]  面试题：如何找回丢失的root密码？ 思路：  进入单用户模式，然后修改root密码 操作：      1.在引导时按回车     2.看到界面后输 e     3.选中第二行（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Linux】实用指令">
+<meta property="og:url" content="http://wxshhh.github.io/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="运行级别0：关机 1：单用户（找回密码） 2：多用户无网络服务 3：多用户有网络服务 （常用） 4：保留 5：图形界面（常用） 6：重启  运行级别配置文件：&#x2F;etc&#x2F;inittab  命令：init [012356]  面试题：如何找回丢失的root密码？ 思路：  进入单用户模式，然后修改root密码 操作：      1.在引导时按回车     2.看到界面后输 e     3.选中第二行（">
+<meta property="og:locale">
+<meta property="og:image" content="http://wxshhh.github.io/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/image-20200413162042684.png">
+<meta property="article:published_time" content="2020-04-13T08:18:39.000Z">
+<meta property="article:modified_time" content="2020-04-16T03:49:07.021Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wxshhh.github.io/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/image-20200413162042684.png">
+  
+    <link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">从入门到入土</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wxshhh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-【Linux】实用指令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2020-04-13T08:18:39.000Z" itemprop="datePublished">2020-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【Linux】实用指令
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h4><pre><code>0：关机
+1：单用户（找回密码）
+2：多用户无网络服务
+3：多用户有网络服务 （常用）
+4：保留
+5：图形界面（常用）
+6：重启
+
+运行级别配置文件：/etc/inittab
+
+命令：init [012356]
+
+面试题：如何找回丢失的root密码？
+思路：  进入单用户模式，然后修改root密码
+操作： 
+    1.在引导时按回车
+    2.看到界面后输 e
+    3.选中第二行（编辑内核），再输入 e
+    4.在这行最后输入 1，再回车
+    5.再次输入 b
+    6.进入单用户模式，使用passwd修改密码
+</code></pre>
+<h4 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h4><pre><code>1.man
+    语法：
+        man [命令或配置文件] 
+2.help
+    语法：
+        help 命令
+</code></pre>
+<h4 id="文件目录类"><a href="#文件目录类" class="headerlink" title="文件目录类"></a>文件目录类</h4><pre><code>1.pwd 显示当前工作目录的绝对路径
+
+2.ls
+    ls [选项] [目录或是文件]
+    选项：
+        -a ：显示所有文件
+        -l ：以列表形式显示
+        ……
+
+3.cd 切换目录
+    cd ~ || cd ： 回到自己家目录
+    cd ..      ： 回到上级目录
+    
+    绝对路径： /home
+    相对路径： ../home
+
+4.mkdir 创建目录
+    mkdir [选项] 要创建的目录
+    选项：
+        -p：创建多级目录
+
+5.rmdir 删除目录
+    rmdir [选项] 要删除的目录
+    
+    rm -rf 要删除的目录 
+    
+6.touch 创建空文件
+    touch 文件名
+    可以一次性创建多个文件
+    
+7.cp
+    cp [选项] 准备拷的文件 目标文件
+    选项：
+        -r：递归复制整个文件夹
+    
+    \cp -r test/ zwj/
+        强制覆盖相同的文件并且不会提示
+
+8.rm 移除文件或目录
+    rm [选项] 要删除的文件或目录
+    选项：
+        -r：递归删除整个文件夹
+        -f：强制删除不提示
+        
+9.mv 移动文件与目录或重命名
+    mv 旧文件名 新文件名 （重命名）
+    mv 文件名 新的文件所在路径 （移动文件）
+
+10.cat 查看文件内容
+    实例： cat -n /etc/profile | more
+        -n：显示行数
+        | more：分页显示（管道命令）
+        
+11.more 以全屏的方式按页显示文本文件的内容
+
+12.less 分屏查看内容，功能与more相似，对于显示大文件有较高效率
+    空格：翻页
+    /xxx: 向下查找
+    ?xxx：向上查找
+
+13.&gt; 和 &gt;&gt; 输出重定向和追加
+    ls -l &gt; a.txt
+        将 ls -l 所显示的内容写到 a.txt 中
+        &gt; :覆盖原来的
+        &gt;&gt;:追加到后面
+    cat a.txt &gt; b.txt
+        将 a.txt 中的内容（覆盖）写入 b.txt 中
+    echo &quot;hello world&quot; &gt;&gt; c.txt
+        将 xxx 写入 c.txt 中
+    
+    （cal：显示当前日历）
+    
+14.echo 输出内容到控制台
+    echo [选项] [输出内容]
+    
+    echo $PATH 输出环境变量路径
+    
+15.head 查看文件前10行内容
+    head -n 5 文件
+        指定显示前五行
+
+16.tail 显示文件后10行
+    tail -n 5 文件
+    tail -f 显示文件的实时更新
+    
+17.ln 软链接，类似于windows里的快捷方式
+    ln -s [原文件或目录] [软链接名]
+    
+18.history 查看已经执行过的指令
+    history
+        显示所有执行过的命令
+    history 10
+        显示最近使用的10个指令
+    
+    !267
+        执行编号为267的指令
+</code></pre>
+<h2 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h2><pre><code>1.date
+    date
+    date &quot;+%Y-%m-%d %H:%M:%S&quot;
+    
+    date -s 字符串时间
+        设置时间
+
+2.cal
+    cal
+    cal 2020
+</code></pre>
+<h2 id="搜索查找"><a href="#搜索查找" class="headerlink" title="搜索查找"></a>搜索查找</h2><pre><code>find
+    find [搜索范围/目录] [选项]
+    选项：
+        -name 按文件名查找
+        
+        -user 按文件拥有者查找
+        
+        -size 按文件大小查找(n是数字)
+            +n 大于
+            -n 小于
+            n  等于
+
+locate  快速定位文件路径
+    先 updatedb (创建数据库)
+    再 locate 文件名
+
+grep 过滤查找
+    &quot;|&quot; 管道符号：表示将前一个命令的输出结果传递给后一个命令
+    grep [选项] 查找内容 源文件
+    选项：
+        -n：显示匹配行及行号
+        -i：忽略字母大小写
+</code></pre>
+<h2 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h2><pre><code>gzip：压缩文件，不保留原来文件
+    gzip 文件名
+gunzip：解压文件
+    gunzip 文件名.gz
+
+zip：压缩文件
+    zip [选项] xxx.zip 要压缩的文件
+    选项：
+        -r：递归压缩，压缩整个目录
+unzip：解压文件
+    unzip [选项] xxx.zip
+        -d：指定压缩目录
+        
+tar：打包指令
+    tar [选项] xxx.tar.gz 打包的文件
+    选项：
+        -c：产生 .tar 打包文件
+        -v：显示详细信息
+        -f：指定压缩后的文件名
+        -z：打包同时压缩
+        -x：解包 .tar 文件
+</code></pre>
+<p><img src="/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/image-20200413162042684.png" alt="image-20200413162042684"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2020/04/13/%E3%80%90Linux%E3%80%91%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/" data-id="cleqecf0r002540joanzz2z30" data-title="【Linux】实用指令" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          【Linux】组管理与权限管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/13/%E3%80%90Linux%E3%80%91%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">【Linux】用户管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94/">考研</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatisPlus/" rel="tag">MyBatisPlus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/" rel="tag">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/" rel="tag">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shiro/" rel="tag">shiro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag">异常检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag">源码阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" rel="tag">狂神说Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 18.33px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 19.17px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MyBatisPlus/" style="font-size: 10px;">MyBatisPlus</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/NLP/" style="font-size: 12.5px;">NLP</a> <a href="/tags/OD/" style="font-size: 13.33px;">OD</a> <a href="/tags/Project/" style="font-size: 11.67px;">Project</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Spring/" style="font-size: 11.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px;">SpringSecurity</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/shiro/" style="font-size: 10px;">shiro</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 11.67px;">前端</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 17.5px;">尚硅谷</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">并发编程</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10.83px;">异常检测</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15.83px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 11.67px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 12.5px;">文献阅读</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" style="font-size: 14.17px;">源码阅读</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" style="font-size: 15px;">狂神说Java</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 18.33px;">考研</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">【考研】计算机组成原理知识点梳理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/">【考研】考研冲冲冲！</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">【考研】数据结构知识点总结</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/">【机器学习光速入门】</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/">【机器学习】异常检测：PyOD库中的算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 wxshhh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

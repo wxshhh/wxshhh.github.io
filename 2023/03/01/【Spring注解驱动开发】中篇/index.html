@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>【Spring注解驱动开发】中篇 | 从入门到入土</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="AOP面向切面编程在程序运行过程中将某段代码切入到指定方法&#x2F;指定位置运行的编程方式 &#x3D;&#x3D;底层：动态代理&#x3D;&#x3D; 功能测试 导入aop模块：spring-aspects  定义一个业务逻辑类（MathCalculator），要求在业务逻辑种进行日志打印（方法运行之前、方法运行之后、出现异常……）  定义一个日志切面类（LogAspect），里面的方法需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Spring注解驱动开发】中篇">
+<meta property="og:url" content="http://wxshhh.github.io/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="AOP面向切面编程在程序运行过程中将某段代码切入到指定方法&#x2F;指定位置运行的编程方式 &#x3D;&#x3D;底层：动态代理&#x3D;&#x3D; 功能测试 导入aop模块：spring-aspects  定义一个业务逻辑类（MathCalculator），要求在业务逻辑种进行日志打印（方法运行之前、方法运行之后、出现异常……）  定义一个日志切面类（LogAspect），里面的方法需要">
+<meta property="og:locale">
+<meta property="og:image" content="http://wxshhh.github.io/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415122727767.png">
+<meta property="og:image" content="http://wxshhh.github.io/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415125231299.png">
+<meta property="og:image" content="http://wxshhh.github.io/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415124948236.png">
+<meta property="article:published_time" content="2023-03-01T12:16:22.206Z">
+<meta property="article:modified_time" content="2020-04-18T01:03:19.581Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="尚硅谷">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wxshhh.github.io/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415122727767.png">
+  
+    <link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">从入门到入土</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wxshhh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-【Spring注解驱动开发】中篇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:22.206Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【Spring注解驱动开发】中篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><h4 id="面向切面编程"><a href="#面向切面编程" class="headerlink" title="面向切面编程"></a>面向切面编程</h4><p>在程序运行过程中将<strong>某段代码切入到指定方法&#x2F;指定位置运行</strong>的编程方式</p>
+<p>&#x3D;&#x3D;底层：动态代理&#x3D;&#x3D;</p>
+<h4 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h4><ol>
+<li><p>导入aop模块：spring-aspects</p>
+</li>
+<li><p>定义一个<strong>业务逻辑类</strong>（MathCalculator），要求在业务逻辑种进行日志打印（方法运行之前、方法运行之后、出现异常……）</p>
+</li>
+<li><p>定义一个<strong>日志切面类</strong>（LogAspect），里面的方法需要动态感知 MathCalculator.div 运行到哪里并打印相关信息</p>
+<p> 通知方法：</p>
+<ul>
+<li>前置通知( <strong>@Before</strong> )：LogStart</li>
+<li>后置通知( <strong>@After</strong> )：LogEnd</li>
+<li>返回通知( <strong>@AfterReturning</strong> )：LogReturn</li>
+<li>异常通知( <strong>@AfterThrowing</strong> )：LogException</li>
+<li>环绕通知( <strong>@Around</strong> )：动态代理，手动推进目标方法运行（ joinPoint.proceed() ）</li>
+</ul>
+</li>
+<li><p>给日志切面类标注通知注解</p>
+</li>
+<li><p>将 <strong>业务逻辑类</strong> 和 <strong>日志切面类</strong> 都加入到容器中</p>
+</li>
+<li><p><strong>告诉Spring哪个类是切面类</strong>：给切面类上加注解<code>@Aspect</code></p>
+</li>
+<li><p><strong>在配置类上加注解</strong>：<code>@EnableAspectJAutoProxy</code></p>
+<p> Spring中很多的 <code>@Enablexxx</code></p>
+</li>
+</ol>
+<p>直接上代码！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//业务逻辑类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MathCalculator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">div</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> i / j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//切面类</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置切入点</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(public int com.wxs.aop.MathCalculator.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pointCut</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        注意！！！</span></span><br><span class="line"><span class="comment">        参数joinPoint参数必须放在第一位Spring才能识别</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logStart</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;除法运行参数是：&quot;</span> + joinPoint.getArgs().toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After(&quot;pointCut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logEnd</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">        System.out.println(joinPoint.getSignature().getName() + <span class="string">&quot;正常运行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(value = &quot;pointCut()&quot;,returning = &quot;result&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logReturn</span><span class="params">(Object result)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;除法的结果是：&quot;</span>+ result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterThrowing(value = &quot;pointCut()&quot;,throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logException</span><span class="params">(Exception e)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出现的异常&quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主配置类</span></span><br><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainConfigOfAOP</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> MathCalculator <span class="title function_">mathCalculator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MathCalculator</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> LogAspect <span class="title function_">logAspect</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">LogAspect</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="AOP原理"><a href="#AOP原理" class="headerlink" title="AOP原理"></a>AOP原理</h4><p>&#x3D;&#x3D;源码分析：看给容器中注册了什么组件、组件如何工作、有什么功能&#x3D;&#x3D;</p>
+<ol>
+<li><p><code>@EnalbleAspectJAutoProxy</code></p>
+<p> <code>@Import(&#123;AspectJAutoProxyRegistrar.class&#125;)</code>：给容器中导入 AspectJAutoProxyRegistrar</p>
+<p> 利用 AspectJAutoProxyRegistrar 自定义给容器中注册bean</p>
+<p> 给容器中注册一个名叫 <strong>internalAutoProxyCreator</strong> ，</p>
+<p> 类型为 <strong>AnnotationAwareAspectJAutoProxyCreator</strong> 的组件</p>
+</li>
+<li><p>接下来我们就详细看一下 <strong>AnnotationAwareAspectJAutoProxyCreator</strong> 是个什么东西：</p>
+<p> 先康康继承树：</p>
+<p> <img src="/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415122727767.png" alt="image-20200415122727767"></p>
+<p> 重点关注 <strong>后置处理器</strong> 和 <strong>自动装配BeanFactory</strong>  </p>
+<p> 我们<strong>从上往下</strong>慢慢看！</p>
+<h5 id="1-先从父类-AbstractAutoProxyCreator-开始看！"><a href="#1-先从父类-AbstractAutoProxyCreator-开始看！" class="headerlink" title="1.先从父类 AbstractAutoProxyCreator 开始看！"></a>1.先从父类 <strong>AbstractAutoProxyCreator</strong> 开始看！</h5> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现BeanFactory的方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setBeanFactory</span><span class="params">(BeanFactory beanFactory)</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//有后置处理器相关的方法</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">postProcessAfterInstantiation</span><span class="params">(Object bean, String beanName)</span>    </span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span>     </span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">postProcessAfterInitialization</span><span class="params">(<span class="meta">@Nullable</span> Object bean, String beanName)</span>    </span><br></pre></td></tr></table></figure>
+
+<h5 id="2-再看-AbstractAdvisorAutoProxyCreator-！"><a href="#2-再看-AbstractAdvisorAutoProxyCreator-！" class="headerlink" title="2.再看 AbstractAdvisorAutoProxyCreator ！"></a>2.再看 <strong>AbstractAdvisorAutoProxyCreator</strong> ！</h5> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重写了setBeanFactory方法</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setBeanFactory</span><span class="params">(BeanFactory beanFactory)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.setBeanFactory(beanFactory);</span><br><span class="line">    <span class="keyword">if</span> (...) &#123;</span><br><span class="line">		...</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//内部调用了initBeanFactory方法</span></span><br><span class="line">        <span class="built_in">this</span>.initBeanFactory((ConfigurableListableBeanFactory)beanFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-继续向下看子类-AspectJAwareAdvisorAutoProxyCreator-！"><a href="#3-继续向下看子类-AspectJAwareAdvisorAutoProxyCreator-！" class="headerlink" title="3.继续向下看子类 AspectJAwareAdvisorAutoProxyCreator ！"></a>3.继续向下看子类 <strong>AspectJAwareAdvisorAutoProxyCreator</strong> ！</h5> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//emmmmm，方法都跟 后置处理器 或者 自动装配BeanFactory 没啥关系，就不看了</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="4-最后看-AnnotationAwareAspectJAutoProxyCreator-！"><a href="#4-最后看-AnnotationAwareAspectJAutoProxyCreator-！" class="headerlink" title="4.最后看 AnnotationAwareAspectJAutoProxyCreator ！"></a>4.最后看 AnnotationAwareAspectJAutoProxyCreator ！</h5> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//又重写了该方法，相当于父类 setBeanFactory() 时还得调它</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">initBeanFactory</span><span class="params">(ConfigurableListableBeanFactory beanFactory)</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>流程：</strong></p>
+<p> <img src="/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415125231299.png" alt="image-20200415125231299"></p>
+<h5 id="1-传入主配置类，创建ioc容器"><a href="#1-传入主配置类，创建ioc容器" class="headerlink" title="1.传入主配置类，创建ioc容器"></a>1.传入主配置类，创建ioc容器</h5><p> <code>AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);</code></p>
+<h5 id="2-注册配置类，调用-refresh-，刷新容器（就跟初始化容器一样）"><a href="#2-注册配置类，调用-refresh-，刷新容器（就跟初始化容器一样）" class="headerlink" title="2.注册配置类，调用 refresh()，刷新容器（就跟初始化容器一样）"></a>2.注册配置类，调用 <code>refresh()</code>，刷新容器（就跟初始化容器一样）</h5><h5 id="3-refresh-中："><a href="#3-refresh-中：" class="headerlink" title="3. refresh() 中："></a>3. refresh() 中：<img src="/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/image-20200415124948236.png" alt="image-20200415124948236"></h5><p> ​	<strong>注册 bean 的后置处理器</strong>来方便拦截 bean 的创建，进去康康</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.先获取ioc容器中需要创建对象的所有 BeanPostProcessor</span></span><br><span class="line">String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.给容器中加别的BeanPostProcessor</span></span><br><span class="line">beanFactory.addBeanPostProcessor</span><br><span class="line">   (<span class="keyword">new</span> <span class="title class_">PostProcessorRegistrationDelegate</span>.BeanPostProcessorChecker(beanFactory, beanProcessorTargetCount));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.优先注册实现了接口 PriorityOrdered 的 BeanPostProcessor</span></span><br><span class="line"><span class="keyword">if</span> (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) &#123;</span><br><span class="line">    pp = (BeanPostProcessor)beanFactory</span><br><span class="line">        .getBean(ppName,BeanPostProcessor.class);</span><br><span class="line">    priorityOrderedPostProcessors.add(pp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 4.再注册实现了 Ordered 接口的 BeanPostProcessor</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (beanFactory.isTypeMatch(ppName, Ordered.class)) &#123;</span><br><span class="line">    orderedPostProcessorNames.add(ppName);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 5.最后注册没实现优先级接口的 BeanPostProcessor</span></span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    nonOrderedPostProcessorNames.add(ppName);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 6.注册BeanPostProcessor，实际上是创建 BeanPostProcessor 对象，保存在容器中</span></span><br></pre></td></tr></table></figure>
+
+<p> 创建 <strong>internalAutoProxyCreator</strong> 的 <strong>BeanPostProcessor</strong></p>
+<pre><code> 1. 创建 Bean 的实例
+</code></pre>
+<ol start="2">
+<li><p><code>populateBean()</code>：给 bean 的各种属性赋值</p>
+</li>
+<li><p><code>initializeBean()</code>：初始化 bean</p>
+<ol>
+<li><code>invokeAwareMethods()</code>：处理Aware接口的方法回调</li>
+<li><code>applyBeanPostProcessorsBeforeInitialization()</code>：应用后置处理器的 <code>beforeInitialization()</code></li>
+<li><code>invokeInitMethods()</code>：执行自定义初始化方法</li>
+<li><code>applyBeanPostProcessorsAfterInitialization()</code>：应用后置处理器的 <code>afterInitialization()</code></li>
+</ol>
+</li>
+<li><p>BeanPostProcessor 创建成功</p>
+<p> 把 BeanPostProcessor 注册到 BeanFactory中：<code>beanFactory.addBeanPostProcessor(postProcessor)</code></p>
+</li>
+</ol>
+<h5 id="4-finishBeanFactoryInitialization-beanFactory-：完成-BeanFactory初始化工作"><a href="#4-finishBeanFactoryInitialization-beanFactory-：完成-BeanFactory初始化工作" class="headerlink" title="4.finishBeanFactoryInitialization(beanFactory)：完成 BeanFactory初始化工作"></a>4.finishBeanFactoryInitialization(beanFactory)：完成 BeanFactory初始化工作</h5><ol>
+<li><p>遍历获取容器中所有的 Bean ，依次创建对象</p>
+<p><code>getBean()</code>—&gt;<code>doGetBean()</code>—&gt;<code>getSingleton()</code></p>
+</li>
+<li><p>创建 bean</p>
+<ol>
+<li><p>先去缓存中康康，如果没有再创建 bean</p>
+</li>
+<li><p><code>createBean()</code>：创建 bean</p>
+<ol>
+<li><p><code>resolveBeforeInstantiation(beanName, mbd)</code></p>
+<p> 希望后置处理器在此处能返回一个代理对象，如果能返回代理对象就使用，不能就继续执行下面的操作</p>
+</li>
+<li><p><code>doCreateBean(beanName, mbdToUse，args)</code>：真正去创建一个bean实例</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E4%B8%AD%E7%AF%87/" data-id="cleqecf11003640jo01bwbh0z" data-title="【Spring注解驱动开发】中篇" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/01/%E3%80%90Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%91%E5%90%8E%E7%AF%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          【Spring注解驱动开发】后篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/01/%E3%80%90SpringBoot%E6%95%B4%E5%90%88%E3%80%91%E7%BC%93%E5%AD%98%E7%AF%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">【SpringBoot整合】缓存篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94/">考研</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatisPlus/" rel="tag">MyBatisPlus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/" rel="tag">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/" rel="tag">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shiro/" rel="tag">shiro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag">异常检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag">源码阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" rel="tag">狂神说Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 18.33px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 19.17px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MyBatisPlus/" style="font-size: 10px;">MyBatisPlus</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/NLP/" style="font-size: 12.5px;">NLP</a> <a href="/tags/OD/" style="font-size: 13.33px;">OD</a> <a href="/tags/Project/" style="font-size: 11.67px;">Project</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Spring/" style="font-size: 11.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px;">SpringSecurity</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/shiro/" style="font-size: 10px;">shiro</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 11.67px;">前端</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 17.5px;">尚硅谷</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">并发编程</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10.83px;">异常检测</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15.83px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 11.67px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 12.5px;">文献阅读</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" style="font-size: 14.17px;">源码阅读</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" style="font-size: 15px;">狂神说Java</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 18.33px;">考研</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">【考研】计算机组成原理知识点梳理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/">【考研】考研冲冲冲！</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">【考研】数据结构知识点总结</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/">【机器学习光速入门】</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/">【机器学习】异常检测：PyOD库中的算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 wxshhh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

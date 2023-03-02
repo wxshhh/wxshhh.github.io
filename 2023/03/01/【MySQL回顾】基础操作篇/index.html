@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>【MySQL回顾】基础操作篇 | 从入门到入土</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="快速回顾   语句 语法    AND &#x2F; OR SELECT column_name(s) FROM table_name WHERE condition AND|OR condition   ALTER TABLE (add column) ALTER TABLE table_name ADD column_name datatype   ALTER TABLE (drop colu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【MySQL回顾】基础操作篇">
+<meta property="og:url" content="http://wxshhh.github.io/2023/03/01/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="快速回顾   语句 语法    AND &#x2F; OR SELECT column_name(s) FROM table_name WHERE condition AND|OR condition   ALTER TABLE (add column) ALTER TABLE table_name ADD column_name datatype   ALTER TABLE (drop colu">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-03-01T12:16:22.114Z">
+<meta property="article:modified_time" content="2020-04-22T02:52:46.612Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">从入门到入土</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wxshhh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-【MySQL回顾】基础操作篇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:22.114Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【MySQL回顾】基础操作篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="快速回顾"><a href="#快速回顾" class="headerlink" title="快速回顾"></a>快速回顾</h1><table>
+<thead>
+<tr>
+<th align="left">语句</th>
+<th align="left">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AND &#x2F; OR</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE condition AND|OR condition</td>
+</tr>
+<tr>
+<td align="left">ALTER TABLE (add column)</td>
+<td align="left">ALTER TABLE table_name ADD column_name datatype</td>
+</tr>
+<tr>
+<td align="left">ALTER TABLE (drop column)</td>
+<td align="left">ALTER TABLE table_name DROP COLUMN column_name</td>
+</tr>
+<tr>
+<td align="left">AS (alias for column)</td>
+<td align="left">SELECT column_name AS column_alias FROM table_name</td>
+</tr>
+<tr>
+<td align="left">AS (alias for table)</td>
+<td align="left">SELECT column_name FROM table_name AS table_alias</td>
+</tr>
+<tr>
+<td align="left">BETWEEN</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2</td>
+</tr>
+<tr>
+<td align="left">CREATE DATABASE</td>
+<td align="left">CREATE DATABASE database_name</td>
+</tr>
+<tr>
+<td align="left">CREATE INDEX</td>
+<td align="left">CREATE INDEX index_name ON table_name (column_name)</td>
+</tr>
+<tr>
+<td align="left">CREATE TABLE</td>
+<td align="left">CREATE TABLE table_name ( column_name1 data_type, column_name2 data_type, ……. )</td>
+</tr>
+<tr>
+<td align="left">CREATE UNIQUE INDEX</td>
+<td align="left">CREATE UNIQUE INDEX index_name ON table_name (column_name)</td>
+</tr>
+<tr>
+<td align="left">CREATE VIEW</td>
+<td align="left">CREATE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition</td>
+</tr>
+<tr>
+<td align="left">DELETE FROM</td>
+<td align="left">DELETE FROM table_name (<strong>Note:</strong> Deletes the entire table!!)<em>or</em>DELETE FROM table_name WHERE condition</td>
+</tr>
+<tr>
+<td align="left">DROP DATABASE</td>
+<td align="left">DROP DATABASE database_name</td>
+</tr>
+<tr>
+<td align="left">DROP INDEX</td>
+<td align="left">DROP INDEX table_name.index_name</td>
+</tr>
+<tr>
+<td align="left">DROP TABLE</td>
+<td align="left">DROP TABLE table_name</td>
+</tr>
+<tr>
+<td align="left">GROUP BY</td>
+<td align="left">SELECT column_name1,SUM(column_name2) FROM table_name GROUP BY column_name1</td>
+</tr>
+<tr>
+<td align="left">HAVING</td>
+<td align="left">SELECT column_name1,SUM(column_name2) FROM table_name GROUP BY column_name1 HAVING SUM(column_name2) condition value</td>
+</tr>
+<tr>
+<td align="left">IN</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name IN (value1,value2,..)</td>
+</tr>
+<tr>
+<td align="left">INSERT INTO</td>
+<td align="left">INSERT INTO table_name VALUES (value1, value2,….)<em>or</em>INSERT INTO table_name (column_name1, column_name2,…) VALUES (value1, value2,….)</td>
+</tr>
+<tr>
+<td align="left">LIKE</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE column_name LIKE pattern</td>
+</tr>
+<tr>
+<td align="left">ORDER BY</td>
+<td align="left">SELECT column_name(s) FROM table_name ORDER BY column_name [ASC|DESC]</td>
+</tr>
+<tr>
+<td align="left">SELECT</td>
+<td align="left">SELECT column_name(s) FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT *</td>
+<td align="left">SELECT * FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT DISTINCT</td>
+<td align="left">SELECT DISTINCT column_name(s) FROM table_name</td>
+</tr>
+<tr>
+<td align="left">SELECT INTO (used to create backup copies of tables)</td>
+<td align="left">SELECT * INTO new_table_name FROM original_table_name <em>or</em> SELECT column_name(s) INTO new_table_name FROM original_table_name</td>
+</tr>
+<tr>
+<td align="left">TRUNCATE TABLE (deletes only the data inside the table)</td>
+<td align="left">TRUNCATE TABLE table_name</td>
+</tr>
+<tr>
+<td align="left">UPDATE</td>
+<td align="left">UPDATE table_name SET column_name&#x3D;new_value [, column_name&#x3D;new_value] WHERE column_name&#x3D;some_value</td>
+</tr>
+<tr>
+<td align="left">WHERE</td>
+<td align="left">SELECT column_name(s) FROM table_name WHERE condition</td>
+</tr>
+</tbody></table>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start mysql		-- 启动服务（windows命令行操作）</span><br><span class="line">mysql -h 地址 -P 端口 -u 用户名 -p 密码		-- 连接服务器</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><h3 id="创建库"><a href="#创建库" class="headerlink" title="创建库"></a>创建库</h3><p><code>CREATE DATABASE[IF NOT EXISTS] 数据库名 数据库选项</code></p>
+<h3 id="查看库"><a href="#查看库" class="headerlink" title="查看库"></a>查看库</h3><p><code>SHOW DATABASES[ LIKE &#39;PATTERN&#39;]</code></p>
+<h3 id="修改库"><a href="#修改库" class="headerlink" title="修改库"></a>修改库</h3><p><code>ALTER DATABASE 库名 选项信息</code></p>
+<h3 id="删除库"><a href="#删除库" class="headerlink" title="删除库"></a>删除库</h3><p><code>DROP DATABASE[ IF EXISTS] 数据库名</code></p>
+<h1 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h1><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE [TEMPORARY] TABLE[IF NOT EXISTS] [库名]表名 ( 表的结构定义 )[表选项]</span><br><span class="line">-- 表选项：</span><br><span class="line">	CHARSET = charset_name		-- 字符集</span><br><span class="line">	ENGINE = engine_name		-- 存储引擎</span><br><span class="line">	AUTO_INCREMENT = 行数		   -- 自增起始数 		   </span><br><span class="line">	DATA DIRECTORY = &#x27;目录&#x27;	   -- 数据文件目录</span><br><span class="line">	INDEX DIRECTORY = &#x27;目录&#x27;	   -- 索引文件目录</span><br><span class="line">	COMMENT = &#x27;string&#x27;			-- 表注释</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE 表名 -- 信息更详细</span><br><span class="line">DESC 表名 			 -- 查看表结构</span><br><span class="line">SHOW TABLE STATUS [FROM db_name] [LIKE &#x27;pattern&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 操作名</span><br><span class="line">-- 操作名</span><br><span class="line">	ADD[ COLUMN] AFTER|First       	  -- 增加字段</span><br><span class="line">	ADD PRIMARY KEY(字段名)   		 	-- 创建主键</span><br><span class="line">	ADD UNIQUE|INDEX [索引名] (字段名)  -- 创建唯一索引或者普通索引</span><br><span class="line">	DROP[ COLUMN] 字段名      			-- 删除字段</span><br><span class="line">	MODIFY[ COLUMN] 字段名 字段属性     -- 支持对字段属性进行修改，不能修改字段名(所有原有属性也需写上)</span><br><span class="line">	CHANGE[ COLUMN] 原字段名 新字段名 字段属性      -- 支持对字段名修改</span><br><span class="line">	DROP PRIMARY KEY    			  -- 删除主键(删除主键前需删除其AUTO_INCREMENT属性)</span><br><span class="line">	DROP INDEX 索引名 					-- 删除索引</span><br><span class="line">	DROP FOREIGN KEY 外键    			 -- 删除外键</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE[ IF EXISTS] 表名</span><br><span class="line">TRUNCATE [TABLE] 表名</span><br></pre></td></tr></table></figure>
+
+<p>区别：</p>
+<table>
+<thead>
+<tr>
+<th align="center">truncate</th>
+<th align="center">delete</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">删除表再创建</td>
+<td align="center">逐条删除</td>
+</tr>
+<tr>
+<td align="center">重置auto_increment的值</td>
+<td align="center">不重置auto_increment的值</td>
+</tr>
+<tr>
+<td align="center">不知道删除了几条</td>
+<td align="center">知道删除了几条</td>
+</tr>
+<tr>
+<td align="center">保留分区</td>
+<td align="center">不保留分区</td>
+</tr>
+</tbody></table>
+<h3 id="其他表操作"><a href="#其他表操作" class="headerlink" title="其他表操作"></a>其他表操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名 LIKE 要复制的表名						-- 复制表结构</span><br><span class="line">CREATE TABLE 表名 [AS] SELECT * FROM 要复制的表名		-- 复制表的结构与数据</span><br><span class="line">CHECK TABLE tbl_name [, tbl_name] ... [option] ...	 -- 检查表是否有错误</span><br><span class="line">OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...	-- 优化表</span><br><span class="line">REPAIR [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ... [QUICK] [EXTENDED] [USE_FRM]											-- 修复表</span><br><span class="line">ANALYZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...	-- 分析表</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h1><h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] 表名 [(字段列表)] VALUES (值列表)[, (值列表), ...]</span><br><span class="line"></span><br><span class="line">INSERT [INTO] 表名 SET 字段名=值[, 字段名=值, ...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名[ 删除条件子句]		-- 没有删除条件子句，则会删除全部</span><br></pre></td></tr></table></figure>
+
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 SET 字段名=新值[, 字段名=新值] [更新条件]</span><br></pre></td></tr></table></figure>
+
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SELECT [ALL|DISTINCT] select_expr FROM -&gt; WHERE -&gt; GROUP BY [合计函数] -&gt; HAVING -&gt; ORDER BY -&gt; LIMIT</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">	ALL|DISTINCT：</span><br><span class="line">		ALL：显示全部，默认为ALL</span><br><span class="line">		DISTINCT：去除重复数据</span><br><span class="line">	select_expr：</span><br><span class="line">		1.可以用 * 表示所有字段。</span><br><span class="line">        2.可以使用表达式（计算公式、函数调用、字段也是个表达式）</span><br><span class="line">        3.可以为每个列使用别名</span><br><span class="line">    GROUP BY：</span><br><span class="line">		分组子句</span><br><span class="line">    合计函数：</span><br><span class="line">    	需要配合GROUP BY使用</span><br><span class="line">    	count、sum、max、min、avg……</span><br><span class="line">    HAVING：</span><br><span class="line">    	相当于命令行中的管道符 “|”，懂我意思吧</span><br><span class="line">  	ORDER BY：</span><br><span class="line">  		升序：ASC</span><br><span class="line">  		降序：DESC</span><br><span class="line">  	LIMIT：</span><br><span class="line">  		限制结果条数</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#1.length 获取参数值的字节个数</span><br><span class="line">SELECT LENGTH(&#x27;join&#x27;);</span><br><span class="line">SELECT LENGTH(&#x27;张三丰&#x27;)  #一个汉字占三个字节;</span><br><span class="line"></span><br><span class="line">#2.concat 拼接字符串</span><br><span class="line">SELECT　CONCAT(last_name,&#x27;_&#x27;,first_name) 姓名 FROM employees；</span><br><span class="line"></span><br><span class="line">#3.upper、lower</span><br><span class="line">SELECT UPPER(&#x27;john&#x27;);</span><br><span class="line">SELECT LOWER(&#x27;JOHN&#x27;);</span><br><span class="line"></span><br><span class="line">#4.substr、substring</span><br><span class="line">#索引从1开始</span><br><span class="line">SELECT SUBSTR(&#x27;李莫愁爱上陆展元&#x27;，7) out_put;   #截取从指定索引处后面的所有字符</span><br><span class="line">SELECT SUBSTR(&#x27;李莫愁爱上陆展元&#x27;，1，3) out_put;    #截取从索引处开始指定字符长度的字符</span><br><span class="line"></span><br><span class="line">#5.instr 返回子串在大字符串中的起始索引，找不到则返回0</span><br><span class="line">SELECT INSTR(&#x27;杨不悔爱上了殷六侠&#x27;，&#x27;殷六侠&#x27;) AS out_put FROM employees;</span><br><span class="line"></span><br><span class="line">#6.trim 去除两边字符</span><br><span class="line">SELECT TRIM(&#x27;   张翠山   &#x27;);</span><br><span class="line">SELECT TRIM(&#x27;a&#x27; FROM &#x27;aaa张翠山aaa&#x27;);</span><br><span class="line"></span><br><span class="line">#7.lpad、rpad 用指定的字符左/右填充指定的长度</span><br><span class="line">SELECT LPAD(&#x27;殷素素&#x27;，10，&#x27;*&#x27;);</span><br><span class="line"></span><br><span class="line">#8.replac 替换</span><br><span class="line">SELECT REPLACE(&#x27;（周芷若）张无忌爱上了周芷若&#x27;，&#x27;周芷若&#x27;，&#x27;赵敏&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">round()		#取整</span><br><span class="line">ceil()		#向上取整</span><br><span class="line">floor()		#向下取整</span><br><span class="line">truncate()  #截断</span><br><span class="line">mod()       #取余</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">now()</span><br><span class="line">curdate()</span><br><span class="line">curtime()</span><br><span class="line">year()</span><br><span class="line">mouth()</span><br><span class="line">mouthname()       #英文月份名</span><br><span class="line">day()</span><br><span class="line">hour()</span><br><span class="line">minute()</span><br><span class="line">second()</span><br><span class="line"></span><br><span class="line">str_to_date(&#x27;9-13-1999&#x27;,&#x27;%m-%d-%Y&#x27;)    #将日期格式的字符转化成指定格式的日期</span><br><span class="line">date_fromat(&#x27;2018/6/6&#x27;,&#x27;%Y年%m月%d日&#x27;)  #将日期转换成字符</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">格式符</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%Y</td>
+<td align="center">四位年份</td>
+</tr>
+<tr>
+<td align="center">%y</td>
+<td align="center">两位年份</td>
+</tr>
+<tr>
+<td align="center">%m</td>
+<td align="center">月份（01，02…)</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">月份（1，2…)</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">日（01，02，…）</td>
+</tr>
+<tr>
+<td align="center">%H</td>
+<td align="center">小时（24小时）</td>
+</tr>
+<tr>
+<td align="center">%h</td>
+<td align="center">小时（12小时）</td>
+</tr>
+<tr>
+<td align="center">%i</td>
+<td align="center">分钟</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">秒</td>
+</tr>
+</tbody></table>
+<h3 id="控制函数"><a href="#控制函数" class="headerlink" title="控制函数"></a>控制函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.if()    #相当于java三目运算</span><br><span class="line">    if(10&gt;5,&#x27;大&#x27;，&#x27;小&#x27;)</span><br><span class="line"></span><br><span class="line">2.case</span><br><span class="line">    case 要判断的字段或表达式</span><br><span class="line">    when 常量1 then 要显示的值1或语句1</span><br><span class="line">    when 常量2 then 要显示的值2或语句2</span><br><span class="line">    ...</span><br><span class="line">    else 要显示的值n或语句n</span><br><span class="line">    end;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">功能：用作统计使用，又称聚合函数或统计函数</span><br><span class="line"></span><br><span class="line">分类：sum、avg、max、min、count</span><br><span class="line"></span><br><span class="line">特点： 1.sum、avg一般用于处理数值型</span><br><span class="line">        count、min、max可以处理任何类型</span><br><span class="line">      2.分组函数都忽略null值</span><br><span class="line">      3.可以和distinct搭配实现去重</span><br><span class="line">        select sum(distinct salary),sum(salary) from employees;</span><br><span class="line">      4.count函数详细介绍</span><br><span class="line">        select (*) from employees;</span><br><span class="line">        //统计行数</span><br><span class="line">      5.和分组函数一同查询的字段要求是group by后的字段</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><blockquote>
+<p>w3school：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/sql_quickref.asp">https://www.w3school.com.cn/sql/sql_quickref.asp</a></p>
+<p>格物：<a target="_blank" rel="noopener" href="https://shockerli.net/post/1000-line-mysql-note/">https://shockerli.net/post/1000-line-mysql-note/</a></p>
+<p>javaGuide：<a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/database">https://snailclimb.gitee.io/javaguide/#/docs/database</a></p>
+<p>尚硅谷：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12b411K7Zu?from=search&seid=12749719158094983926">https://www.bilibili.com/video/BV12b411K7Zu?from=search&amp;seid=12749719158094983926</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/" data-id="cleqecf0y002x40jof4v41272" data-title="【MySQL回顾】基础操作篇" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/01/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E7%B4%A2%E5%BC%95%E7%AF%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          【MySQL回顾】索引篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/01/%E3%80%90MySQL%E5%9B%9E%E9%A1%BE%E3%80%91%E4%BA%8B%E5%8A%A1%E7%AF%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">【MySQL回顾】事务篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94/">考研</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatisPlus/" rel="tag">MyBatisPlus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/" rel="tag">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/" rel="tag">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shiro/" rel="tag">shiro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag">异常检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag">源码阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" rel="tag">狂神说Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 18.33px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 19.17px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MyBatisPlus/" style="font-size: 10px;">MyBatisPlus</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/NLP/" style="font-size: 12.5px;">NLP</a> <a href="/tags/OD/" style="font-size: 13.33px;">OD</a> <a href="/tags/Project/" style="font-size: 11.67px;">Project</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Spring/" style="font-size: 11.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px;">SpringSecurity</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/shiro/" style="font-size: 10px;">shiro</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 11.67px;">前端</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 17.5px;">尚硅谷</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">并发编程</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10.83px;">异常检测</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15.83px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 11.67px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 12.5px;">文献阅读</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" style="font-size: 14.17px;">源码阅读</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" style="font-size: 15px;">狂神说Java</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 18.33px;">考研</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">【考研】计算机组成原理知识点梳理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/">【考研】考研冲冲冲！</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">【考研】数据结构知识点总结</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/">【机器学习光速入门】</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/">【机器学习】异常检测：PyOD库中的算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 wxshhh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>从入门到入土</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="中国科学技术大学软件工程在读">
+<meta property="og:type" content="website">
+<meta property="og:title" content="从入门到入土">
+<meta property="og:url" content="http://wxshhh.github.io/page/2/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="中国科学技术大学软件工程在读">
+<meta property="og:locale">
+<meta property="article:author" content="wxshhh">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="从入门到入土" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">从入门到入土</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wxshhh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-【机器学习】基于深度学习的异常检测" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.592Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">【机器学习】基于深度学习的异常检测概览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-深度异常检测分类"><a href="#1-深度异常检测分类" class="headerlink" title="1 深度异常检测分类"></a>1 深度异常检测分类</h1><img src="【机器学习】基于深度学习的异常检测/image-20210321091534237.png" alt="image-20210321091534237" style="zoom:80%;" />
+
+<h3 id="1-1-Deep-learning-for-feature-extraction"><a href="#1-1-Deep-learning-for-feature-extraction" class="headerlink" title="1.1 Deep learning for feature extraction"></a>1.1 Deep learning for feature extraction</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deep learning for feature extraction</td>
+<td>深度学习模型提取的特征保留了有助于区分异常实例与正常实例的具有辨识性的信息</td>
+<td>1. 可用大量最新和现成的深度学习模型 2. 可以提供强大的降维功能 3. 易于实现</td>
+<td>1. 特征提取和异常评分脱节 2. 预训练的深度模型仅限于特定类型的数据</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-Learning-feature-representations-of-normality"><a href="#1-2-Learning-feature-representations-of-normality" class="headerlink" title="1.2 Learning feature representations of normality"></a>1.2 Learning feature representations of normality</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AE（AutoEncoders）</td>
+<td>正常实例比异常实例更易在被压缩的空间中重建</td>
+<td>1. 简单易懂，适用于不同的数据类型 2. 可以利用多种不同类型的强大 AE 变体进行异常检测</td>
+<td>1. 训练数据中的不规则性（infrequent regularities）和异常值本身的存在可能会影响所学习到的特征表示      2. 数据重建的目标函数被设计用来进行数据降维或数据压缩，而不是进行异常检测。 As a result, the resulting representations are a generic summarization of underlying regularities, which are not optimized for detecting irregularities.</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>正常实例比潜在的异常实例更好生成</td>
+<td>1. GAN已经证明可以生成逼真的实例（尤其是图像数据），可以检测出在潜在空间中重建的很差的异常实例 2. 大量现有的基于GAN的模型和理论可以用于异常检测</td>
+<td>1. GAN的训练会遇到诸多问题，例如无法收敛和模式崩溃（mode collapse），这会导致在训练基于GAN的异常检测模型时会遇到很大的困难 2. 生成网络可能会被误导并生成正常实例之外的数据实例，尤其是当给定数据集的真实分布较为复杂或训练数据包含异常时      3.  基于GAN的异常评分可能不是最佳的，因为建立在生成器网络之上，不是为了异常检测而是为数据生成设计的</td>
+</tr>
+<tr>
+<td>Predictability Modeling</td>
+<td>正常实例通常比异常实例更好预测</td>
+<td>1. 大量序列学习技术（sequence learning techniques）可以被适应并结合到该方法中                        2. 可以学习多种不同的时间和空间依赖（temporal and spatial dependencies）</td>
+<td>1. 该方法仅限于序列数据（sequence data）的异常检测 2. 序列预测会花费较多的时间 3. 异常检测的结果并不是最优的，因为他的根本目标是进行序列预测而不是异常检测</td>
+</tr>
+<tr>
+<td>Self-supervise Classification</td>
+<td>与异常实例相比，正常实例与自监督分类器的一致性更高</td>
+<td>1. 在无监督和半监督学习中的表现都很好                              2. Anomaly scoring is grounded by some intrinsic properties of gradient magnitude and its updating.</td>
+<td>1. 特征转换操作通常依赖于数据，变换操作仅适用于图像数据 2. 尽管以端到端的方式训练分类模型，但是基于一致性的异常分数是是来源于分类分数而不是优化中的集成模块，因此结果不是最优的</td>
+</tr>
+<tr>
+<td>Distance-based Measure</td>
+<td>通常异常实例分布在原离其邻居的地方</td>
+<td>1. 基于距离的异常检测简单明了，并且在文献中有丰富的理论支持 2. 在低维空间中工作，可以有效地处理无法被传统的基于距离的异常检测算法处理的高维数据 3. 他们能够学习专门为自己量身定做的特征表示</td>
+<td>1. 涉及到大量的计算 2. 可以受到基于距离的异常检测算法固有弱点的限制</td>
+</tr>
+<tr>
+<td>One-class Classification-based Measure（OC）</td>
+<td>所有的正常实例都来自于单个（抽象）实例，可以通过一个紧凑（compact）模型概括，异常不属于该模型</td>
+<td>1. 在文献中对 OC -based 方法进行了充分的研究并且为 deep OC-based 方法提供了坚实的根基 2. The representation learning 和 OC 分类模型可以被统一起来，去学习量身定做和更加优化的特征表示      3. 免于用户自己手动选择合适的内核功能（kernel functions）</td>
+<td>1. 在正常实例中具有复杂分布的数据集可能使模型失效                                                 2. The detection performance is dependent on the one-class classification-based anomaly measures</td>
+</tr>
+<tr>
+<td>Clustering-based Measure</td>
+<td>正常实例比异常实例对集群具有更高的依从性（adherence）</td>
+<td>1. 有许深度聚类方法和理论可以用来支持异常检测 2. 与传统的基于聚类的方法相比，基于深度聚类的方法会学习专门优化特征，这些形式比原始数据更易发现异常，特别是在处理复杂数据时</td>
+<td>1. 异常检测的结果严重依赖于聚类的结果 2. 聚类过程中可能会因为训练数据出现污染而产生偏差</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-End-to-end-Anomaly-Score-Learning"><a href="#1-3-End-to-end-Anomaly-Score-Learning" class="headerlink" title="1.3 End-to-end Anomaly Score Learning"></a>1.3 End-to-end Anomaly Score Learning</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ranking Models</td>
+<td>There exists an observable ordinal variable that captures some data abnormality.</td>
+<td>1. 可以使用调整后的损失函数直接优化异常分数     2. They are generally free from the definitions of anomalies by imposing a weak assumption of the ordinal order between anomaly and normal instances 3. 这种方法可以建立在诸如学习排名等领域的成熟排名技术的理论基础之上</td>
+<td>1. 需要某种形式的标记过的异常 2. 由于模型专门用于检测少数标记过的异常，因此可能无法推广到一些与标记异常有不同特征的未被发现的异常上</td>
+</tr>
+<tr>
+<td>Prior-driven Model</td>
+<td>The imposed prior captures the underlying (ab)normality of the dataset</td>
+<td>1. 可以在给定先验（given prior）条件下直接优化异常分数 2. 提供了一个灵活的框架，可以将不同的优先级分布合并到异常分数学习中 3. 先验（the prior）也可以得到比其他方法更具解释性的异常分数</td>
+<td>1. 很难设计一个普遍适用于不同异常检测应用场景的先验 2. 不能很好地适应基础分布则模型的工作效率较低</td>
+</tr>
+<tr>
+<td>Softmax Likelihood Models</td>
+<td>得到正常实例是高概率时间而得到异常实例是低概率事件</td>
+<td>可以将不同类型的交互方式合并到异常分数学习过程中</td>
+<td>1. 交互的计算可能非常昂贵 2. 异常分数学习在很大程度上取决于反面样本（negative samples）生成的质量</td>
+</tr>
+<tr>
+<td>End-to-end            One-class Classification</td>
+<td>1. 近似异常的实例可以被有效的合成         2. 所有的正常实例都可以被一个单分类模型概况</td>
+<td>1. 异常分类模型被以端到端的方式对抗式的优化    2. 有丰富的理论支持</td>
+<td>1. 难以保证所生成的参考实例与未知异常十分相似  2. GAN 的不稳定性会导致异常分类性能不稳定 3. 仅限于半监督异常检测场景</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考自 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2007.02500.pdf">Deep Learning for Anomaly Detection: A Review</a></p>
+</blockquote>
+<h1 id="2-深度异常检测模型基础"><a href="#2-深度异常检测模型基础" class="headerlink" title="2 深度异常检测模型基础"></a>2 深度异常检测模型基础</h1><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>描述</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AE（AutoEncoder）</td>
+<td>AE 重构输入数据来表示多个隐藏层中的数据，从而有效学习身份函数（identity function）。当在正常数据中训练 AE 时，AE 无法重构异常数据样本，因此会产生较大的重构误差（reconstruction error），产生高残留误差的样本数据被认为是异常值。</td>
+<td>Semi-supervised，Un-supervised</td>
+</tr>
+<tr>
+<td>RBM（Restricted Boltzmann Machine）</td>
+<td>一种可通过输入数据集学习概率分布的随机生成神经网络</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>DBN（Deep Belief Networks）</td>
+<td>使用 DBN 进行异常检测的假设是，RBM 被用作带有反向传播算法的定向编码-解码网络。</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>AAE（Adversarial AutoEncoder）</td>
+<td>我们都知道AE需要把一个真实分布映射成隐层的 z，AAE 在此加上对抗思想来优化这个 z</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>CNN-Relief，CNN-SVM</td>
+<td></td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>CNN</td>
+<td>CNN 能够从具有复杂结构的高维数据中提取复杂的隐藏特征，使其能够在序列和图像检测中用作特征提取器。</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>RNN</td>
+<td>RNN可以获得时序数据的特征，但是随着时间步长的增加，获取时序数据的特征也会越来越困难。</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>学习精确的数据分布以便生成具有变化的新数据点。</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>CorGAN（Corrupted GAN）</td>
+<td></td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>AE-OCSVM，AE-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DBN-SVDD，AE-SVDD（Support Vector Data Description）</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DNN-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DAE-KNN，DBN-Random Forest，CNN-Relief，CNN-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>AE-CNN，AE-DBN</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>AE-KNN</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>CNN-LSTM-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>RNN-CSI</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>CAE-OCSVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>LSTM（Long Short  Term Memory Networks）</td>
+<td>是 RNN 的一种特殊类型，可以存储先前时间步长信息</td>
+<td>Un-supervised</td>
+</tr>
+<tr>
+<td>STN（Spatial Transformer Networks）</td>
+<td>STN 包含结合了 CNN 和 LSTM 的深层神经网络体系结构用以提取时空特征。时间特征（通过LSTM在近时间点之间的建模相关性）和空间特征（通过 CNN 的局部空间相关性建模）可以有效的检测异常值。</td>
+<td>Un-supervised</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考自 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1901.03407.pdf">Deep learning for anomaly detection: A survey</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" data-id="cleqecf2b008a40jo665haw2e" data-title="【机器学习】基于深度学习的异常检测概览" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【机器学习】NLP文献阅读：概览和综述篇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E6%A6%82%E8%A7%88%E5%92%8C%E7%BB%BC%E8%BF%B0%E7%AF%87/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.537Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E6%A6%82%E8%A7%88%E5%92%8C%E7%BB%BC%E8%BF%B0%E7%AF%87/">【机器学习】异常检测文献阅读：概览和综述篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在科研训练老师的推荐下，选择走上这条未知的道路——NLP，更具体一点又或者是文档中的异常检测(Outlier Detection)。</p>
+<p>前几天看到阿里达摩院的青橙奖颁布全程记录的视频，心中似乎、可能、大概对科研有了那么一丢丢兴趣。也看到一个关于本科生、研究生、博士生学习区别的视频，视频中假设人类全部已知的知识在一个有固定半径的圆内，本科生便是对圆内一个方向进行探索，研究生可以接触到这个方向的边界，博士生则是努力把这个方向的圆往外括出一个小凸点。</p>
+<p>若不必苦于为生计东奔西走，用十年、用一生去解决一个问题，去探索一片未知领域，去拓宽人类的知识边界，又何尝不是一件值得去做的事情呢？</p>
+<p>感谢老师能够提供相关的指导，为我用心整理了出一些需要研读的文献。这个系列文章就是为了记录 OD文献 阅读过程中的所学、所思、所想……</p>
+</blockquote>
+<h1 id="1-A-Survey-of-Outlier-Detection-Methodologies"><a href="#1-A-Survey-of-Outlier-Detection-Methodologies" class="headerlink" title="1. A Survey of Outlier Detection Methodologies."></a>1. A Survey of Outlier Detection Methodologies.</h1><h3 id="1-1-Article"><a href="#1-1-Article" class="headerlink" title="1.1 Article"></a>1.1 Article</h3><table>
+<thead>
+<tr>
+<th>Paper Title</th>
+<th>Venue</th>
+<th>Year</th>
+<th>Author</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A survey of outlier detection methodologies</td>
+<td>ARTIF INTELL REV</td>
+<td>2004</td>
+<td>Victoria J. Hodge 、Jim Austin</td>
+<td>[<a target="_blank" rel="noopener" href="https://www-users.cs.york.ac.uk/vicky/myPapers/Hodge+Austin_OutlierDetection_AIRE381.pdf">PDF]</a></td>
+</tr>
+</tbody></table>
+<h3 id="1-2-Aim"><a href="#1-2-Aim" class="headerlink" title="1.2 Aim"></a>1.2 Aim</h3><ul>
+<li>In this paper, we introduce <strong>a survey of contemporary techniques for outlier detection</strong>.</li>
+<li>We identify their respective <strong>motivations</strong> and <strong>distinguish their advantages and disadvantages</strong> in a comparative review.</li>
+</ul>
+<h3 id="1-3-Conclusion"><a href="#1-3-Conclusion" class="headerlink" title="1.3 Conclusion"></a>1.3 Conclusion</h3><ul>
+<li><p>defination of OD:</p>
+<ul>
+<li>An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs.</li>
+<li>An observation (or subset of observations) which appears to be inconsistent with the remainder of that set of data.</li>
+</ul>
+</li>
+<li><p><strong>three fundamental approaches</strong> to the problem of outlier detection:</p>
+<ol>
+<li><p>Determine the outliers with no prior knowledge of the data.（<strong>unsupervised clustering</strong>）</p>
+<p> 事先并不知道数据集中异常与正常的数据分别是哪些，需要通过一些列算法找出异常与正常数据的边界值（accommodation）或不断剔除数据集最偏离其他数据的数据（diagnosis），进而区别异常数据与正常数据。</p>
+</li>
+<li><p>Model both normality and abnormality. （<strong>supervised classifification</strong>）</p>
+<p> 事先已经将数据中的异常值与正常值分好，当有新数据加入时更接近正常值新数据就会被归类为正常值，反之则会被归类为异常值。</p>
+<p> 但是新数据已知正常值和异常值都存在较大差异（比如一些之前从未出现过的错误），那么分类就会出现问题。</p>
+</li>
+<li><p>Model only normality or in a very few cases model abnormality.（<strong>semi-supervised recognition or detection</strong>）</p>
+<p> 在已知所有正常值而不知道异常值、异常情况数据比较珍贵的情况下，判断新数据是异常还是正常。（这与现实中许多实际情况相符合）</p>
+<p> 目标是定义出一些正常数据的边界。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-4-Background"><a href="#1-4-Background" class="headerlink" title="1.4 Background"></a>1.4 Background</h3><h3 id="1-5-Key-result"><a href="#1-5-Key-result" class="headerlink" title="1.5 Key result"></a>1.5 Key result</h3><h3 id="1-6-Methods"><a href="#1-6-Methods" class="headerlink" title="1.6 Methods"></a>1.6 Methods</h3><h1 id="2-Anomalous-Instance-Detection-in-Deep-Learning-A-Survey"><a href="#2-Anomalous-Instance-Detection-in-Deep-Learning-A-Survey" class="headerlink" title="2. Anomalous Instance Detection in Deep Learning: A Survey"></a>2. Anomalous Instance Detection in Deep Learning: A Survey</h1><h3 id="1-1-Article-1"><a href="#1-1-Article-1" class="headerlink" title="1.1 Article"></a>1.1 Article</h3><table>
+<thead>
+<tr>
+<th>Paper Title</th>
+<th>Venue</th>
+<th>Year</th>
+<th>Author</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Anomalous Instance Detection in Deep Learning: A Survey</td>
+<td>Preprint</td>
+<td>2020</td>
+<td>Saikiran Bulusu、Bhavya Kailkhura、Bo Li、Pramod K. Varshney、Dawn Song</td>
+<td>[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.06979.pdf">PDF]</a></td>
+</tr>
+</tbody></table>
+<h3 id="1-2-Aim-1"><a href="#1-2-Aim-1" class="headerlink" title="1.2 Aim"></a>1.2 Aim</h3><ul>
+<li>This survey tries to provide a structured and comprehensive overview of the research on<br>   anomaly detection for DL based applications.</li>
+<li>Our goal in this survey is to provide an easier yet better understanding of the techniques belonging to different categories in which research has been done on this topic.</li>
+</ul>
+<h3 id="1-3-Content"><a href="#1-3-Content" class="headerlink" title="1.3 Content"></a>1.3 Content</h3><h3 id="1-4-Background-1"><a href="#1-4-Background-1" class="headerlink" title="1.4 Background"></a>1.4 Background</h3><h3 id="1-5-Key-result-1"><a href="#1-5-Key-result-1" class="headerlink" title="1.5 Key result"></a>1.5 Key result</h3><h3 id="1-6-Methods-1"><a href="#1-6-Methods-1" class="headerlink" title="1.6 Methods"></a>1.6 Methods</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E6%A6%82%E8%A7%88%E5%92%8C%E7%BB%BC%E8%BF%B0%E7%AF%87/" data-id="cleqecf29008240jofpm58pij" data-title="【机器学习】异常检测文献阅读：概览和综述篇" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【机器学习】NLP文献阅读：关键算法篇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.504Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/">【机器学习】异常检测文献阅读：关键算法篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-k-NN"><a href="#1-k-NN" class="headerlink" title="1 k-NN"></a>1 k-NN</h1><h1 id="2-LOF（Local-Outlier-Factor）"><a href="#2-LOF（Local-Outlier-Factor）" class="headerlink" title="2 LOF（Local Outlier Factor）"></a>2 LOF（Local Outlier Factor）</h1><h3 id="2-1-Article"><a href="#2-1-Article" class="headerlink" title="2.1 Article"></a>2.1 Article</h3><table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Paper Title</th>
+<th>Venue</th>
+<th>Year</th>
+<th>Author</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LOF</td>
+<td>LOF: identifying density-based local outliers</td>
+<td>ACM SIGMOD Record</td>
+<td>2000</td>
+<td>Markus M. Breunig、Hans-Peter Kriegel、Raymond T. Ng、Jörg Sander</td>
+<td><a target="_blank" rel="noopener" href="http://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf">PDF</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Aim"><a href="#2-2-Aim" class="headerlink" title="2.2 Aim"></a>2.2 Aim</h3><p>In this paper, we contend that for many scenarios, it is more meaningful to assign to each object a degree of being an outlier. This degree is called the local outlier factor (LOF) of an object.</p>
+<h3 id="2-3-Key-Notes"><a href="#2-3-Key-Notes" class="headerlink" title="2.3 Key Notes"></a>2.3 Key Notes</h3><ul>
+<li><p><strong>Definition 1</strong>:  (Hawkins-Outlier)</p>
+<p>  An outlier is an observation that deviates so much from other observations as to arouse suspicion that it was generated by a different mechanism.</p>
+  <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210122112045179.png" alt="image-20210122112045179" style="zoom:80%;" />
+</li>
+<li><p><strong>Definition 2:</strong> (DB(<em>pct</em>, <em>dmin</em>)-Outlier)</p>
+<p>  An object <em>p</em> in a dataset <em>D</em> is a <em>DB</em>(<em>pct, dmin</em>)-outlier if at least percentage <em>pct</em> of the objects in <em>D</em> lies greater than distance <em>dmin</em> from <em>p</em>, i.e., the cardinality of the set {<em>q</em> ∈ <em>D</em> | <em>d</em>(<em>p</em>, <em>q</em>) ≤ <em>dmin</em>} is less than or equal to (100 − <em>pct</em>)% of the size of <em>D</em>.</p>
+</li>
+<li><p><strong>Definition 3:</strong> (<em>k</em>-distance of an object <em>p</em>， <strong>点 p 距离第k个邻居的距离</strong>)</p>
+<p>  For any positive integer <em>k</em>, the <em>k</em>-distance of object <em>p</em>, denoted as<em>k-distance</em>(<em>p</em>), is defined as the distance <em>d</em>(<em>p</em>,<em>o</em>) between <em>p</em> and an object <em>o</em> ∈ <em>D</em>.</p>
+</li>
+<li><p><strong>Definition 4:</strong> (<em>k</em>-distance neighborhood of an object <em>p</em>， <strong>点 p 的 k 个邻居</strong>)</p>
+<p>  Given the <em>k</em>-distance of <em>p</em>, the <em>k-distance neighborhood of p</em> contains every object whose distance from <em>p</em> is not greater than the <em>k</em>-distance.</p>
+</li>
+<li><p><strong>Definition 5:</strong> (reachability distance of an object <em>p</em> w.r.t. object <em>o</em>)</p>
+  <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210122112137206.png" alt="image-20210122112137206" style="zoom:80%;" />
+
+<p>  <img src="/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/image-20210122111700368.png" alt="image-20210122111700368"></p>
+</li>
+<li><p><strong>Definition 6:</strong> (local reachability density of an object <em>p</em>)</p>
+<p>  局部可达密度：p 的第 k 邻域内到点 p 的平均可达距离的倒数</p>
+  <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210122111922611.png" alt="image-20210122111922611" style="zoom:80%;" />
+</li>
+<li><p><strong>Definition 7:</strong> ((local) outlier factor of an object <em>p</em>， 局部异常因子)</p>
+  <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210122112837320.png" alt="image-20210122112837320" style="zoom:80%;" />
+
+<p>  点 p 的领域点的局部可达密度与点 p 的局部可达密度的平均比值</p>
+<ul>
+<li>LOF(p) ≈ 1：p 与其邻域点的的密度差不多，他们很有可能在同一类中</li>
+<li>LOF(p) &gt;  1：p 点密度越小于其邻域点的密度，p 点是异常点的可能性越大</li>
+<li>LOF(p) &lt;  1：p 点密度越大于其邻域点的密度，p 点为密集点</li>
+</ul>
+</li>
+<li><p><strong>Determining a Range of</strong> <strong>MinPts</strong> <strong>Values</strong></p>
+<ul>
+<li>The first guideline we provide for picking MinPtsLB is that <strong>it should be at least 10</strong> to remove unwanted statistical fluctuations.</li>
+<li>The guideline we provide for picking <em>MinPtsUB</em> is the maximum number of “close by” objects that can potentially be local outliers.</li>
+</ul>
+</li>
+<li><p>In this paper, we show that for many situations, it is meaningful to <strong>consider being an outlier not as a binary property, but as the degree to which the object is isolated from its surrounding neighborhood</strong>.</p>
+</li>
+</ul>
+<h3 id="2-4-Background"><a href="#2-4-Background" class="headerlink" title="2.4 Background"></a>2.4 Background</h3><p>For many KDD applications, such as detecting criminal activities in E-commerce, finding the rare instances or the outliers, can be more interesting than finding the common patterns. <strong>Existing work in outlier detection regards being an outlier as a binary property.</strong> </p>
+<h3 id="2-5-Key-result"><a href="#2-5-Key-result" class="headerlink" title="2.5 Key result"></a>2.5 Key result</h3><p>Use LOF to judge the outlier-ness of a data in datasets</p>
+<h3 id="2-6-Comment"><a href="#2-6-Comment" class="headerlink" title="2.6 Comment"></a>2.6 Comment</h3><h1 id="3-iForest（Isolation-Forest）"><a href="#3-iForest（Isolation-Forest）" class="headerlink" title="3 iForest（Isolation Forest）"></a>3 iForest（Isolation Forest）</h1><h3 id="3-1-Article"><a href="#3-1-Article" class="headerlink" title="3.1 Article"></a>3.1 Article</h3><table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Paper Title</th>
+<th>Venue</th>
+<th>Year</th>
+<th>Author</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IForest</td>
+<td>Isolation forest</td>
+<td>ICDM</td>
+<td>2008</td>
+<td>Fei Tony Liu、Kai Ming Ting、<strong>Zhi-Hua Zhou</strong></td>
+<td>[<a target="_blank" rel="noopener" href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf">PDF]</a></td>
+</tr>
+</tbody></table>
+<h3 id="3-2-Aims"><a href="#3-2-Aims" class="headerlink" title="3.2 Aims"></a>3.2 Aims</h3><p>This paper proposes a fundamentally different <strong>model-based method</strong> that explicitly isolates anomalies instead of profiles normal points.</p>
+<h3 id="3-3-Key-Notes"><a href="#3-3-Key-Notes" class="headerlink" title="3.3 Key Notes"></a>3.3 Key Notes</h3><h4 id="3-3-1-rationale"><a href="#3-3-1-rationale" class="headerlink" title="3.3.1 rationale"></a>3.3.1 rationale</h4><p><strong>Anomalies are more susceptible to isolation and hence have short path lengths.</strong></p>
+<img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125144546066.png" alt="image-20210125144546066" style="zoom:80%;" />
+
+<img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125144558961.png" alt="image-20210125144558961" style="zoom:80%;" />
+
+<h4 id="3-3-2-Defifinition-Isolation-Tree"><a href="#3-3-2-Defifinition-Isolation-Tree" class="headerlink" title="3.3.2 Defifinition : Isolation Tree."></a>3.3.2 Defifinition : <strong>Isolation Tree.</strong></h4><p>Let <em>T</em> be a node of an isolation tree. <em>T</em> is either <strong>an external-node with no child, or an internal-node with one test and exactly two daughter nodes</strong> (<em>T_l</em>,<em>T_r</em>). A test consists of <strong>an attribute <em>q</em> and a split value <em>p</em></strong> such that the test <em>q &lt; p</em> divides data points into <em>T_l</em> and <em>T_r</em>.</p>
+<ul>
+<li><p>随机选择一个属性 Attr</p>
+</li>
+<li><p>随机选择该属性的一个值 Value</p>
+</li>
+<li><p>根据Attr对每条记录进行分类，把Attr小于Value的记录放在左子节点，把大于等于Value的记录放在右子节点</p>
+</li>
+<li><p>然后递归的构造左子节点和右子节点，直到 </p>
+<p>  1）传入的数据集只有一条记录或者多条一样的记录 </p>
+<p>  2）树的高度达到了限定高度</p>
+</li>
+</ul>
+ <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125162852242.png" alt="image-20210125162852242" style="zoom: 80%;" />
+
+<h4 id="3-3-3-Defifinition-Path-Length-h-x"><a href="#3-3-3-Defifinition-Path-Length-h-x" class="headerlink" title="3.3.3 Defifinition : Path Length h(x)."></a>3.3.3 Defifinition : <strong>Path Length</strong> <em>h</em>(<em>x</em>).</h4><p>measured by the number of edges <em>x</em> traverses an iTree from the root node until the traversal is terminated at an external node.</p>
+<p>叶子节点到根节点的路径长度</p>
+ <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125162941406.png" alt="image-20210125162941406" style="zoom:80%;" />
+
+<h4 id="3-3-4-Anomaly-score"><a href="#3-3-4-Anomaly-score" class="headerlink" title="3.3.4 Anomaly score"></a>3.3.4 Anomaly score</h4><p>The maximum possible height of iTree grows in the order of <em>n</em>, the average height grows in the order of log <em>n</em> </p>
+<p>Normalization of <em>h</em>(<em>x</em>) by any of the above terms is either not bounded or cannot be directly compared.    </p>
+<p>对于一个包含n条记录的数据集，其构造的树的高度最小值为 log(n)，最大值为 n-1， 直接归一化存在问题，故采用复杂一点的公式进行归一化：</p>
+<p><img src="/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/image-20210125160305788.png" alt="image-20210125160305788"></p>
+<p><em>s(x,n)</em> 就是记录 x 在由 n 个样本的训练数据构成的 iTree 的异常指数</p>
+<ul>
+<li>if instances return <em>s</em> <strong>very close to 1</strong>, then they are <strong>definitely anomalies</strong></li>
+<li>if instances have <em>s</em> <strong>much smaller than 0.5</strong>, then they are <strong>quite safe to be regarded as normal instances</strong></li>
+<li>if all the instances return <strong><em>s</em> <em>≈</em> 0*.*5</strong>, then the entire sample <strong>does not really have any distinct anomaly</strong></li>
+</ul>
+<h4 id="3-3-5-IForest"><a href="#3-3-5-IForest" class="headerlink" title="3.3.5 IForest"></a>3.3.5 IForest</h4><p>随机采样一部分数据去构建每一颗 ITree，并且保证 ITree 之间的差异性</p>
+ <img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125163017284.png" alt="image-20210125163017284" style="zoom:80%;" />
+
+<h5 id="reason-of-sampling"><a href="#reason-of-sampling" class="headerlink" title="reason of sampling"></a><strong>reason of sampling</strong></h5><p><strong>Large sampling size reduces iForest’s ability to isolate anomalies</strong> as normal instances can interfere with the isolation process and therefore reduces its ability to clearly isolate anomalies.</p>
+<img src="【机器学习】NLP文献阅读：关键算法篇/image-20210125162551162.png" alt="image-20210125162551162" style="zoom:80%;" />
+
+<h5 id="bulid-stage"><a href="#bulid-stage" class="headerlink" title="bulid stage"></a><strong>bulid stage</strong></h5><ul>
+<li>The first (training) stage <strong>builds isolation trees</strong> using subsamples of the training set. </li>
+<li>The second (testing) stage passes the test instances through isolation trees to <strong>obtain an anomaly score for each instance</strong></li>
+</ul>
+<p><strong>height limit</strong>：</p>
+<p>The rationale of growing trees up to the average tree height is that <strong>we are only interested in data points that have shorter-than -verage path lengths</strong>, as <strong>those points are more likely to be anomalies</strong>.</p>
+<h3 id="3-4-Background"><a href="#3-4-Background" class="headerlink" title="3.4 Background"></a>3.4 Background</h3><ul>
+<li><p>The concept of isolation has not been explored in the current literature and the use of isolation is shown to be highly effective in detecting anomalies with extremely high effificiency.</p>
+</li>
+<li><p>Most existing model-based approaches to anomaly detection construct a profile of normal instances, then identify instances that do not conform to the normal profifile as anomalies. Notable examples such as statistical methods, classifification-based methods , and clustering-based methods  all use this general approach. Two major drawbacks of this approach are: </p>
+<p>  (i) the anomaly detector is optimized to profifile normal instances, but not optimized to detect anomalies—as a consequence, the results of anomaly detection might not be as good as expected, causing too many false alarms (having normal instances identifified as anomalies) or too few anomalies being detected; </p>
+<p>  (ii) many existing methods are constrained to low dimensional data and small data size because of their high computational complexity.</p>
+</li>
+</ul>
+<h3 id="3-5-Key-result"><a href="#3-5-Key-result" class="headerlink" title="3.5 Key result"></a>3.5 Key result</h3><ul>
+<li><p>iForest performs <strong>signifificantly better than a near-linear time complexity distance-based method</strong>, ORCA, LOF and RF in terms of AUC and execution time, especially in large data sets. In addition, iForest converges quickly with a small ensemble size, which enables it to detect anomalies with high efficiency.</p>
+</li>
+<li><p>For high dimensional problems that contain a large number of irrelevant attributes, iForest can achieve high detection performance quickly <strong>with an additional attribute selector</strong></p>
+</li>
+<li><p>Isolation Forest is <strong>an accurate and effificient anomaly detector</strong> especially for <strong>large databases.</strong></p>
+</li>
+</ul>
+<h3 id="3-6-Comment"><a href="#3-6-Comment" class="headerlink" title="3.6 Comment"></a>3.6 Comment</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/" data-id="cleqecf29007y40jo7gg0dz43" data-title="【机器学习】异常检测文献阅读：关键算法篇" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【服务器购买及部署】看我部署，你也可以！" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.485Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/">【服务器购买及部署】初识服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>第一次相遇</p>
+<p>……</p>
+<p>很高兴认识你！</p>
+</blockquote>
+<h1 id="服务器必知"><a href="#服务器必知" class="headerlink" title="服务器必知"></a>服务器必知</h1><p><strong>整个服务器就相当于是一个远程的Linux电脑</strong></p>
+<h3 id="为什么要有一个自己的服务器"><a href="#为什么要有一个自己的服务器" class="headerlink" title="为什么要有一个自己的服务器"></a>为什么要有一个自己的服务器</h3><ul>
+<li><p>作为敲代码为生的程序员，写博客是日常，可以记录不断增长的技术栈和学习开发过程中遇到的各种问题，这时候就需要将自己的博客网站部署到服务器上</p>
+</li>
+<li><p>发布自己的项目</p>
+</li>
+<li><p>熟练Linux操作（联系Linux命令行操作的好方法）</p>
+</li>
+<li><p>将自己的远程仓库、远程数据库、远程tomcat等等搭载在服务器上</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<h3 id="如何购买服务器"><a href="#如何购买服务器" class="headerlink" title="如何购买服务器"></a>如何购买服务器</h3><p><strong>阿里云</strong>了解一下：<a target="_blank" rel="noopener" href="https://cn.aliyun.com/">https://cn.aliyun.com/</a></p>
+<p><img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430082526275.png" alt="image-20200430082526275"></p>
+<p><strong>云服务器一般都很贵，动辄上千上万一年</strong></p>
+<blockquote>
+<p>啊？家里有矿啊</p>
+<p>那没事了</p>
+</blockquote>
+<p><img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430083102896.png" alt="image-20200430083102896"></p>
+<p>还可以考虑一下两种购买方式：</p>
+<ul>
+<li><p>学生机</p>
+<p>  要求：是在校学生&#x2F;年龄在24岁以下，没错就是我了hhh</p>
+<p>  1.在阿里云首页<strong>直接搜索学生机</strong></p>
+<p>  ​	<img src="【服务器购买及部署】看我部署，你也可以！/image-20200430083344969.png" alt="image-20200430083344969" style="zoom:67%;" /></p>
+<p>  ​	</p>
+<p>  2.一年也就114，也就是差不多一年黄钻或者QQ会员的价钱！相对来说便宜了好多！（做QQ的贵族不如做程序员中的贵族）</p>
+<p>  ​	<img src="【服务器购买及部署】看我部署，你也可以！/image-20200430083635162.png" alt="image-20200430083635162" style="zoom:67%;" /></p>
+<p>  两种套餐对比：</p>
+<blockquote>
+<h3 id="公网宽带对比"><a href="#公网宽带对比" class="headerlink" title="公网宽带对比"></a>公网宽带对比</h3><p>宽带方面轻量应用服务器5M峰值宽带，而ECS云服务器只有1M；但是轻量应用服务器是限制流量的，每月1000G流量包，但是对于一般用户而言1000G&#x2F;月的流量足够用了。如果流量每月不超1000G，5M宽带的轻量应用服务器更香。</p>
+<h3 id="云盘对比"><a href="#云盘对比" class="headerlink" title="云盘对比"></a>云盘对比</h3><p>轻量应用服务器配备的是40G的SSD云盘，而ECS云服务器配备的是40G的高效云盘，云盘性能方面SS云盘完胜高效云盘，所以云盘方面轻量应用服务器又赢了一局。</p>
+<h3 id="集群对比"><a href="#集群对比" class="headerlink" title="集群对比"></a>集群对比</h3><p>轻量应用服务器只能做单机应用，而ECS云服务器可以做集群使用。</p>
+<h3 id="操作系统及应用性"><a href="#操作系统及应用性" class="headerlink" title="操作系统及应用性"></a>操作系统及应用性</h3><p>轻量应用服务器支持应用镜像和系统镜像，系统镜像支持较少，轻量应用服务器对于技术门槛要求较低，适用于个人用户使用。ECS云服务器支持的系统镜像会丰富一些，需要用户有一些技术基础。</p>
+<p>综上，如果您购买学生云服务器是用来搭建单机应用，如网站，并且流量每月不超过1000G，那么轻量应用服务器是最佳的选择。如果需要搭集群，那么只能选ECS云服务器。</p>
+<p>作者：哪个快<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/267913124/answer/1179610483">https://www.zhihu.com/question/267913124/answer/1179610483</a><br>来源：知乎</p>
+</blockquote>
+</li>
+<li><p>限时优惠</p>
+<p>  阿里云会经常做一些限时折扣之类的活动：<a target="_blank" rel="noopener" href="https://www.aliyun.com/minisite/goods?userCode=0phtycgr">https://www.aliyun.com/minisite/goods?userCode=0phtycgr</a></p>
+  <img src="【服务器购买及部署】看我部署，你也可以！/image-20200430084433153.png" alt="image-20200430084433153" style="zoom: 33%;" />
+
+<p>  以后可能会用到，暂时用不到，就先不管啦！</p>
+</li>
+</ul>
+<p>综上，我进行了如是选择：</p>
+<img src="【服务器购买及部署】看我部署，你也可以！/image-20200430085842175.png" alt="image-20200430085842175" style="zoom:67%;" />
+
+
+
+<h1 id="管理服务器"><a href="#管理服务器" class="headerlink" title="管理服务器"></a>管理服务器</h1><h3 id="一些准备"><a href="#一些准备" class="headerlink" title="一些准备"></a>一些准备</h3><ol>
+<li><h5 id="获取服务器公网IP地址、修改实例名称和密码（第一次修改需要重启）"><a href="#获取服务器公网IP地址、修改实例名称和密码（第一次修改需要重启）" class="headerlink" title="获取服务器公网IP地址、修改实例名称和密码（第一次修改需要重启）"></a>获取服务器公网IP地址、修改实例名称和密码（第一次修改需要重启）</h5></li>
+<li><h5 id="进入服务器"><a href="#进入服务器" class="headerlink" title="进入服务器"></a>进入服务器</h5><p> <img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430104905430.png" alt="image-20200430104905430"></p>
+<p> <img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430100403535.png" alt="image-20200430100403535"></p>
+</li>
+<li><h5 id="创建安全组，开启端口映射"><a href="#创建安全组，开启端口映射" class="headerlink" title="创建安全组，开启端口映射"></a>创建安全组，开启端口映射</h5></li>
+</ol>
+<p><img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430104750892.png" alt="image-20200430104750892"></p>
+<p>​	常见端口，比如说：</p>
+<p>​		3306：MySQL</p>
+<p>​		8080：Tomcat</p>
+<p>​		……</p>
+<blockquote>
+<p>注意：<br>如需完整使用宝塔的所有功能 你还需要放行如下端口<br>20 、21、 39000-40000端口（linux 系统 ），3000-4000（windows系统）<br>22 (SSH)<br>80、443（网站及SSL）<br>3306 （数据库远程连接）<br>888 （phpmyadmin）</p>
+</blockquote>
+<ol start="4">
+<li><h5 id="XShell连接"><a href="#XShell连接" class="headerlink" title="XShell连接"></a>XShell连接</h5></li>
+</ol>
+<h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><p>我们有两种方法：</p>
+<ul>
+<li><p>傻瓜式（宝塔面板，可视化，不推荐）：<a target="_blank" rel="noopener" href="https://www.bt.cn/download/linux.html">https://www.bt.cn/download/linux.html</a></p>
+<p>  <img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430100703608.png" alt="image-20200430100703608"></p>
+<p>  宝塔安装：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://125.88.182.172:5880/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430102558800.png" alt="image-20200430102558800"></p>
+</li>
+</ul>
+<p>​		根据链接进入网页，输入用户名和密码……</p>
+<p>​		安装软件：		<img src="【服务器购买及部署】看我部署，你也可以！/image-20200430105800735.png" alt="image-20200430105800735" style="zoom:67%;" /></p>
+<p>​		一键部署：<img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430110045806.png" alt="image-20200430110045806"></p>
+<p>​		控制端口：</p>
+<p><img src="/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/image-20200430110346262.png" alt="image-20200430110346262"></p>
+<ul>
+<li><p>命令式（原生）</p>
+<p>  使用Linux命令行进行操作</p>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>狂神说Java：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV177411K7bH?from=search&seid=9611310942469724449">https://www.bilibili.com/video/BV177411K7bH?from=search&amp;seid=9611310942469724449</a></p>
+<p>哪个快：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/267913124/answer/1179610483">https://www.zhihu.com/question/267913124/answer/1179610483</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E5%8F%8A%E9%83%A8%E7%BD%B2%E3%80%91%E7%9C%8B%E6%88%91%E9%83%A8%E7%BD%B2%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%81/" data-id="cleqecf28007v40jocf1420c8" data-title="【服务器购买及部署】初识服务器" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】树：平衡二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.469Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">【数据结构与算法】树：平衡二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="为什么需要平衡二叉树？"><a href="#为什么需要平衡二叉树？" class="headerlink" title="为什么需要平衡二叉树？"></a>为什么需要平衡二叉树？</h1><blockquote>
+<p>首先我们思考一个问题，为什么要学习平衡二叉树（AVL），是二叉排序树（BST）不香嘛？</p>
+<p>哎，确实，确实不香。</p>
+</blockquote>
+<p>二叉排序树存在一个致命缺点，如下图所示这种情况：</p>
+<img src="【数据结构与算法】树：平衡二叉树/image-20200425084803240.png" alt="image-20200425084803240" style="zoom:67%;" />
+
+<blockquote>
+<p>emmmm，这确实也是一个二叉排序树，但是乍一看，害，这不整一条链表过来装树嘛！</p>
+<p>在这种情况下，<strong>二叉排序树退化成一条链表</strong></p>
+<p>链表的特点是什么？（给你三秒种反应）</p>
+<p>3</p>
+<p>2</p>
+<p>1</p>
+<p>对了！<strong>增删快、查找慢</strong>，这与我们建立二叉排序树的初衷相悖</p>
+<p>为此，我们引入了今天的主角，<strong>平衡二叉树（Self-balancing binary search tree）！</strong></p>
+</blockquote>
+<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><ul>
+<li>平衡二叉树也叫平衡二叉搜索树，又被称为AVL树，可以保证查询效率较高</li>
+<li>具有以下特点：<ul>
+<li>是一颗空树或左右两个子树的高度差的绝对值不超过1</li>
+<li>左右两个子树都是一颗平衡二叉树</li>
+</ul>
+</li>
+</ul>
+<p>平衡二叉树的实现方法：<strong>红黑树</strong>（HashMap、TreeMap底层都有用到）、AVL、替罪羊树、Treap、伸展树</p>
+<h1 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h1><p>每当 平衡二叉树满足：<br>$$<br>|rightHeight() - leftHeight()| &gt; 1<br>$$<br>时，不再是一颗平衡二叉树，需要进行<strong>旋转操作</strong>使其恢复平衡。</p>
+<h3 id="左旋-降低右子树的高度-："><a href="#左旋-降低右子树的高度-：" class="headerlink" title="左旋(降低右子树的高度)："></a>左旋(降低右子树的高度)：</h3><p>给定数列 {4，3，6，5，7，8}，创建出对应的二叉平衡树<img src="【数据结构与算法】树：平衡二叉树/image-20200425093659703.png" alt="image-20200425093659703" style="zoom:67%;" /></p>
+<p>注意到当插入 8 时，不满足平衡二叉树的条件，此时需要对二叉树进行<strong>左旋</strong>，才能使其恢复平衡</p>
+<img src="【数据结构与算法】树：平衡二叉树/image-20200425093714198.png" alt="image-20200425093714198" style="zoom:67%;" />
+
+<p>具体流程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前节点：0004</span></span><br><span class="line"><span class="comment">//1. 以根节点的值为值创建新节点</span></span><br><span class="line"><span class="type">Node</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">4</span>)；</span><br><span class="line"><span class="comment">//2. 将新节点的左子树设置为当前节点的左子树</span></span><br><span class="line">newNode.left = <span class="built_in">this</span>.left;</span><br><span class="line"><span class="comment">//3. 把新结点的右子树设为当前节点的右子树的左子树</span></span><br><span class="line">newNode.right = <span class="built_in">this</span>.right.left;</span><br><span class="line"><span class="comment">//4. 把当前节点的值换为右子节点的值</span></span><br><span class="line"><span class="built_in">this</span>.value = right.value;</span><br><span class="line"><span class="comment">//5. 把当前节点的右子树设置成右子树的右子树</span></span><br><span class="line"><span class="built_in">this</span>.right = <span class="built_in">this</span>.right.right;</span><br><span class="line"><span class="comment">//6. 当前节点的左子树设置为新节点</span></span><br><span class="line"><span class="built_in">this</span>.left = newNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="右旋-降低左子树的高度-："><a href="#右旋-降低左子树的高度-：" class="headerlink" title="右旋(降低左子树的高度)："></a>右旋(降低左子树的高度)：</h3><p>给定数列 {10，12，8，9，7，6} 创建对应平衡二叉树<img src="【数据结构与算法】树：平衡二叉树/image-20200425095021888.png" alt="image-20200425095021888" style="zoom:67%;" /></p>
+<p>当插入节点 6 时，不满足平衡二叉树的条件，此时需要对二叉树进行<strong>右旋</strong>，才能使其恢复平衡</p>
+<img src="【数据结构与算法】树：平衡二叉树/image-20200425095126703.png" alt="image-20200425095126703" style="zoom:67%;" />
+
+<p>具体实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前节点：0008</span></span><br><span class="line"><span class="comment">//1. 创建一个以根节点为值的新节点</span></span><br><span class="line"><span class="type">Node</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">10</span>)；</span><br><span class="line"><span class="comment">//2. 将新节点的右子树设置为当前节点的右子树</span></span><br><span class="line">newNode.right = <span class="built_in">this</span>.right;</span><br><span class="line"><span class="comment">//3. 新节点的左子树设置为当前节点左子树的右子树</span></span><br><span class="line">newNode.left = <span class="built_in">this</span>.left.right;</span><br><span class="line"><span class="comment">//4. 将当前节点的值换为左子节点的值</span></span><br><span class="line"><span class="built_in">this</span>.value = right.value;</span><br><span class="line"><span class="comment">//5. 将当前节点的左子树设置为左子树的左子树</span></span><br><span class="line"><span class="built_in">this</span>.left = <span class="built_in">this</span>.left.left;</span><br><span class="line"><span class="comment">//6. 将当前节点的右子树设置为新节点</span></span><br><span class="line"><span class="built_in">this</span>.right = newNode;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结一下左旋和右旋的实现：</strong></p>
+<ol>
+<li>创建新节点</li>
+<li>设置新节点的左右子树</li>
+<li>设置当前节点的左右子树</li>
+</ol>
+<h3 id="双旋转"><a href="#双旋转" class="headerlink" title="双旋转"></a>双旋转</h3><p>前面的两个实例都可以通过一次旋转将非平衡二叉树转化为平衡二叉树，但是在一些情况下，单旋转不能完成平衡二叉树的转换，比如数列 {10，11，7，6，8，9}、{2，1，6，5，7，3}</p>
+<p>问题分析：</p>
+<ol>
+<li>当符合右旋条件时</li>
+<li>如果当前节点的左子树的右子树高于当前节点的右子树</li>
+<li>应当先对当前节点的左子树进行左旋</li>
+<li>再对当前节点进行右旋</li>
+</ol>
+<img src="【数据结构与算法】树：平衡二叉树/image-20200425102817626.png" alt="image-20200425102817626" style="zoom:67%;" />
+
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Node：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">leftHeight</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.left == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.left.height();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rightHeight</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.right == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.right.height();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用递归的方法返回当前节点的高度</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">height</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Math.max(left == <span class="literal">null</span> ? <span class="number">0</span> : left.height(), right == <span class="literal">null</span> ? <span class="number">0</span> : right.height()) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//左旋：参考“具体流程”</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">leftRotate</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Node</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="built_in">this</span>.value);</span><br><span class="line">    newNode.left = <span class="built_in">this</span>.left;</span><br><span class="line">    newNode.right = <span class="built_in">this</span>.right.left;</span><br><span class="line">    <span class="built_in">this</span>.value = <span class="built_in">this</span>.right.value;</span><br><span class="line">    <span class="built_in">this</span>.right = <span class="built_in">this</span>.right.right;</span><br><span class="line">    <span class="built_in">this</span>.left = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//右旋：参考“具体流程”</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">rightRotate</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Node</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="built_in">this</span>.value);</span><br><span class="line">    newNode.right = <span class="built_in">this</span>.right;</span><br><span class="line">    newNode.left = <span class="built_in">this</span>.left.right;</span><br><span class="line">    <span class="built_in">this</span>.value = <span class="built_in">this</span>.right.value;</span><br><span class="line">    <span class="built_in">this</span>.left = <span class="built_in">this</span>.left.left;</span><br><span class="line">    <span class="built_in">this</span>.right = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">    <span class="comment">//先判断加入的节点是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当加入节点的值小于当前节点的值时，考虑左子节点</span></span><br><span class="line">    <span class="keyword">if</span> (node.value &lt; <span class="built_in">this</span>.value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.left == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.left = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.left.add(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">//当加入节点的值大于当前节点的值时，考虑右子节点</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.right == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.right = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.right.add(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否需要进行左旋</span></span><br><span class="line">    <span class="keyword">if</span> (rightHeight() - leftHeight() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">//判断是否需要双旋转</span></span><br><span class="line">        <span class="keyword">if</span> (right != <span class="literal">null</span> &amp;&amp; right.leftHeight() - right.rightHeight() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            right.rightRotate();</span><br><span class="line">            leftRotate();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            leftRotate();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否需要右旋</span></span><br><span class="line">    <span class="keyword">if</span> (leftHeight() - rightHeight() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">//判断是否需要双旋转</span></span><br><span class="line">        <span class="keyword">if</span> (left != <span class="literal">null</span> &amp;&amp; left.rightHeight() - left.leftHeight() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            left.leftRotate();</span><br><span class="line">            rightRotate();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            rightRotate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>尚硅谷：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1E4411H73v">https://www.bilibili.com/video/BV1E4411H73v</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cleqecf27007r40jo63vy256e" data-title="【数据结构与算法】树：平衡二叉树" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】树：多路查找树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.441Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/">【数据结构与算法】树：多路查找树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="二叉树与多叉树"><a href="#二叉树与多叉树" class="headerlink" title="二叉树与多叉树"></a>二叉树与多叉树</h1><h3 id="二叉树存在的问题"><a href="#二叉树存在的问题" class="headerlink" title="二叉树存在的问题"></a>二叉树存在的问题</h3><p>二叉树提供了高效的插入删除查找等操作，但是也存在一定的问题：</p>
+<ul>
+<li><p>当数据量较小时，普通二叉树不存在什么问题</p>
+</li>
+<li><p>当数据量特别大时，会导致<strong>二叉树的深度过深</strong>，使用搜索算法自上向下搜索时经过的节点就会相当多。这些节点存储在外存储器时，每访问一个节点就相当于进行了一次 I&#x2F;O，随着树深度的增加，开销会越来越大，进而降低操作速度！</p>
+</li>
+</ul>
+<h3 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h3><p>如果每个节点可以有更多的数据项和更多的节点，就是<strong>多叉树</strong>。</p>
+<p>多叉树<strong>通过重新组织节点，降低树的高度</strong>，<strong>并且减少 I&#x2F;O 读写次数</strong>来提升效率。</p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/image-20200427205618162.png" alt="image-20200427205618162"></p>
+<h3 id="2-3树"><a href="#2-3树" class="headerlink" title="2-3树"></a>2-3树</h3><p>2-3树是最简单的b树结构，具有以下特点：</p>
+<ol>
+<li>2-3树的所有<strong>叶子节点在同一层</strong></li>
+<li>二节点（有两个子节点的节点）要么没有子节点，要么有两个子节点</li>
+<li>三节点（有三个子节点的节点）要么没有子节点，要么有三个子节点</li>
+<li><strong>2-3树是由二节点和三节点构成的树</strong></li>
+</ol>
+<h1 id="B树、B-树、B-树"><a href="#B树、B-树、B-树" class="headerlink" title="B树、B+树、B*树"></a>B树、B+树、B*树</h1><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>B树（Balanced Tree），前面介绍的2-3树，还有2-3-4树都是b树</p>
+<p><strong>MySQL中的索引就是基于B树或B+树的</strong></p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/image-20200427213158970.png" alt="image-20200427213158970"></p>
+<ol>
+<li><p>B树的阶：节点最多的节点的子节点个数（2-3树的阶是3）</p>
+</li>
+<li><p>B树的搜索：</p>
+<p> 从根节点开始，对<strong>节点内</strong>的关键字的有序序列进行<strong>二分查找</strong>，找到则结束，否则进入查询关键字所属范围的子节点</p>
+</li>
+<li><p><strong>叶子节点和非叶子节点都可以存放数据（区别于B+树）</strong></p>
+</li>
+<li><p>搜索有可能在非叶子节点结束（区别与B+树）</p>
+</li>
+<li><p><strong>搜索性能等价于在关键字全集内做一次二分查找</strong></p>
+</li>
+</ol>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>B+树是B树的变体，也是一种多路搜索树。</p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/image-20200427213704102.png" alt="image-20200427213704102"></p>
+<ol>
+<li><p>B+树的搜索：</p>
+<p> 只有到达叶子节点才会找到或结束，性能也等价于在关键字全集做一次二分查找</p>
+</li>
+<li><p><strong>所有关键字都存储在叶子节点的链表中，且链表中的关键字也是有序的</strong></p>
+</li>
+<li><p><strong>非叶子节点相当于叶子节点的索引，叶子节点相当于存储数据的数据层</strong></p>
+</li>
+<li><p>更适合<strong>文件索引系统</strong></p>
+</li>
+</ol>
+<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B*树"></a>B*树</h3><p>B*树是B+树的变体，在B+树的非根和非叶子节点增加指向兄弟的指针</p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/image-20200427215305770.png" alt="image-20200427215305770"></p>
+<p>B*定义了非叶子节点关键字个数至少为（2&#x2F;3）x M，块的最低使用率为 2&#x2F;3，而B+树块的最低使用率为 1&#x2F;2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91/" data-id="cleqecf27007o40jodardd9jw" data-title="【数据结构与算法】树：多路查找树" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】树：二叉排序树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.409Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/">【数据结构与算法】树：二叉排序树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="二叉排序树介绍"><a href="#二叉排序树介绍" class="headerlink" title="二叉排序树介绍"></a>二叉排序树介绍</h1><p><strong>二叉排序树（Binary Sort&#x2F;Search Tree）</strong>：对于二叉排序树的任意一个<strong>非叶子节点</strong>，<strong>左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。</strong></p>
+<p>&#x3D;&#x3D;如果值相同，该节点可以放在左子节点或右子节点&#x3D;&#x3D;</p>
+<p><strong>示例：</strong></p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/image-20200421175929851.png" alt="image-20200421175929851"></p>
+<p><strong>复杂度：</strong></p>
+<p>不论哪一种操作，<strong>所花的时间都和树的高度成正比</strong>。因此，如果共有n个元素，那么平均每次操作需要**O(logn)**的时间。</p>
+<h1 id="二叉排序树的实现"><a href="#二叉排序树的实现" class="headerlink" title="二叉排序树的实现"></a>二叉排序树的实现</h1><h3 id="1-二叉排序树的创建"><a href="#1-二叉排序树的创建" class="headerlink" title="1. 二叉排序树的创建"></a>1. 二叉排序树的创建</h3><ul>
+<li><p>构建(就是普通的二叉树)</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinarySearchTree</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TreeNode root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">getRoot</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setRoot</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.root = root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> value;          <span class="comment">//节点属性值</span></span><br><span class="line">    TreeNode left;      <span class="comment">//左子节点</span></span><br><span class="line">    TreeNode right;     <span class="comment">//右子节点</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入</p>
+<p>  思路：1. 比较插入节点的值与当前节点的值来决定插入位置是左子节点还是右子节点</p>
+<p>  ​			2. 插入的左子节点为空，则将插入节点设置为左子节点；不为空，则进行递归</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//TreeNode：</span></span><br><span class="line"><span class="comment">//添加节点操作</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(TreeNode treeNode)</span> &#123;</span><br><span class="line">    <span class="comment">//先判断加入的节点是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (treeNode == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当加入节点的值小于当前节点的值时，考虑左子节点</span></span><br><span class="line">    <span class="keyword">if</span> (treeNode.value &lt; <span class="built_in">this</span>.value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.left == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.left = treeNode;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.left.add(treeNode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">//当加入节点的值大于当前节点的值时，考虑右子节点</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.right == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.right = treeNode;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.right.add(treeNode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//BinarySearchTree：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(TreeNode treeNode)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    root.add(treeNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-二叉排序树的删除"><a href="#2-二叉排序树的删除" class="headerlink" title="2. 二叉排序树的删除"></a>2. 二叉排序树的删除</h3><h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><ol>
+<li><p>删除<strong>叶子节点</strong>：</p>
+<ol>
+<li><p>找到要删除的节点 targetNode</p>
+</li>
+<li><p>找到要删除的节点的父节点 parentNode</p>
+</li>
+<li><p>确定 targetNode 是 parentNode 的左子节点还是右子节点</p>
+</li>
+<li><p>（如果是左子节点）<code>parentNode.left = null</code></p>
+<p> （如果是右子节点）<code>parentNode.right = null</code></p>
+</li>
+</ol>
+</li>
+<li><p>删除<strong>只有一颗子树</strong>的节点</p>
+<ol>
+<li><p>找到要删除的节点 targetNode </p>
+</li>
+<li><p>找到要删除的节点的父节点 parentNode</p>
+</li>
+<li><p>确定 targetNode 是 parentNode 的左子节点还是右子节点</p>
+<ul>
+<li><p>是左子节点且有左子节点：<img src="【数据结构与算法】树：二叉排序树/image-20200421183949555.png" alt="image-20200421183949555" style="zoom: 67%;" /></p>
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421184844266.png" alt="image-20200421184844266" style="zoom: 67%;" />
+
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421184309611.png" alt="image-20200421184309611" style="zoom:67%;" />
+</li>
+<li><p>是左子节点且有右子节点：<img src="【数据结构与算法】树：二叉排序树/image-20200421184513886.png" alt="image-20200421184513886" style="zoom:67%;" /></p>
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421184728009.png" alt="image-20200421184728009" style="zoom:67%;" />
+
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421184943481.png" alt="image-20200421184943481" style="zoom:67%;" />
+</li>
+<li><p>是右子节点且有左子节点：<img src="【数据结构与算法】树：二叉排序树/image-20200421185045085.png" alt="image-20200421185045085" style="zoom:67%;" /></p>
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421185206368.png" alt="image-20200421185206368" style="zoom:67%;" />
+
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421185218029.png" alt="image-20200421185218029" style="zoom:67%;" />
+</li>
+<li><p>是右子节点且有右子节点：<img src="【数据结构与算法】树：二叉排序树/image-20200421185305923.png" alt="image-20200421185305923" style="zoom:67%;" /></p>
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421185411090.png" alt="image-20200421185411090" style="zoom:67%;" />
+
+  <img src="【数据结构与算法】树：二叉排序树/image-20200421185423027.png" alt="image-20200421185423027" style="zoom:67%;" /></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>删除有两颗子树的节点：</p>
+<ol>
+<li><p>找到要删除的节点 targetNode</p>
+ <img src="【数据结构与算法】树：二叉排序树/image-20200423094725078.png" alt="image-20200423094725078" style="zoom:67%;" />
+</li>
+<li><p>找到 targetNode 的父节点 parentNode</p>
+</li>
+<li><p>找到 targetNode 节点 左子节点，向右递归找到最大的节点 tempNode（没有右子节点就是targetNode的左子节点本身）</p>
+ <img src="【数据结构与算法】树：二叉排序树/image-20200423094856992.png" alt="image-20200423094856992" style="zoom:67%;" />
+
+<p> <strong>或者</strong></p>
+<p> 找到 targetNode节点 右子节点，向左递归找到最小的节点 tempNode（没有左子节点就是targetNode的右子节点本身）</p>
+</li>
+<li><p>targetNode.value &#x3D; tempNode.value</p>
+ <img src="【数据结构与算法】树：二叉排序树/image-20200423095146383.png" alt="image-20200423095146383" style="zoom:67%;" />
+</li>
+<li><p>删除tempNode节点</p>
+ <img src="【数据结构与算法】树：二叉排序树/image-20200423095200674.png" alt="image-20200423095200674" style="zoom:67%;" /></li>
+</ol>
+</li>
+</ol>
+<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//TreeNode：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//查找值为 value 的节点</span></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">search</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.value == value) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">this</span>.value &gt; value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.left.value == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.left;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.left.search(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.right.value == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.right;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.right.search(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找置为value的节点的父节点</span></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">searchParent</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="comment">//如果当前节点就是要删除的节点的父节点，则返回当前节点</span></span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">this</span>.left != <span class="literal">null</span> &amp;&amp; <span class="built_in">this</span>.left.value == value) || (<span class="built_in">this</span>.right != <span class="literal">null</span> &amp;&amp; <span class="built_in">this</span>.right.value == value)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  <span class="comment">//否则则进行递归查找父节点</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.value &gt; value &amp;&amp; <span class="built_in">this</span>.left != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.left.searchParent(value);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">this</span>.value &lt;= value &amp;&amp; <span class="built_in">this</span>.right != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.right.searchParent(value);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BinarySearchTree：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">search</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.root.search(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">searchParent</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.root.searchParent(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除左子树的最大节点 tempNode</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> treeNode 要删除的节点targetNode</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回targetNode左子树向右递归得到的最大节点的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">delLeftTreeMax</span><span class="params">(TreeNode treeNode)</span> &#123;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">tempNode</span> <span class="operator">=</span> treeNode;</span><br><span class="line">    <span class="comment">//向右循环寻早最大子树</span></span><br><span class="line">    <span class="keyword">while</span> (tempNode.right != <span class="literal">null</span>) &#123;</span><br><span class="line">        tempNode = tempNode.right;</span><br><span class="line">    &#125;</span><br><span class="line">    delete(tempNode.value);</span><br><span class="line">    <span class="keyword">return</span> tempNode.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">targetNode</span> <span class="operator">=</span> search(value);</span><br><span class="line">    <span class="comment">//如果没有找到要删除的节点就直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (targetNode == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果是根节点就直接删除</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.root.left == <span class="literal">null</span> &amp;&amp; <span class="built_in">this</span>.root.right == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="built_in">this</span>.root = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">parent</span> <span class="operator">=</span> searchParent(value);</span><br><span class="line">    <span class="comment">//1.删除叶子节点</span></span><br><span class="line">    <span class="keyword">if</span> (targetNode.left == <span class="literal">null</span> &amp;&amp; targetNode.right == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (targetNode == parent.left) &#123;</span><br><span class="line">            parent.left = <span class="literal">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            parent.right = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (targetNode.left != <span class="literal">null</span> &amp;&amp; targetNode.right != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">//2. 删除有两颗子树的节点</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> delLeftTreeMax(targetNode.left);</span><br><span class="line">        targetNode.value = temp;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//3. 删除只有一个子树的节点</span></span><br><span class="line">        <span class="keyword">if</span> (targetNode == parent.left) &#123;        <span class="comment">//如果是targetNode是左子节点</span></span><br><span class="line">            <span class="keyword">if</span> (targetNode.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                parent.left = targetNode.left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                parent.left = targetNode.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;        <span class="comment">//如果是targetNode是右子节点</span></span><br><span class="line">            <span class="keyword">if</span> (targetNode.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                parent.right = targetNode.left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                parent.right = targetNode.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E6%A0%91%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" data-id="cleqecf26007k40jocjn4gc4w" data-title="【数据结构与算法】树：二叉排序树" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】常用十大算法：动态规划" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.397Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">【数据结构与算法】常用十大算法：动态规划</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><ul>
+<li>动态规划算法通常用于<strong>求解具有某种最优性质</strong>的问题。在这类问题中，可能会<strong>有许多可行解</strong>。每一个解都对应于一个值，我们希望找到具有<strong>最优值</strong>的解。 </li>
+<li>动态规划算法<strong>与分治法类似</strong>，其<strong>基本思想</strong>也是<strong>将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到原问题的解</strong>。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。</li>
+<li>我们可以<strong>用一个表来记录所有已解的子问题的答案</strong>。不管该子问题以后是否被用到，只要它被计算过，就将其结果填入表中。这就是动态规划法的基本思路。具体的动态规划算法多种多样，但它们具有相同的填表格式。</li>
+</ul>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>动态规划一般可分为<strong>线性动规</strong>，<strong>区域动规</strong>，<strong>树形动规</strong>，<strong>背包动规</strong>四类。 </p>
+<ul>
+<li><p>线性动规：拦截导弹，合唱队形，挖地雷，建学校，剑客决斗等； </p>
+</li>
+<li><p>区域动规：石子合并， 加分二叉树，统计单词个数，炮兵布阵等； </p>
+</li>
+<li><p>树形动规：贪吃的九头龙，二分查找树，聚会的欢乐，数字三角形等； </p>
+</li>
+<li><p>背包问题：<strong>01背包问题</strong>，完全背包问题，分组背包问题，二维背包，装箱问题，挤牛奶等。</p>
+</li>
+</ul>
+<p>应用实例：</p>
+<p>​	最短路径问题 ，项目管理，网络流优化……</p>
+<h1 id="实践：背包问题"><a href="#实践：背包问题" class="headerlink" title="实践：背包问题"></a>实践：背包问题</h1><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>有一个背包，容量为 4 磅，现有如下物品：</p>
+<table>
+<thead>
+<tr>
+<th align="center">物品</th>
+<th align="center">重量</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">吉他（G）</td>
+<td align="center">1</td>
+<td align="center">1500</td>
+</tr>
+<tr>
+<td align="center">音响（S）</td>
+<td align="center">4</td>
+<td align="center">3000</td>
+</tr>
+<tr>
+<td align="center">电脑（L）</td>
+<td align="center">3</td>
+<td align="center">2000</td>
+</tr>
+</tbody></table>
+<ol>
+<li>要求装入背包的总价值最大，且重量不超出背包容量</li>
+<li>装入物品不能重复（01背包）</li>
+</ol>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><ul>
+<li><p>如基本介绍所说，我们不妨先列表寻找规律</p>
+<table>
+<thead>
+<tr>
+<th align="center">物品</th>
+<th align="center">0磅</th>
+<th align="center">1磅</th>
+<th align="center">2磅</th>
+<th align="center">3磅</th>
+<th align="center">4磅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">吉他（G）</td>
+<td align="center">0</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+</tr>
+<tr>
+<td align="center">音箱（S）</td>
+<td align="center">0</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+<td align="center">3000（S）</td>
+</tr>
+<tr>
+<td align="center">电脑（L）</td>
+<td align="center">0</td>
+<td align="center">1500（G）</td>
+<td align="center">1500（G）</td>
+<td align="center">2000（L）</td>
+<td align="center">2000（L）+ 1500（G）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>设 <code>weight[i]</code>、<code>value[i]</code> 分别表示第 i 个物品的重量和价值，<code>total[i][j]</code>表示前 i 个物品中能够装入容量为 j 的背包中的物品的的最大价值</p>
+</li>
+<li><p>每遍历一个物品，我们可以根据  <code>weight[i]</code>、<code>value[i]</code> 计算是否需要把他放入背包中（能够放入的前提下放入会使背包中物品的总价值增加就放入）</p>
+</li>
+<li><p>由图表易知：</p>
+<ul>
+<li><p>当 <code>weight[i] &gt; j</code>（当装入物品质量大于背包容量时，直接使用上一单元格的策略）</p>
+<p>  <code>total[i][j] = total[i - 1][j]</code></p>
+</li>
+<li><p>当<code>weight[i] &lt;= j</code>（当装入物品质量小于背包容量时，表示可以装进去）</p>
+<p>  <code>total[i][j] = Max&#123; total[i - 1][j] , value[i] + total[i - 1][j - weight[i]]&#125;</code></p>
+<p>  <code>total[i - 1][j]</code>：上一单元格装入的最大值</p>
+<p>  <code>value[i] + total[i - 1][j - weight[i]]</code>：装入前 i -1 商品到剩余空间 <code>j - weight[i]</code>的最大值</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>其实整个代码实现过程就是依据上面分析的思路来还原整个图表！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.dynamic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KnapSackProblem</span>   &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] value = &#123;<span class="number">1500</span>, <span class="number">3000</span>, <span class="number">2000</span>&#125;;       <span class="comment">//各物品的价格</span></span><br><span class="line">        <span class="type">int</span>[] weight = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>&#125;;               <span class="comment">//各物品的重量</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">catacity</span> <span class="operator">=</span> <span class="number">4</span>;                       <span class="comment">//背包的容量</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> value.length;                 <span class="comment">//物品的个数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//total[i][j] 表示再前 i 个物品中能够装入容量为j的背包中的最大价值</span></span><br><span class="line">        <span class="type">int</span>[][] total = <span class="keyword">new</span> <span class="title class_">int</span>[num + <span class="number">1</span>][catacity + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">//记录放入商品的情况</span></span><br><span class="line">        <span class="type">int</span>[][] path = <span class="keyword">new</span> <span class="title class_">int</span>[num + <span class="number">1</span>][catacity + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; total.length; i++) &#123;    <span class="comment">//i从1开始，不处理第一行</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; total[<span class="number">0</span>].length; j++) &#123;     <span class="comment">//j从1开始，不处理第一列</span></span><br><span class="line">                <span class="comment">//i 从 1 开始，所以第i个物品的重量应该表示为 weight[i - 1]</span></span><br><span class="line">                <span class="keyword">if</span> (weight[i - <span class="number">1</span>] &gt; j) &#123;</span><br><span class="line">                    total[i][j] = total[i - <span class="number">1</span>][j];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (total[i - <span class="number">1</span>][j] &lt; value[i - <span class="number">1</span>] + total[i - <span class="number">1</span>][j - weight[i - <span class="number">1</span>]]) &#123;</span><br><span class="line">                        total[i][j] = value[i - <span class="number">1</span>] + total[i - <span class="number">1</span>][j - weight[i - <span class="number">1</span>]];</span><br><span class="line">                        <span class="comment">//物品放入到背包中的同时需要用path记录</span></span><br><span class="line">                        path[i][j] = <span class="number">1</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        total[i][j] = total[i - <span class="number">1</span>][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//遍历输出二维数组，即前面分析后得到的表格</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; total.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; total[i].length; j++) &#123;</span><br><span class="line">                System.out.print(total[i][j] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//输出放入背包中物品的序号</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> path.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> path[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt; <span class="number">0</span> &amp;&amp; j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (path[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;第&quot;</span>+i+<span class="string">&quot;个商品放入背包中！&quot;</span>);</span><br><span class="line">                j -= weight[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 输出结果：</p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-20200521122437944.png" alt="image-20200521122437944"></p>
+<p>​        </p>
+<p>​        </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" data-id="cleqecf25007h40joblaxh6p0" data-title="【数据结构与算法】常用十大算法：动态规划" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】常用十大算法：分治算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.375Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">【数据结构与算法】常用十大算法：分治算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><blockquote>
+<p>当我们求解某些问题时，由于这些问题要处理的数据相当多，或求解过程相当复杂，使得直接求解法在时间上相当长，或者根本无法直接求出。对于这类问题，我们往往先把它分解成几个子问题，找到求出这几个子问题的解法后，再找到合适的方法，把它们组合成求整个问题的解法。如果这些子问题还较大，难以解决，可以再把它们分成几个更小的子问题，以此类推，直至可以直接求出解为止。这就是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5">分治策略</a>的基本思想。</p>
+</blockquote>
+<p>比如说，把大象装到冰箱里我们就可以分三步完成：打开冰箱门、把大象推进器、关闭冰箱门（狗头）</p>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/image-20200518153350036.png" alt="image-20200518153350036"></p>
+<h1 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h1><ul>
+<li>二分搜索</li>
+<li>大整数乘法</li>
+<li>棋牌覆盖</li>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>线性时间选择</li>
+<li>最接近点对问题</li>
+<li>循坏赛日程表</li>
+<li><strong>汉诺塔</strong></li>
+</ul>
+<h1 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h1><ol>
+<li><strong>分解</strong>：将原问题分解成一系列子问题。</li>
+<li><strong>解决</strong>：递归地求解各个子问题，若子问题足够小，则直接求解。</li>
+<li><strong>合并</strong>：将子问题的结果合并成原问题。</li>
+</ol>
+<h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>法国数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%88%B1%E5%BE%B7%E5%8D%8E%C2%B7%E5%8D%A2%E5%8D%A1%E6%96%AF">爱德华·卢卡斯</a>曾编写过一个印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，一块黄铜板上插着三根宝石针。印度教的主神<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A2%B5%E5%A4%A9">梵天</a>在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A2%B5%E5%A1%94">梵塔</a>、庙宇和众生也都将同归于尽。移动图片</p>
+<p>不管这个传说的可信度有多大，如果考虑一下把64片金片，由一根针上移到另一根针上，并且始终保持上小下大的顺序。这需要多少次移动呢?这里需要递归的方法。假设有n片，移动次数是f(n).显然f(1)&#x3D;1,f(2)&#x3D;3,f(3)&#x3D;7，且f(k+1)&#x3D;2*f(k)+1。此后不难证明f(n)&#x3D;2^n-1。n&#x3D;64时，</p>
+<p>假如每秒钟一次，共需多长时间呢？一个平年365天有31536000 秒，闰年366天有31622400秒，平均每年31557600秒，计算一下：</p>
+<p>18446744073709511615秒</p>
+<p>这表明移完这些金片需要5845.42亿年以上，而地球存在至今不过45亿年，太阳系的预期寿命据说也就是数百亿年。真的过了5845.42亿年，不说太阳系和银河系，至少地球上的一切生命，连同梵塔、庙宇等，都早已经灰飞烟灭。</p>
+</blockquote>
+<p><img src="/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/image-20200518154741914.png" alt="image-20200518154741914"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><p>如果只有一个盘：</p>
+<p> A &#x3D;&gt; C</p>
+</li>
+<li><p>如果 盘数 ≥ 2：</p>
+<p> 我们可以将最下面的盘看成一个盘（下盘），将剩下的盘看成另一个盘</p>
+<p> 分三步（上盘）：</p>
+<ol>
+<li><p><strong>上盘 A &#x3D;&gt; B</strong></p>
+</li>
+<li><p>下盘并不是很稳</p>
+<p> &amp;<em>……&amp;<em>……&amp;</em></em>*%&amp;……%&amp;，串场了</p>
+<p> <strong>下盘 A &#x3D;&gt; C</strong></p>
+</li>
+<li><p><strong>上盘 B &#x3D;&gt; C</strong></p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 汉诺塔的移动方法</span></span><br><span class="line"><span class="comment"> * 使用分治算法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hannoiTower</span><span class="params">(<span class="type">int</span> num, <span class="type">char</span> a, <span class="type">char</span> b,<span class="type">char</span> c)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;第1个盘从 &quot;</span> + a + <span class="string">&quot; --&gt; &quot;</span> + c);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//第一步</span></span><br><span class="line">        hannoiTower(num - <span class="number">1</span>, a, c, b);</span><br><span class="line">        <span class="comment">//第二步</span></span><br><span class="line">        System.out.println(<span class="string">&quot;第&quot;</span> + num + <span class="string">&quot;个盘从 &quot;</span> + a + <span class="string">&quot; --&gt; &quot;</span> + c);</span><br><span class="line">        <span class="comment">//第三部</span></span><br><span class="line">        hannoiTower(num - <span class="number">1</span>, b, a, c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" data-id="cleqecf24007d40joa6hc1rjc" data-title="【数据结构与算法】常用十大算法：分治算法" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-【数据结构与算法】常用十大算法：二分查找" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-date">
+  <time class="dt-published" datetime="2023-03-01T12:16:23.360Z" itemprop="datePublished">2023-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">【数据结构与算法】常用十大算法：二分查找</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>二分查找</strong>也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找<strong>要求线性表必须采用顺序存储结构</strong>，而且表中元素按关键字有序排列。</p>
+<p>顾名思义，二分查找就是从中间开始查找，如果中间的值比目标值大，则结果要么在左边，要么不存在，反之则结果要么在右边，要么不存在，以此类推进行下一步查找……</p>
+<p>二分查找的运行时间为对数时间：<br>$$<br>O(log_2n)<br>$$<br>假设从 [0,99] 中查找目标位置最多只需要查找 7 次（2^6 &lt; 100 &lt; 2^7）</p>
+<h1 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinarySearch</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 重载二分查找</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr    需要查找的目标数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target 需要查找的值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回查找的值在数组中的索引，如果不存在，则返回0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> binarySearch(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>, target);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 二分查找</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr   需要查找的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> left  查找的左端点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> right 查找的右端点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value 需要查找的值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回查找的值在数组中的索引，如果不存在，则返回0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> left, <span class="type">int</span> right, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[<span class="number">0</span>] &gt; value || arr[arr.length - <span class="number">1</span>] &lt; value || right - left &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; value) &#123;</span><br><span class="line">            <span class="keyword">return</span> binarySearch(arr, left, mid - <span class="number">1</span>, value);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> binarySearch(arr, mid + <span class="number">1</span>, right, value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="非递归实现"><a href="#非递归实现" class="headerlink" title="非递归实现"></a>非递归实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinarySearch2</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 二分查找</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr    需要查找的数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target 需要查找的值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回查找的值在数组中的索引，如果不存在，则返回0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> target)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> arr.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (arr[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;         <span class="comment">//找到直接返回</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &gt; target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;    <span class="comment">//还要继续从左边查找</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;     <span class="comment">//还要继续从右边查找</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//未找到结果，返回-1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>mid 的计算：</strong></p>
+<ul>
+<li><code>mid = (left + right) / 2</code></li>
+<li><code>mid = left + (right - left) / 2</code></li>
+</ul>
+<p>l + h 可能出现加法溢出，也就是说加法的结果大于整型能够表示的范围。但是 l 和 h 都为正数，因此 h - l 不会出现加法溢出问题。所以，<strong>最好使用第二种计算法方法</strong>。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E3%80%91%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cleqecf24007a40jo2ll7ddn0" data-title="【数据结构与算法】常用十大算法：二分查找" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94/">考研</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatisPlus/" rel="tag">MyBatisPlus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OD/" rel="tag">OD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Project/" rel="tag">Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/" rel="tag">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shiro/" rel="tag">shiro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" rel="tag">异常检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag">文献阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag">源码阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" rel="tag">狂神说Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%83%E7%A0%94/" rel="tag">考研</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 18.33px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 19.17px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MyBatisPlus/" style="font-size: 10px;">MyBatisPlus</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/NLP/" style="font-size: 12.5px;">NLP</a> <a href="/tags/OD/" style="font-size: 13.33px;">OD</a> <a href="/tags/Project/" style="font-size: 11.67px;">Project</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Spring/" style="font-size: 11.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px;">SpringSecurity</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/shiro/" style="font-size: 10px;">shiro</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 11.67px;">前端</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 17.5px;">尚硅谷</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">并发编程</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10.83px;">异常检测</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15.83px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 11.67px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" style="font-size: 12.5px;">文献阅读</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" style="font-size: 14.17px;">源码阅读</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4Java/" style="font-size: 15px;">狂神说Java</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 18.33px;">考研</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/">【考研】计算机组成原理知识点梳理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/">【考研】考研冲冲冲！</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">【考研】数据结构知识点总结</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/">【机器学习光速入门】</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/">【机器学习】异常检测：PyOD库中的算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 wxshhh<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

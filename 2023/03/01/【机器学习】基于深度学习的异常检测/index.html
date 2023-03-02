@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>【机器学习】基于深度学习的异常检测概览 | 从入门到入土</title><meta name="author" content="wxshhh"><meta name="copyright" content="wxshhh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1 深度异常检测分类  1.1 Deep learning for feature extraction    Assumptions Advantages Disadvantages    Deep learning for feature extraction 深度学习模型提取的特征保留了有助于区分异常实例与正常实例的具有辨识性的信息 1. 可用大量最新和现成的深度学习模型 2. 可以提供强大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【机器学习】基于深度学习的异常检测概览">
+<meta property="og:url" content="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="1 深度异常检测分类  1.1 Deep learning for feature extraction    Assumptions Advantages Disadvantages    Deep learning for feature extraction 深度学习模型提取的特征保留了有助于区分异常实例与正常实例的具有辨识性的信息 1. 可用大量最新和现成的深度学习模型 2. 可以提供强大">
+<meta property="og:locale">
+<meta property="og:image" content="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.jpg">
+<meta property="article:published_time" content="2023-03-01T12:16:23.592Z">
+<meta property="article:modified_time" content="2021-05-28T12:06:15.165Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="OD">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【机器学习】基于深度学习的异常检测概览',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-28 20:06:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="从入门到入土"><span class="site-name">从入门到入土</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【机器学习】基于深度学习的异常检测概览</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-01T12:16:23.592Z" title="Created 2023-03-01 20:16:23">2023-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-28T12:06:15.165Z" title="Updated 2021-05-28 20:06:15">2021-05-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【机器学习】基于深度学习的异常检测概览"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-深度异常检测分类"><a href="#1-深度异常检测分类" class="headerlink" title="1 深度异常检测分类"></a>1 深度异常检测分类</h1><img src="【机器学习】基于深度学习的异常检测/image-20210321091534237.png" alt="image-20210321091534237" style="zoom:80%;" />
+
+<h3 id="1-1-Deep-learning-for-feature-extraction"><a href="#1-1-Deep-learning-for-feature-extraction" class="headerlink" title="1.1 Deep learning for feature extraction"></a>1.1 Deep learning for feature extraction</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deep learning for feature extraction</td>
+<td>深度学习模型提取的特征保留了有助于区分异常实例与正常实例的具有辨识性的信息</td>
+<td>1. 可用大量最新和现成的深度学习模型 2. 可以提供强大的降维功能 3. 易于实现</td>
+<td>1. 特征提取和异常评分脱节 2. 预训练的深度模型仅限于特定类型的数据</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-Learning-feature-representations-of-normality"><a href="#1-2-Learning-feature-representations-of-normality" class="headerlink" title="1.2 Learning feature representations of normality"></a>1.2 Learning feature representations of normality</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AE（AutoEncoders）</td>
+<td>正常实例比异常实例更易在被压缩的空间中重建</td>
+<td>1. 简单易懂，适用于不同的数据类型 2. 可以利用多种不同类型的强大 AE 变体进行异常检测</td>
+<td>1. 训练数据中的不规则性（infrequent regularities）和异常值本身的存在可能会影响所学习到的特征表示      2. 数据重建的目标函数被设计用来进行数据降维或数据压缩，而不是进行异常检测。 As a result, the resulting representations are a generic summarization of underlying regularities, which are not optimized for detecting irregularities.</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>正常实例比潜在的异常实例更好生成</td>
+<td>1. GAN已经证明可以生成逼真的实例（尤其是图像数据），可以检测出在潜在空间中重建的很差的异常实例 2. 大量现有的基于GAN的模型和理论可以用于异常检测</td>
+<td>1. GAN的训练会遇到诸多问题，例如无法收敛和模式崩溃（mode collapse），这会导致在训练基于GAN的异常检测模型时会遇到很大的困难 2. 生成网络可能会被误导并生成正常实例之外的数据实例，尤其是当给定数据集的真实分布较为复杂或训练数据包含异常时      3.  基于GAN的异常评分可能不是最佳的，因为建立在生成器网络之上，不是为了异常检测而是为数据生成设计的</td>
+</tr>
+<tr>
+<td>Predictability Modeling</td>
+<td>正常实例通常比异常实例更好预测</td>
+<td>1. 大量序列学习技术（sequence learning techniques）可以被适应并结合到该方法中                        2. 可以学习多种不同的时间和空间依赖（temporal and spatial dependencies）</td>
+<td>1. 该方法仅限于序列数据（sequence data）的异常检测 2. 序列预测会花费较多的时间 3. 异常检测的结果并不是最优的，因为他的根本目标是进行序列预测而不是异常检测</td>
+</tr>
+<tr>
+<td>Self-supervise Classification</td>
+<td>与异常实例相比，正常实例与自监督分类器的一致性更高</td>
+<td>1. 在无监督和半监督学习中的表现都很好                              2. Anomaly scoring is grounded by some intrinsic properties of gradient magnitude and its updating.</td>
+<td>1. 特征转换操作通常依赖于数据，变换操作仅适用于图像数据 2. 尽管以端到端的方式训练分类模型，但是基于一致性的异常分数是是来源于分类分数而不是优化中的集成模块，因此结果不是最优的</td>
+</tr>
+<tr>
+<td>Distance-based Measure</td>
+<td>通常异常实例分布在原离其邻居的地方</td>
+<td>1. 基于距离的异常检测简单明了，并且在文献中有丰富的理论支持 2. 在低维空间中工作，可以有效地处理无法被传统的基于距离的异常检测算法处理的高维数据 3. 他们能够学习专门为自己量身定做的特征表示</td>
+<td>1. 涉及到大量的计算 2. 可以受到基于距离的异常检测算法固有弱点的限制</td>
+</tr>
+<tr>
+<td>One-class Classification-based Measure（OC）</td>
+<td>所有的正常实例都来自于单个（抽象）实例，可以通过一个紧凑（compact）模型概括，异常不属于该模型</td>
+<td>1. 在文献中对 OC -based 方法进行了充分的研究并且为 deep OC-based 方法提供了坚实的根基 2. The representation learning 和 OC 分类模型可以被统一起来，去学习量身定做和更加优化的特征表示      3. 免于用户自己手动选择合适的内核功能（kernel functions）</td>
+<td>1. 在正常实例中具有复杂分布的数据集可能使模型失效                                                 2. The detection performance is dependent on the one-class classification-based anomaly measures</td>
+</tr>
+<tr>
+<td>Clustering-based Measure</td>
+<td>正常实例比异常实例对集群具有更高的依从性（adherence）</td>
+<td>1. 有许深度聚类方法和理论可以用来支持异常检测 2. 与传统的基于聚类的方法相比，基于深度聚类的方法会学习专门优化特征，这些形式比原始数据更易发现异常，特别是在处理复杂数据时</td>
+<td>1. 异常检测的结果严重依赖于聚类的结果 2. 聚类过程中可能会因为训练数据出现污染而产生偏差</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-End-to-end-Anomaly-Score-Learning"><a href="#1-3-End-to-end-Anomaly-Score-Learning" class="headerlink" title="1.3 End-to-end Anomaly Score Learning"></a>1.3 End-to-end Anomaly Score Learning</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Assumptions</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ranking Models</td>
+<td>There exists an observable ordinal variable that captures some data abnormality.</td>
+<td>1. 可以使用调整后的损失函数直接优化异常分数     2. They are generally free from the definitions of anomalies by imposing a weak assumption of the ordinal order between anomaly and normal instances 3. 这种方法可以建立在诸如学习排名等领域的成熟排名技术的理论基础之上</td>
+<td>1. 需要某种形式的标记过的异常 2. 由于模型专门用于检测少数标记过的异常，因此可能无法推广到一些与标记异常有不同特征的未被发现的异常上</td>
+</tr>
+<tr>
+<td>Prior-driven Model</td>
+<td>The imposed prior captures the underlying (ab)normality of the dataset</td>
+<td>1. 可以在给定先验（given prior）条件下直接优化异常分数 2. 提供了一个灵活的框架，可以将不同的优先级分布合并到异常分数学习中 3. 先验（the prior）也可以得到比其他方法更具解释性的异常分数</td>
+<td>1. 很难设计一个普遍适用于不同异常检测应用场景的先验 2. 不能很好地适应基础分布则模型的工作效率较低</td>
+</tr>
+<tr>
+<td>Softmax Likelihood Models</td>
+<td>得到正常实例是高概率时间而得到异常实例是低概率事件</td>
+<td>可以将不同类型的交互方式合并到异常分数学习过程中</td>
+<td>1. 交互的计算可能非常昂贵 2. 异常分数学习在很大程度上取决于反面样本（negative samples）生成的质量</td>
+</tr>
+<tr>
+<td>End-to-end            One-class Classification</td>
+<td>1. 近似异常的实例可以被有效的合成         2. 所有的正常实例都可以被一个单分类模型概况</td>
+<td>1. 异常分类模型被以端到端的方式对抗式的优化    2. 有丰富的理论支持</td>
+<td>1. 难以保证所生成的参考实例与未知异常十分相似  2. GAN 的不稳定性会导致异常分类性能不稳定 3. 仅限于半监督异常检测场景</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考自 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2007.02500.pdf">Deep Learning for Anomaly Detection: A Review</a></p>
+</blockquote>
+<h1 id="2-深度异常检测模型基础"><a href="#2-深度异常检测模型基础" class="headerlink" title="2 深度异常检测模型基础"></a>2 深度异常检测模型基础</h1><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>描述</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AE（AutoEncoder）</td>
+<td>AE 重构输入数据来表示多个隐藏层中的数据，从而有效学习身份函数（identity function）。当在正常数据中训练 AE 时，AE 无法重构异常数据样本，因此会产生较大的重构误差（reconstruction error），产生高残留误差的样本数据被认为是异常值。</td>
+<td>Semi-supervised，Un-supervised</td>
+</tr>
+<tr>
+<td>RBM（Restricted Boltzmann Machine）</td>
+<td>一种可通过输入数据集学习概率分布的随机生成神经网络</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>DBN（Deep Belief Networks）</td>
+<td>使用 DBN 进行异常检测的假设是，RBM 被用作带有反向传播算法的定向编码-解码网络。</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>AAE（Adversarial AutoEncoder）</td>
+<td>我们都知道AE需要把一个真实分布映射成隐层的 z，AAE 在此加上对抗思想来优化这个 z</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>CNN-Relief，CNN-SVM</td>
+<td></td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>CNN</td>
+<td>CNN 能够从具有复杂结构的高维数据中提取复杂的隐藏特征，使其能够在序列和图像检测中用作特征提取器。</td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>RNN</td>
+<td>RNN可以获得时序数据的特征，但是随着时间步长的增加，获取时序数据的特征也会越来越困难。</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>学习精确的数据分布以便生成具有变化的新数据点。</td>
+<td>Semi-supervised ，Un-supervised</td>
+</tr>
+<tr>
+<td>CorGAN（Corrupted GAN）</td>
+<td></td>
+<td>Semi-supervised</td>
+</tr>
+<tr>
+<td>AE-OCSVM，AE-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DBN-SVDD，AE-SVDD（Support Vector Data Description）</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DNN-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>DAE-KNN，DBN-Random Forest，CNN-Relief，CNN-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>AE-CNN，AE-DBN</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>AE-KNN</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>CNN-LSTM-SVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>RNN-CSI</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>CAE-OCSVM</td>
+<td></td>
+<td>Hybrid</td>
+</tr>
+<tr>
+<td>LSTM（Long Short  Term Memory Networks）</td>
+<td>是 RNN 的一种特殊类型，可以存储先前时间步长信息</td>
+<td>Un-supervised</td>
+</tr>
+<tr>
+<td>STN（Spatial Transformer Networks）</td>
+<td>STN 包含结合了 CNN 和 LSTM 的深层神经网络体系结构用以提取时空特征。时间特征（通过LSTM在近时间点之间的建模相关性）和空间特征（通过 CNN 的局部空间相关性建模）可以有效的检测异常值。</td>
+<td>Un-supervised</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考自 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1901.03407.pdf">Deep learning for anomaly detection: A survey</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io">wxshhh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">http://wxshhh.github.io/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OD/">OD</a><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/NLP/">NLP</a></div><div class="post_share"><div class="social-share" data-image="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9AIsolationForest%E6%8B%93%E5%B1%95/" title="【机器学习】异常检测文献阅读：IsolationForest拓展"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9AIsolationForest%E6%8B%93%E5%B1%95.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">【机器学习】异常检测文献阅读：IsolationForest拓展</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E5%BA%93/" title="【机器学习】Python数据分析常用库"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E5%BA%93.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">【机器学习】Python数据分析常用库</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87/" title="【机器学习】异常检测文献阅读：关键算法篇"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E7%AF%87.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】异常检测文献阅读：关键算法篇</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E6%A6%82%E8%A7%88%E5%92%8C%E7%BB%BC%E8%BF%B0%E7%AF%87/" title="【机器学习】异常检测文献阅读：概览和综述篇"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91NLP%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E6%A6%82%E8%A7%88%E5%92%8C%E7%BB%BC%E8%BF%B0%E7%AF%87.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】异常检测文献阅读：概览和综述篇</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9AIsolationForest%E6%8B%93%E5%B1%95/" title="【机器学习】异常检测文献阅读：IsolationForest拓展"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9AIsolationForest%E6%8B%93%E5%B1%95.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】异常检测文献阅读：IsolationForest拓展</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8EK-Means%E7%9A%84IForest/" title="【机器学习】异常检测文献阅读：基于K-Means的IForest"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8EK-Means%E7%9A%84IForest.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】异常检测文献阅读：基于K-Means的IForest</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E9%A1%B6%E4%BC%9A%E8%AE%BA%E6%96%87%E4%B8%80%E8%A7%88/" title="【机器学习】2021异常检测顶会论文一览"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B2021%E9%A1%B6%E4%BC%9A%E8%AE%BA%E6%96%87%E4%B8%80%E6%A0%8F.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】2021异常检测顶会论文一览</div></div></a></div><div><a href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E5%BA%93/" title="【机器学习】Python数据分析常用库"><img class="cover" src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%B8%E7%94%A8%E5%BA%93.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">【机器学习】Python数据分析常用库</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wxshhh</div><div class="author-info__description">中国科学技术大学软件工程在读</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%B7%B1%E5%BA%A6%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">1 深度异常检测分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Deep-learning-for-feature-extraction"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 Deep learning for feature extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Learning-feature-representations-of-normality"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 Learning feature representations of normality</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-End-to-end-Anomaly-Score-Learning"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 End-to-end Anomaly Score Learning</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%B7%B1%E5%BA%A6%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">2 深度异常检测模型基础</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】计算机组成原理知识点梳理"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理">【考研】计算机组成原理知识点梳理</a><time datetime="2023-03-01T12:16:23.766Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/" title="【考研】考研冲冲冲！"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】考研冲冲冲！"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%80%83%E7%A0%94%E5%A5%8B%E6%96%97%E6%97%A5%E7%A8%8B%E8%AE%B0%E5%BD%95%EF%BC%81/" title="【考研】考研冲冲冲！">【考研】考研冲冲冲！</a><time datetime="2023-03-01T12:16:23.751Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="【考研】数据结构知识点总结"><img src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】数据结构知识点总结"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="【考研】数据结构知识点总结">【考研】数据结构知识点总结</a><time datetime="2023-03-01T12:16:23.722Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A3%9E%E9%80%9F%E5%85%A5%E9%97%A8%E3%80%91/" title="【机器学习光速入门】">【机器学习光速入门】</a><time datetime="2023-03-01T12:16:23.718Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%9APyOD%E5%BA%93%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95/" title="【机器学习】异常检测：PyOD库中的算法">【机器学习】异常检测：PyOD库中的算法</a><time datetime="2023-03-01T12:16:23.694Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wxshhh</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

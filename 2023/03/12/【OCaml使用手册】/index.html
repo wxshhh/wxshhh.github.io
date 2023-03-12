@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>【OCaml使用手册】 | 从入门到入土</title><meta name="author" content="wxshhh"><meta name="copyright" content="wxshhh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文用于课程《程序设计语言原理》的学习。参考：乔治会写代码了吗 的个人主页 - 动态 - 掘金官网：Welcome to a World of OCaml  OCaml is a general-purpose, industrial-strength programming language with an emphasis on expressiveness and safety. OCam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【OCaml使用手册】">
+<meta property="og:url" content="http://wxshhh.github.io/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="本文用于课程《程序设计语言原理》的学习。参考：乔治会写代码了吗 的个人主页 - 动态 - 掘金官网：Welcome to a World of OCaml  OCaml is a general-purpose, industrial-strength programming language with an emphasis on expressiveness and safety. OCam">
+<meta property="og:locale">
+<meta property="og:image" content="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png">
+<meta property="article:published_time" content="2023-03-12T07:09:57.831Z">
+<meta property="article:modified_time" content="2023-03-12T07:16:31.274Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="OCaml">
+<meta property="article:tag" content="程序语言设计原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://wxshhh.github.io/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【OCaml使用手册】',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-12 15:16:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cate_cover.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png')"><nav id="nav"><span id="blog-info"><a href="/" title="从入门到入土"><span class="site-name">从入门到入土</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OCaml使用手册】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-12T07:09:57.831Z" title="Created 2023-03-12 15:09:57">2023-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-12T07:16:31.274Z" title="Updated 2023-03-12 15:16:31">2023-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>5min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OCaml使用手册】"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png"></p>
+<p>本文用于课程《程序设计语言原理》的学习。<br>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/user/211570032640152">乔治会写代码了吗 的个人主页 - 动态 - 掘金</a><br>官网：<a target="_blank" rel="noopener" href="https://ocaml.org/">Welcome to a World of OCaml</a></p>
+<blockquote>
+<p>OCaml is a general-purpose, industrial-strength programming language with an emphasis on expressiveness and safety.</p>
+<p>OCaml 最早称为 Objective Caml，是 Caml 编程语言的主要实现，开发工具包含交互式顶层解释器，字节码编译器以及最优本地代码编译器。Ocaml 有一个巨大标准库，使得可以像 Python 或者 Perl 语言一样可以方便地开发各种应用程序。</p>
+</blockquote>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h5 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h5><p>整型操作需要使用：<code>+</code> 、<code>-</code>、<code>*</code>、<code>/</code>(向下取整)<br>浮点数操作需要使用：<code>+.</code> 、<code>-.</code>、<code>*.</code>、<code>/.</code><br>区域操作：<code>mod</code><br>布尔运算：<code>&amp;&amp;</code>、<code>||</code>、<code>not</code><br>等于和不等于：<code>=</code>、<code>&lt;&gt;</code><br>字符串相加：^（字符为 <code>&#39;a&#39;</code>，而字符串为 <code>&quot;a&quot;</code>）</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> + <span class="number">3</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">3.0</span> +. <span class="number">2.4</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">4</span> <span class="keyword">mod</span> <span class="number">2</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">4.3</span> mod_float <span class="number">3.2</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> || <span class="number">2</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> = <span class="number">3</span>;;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> &lt;&gt; <span class="number">4</span>;;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;a&quot;</span> ^ <span class="string">&quot;b&quot;</span>;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h5><p>固定格式：<code>DEST_of_ORIG</code><br>例如：<code>int_of_float</code> 表示浮点数到整型的转换</p>
+<h5 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h5><p>在 OCaml 中，使用关键字 <code>let</code> 定义一个函数</p>
+<ul>
+<li><p>函数定义：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*不指定类型的函数 参数之间由空格空开 等号为函数返回值*)</span></span><br><span class="line"><span class="keyword">let</span> f x y = x + y;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>(<em>指定类型的函数</em>)<br>let f (x : int) (y : int) : int &#x3D; x + y</p>
+<p>(<em>同时定义多个函数，使用 and 连接</em>)<br>let identite x &#x3D; x and carre x &#x3D; x * x and cube x &#x3D; x * x * x</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 函数调用：</span><br><span class="line">```ocaml</span><br><span class="line">f 1 2;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用 <code>let</code> 定义函数常量</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pi = <span class="number">3.1415926</span></span><br></pre></td></tr></table></figure></li>
+<li><p>关键字 <code>in</code></p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*不能使用靠前的函数来定义后面的函数 下面语法会报错*)</span></span><br><span class="line"><span class="keyword">let</span> carre x = x * x <span class="keyword">and</span> cube x = (carre x) * x;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>(<em>使用关键字 in 可以使用前面定义好的函数</em>)<br>let carre x &#x3D; x * x in<br>    cube x &#x3D; (carre x) * x;;</p>
+<p>(<em>示例函数，用来求两个浮点数的平方和的平方根</em>)<br>let norme (x : float) (y : float) :float &#x3D;<br>    let carre a &#x3D; a * a in<br>    let x_carre &#x3D; carre x in<br>    let y_carre &#x3D; carre y in<br>    sqrt (x_carre + y_carre);; (<em>sqrt是内置求平方根函数</em>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">### 条件及匹配模式</span><br><span class="line">##### if 和 else</span><br><span class="line">OCaml中的条件语句是作为表达式来用的，最终会得到一个结果</span><br><span class="line">```ocaml</span><br><span class="line">(*x为bool类型的表达式 a、b类型要一致 else必须有！*)</span><br><span class="line">(*示例1：if-else*)</span><br><span class="line">if x then a else b</span><br><span class="line"></span><br><span class="line">(*示例2：if-else if-else*)</span><br><span class="line">if x then</span><br><span class="line">    a</span><br><span class="line">else if y then</span><br><span class="line">    b</span><br><span class="line">else </span><br><span class="line">    c</span><br><span class="line"></span><br><span class="line">(*示例3：将返回结果赋给变量*)</span><br><span class="line">let str = if true then</span><br><span class="line">    &quot;hello&quot;</span><br><span class="line">else </span><br><span class="line">    &quot;world&quot;</span><br><span class="line"></span><br><span class="line">(*示例4：使用圆括号包住嵌套的条件语句*)</span><br><span class="line">let number_departement = 38 </span><br><span class="line">let name_departement = if number_departement = 38 then</span><br><span class="line">    &quot;Isere&quot; </span><br><span class="line">else ( </span><br><span class="line">    if number_departement = 19 then</span><br><span class="line">         &quot;Correze&quot; </span><br><span class="line">     else </span><br><span class="line">         &quot;Unknown&quot; </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h5><p>除了 <code>if</code>&#x2F;<code>else</code> 之外，OCaml 还为我们提供另一种更强有力的创造条件的方式：<strong>匹配模式</strong>（有点像其他语言中 <code>switch</code> 的感觉）。通常而言是列出所有可能的情况,并将一种情况与一个值联结在一起，这和 <code>if</code>&#x2F;<code>else</code> 是有些相像的。 匹配模式有趣的地方就在于，它可以准确地辨认出<strong>模式</strong>，而不仅仅是简单的等式。</p>
+<p>OCaml中，匹配模式的语法会使用关键词 <code>match</code> 和 <code>with</code> ：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* x：将要被测试的值，如果值与列表中的某一项相匹配就返回对应情况的结果 *)</span></span><br><span class="line"><span class="keyword">match</span> x <span class="keyword">with</span></span><br><span class="line">| case1 -&gt; result1</span><br><span class="line">| case2 -&gt; result2</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 示例，返回结果为：&quot;Isere&quot; *)</span></span><br><span class="line"><span class="keyword">let</span> number_departement = <span class="number">38</span></span><br><span class="line"><span class="keyword">let</span> name_departement = </span><br><span class="line">  <span class="keyword">match</span> number_departement <span class="keyword">with</span></span><br><span class="line">  | <span class="number">1</span> -&gt; <span class="string">&quot;Ain&quot;</span> </span><br><span class="line">  | <span class="number">19</span> -&gt; <span class="string">&quot;Correze&quot;</span> </span><br><span class="line">  | <span class="number">38</span> -&gt; <span class="string">&quot;Isere&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(*</span></span><br><span class="line"><span class="comment">如果未找到相匹配的值，则会报错：Exception: Match_failure，为了避免这种情况，可以加一个 _ 来表示默认情况</span></span><br><span class="line"><span class="comment">*)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name_departement number = </span><br><span class="line">  <span class="keyword">match</span> number <span class="keyword">with</span> </span><br><span class="line">  | <span class="number">1</span> -&gt; <span class="string">&quot;Ain&quot;</span> </span><br><span class="line">  | <span class="number">19</span> -&gt; <span class="string">&quot;Correze&quot;</span> </span><br><span class="line">  | <span class="number">38</span> -&gt; <span class="string">&quot;Isere&quot;</span> </span><br><span class="line">  | _ -&gt; <span class="string">&quot;Unknown&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="建立数据模型"><a href="#建立数据模型" class="headerlink" title="建立数据模型"></a>建立数据模型</h3><p>我们目前为止只是使用了一些简单的数据类型，如果实现更复杂的功能，就要自己创建更为复杂的数据类型（类似于其他语言中的类或者结构体）</p>
+<h5 id="同义类型"><a href="#同义类型" class="headerlink" title="同义类型"></a>同义类型</h5><p>类似于取别名</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* 基本语法 *)</span></span><br><span class="line"><span class="keyword">type</span> <span class="type">NAME</span> = <span class="type">TYPE</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(* 举例 *)</span></span><br><span class="line"><span class="keyword">type</span> speed = <span class="built_in">float</span></span><br><span class="line"><span class="keyword">type</span> time = <span class="built_in">float</span></span><br><span class="line"><span class="keyword">type</span> distance = <span class="built_in">float</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s (d : distance) (t : time) :speed = d /. t</span><br><span class="line"><span class="comment">(* 函数类型：distance -&gt; time -&gt; speed *)</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="乘积类型"><a href="#乘积类型" class="headerlink" title="乘积类型"></a>乘积类型</h5><p>乘积类型是将几个不同的值组合起来，我们也称之为多元组&#x2F;元组</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* 基本语法 *)</span></span><br><span class="line"><span class="keyword">type</span> <span class="type">NAME</span> = <span class="type">TYPE</span>*<span class="type">TYPE</span>*<span class="type">TYPE</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">(* 定义乘积类型, 时间类型：时:分:秒 *)</span></span><br><span class="line"><span class="keyword">type</span> time = <span class="built_in">int</span> * <span class="built_in">int</span> * <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(* end_of_class 类型跟 time 类型是等价的 *)</span></span><br><span class="line"><span class="keyword">let</span> end_of_class = (<span class="number">16</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment">(* 类型为 int*int*int *)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(* 也可以解构使用，类似python拆箱 *)</span></span><br><span class="line"><span class="keyword">let</span> (hour, minute, second) = end_of_class</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 直接在函数的参数中使用解构方法 *)</span></span><br><span class="line"><span class="keyword">let</span> add_a_hour (hour, minute, second: time) = (hour + <span class="number">1</span>, minute, second)</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 模式匹配中使用解构方法 *)</span></span><br><span class="line"><span class="keyword">let</span> meal (hour: time) : <span class="built_in">string</span> = </span><br><span class="line">  <span class="keyword">match</span> hour <span class="keyword">with</span></span><br><span class="line">  | (<span class="number">7</span>, _, _) | (<span class="number">8</span>, _, _) -&gt; <span class="string">&quot;Breakfast&quot;</span></span><br><span class="line">  | (<span class="number">12</span>, <span class="number">0</span>, <span class="number">0</span>) -&gt; <span class="string">&quot;Lunch&quot;</span></span><br><span class="line">  | (<span class="number">16</span>, <span class="number">30</span>, <span class="number">0</span>) -&gt; <span class="string">&quot;Snack&quot;</span></span><br><span class="line">  | (<span class="number">19</span>, <span class="number">30</span>, <span class="number">0</span>) -&gt; <span class="string">&quot;Dinner&quot;</span></span><br><span class="line">  | (h, _, _) -&gt; (string_of_int h) ^ <span class="string">&quot;hours? It&#x27;s not time to eat!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="加法类型"><a href="#加法类型" class="headerlink" title="加法类型"></a>加法类型</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* 基本语法 *)</span></span><br><span class="line"><span class="keyword">type</span> <span class="type">NAME</span> = <span class="type">CONSTRUCTORS_1</span> |<span class="type">CONSTRUCTORS_2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(* 例子 *)</span></span><br><span class="line"><span class="keyword">type</span> size = <span class="type">Small</span> | <span class="type">Medium</span> | <span class="type">Large</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="关联数据和constructor"><a href="#关联数据和constructor" class="headerlink" title="关联数据和constructor"></a>关联数据和constructor</h5><p>我们还可以选择将信息和<code>constructor</code>关联在一起。为了能够更精确描述信息们的类型，我们在<code>constructor</code>的名字后使用关键词<code>of</code>，<code>of</code>后面可以接我们的目标类型。</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> resultat = | <span class="type">Ok</span> <span class="keyword">of</span> <span class="built_in">float</span> <span class="comment">(* 我们将float与builder OK关联 *)</span> | <span class="type">Error</span> <span class="comment">(* 我们可以使用这个类型来实现一个不会崩溃的除法函数。 * 如果出现错误，它将会返回Error，处理除法失败的情况也是必要的 *)</span> <span class="keyword">let</span> div (x : <span class="built_in">float</span>) (d : <span class="built_in">float</span>) : resultat = <span class="keyword">if</span> d = <span class="number">0.0</span> <span class="keyword">then</span> <span class="type">Error</span> <span class="comment">(* Division by 0 impossible *)</span> <span class="keyword">else</span> <span class="type">Ok</span>(x /. d) <span class="comment">(* 就是在这里使用与数据关联的builder *)</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io">wxshhh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/">http://wxshhh.github.io/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OCaml/">OCaml</a><a class="post-meta__tags" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86/">程序语言设计原理</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/12/%E3%80%90LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91/" title="【LeetCode刷题笔记】"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230312151934.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">【LeetCode刷题笔记】</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/02/%E3%80%90Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91/" title="【Redis学习笔记】"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230302220114.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">【Redis学习笔记】</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cate_cover.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wxshhh</div><div class="author-info__description">中国科学技术大学软件工程在读</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wxshhh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/wxshhh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">1.0.1.</span> <span class="toc-text">基本运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.0.2.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.3.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.0.4.</span> <span class="toc-text">匹配模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">建立数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8C%E4%B9%89%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.1.</span> <span class="toc-text">同义类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B9%98%E7%A7%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.2.</span> <span class="toc-text">乘积类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.3.</span> <span class="toc-text">加法类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%95%B0%E6%8D%AE%E5%92%8Cconstructor"><span class="toc-number">2.0.4.</span> <span class="toc-text">关联数据和constructor</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90Go%E9%9D%A2%E8%AF%95%E5%B8%B8%E5%A4%87%E3%80%91/" title="【Go面试常备】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.bing.com/images/search?FORM=IARRTH&amp;q=go" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Go面试常备】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90Go%E9%9D%A2%E8%AF%95%E5%B8%B8%E5%A4%87%E3%80%91/" title="【Go面试常备】">【Go面试常备】</a><time datetime="2023-03-12T07:15:59.527Z" title="Created 2023-03-12 15:15:59">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91/" title="【LeetCode刷题笔记】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230312151934.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【LeetCode刷题笔记】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91/" title="【LeetCode刷题笔记】">【LeetCode刷题笔记】</a><time datetime="2023-03-12T07:15:24.720Z" title="Created 2023-03-12 15:15:24">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/" title="【OCaml使用手册】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【OCaml使用手册】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/" title="【OCaml使用手册】">【OCaml使用手册】</a><time datetime="2023-03-12T07:09:57.831Z" title="Created 2023-03-12 15:09:57">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/02/%E3%80%90Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91/" title="【Redis学习笔记】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230302220114.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis学习笔记】"/></a><div class="content"><a class="title" href="/2023/03/02/%E3%80%90Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91/" title="【Redis学习笔记】">【Redis学习笔记】</a><time datetime="2023-03-02T08:26:04.000Z" title="Created 2023-03-02 16:26:04">2023-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://hexo-wxshhh.oss-cn-shanghai.aliyuncs.com/cover/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【考研】计算机组成原理知识点梳理"/></a><div class="content"><a class="title" href="/2023/03/01/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="【考研】计算机组成原理知识点梳理">【考研】计算机组成原理知识点梳理</a><time datetime="2023-03-01T12:16:23.766Z" title="Created 2023-03-01 20:16:23">2023-03-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wxshhh</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>

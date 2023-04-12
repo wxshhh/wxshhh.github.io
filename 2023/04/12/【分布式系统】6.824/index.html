@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>【分布式系统】6.824 | 从入门到入土</title><meta name="author" content="wxshhh"><meta name="copyright" content="wxshhh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lecture1 - Introduction 参考链接：nil.csail.mit.edu&#x2F;6.824&#x2F;2022&#x2F;papers&#x2F;mapreduce.pdf  为什么使用分布式系统 连接分隔开的物理机器（允许用户共享数据） 通过并行来提高容量（capacity） 容错（tolerate faults） 通过隔离实现安全  发展历史 局域网（1980s）：DN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【分布式系统】6.824">
+<meta property="og:url" content="http://wxshhh.github.io/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/index.html">
+<meta property="og:site_name" content="从入门到入土">
+<meta property="og:description" content="Lecture1 - Introduction 参考链接：nil.csail.mit.edu&#x2F;6.824&#x2F;2022&#x2F;papers&#x2F;mapreduce.pdf  为什么使用分布式系统 连接分隔开的物理机器（允许用户共享数据） 通过并行来提高容量（capacity） 容错（tolerate faults） 通过隔离实现安全  发展历史 局域网（1980s）：DN">
+<meta property="og:locale">
+<meta property="og:image" content="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412220010.png">
+<meta property="article:published_time" content="2023-04-12T13:56:36.712Z">
+<meta property="article:modified_time" content="2023-04-12T14:00:37.221Z">
+<meta property="article:author" content="wxshhh">
+<meta property="article:tag" content="分布式系统">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412220010.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://wxshhh.github.io/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【分布式系统】6.824',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-12 22:00:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cate_cover.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">91</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412220010.png')"><nav id="nav"><span id="blog-info"><a href="/" title="从入门到入土"><span class="site-name">从入门到入土</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【分布式系统】6.824</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-12T13:56:36.712Z" title="Created 2023-04-12 21:56:36">2023-04-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-12T14:00:37.221Z" title="Updated 2023-04-12 22:00:37">2023-04-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>9min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【分布式系统】6.824"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Lecture1-Introduction"><a href="#Lecture1-Introduction" class="headerlink" title="Lecture1 - Introduction"></a>Lecture1 - Introduction</h2><blockquote>
+<p>参考链接：<br><a target="_blank" rel="noopener" href="http://nil.csail.mit.edu/6.824/2022/papers/mapreduce.pdf">nil.csail.mit.edu&#x2F;6.824&#x2F;2022&#x2F;papers&#x2F;mapreduce.pdf</a></p>
+</blockquote>
+<h3 id="为什么使用分布式系统"><a href="#为什么使用分布式系统" class="headerlink" title="为什么使用分布式系统"></a>为什么使用分布式系统</h3><ul>
+<li>连接分隔开的物理机器（允许用户共享数据）</li>
+<li>通过并行来提高容量（capacity）</li>
+<li>容错（tolerate faults）</li>
+<li>通过隔离实现安全</li>
+</ul>
+<h3 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h3><ul>
+<li>局域网（1980s）：DNS、AFS</li>
+<li>数据中心随着大型网站兴起（1990s）：网页搜索、购物</li>
+<li>云计算（2000s）</li>
+<li>……</li>
+</ul>
+<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><ul>
+<li>大量并发组件</li>
+<li>必须处理部分故障（某台机器宕机）</li>
+<li>难于实现性能优势</li>
+</ul>
+<h3 id="课程结构"><a href="#课程结构" class="headerlink" title="课程结构"></a>课程结构</h3><ul>
+<li>课程</li>
+<li>论文</li>
+<li>labs<ul>
+<li>Mapreduce</li>
+<li>replication using raft</li>
+<li>replicated K-V service</li>
+<li>sharded K-V service</li>
+</ul>
+</li>
+</ul>
+<h3 id="聚焦：基础架构"><a href="#聚焦：基础架构" class="headerlink" title="聚焦：基础架构"></a>聚焦：基础架构</h3><ul>
+<li>存储</li>
+<li>计算</li>
+<li>通信</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><ul>
+<li>容错（高可用性-备份、可恢复性-日志&#x2F;事务）</li>
+<li>一致性</li>
+<li>性能（吞吐量、延迟）</li>
+<li>实现</li>
+</ul>
+<h3 id="Mapreduce"><a href="#Mapreduce" class="headerlink" title="Mapreduce"></a>Mapreduce</h3><h3 id="Lab1"><a href="#Lab1" class="headerlink" title="Lab1"></a>Lab1</h3><ul>
+<li>Q1：需要开启一个协程来不断循环监控某个共享变量，同时这个共享变量又会在其他地方修改，该如何处理？</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412193323.png"></p>
+<h2 id="Lecture2-RPC-and-Threads"><a href="#Lecture2-RPC-and-Threads" class="headerlink" title="Lecture2 - RPC and Threads"></a>Lecture2 - RPC and Threads</h2><h3 id="Why-Go？"><a href="#Why-Go？" class="headerlink" title="Why Go？"></a>Why Go？</h3><ul>
+<li>对线程和RPC的支持</li>
+<li>好的垃圾回收机制</li>
+<li>类型安全</li>
+<li>简单易学</li>
+<li>编译型语言，运行时开销不大</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>关心并发的原因：</p>
+<ul>
+<li>IO并发性</li>
+<li>多核并行</li>
+<li>方便：定期执行一些后台活动任务</li>
+</ul>
+<p>挑战：</p>
+<ul>
+<li>竞态条件（两个线程操作同一个资源）<ul>
+<li>避免共享资源</li>
+<li>加锁，让指令变成原子操作</li>
+</ul>
+</li>
+<li>同步<br>  Channels 或者 condition variables</li>
+<li>死锁</li>
+</ul>
+<p>Go的解决方案：</p>
+<ul>
+<li>channels（不共享内存时使用）</li>
+<li>locks + condition variables（共享内存时使用）</li>
+</ul>
+<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><h2 id="LEC-3-GFS"><a href="#LEC-3-GFS" class="headerlink" title="LEC 3 - GFS"></a>LEC 3 - GFS</h2><blockquote>
+<p>参考链接：<br><a target="_blank" rel="noopener" href="http://nil.csail.mit.edu/6.824/2022/papers/gfs.pdf">nil.csail.mit.edu&#x2F;6.824&#x2F;2022&#x2F;papers&#x2F;gfs.pdf</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fT411c7y6">解读Google分布式文件系统GFS（合集）_哔哩哔哩_bilibili</a></p>
+</blockquote>
+<h3 id="为什么分布式存储实现起来很难？"><a href="#为什么分布式存储实现起来很难？" class="headerlink" title="为什么分布式存储实现起来很难？"></a>为什么分布式存储实现起来很难？</h3><p>（层层递进，又互相影响）<br>高性能 ——&gt; 在许多服务器上共享数据<br>许多服务器 ——&gt; 持续故障<br>容错 ——&gt; 主从复制<br>主从复制 ——&gt; 潜在的不一致性<br>一致性 ——&gt; 低性能</p>
+<h3 id="分布式文件系统-Q-amp-A"><a href="#分布式文件系统-Q-amp-A" class="headerlink" title="分布式文件系统 Q&amp;A"></a>分布式文件系统 Q&amp;A</h3><p>单机文件系统 —(A)— 分布式文件系统 —(B)—&gt; GFS</p>
+<p>A1：文件如何分散存储在多台服务器上？怎样实现动态扩缩容？</p>
+<ul>
+<li><em>分割存储</em></li>
+<li><em>在 master 单点上增减、调整 chunk 元数据</em><br>A2：怎么知道哪一个文件存储在哪台机器上？</li>
+<li><em>根据 master 元数据中文件名到 chunk 再到 chunk 位置的映射来定位具体的 chunkserver</em><br>A3：怎样保证服务器在故障时文件不损坏不丢失？</li>
+<li><em>master 的 WAL 和主备、chunk的多副本</em><br>A4：使用多副本的话，如何保持副本间数据的一致性？</li>
+<li>对一个 chunk 所有副本的写入顺序都是一致的。这是由控制流和数据流分离技术来实现的，控制流都是由 primary 发出，副本的写入顺序也是由 primary 到 secondary</li>
+<li>使用 chunk 版本号来检测 chunk 副本是否出现过宕机，失效的副本不会再进行写入操作，master 不会再记录这个副本的信息，GC 会自动回收这些副本</li>
+<li>master 定期检查 chunk 副本的 checksum 来确认其是否正确</li>
+<li>GFS 推荐应用更多地使用追加来达到更高的一致性</li>
+</ul>
+<p>B1：怎样支持<strong>大文件</strong>存储？</p>
+<ul>
+<li><em>采用了更大的 chunk(64MB)，以及配套的一致性策略</em><br>B2：超多台机器的情况下，<strong>自动</strong>监控、容错与恢复？</li>
+<li><em>master 的主备切换由 chubby 负责，chunk 的租约、副本位置与数量是由 master 负责</em><br>B3：怎样支持快速的<strong>顺序读</strong>和<strong>追加写</strong>？</li>
+<li>总体上 GFS 是<strong>三写一读</strong>的模式，写入采用了流水线技术和数据流与控制流分离技术保证性能</li>
+<li><strong>追加写对一致性的保证更简单也更高效</strong>，所以写入多采用追加写的形式</li>
+<li>读取则所有副本均可读，在<strong>就近读取</strong>情况下性能会很高</li>
+</ul>
+<h3 id="GFS-整体架构"><a href="#GFS-整体架构" class="headerlink" title="GFS 整体架构"></a>GFS 整体架构</h3><h3 id="GFS-存储设计"><a href="#GFS-存储设计" class="headerlink" title="GFS 存储设计"></a>GFS 存储设计</h3><p>chunk 在 chunkserver 中的分布<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412102750.png"></p>
+<h3 id="GFS-的-master-设计"><a href="#GFS-的-master-设计" class="headerlink" title="GFS 的 master 设计"></a>GFS 的 master 设计</h3><p>管理元数据结点（master 结点）设计为单点还是多节点？</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>单中心结点</th>
+<th>多中心结点（分布式中心结点）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>实现难度低，一致性容易保证</td>
+<td>实现难度极高，一致性难以保证，系统可靠性难以验证</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>单点可能会成为整个系统的瓶颈</td>
+<td>不存在瓶颈，可拓展性极强</td>
+</tr>
+<tr>
+<td>方案工作重心</td>
+<td>缩减元数据，减少单 master 压力</td>
+<td>设计一个分布式的元数据管理功能，验证其可靠性</td>
+</tr>
+</tbody></table>
+<p>Google 最终选择了<strong>单主节点模式</strong>，用来存储整个文件系统的三类元数据：</p>
+<ol>
+<li>所有文件和 chunk 的 namespace 【持久化】</li>
+<li>文件到 chunk 的映射【持久化】</li>
+<li>每个 chunk 的位置【不持久化】（master 重启时从各个 chunkserver 处收集 chunk 位置）</li>
+</ol>
+<p>GFS 读取文件的简单过程：<br>文件名 ——&gt; 获取文件对应的所有 chunk 名 ——&gt; 获取所有的 chunk 的位置 ——&gt; 依次到对应的 chunkserver 中读取 chunk</p>
+<p>GFS 采取一些措施来确保 master 不会成为系统瓶颈：</p>
+<ol>
+<li>GFS 所有数据流都不经过 master，而是直接由 client 和 chunkserver 交互（<strong>数据流和控制流分离</strong>）</li>
+<li>GFS 的 client 会<strong>缓存 master 中的元数据</strong>，在大部分情况下，都无需访问 master</li>
+<li>为了避免 master 的<strong>内存</strong>成为系统的瓶颈，GFS 采用了一些手段来节省 master 的内存（增大 chunk 的大小、对元数据进行定制化压缩——元数据小于64bit）</li>
+</ol>
+<blockquote>
+<p>时至今日，大部分分布式系统还是会倾向于选择单个中心节点，因为单点瓶颈不像想象中那么难解决，非中心节点的实现难度也不如想象中那么可控</p>
+</blockquote>
+<h3 id="GFS-高可用设计"><a href="#GFS-高可用设计" class="headerlink" title="GFS 高可用设计"></a>GFS 高可用设计</h3><p><strong>数据的高可用和结点的高可用可以看作是一致的</strong></p>
+<h4 id="Master-的高可用设计（元数据的高可用设计）"><a href="#Master-的高可用设计（元数据的高可用设计）" class="headerlink" title="Master 的高可用设计（元数据的高可用设计）"></a>Master 的高可用设计（元数据的高可用设计）</h4><ul>
+<li>master 的三类元数据中， <strong>namespace 和文件 chunk 的对应关系</strong>必须持久化（因为这些数据只存在 master 中）</li>
+<li>GFS 有<strong>两个 master</strong>，正在使用的称为 primary master，还有一个 shadow master 作为备份使用</li>
+<li>master 正常运行时，对元数据的所有修改，都要<strong>先记录日志</strong>（WAL，write ahead log），<strong>后修改真正的内存中的元数据</strong></li>
+<li>primary master 会实时向 shadow master 同步 WAL，<strong>只有 shadow master 同步日志完成，元数据的修改才算成功</strong></li>
+</ul>
+<p>修改过程：<br>新增的元数据日志写入本地磁盘 ——&gt; 把 WAL 传给 shadow master ——&gt; 得到反馈后正式修改 primary master 元数据</p>
+<p>如何实现自动切换？<br>如果 master 宕机，会通过 Google 的 Chubby 算法（本质上是共识算法）来识别并切换到 shadow master（切换是秒级的）<br>master 的高可用机制就和 <strong>MySQL 的主备机制</strong>非常像</p>
+<h4 id="chunk-的高可用设计（文件数据的高可用设计）"><a href="#chunk-的高可用设计（文件数据的高可用设计）" class="headerlink" title="chunk 的高可用设计（文件数据的高可用设计）"></a>chunk 的高可用设计（文件数据的高可用设计）</h4><p>文件被拆分为一个个 chunk 来存储，<strong>每个 chunk 都有三个副本</strong>。因此，文件数据的高可用是以 chunk 为维度来保持的。</p>
+<ul>
+<li><p>GFS 中，对一个 chunk 的每次写入，必须<strong>确保在三个副本中都写入完成</strong>，才视为写入完成</p>
+</li>
+<li><p>一个 chunk 的所有副本都会具有完整的数据</p>
+</li>
+<li><p>如果一个 chunkserver 宕机，其他两个副本仍然保存着这个 chunk 的数据</p>
+</li>
+<li><p>如果宕机的这个副本在一段时间后仍然没有恢复，那么 master 就可以在另外一个 chunkserver 中重建一个副本，从而始终把 chunk 的副本数目维持在 3 个（可以设置） </p>
+</li>
+<li><p>GFS 维持每个 chunk 的<strong>校验和</strong>，读取时可以通过校验和进行校验，如果校验不匹配，chunkserver 会反馈给 master 处理，master 会选择其他副本进行读取，并重建此 chunk 副本</p>
+</li>
+<li><p>为了减少对 master 的压力，GFS 采用了一种<strong>租约（lease）机制</strong>，把文件的读写权限下放给某一个 chunk 副本</p>
+</li>
+<li><p>master 可以把租约授权给某个 chunk 副本（primary），在租约生效的一段时间内（60s），对这个 chunk 的<strong>写操作直接由这个副本负责</strong></p>
+</li>
+<li><p>租约的主备<strong>只决定控制流走向，不影响数据流</strong></p>
+</li>
+</ul>
+<p>chunk 副本的放置也很关键，GFS 中有三种情况需要 master 发起副本创建：</p>
+<ul>
+<li><strong>新建 chunk</strong></li>
+<li><strong>chunk 副本复制</strong>：发现副本所在的 chunkserver 宕机，导致 chunk 副本数小于预期值，新增一个 chunk 副本</li>
+<li><strong>负载均衡</strong>：master 定期对 chunkserver 进行监控，如果发现某个 chunkserver 的负载过高，则把这个 chunk 副本搬迁到别的 chunkserver 中（创建新的删除旧的）</li>
+</ul>
+<p>master 对副本位置的选择策略：</p>
+<ul>
+<li>新副本所在的 chunkserver <strong>资源利用率较低</strong></li>
+<li>新副本所在的 chunkserver <strong>最近创建的 chunk 副本不多</strong>（防止 chunkserver 瞬间增加大量副本成为热点）</li>
+<li>chunk 的<strong>其他副本不能在同一机架</strong>（机架&#x2F;机房级别的高可用）</li>
+</ul>
+<h3 id="GFS-的读写流程"><a href="#GFS-的读写流程" class="headerlink" title="GFS 的读写流程"></a>GFS 的读写流程</h3><h4 id="GFS-的写入"><a href="#GFS-的写入" class="headerlink" title="GFS 的写入"></a>GFS 的写入</h4><ul>
+<li>写入时要在三个副本都完成写入后才能返回写入结果</li>
+<li>采用两个非常先进的技术：<ul>
+<li><strong>流水线技术</strong><br>  与流水线技术对应的是普通的<strong>主备同步</strong>，数据从 Client 到主，再从主到备这样单向流动</li>
+<li><strong>数据流与控制流分离技术</strong>？<br>  Client 会把文件数据发往离自己最近的一个副本，无论它是否是 primary（持有租约），这个副本在接收到数据后，立刻向其他副本转发（边接受边转发），这样就控制了数据流的流向，节省了网络传输代价。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412201804.png"></p>
+<p>GFS 写入流程：<br>1 &amp; 2、Client 向 Master 询问要写入的 chunk 的租约在那个 chunkserver 上（Primary Replica），以及其他副本（Secondary Replicas）的位置（通常 Client 中就直接有缓存）<br>3：Client 将数据推送到所有副本上，这一步骤会用到流水线技术，就近写入且写入数据流唯一（只是将数据推送到副本 chunkserver 上，还没有正式写入）<br>4、确认所有副本都收到数据后，Client 发送正式写入的请求到 Primary Replica，Primary Replica 接收到这个请求后，会对 Chunk 上的所有操作排序，然后按照这个顺序执行写入（Primary Replica 唯一确定写入顺序，保证副本一致性）<br>5、Primary Replica 将 Chunk 写入顺序同步给 Secondary Replica（此时，在 Primary Replica 上的写入已经成功）<br>6、Secondary Replica 将写入结果返回给 Primary Replica<br>7、Primary Replica 返回写入结果给 Client</p>
+<ul>
+<li>所有副本写入成功：Client 确认写入完成</li>
+<li>部分 Secondary Replica 写入失败&#x2F;无响应：Client 认为写入失败，从 <code>3</code> 开始重新执行<br>如果一个写入操作涉及到多个 Chunk，Client 会把它们分成多个写入来执行。</li>
+</ul>
+<h4 id="GFS-的读取"><a href="#GFS-的读取" class="headerlink" title="GFS 的读取"></a>GFS 的读取</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412210129.png"></p>
+<p>1、Client 收到读取一个文件请求后，首先查看自身缓存中是否有此文件的元数据信息，如果没有，则请求 Master 获取元数据信息并存储在自身缓存中<br>2、Client 计算文件偏移量对应的 chunk<br>3、Client 向离自身最近的 chunkserver 发送请求（如果此时发现 chunkserver 中没有自己所需要的 chunk，说明 Client 缓存失效，重新请求 Master 获取最新的元数据）<br>4、读取时进行 chunk 校验和的确认，校验和不一致则选择其他副本进行读取<br>5、Client 返回应用读取结果</p>
+<h3 id="GFS-的一致性模型"><a href="#GFS-的一致性模型" class="headerlink" title="GFS 的一致性模型"></a>GFS 的一致性模型</h3><h4 id="GFS-对文件系统的分层"><a href="#GFS-对文件系统的分层" class="headerlink" title="GFS 对文件系统的分层"></a>GFS 对文件系统的分层</h4><ul>
+<li>consistent：一致的（无论在哪个副本读取，读到结果都一样）</li>
+<li>defined：已定义的（文件发生了修改操作后，读取是一致的，且 Client 可以看到最新修改的内容，在 consistent 基础上还能与用户最新写入保持一致）</li>
+<li>inconsistent：不一致的</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412211816.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io">wxshhh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wxshhh.github.io/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/">http://wxshhh.github.io/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a><a class="post-meta__tags" href="/tags/Go/">Go</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412220010.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/12/%E3%80%90Go%E9%9D%A2%E8%AF%95%E5%B8%B8%E5%A4%87%E3%80%91/" title="【Go面试常备】"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.bing.com/images/search?FORM=IARRTH&amp;q=go" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">【Go面试常备】</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cate_cover.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wxshhh</div><div class="author-info__description">中国科学技术大学软件工程在读</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">91</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wxshhh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/wxshhh@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lecture1-Introduction"><span class="toc-number">1.</span> <span class="toc-text">Lecture1 - Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.</span> <span class="toc-text">为什么使用分布式系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">1.2.</span> <span class="toc-text">发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-number">1.3.</span> <span class="toc-text">挑战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">课程结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%84%A6%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">聚焦：基础架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapreduce"><span class="toc-number">1.7.</span> <span class="toc-text">Mapreduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lab1"><span class="toc-number">1.8.</span> <span class="toc-text">Lab1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lecture2-RPC-and-Threads"><span class="toc-number">2.</span> <span class="toc-text">Lecture2 - RPC and Threads</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-Go%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">Why Go？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC"><span class="toc-number">2.3.</span> <span class="toc-text">RPC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LEC-3-GFS"><span class="toc-number">3.</span> <span class="toc-text">LEC 3 - GFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0%E8%B5%B7%E6%9D%A5%E5%BE%88%E9%9A%BE%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">为什么分布式存储实现起来很难？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-Q-amp-A"><span class="toc-number">3.2.</span> <span class="toc-text">分布式文件系统 Q&amp;A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">3.3.</span> <span class="toc-text">GFS 整体架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E5%AD%98%E5%82%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.4.</span> <span class="toc-text">GFS 存储设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E7%9A%84-master-%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.5.</span> <span class="toc-text">GFS 的 master 设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.6.</span> <span class="toc-text">GFS 高可用设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Master-%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1%EF%BC%88%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1%EF%BC%89"><span class="toc-number">3.6.1.</span> <span class="toc-text">Master 的高可用设计（元数据的高可用设计）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chunk-%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1%EF%BC%88%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1%EF%BC%89"><span class="toc-number">3.6.2.</span> <span class="toc-text">chunk 的高可用设计（文件数据的高可用设计）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E7%9A%84%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B"><span class="toc-number">3.7.</span> <span class="toc-text">GFS 的读写流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GFS-%E7%9A%84%E5%86%99%E5%85%A5"><span class="toc-number">3.7.1.</span> <span class="toc-text">GFS 的写入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GFS-%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="toc-number">3.7.2.</span> <span class="toc-text">GFS 的读取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GFS-%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.8.</span> <span class="toc-text">GFS 的一致性模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GFS-%E5%AF%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E5%B1%82"><span class="toc-number">3.8.1.</span> <span class="toc-text">GFS 对文件系统的分层</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/" title="【分布式系统】6.824"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230412220010.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【分布式系统】6.824"/></a><div class="content"><a class="title" href="/2023/04/12/%E3%80%90%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E3%80%916.824/" title="【分布式系统】6.824">【分布式系统】6.824</a><time datetime="2023-04-12T13:56:36.712Z" title="Created 2023-04-12 21:56:36">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90Go%E9%9D%A2%E8%AF%95%E5%B8%B8%E5%A4%87%E3%80%91/" title="【Go面试常备】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.bing.com/images/search?FORM=IARRTH&amp;q=go" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Go面试常备】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90Go%E9%9D%A2%E8%AF%95%E5%B8%B8%E5%A4%87%E3%80%91/" title="【Go面试常备】">【Go面试常备】</a><time datetime="2023-03-12T07:15:59.527Z" title="Created 2023-03-12 15:15:59">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91/" title="【LeetCode刷题笔记】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230312151934.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【LeetCode刷题笔记】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91/" title="【LeetCode刷题笔记】">【LeetCode刷题笔记】</a><time datetime="2023-03-12T07:15:24.720Z" title="Created 2023-03-12 15:15:24">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/" title="【OCaml使用手册】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230311204621.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【OCaml使用手册】"/></a><div class="content"><a class="title" href="/2023/03/12/%E3%80%90OCaml%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%E3%80%91/" title="【OCaml使用手册】">【OCaml使用手册】</a><time datetime="2023-03-12T07:09:57.831Z" title="Created 2023-03-12 15:09:57">2023-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/02/%E3%80%90Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91/" title="【Redis学习笔记】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/wxshhh/hexo_gallery/main/gallery/20230302220114.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis学习笔记】"/></a><div class="content"><a class="title" href="/2023/03/02/%E3%80%90Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91/" title="【Redis学习笔记】">【Redis学习笔记】</a><time datetime="2023-03-02T08:26:04.000Z" title="Created 2023-03-02 16:26:04">2023-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wxshhh</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
